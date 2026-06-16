@@ -61,6 +61,23 @@ export function setLessonComplete(id: string, complete: boolean) {
   emit();
 }
 
+/** Read the current completed ids without subscribing (for sync). */
+export function getCompletedIds(): string[] {
+  if (!hydrated && typeof window !== "undefined") load();
+  return Object.keys(snapshot);
+}
+
+/** Replace the whole set (used by account-mode sync to mirror the server). */
+export function replaceProgress(ids: string[]) {
+  snapshot = Object.fromEntries(ids.map((id) => [id, true as const]));
+  emit();
+}
+
+/** Subscribe to local changes outside React (for the sync mirror). */
+export function subscribeProgress(cb: () => void) {
+  return subscribe(cb);
+}
+
 export function useProgress() {
   const map = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const isComplete = useCallback((id: string) => Boolean(map[id]), [map]);

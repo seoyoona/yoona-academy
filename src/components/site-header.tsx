@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { GraduationCap } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AuthButtons } from "@/components/auth-buttons";
+import { authEnabled } from "@/lib/auth-config";
 
 export function SiteHeader() {
   return (
@@ -20,8 +22,9 @@ export function SiteHeader() {
             리소스
           </Link>
         </nav>
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex items-center gap-1.5">
           <ThemeToggle />
+          {authEnabled && <AuthButtons />}
         </div>
       </div>
     </header>
