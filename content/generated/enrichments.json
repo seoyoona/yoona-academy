@@ -1,0 +1,1101 @@
+{
+  "ml-engineering__foundations__overview": {
+    "objectives": [
+      "ML 시스템의 실험 단계(설계·개발)와 프로덕션 단계(배포·반복)의 차이를 설명할 수 있다",
+      "MLOps의 핵심 구성 요소(추적, 테스트, 서빙, 오케스트레이션 등)를 나열할 수 있다",
+      "개발 환경에서 프로덕션 환경으로 안정적으로 전환하는 과정을 설명할 수 있다",
+      "CI/CD 워크플로우를 활용하여 모델을 지속적으로 학습하고 배포하는 방법을 이해할 수 있다",
+      "Python을 사용하여 ML 워크로드(데이터, 학습, 튜닝, 서빙)를 확장하는 방법을 설명할 수 있다"
+    ],
+    "summary": "이 레슨은 머신러닝 시스템을 실험 단계에서 프로덕션 단계까지 구축하는 전체 과정을 다룹니다. 소프트웨어 엔지니어링 모범 사례, MLOps 구성 요소 연결, CI/CD 워크플로우 설계를 통해 신뢰할 수 있는 ML 시스템을 만드는 방법을 배웁니다. 각 개념은 퍼스트 프린시플(제1원리) 접근법을 통해 깊이 있게 이해할 수 있도록 구성됩니다.",
+    "keyConcepts": [
+      "MLOps (머신러닝 운영)",
+      "퍼스트 프린시플 (제1원리 사고)",
+      "CI/CD (지속적 통합/지속적 배포)",
+      "실험 단계 (Experimentation)",
+      "프로덕션 단계 (Production)",
+      "오케스트레이션 (Orchestration)",
+      "모델 서빙 (Model Serving)",
+      "워크로드 스케일링 (Workload Scaling)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:37:41.484Z"
+  },
+  "ml-engineering__foundations__audience": {
+    "objectives": [
+      "머신러닝이 특정 직군에만 국한되지 않는 범용적 사고방식임을 설명할 수 있다",
+      "소프트웨어 엔지니어, 데이터 과학자 등 개발자에게 머신러닝이 왜 필요한지 말할 수 있다",
+      "대학 졸업자가 이 코스를 통해 얻을 수 있는 실무적 이점을 설명할 수 있다",
+      "제품 기획자 및 리더십 직군이 머신러닝 기초를 배워야 하는 이유를 설명할 수 있다"
+    ],
+    "summary": "머신러닝은 특정 업종이나 직군에만 해당되는 기술이 아니라, 데이터를 바라보는 강력한 사고방식입니다. 이 코스는 개발자, 대학 졸업자, 제품 기획자 및 리더십 등 다양한 배경을 가진 학습자 모두를 위해 설계되었습니다. 각자의 역할에 맞게 머신러닝의 실무적 역량을 키우고 신뢰할 수 있는 제품을 만드는 것을 목표로 합니다.",
+    "keyConcepts": [
+      "머신러닝(Machine Learning)",
+      "데이터 사고방식",
+      "소프트웨어 엔지니어",
+      "데이터 과학자",
+      "실무 역량(Practical Skills)",
+      "대학 커리큘럼과 산업 간 격차",
+      "제품/리더십 직군",
+      "기술적 기반(Technical Foundation)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:38:07.144Z"
+  },
+  "ml-engineering__setup__cluster": {
+    "objectives": [
+      "로컬 환경과 Anyscale 환경의 차이를 설명할 수 있다",
+      "Anyscale Workspace를 UI 또는 CLI를 사용하여 직접 생성할 수 있다",
+      "클러스터의 헤드 노드와 워커 노드의 역할을 구분할 수 있다",
+      "AWS, GCP, Kubernetes 등 다양한 클러스터 배포 옵션을 나열할 수 있다"
+    ],
+    "summary": "이 레슨에서는 머신러닝 실습을 위한 클러스터 환경을 준비하는 방법을 다룹니다. 로컬 노트북 단일 머신부터 Anyscale 클라우드 워크스페이스, AWS/GCP/Kubernetes 등 다양한 환경에서 클러스터를 설정하는 옵션을 제공합니다. Anyscale을 사용하면 웹 UI 또는 CLI를 통해 간편하게 워크스페이스와 컴퓨팅 구성을 설정할 수 있습니다.",
+    "keyConcepts": [
+      "헤드 노드(Head Node)",
+      "워커 노드(Worker Node)",
+      "Anyscale Workspace",
+      "클러스터 환경(Cluster Environment)",
+      "컴퓨팅 설정(Compute Config)",
+      "KubeRay",
+      "온프레미스(On-Prem)",
+      "Ray 클러스터"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:38:25.065Z"
+  },
+  "ml-engineering__setup__git-setup": {
+    "objectives": [
+      "GitHub에서 새 저장소를 직접 생성할 수 있다",
+      "README 파일 추가의 중요성을 설명하고 main 브랜치가 생성되는 원리를 이해할 수 있다",
+      "git clone 명령어를 사용하여 원격 저장소를 로컬 환경에 복제할 수 있다",
+      "Git 초기 설정 절차를 순서대로 수행할 수 있다"
+    ],
+    "summary": "이 레슨에서는 GitHub에서 새 저장소를 생성하고 로컬 환경으로 복제하는 Git 기본 설정 방법을 학습합니다. README 파일을 추가하면 main 브랜치가 자동으로 생성되며, git clone 명령어를 통해 원격 저장소의 코드를 로컬에 가져올 수 있습니다. 이 과정은 프로젝트 협업과 버전 관리의 출발점이 됩니다.",
+    "keyConcepts": [
+      "저장소(Repository)",
+      "git clone",
+      "main 브랜치",
+      "README 파일",
+      "원격 저장소(Remote Repository)",
+      "로컬 저장소(Local Repository)",
+      "GitHub"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:38:49.347Z"
+  },
+  "ml-engineering__setup__credentials": {
+    "objectives": [
+      "`.env` 파일을 생성하고 환경 변수를 정의할 수 있다",
+      "`source` 명령어를 사용하여 `.env` 파일을 현재 셸 세션에 적용할 수 있다",
+      "환경 변수를 활용하여 민감한 자격 증명을 코드와 분리하여 관리할 수 있다"
+    ],
+    "summary": "이 레슨에서는 `.env` 파일을 사용하여 GitHub 사용자 이름과 같은 자격 증명(민감한 정보)을 별도로 관리하는 방법을 배웁니다. `touch` 명령어로 파일을 생성하고, `source` 명령어로 환경 변수를 현재 셸에 로드하는 기본적인 워크플로우를 익힙니다. 이 방식은 코드와 민감 정보를 분리하여 보안을 강화하는 중요한 개발 습관입니다.",
+    "keyConcepts": [
+      ".env 파일",
+      "환경 변수(Environment Variable)",
+      "touch 명령어",
+      "source 명령어",
+      "자격 증명(Credentials)",
+      "셸 세션(Shell Session)",
+      "민감 정보 분리"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:39:05.478Z"
+  },
+  "ml-engineering__setup__virtual-environment": {
+    "objectives": [
+      "로컬 환경에서 Python 가상 환경을 생성하고 활성화할 수 있다",
+      "pip를 사용하여 필요한 패키지와 의존성을 설치할 수 있다",
+      "pre-commit 훅을 설치하고 최신 상태로 업데이트할 수 있다",
+      "Anyscale 클라우드 환경에서 개발 환경을 설정할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Python 프로젝트를 위한 가상 환경 설정 방법을 다룹니다. 로컬 환경에서는 venv를 생성·활성화하고 requirements.txt로 패키지를 설치하는 과정을 배우며, Anyscale 환경에서는 클러스터가 이미 구성되어 있어 PYTHONPATH 설정과 pre-commit 설정만으로 빠르게 시작할 수 있습니다.",
+    "keyConcepts": [
+      "가상 환경 (venv)",
+      "PYTHONPATH",
+      "pip",
+      "requirements.txt",
+      "pre-commit",
+      "pyenv",
+      "Anyscale Workspace",
+      "Python 3.10"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:39:22.080Z"
+  },
+  "ml-engineering__development__notebook": {
+    "objectives": [
+      "Jupyter 노트북을 로컬 및 Anyscale 환경에서 실행할 수 있다",
+      "머신러닝 핵심 워크로드의 전체 흐름을 노트북으로 탐색할 수 있다",
+      "JupyterLab 인터페이스를 통해 노트북 파일을 탐색하고 열 수 있다",
+      "로컬 환경과 클라우드(Anyscale) 환경의 노트북 실행 방식 차이를 설명할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Jupyter 노트북을 활용하여 머신러닝의 핵심 워크로드를 대화형으로 학습합니다. 로컬 환경에서는 터미널 명령어로, Anyscale 환경에서는 Workspace의 JupyterLab 아이콘을 통해 노트북을 실행할 수 있습니다. 노트북 기반의 워크플로우를 익힘으로써 전체 ML 파이프라인의 흐름을 직접 체험할 수 있습니다.",
+    "keyConcepts": [
+      "Jupyter 노트북(Jupyter Notebook)",
+      "JupyterLab",
+      "머신러닝 워크로드(ML Workload)",
+      "Anyscale Workspace",
+      "노트북 워크플로우(Notebook Workflow)",
+      "로컬 실행 환경",
+      "대화형 학습(Interactive Walkthrough)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:39:37.563Z"
+  },
+  "ml-engineering__development__tuning": {
+    "objectives": [
+      "하이퍼파라미터 튜닝 실험을 Ray Tune을 사용하여 직접 실행할 수 있다",
+      "HyperOptSearch와 ConcurrencyLimiter를 활용하여 탐색 알고리즘을 구성할 수 있다",
+      "AsyncHyperBandScheduler를 설정하여 비효율적인 trial을 조기에 종료할 수 있다",
+      "param_space를 정의하여 dropout, lr 등 주요 하이퍼파라미터의 탐색 범위를 지정할 수 있다",
+      "MLflow와 연동하여 튜닝 실험 결과를 추적·저장할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Ray Tune을 활용하여 LLM 분류 모델의 하이퍼파라미터를 자동으로 탐색하는 방법을 학습합니다. HyperOptSearch로 초기 파라미터를 기반으로 효율적인 탐색을 수행하고, AsyncHyperBandScheduler로 성능이 낮은 trial을 조기에 제거하여 자원을 절약합니다. 실험 결과는 MLflow에 자동으로 기록되며 CheckpointConfig를 통해 최적 모델이 저장됩니다.",
+    "keyConcepts": [
+      "하이퍼파라미터 튜닝 (Hyperparameter Tuning)",
+      "Ray Tune",
+      "HyperOptSearch",
+      "ConcurrencyLimiter",
+      "AsyncHyperBandScheduler (ASHA)",
+      "param_space (파라미터 탐색 공간)",
+      "CheckpointConfig",
+      "MLflowLoggerCallback"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:40:38.147Z"
+  },
+  "ml-engineering__development__experiment-tracking": {
+    "objectives": [
+      "MLflow를 사용하여 머신러닝 실험을 추적하고 모델을 저장할 수 있다",
+      "MLflow 서버를 로컬 및 클라우드 환경에서 실행할 수 있다",
+      "MLflow Tracking UI를 통해 실험 결과를 시각적으로 확인할 수 있다",
+      "로컬 환경과 Anyscale 환경에서 MLflow 대시보드에 접근하는 방법을 구분할 수 있다"
+    ],
+    "summary": "이 레슨에서는 MLflow를 활용하여 머신러닝 실험을 체계적으로 추적하고 모델을 저장하는 방법을 학습합니다. 로컬 환경과 Anyscale Workspaces 환경 각각에서 MLflow 서버를 실행하고 Tracking UI에 접근하는 실습을 다룹니다. 실제 프로덕션 환경에서는 팀 전체가 공유하는 중앙 집중식 실험 관리 서버 또는 Weights & Biases, Comet 같은 관리형 솔루션을 활용할 수 있습니다.",
+    "keyConcepts": [
+      "MLflow",
+      "실험 추적 (Experiment Tracking)",
+      "MLflow Tracking UI",
+      "모델 레지스트리 (Model Registry)",
+      "백엔드 스토어 (Backend Store URI)",
+      "Anyscale Workspaces",
+      "관리형 솔루션 (Weights & Biases, Comet)",
+      "포트 노출 (Port Expose)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:40:58.231Z"
+  },
+  "ml-engineering__development__evaluation": {
+    "objectives": [
+      "홀드아웃 데이터셋을 사용하여 최적 모델의 성능을 평가할 수 있다",
+      "전체(overall), 클래스별(per-class), 슬라이스별(slice) 세 가지 평가 지표를 계산하고 해석할 수 있다",
+      "Precision, Recall, F1 지표의 의미와 차이를 설명할 수 있다",
+      "슬라이싱 함수(slicing function)를 정의하고 특정 데이터 부분집합의 모델 성능을 분석할 수 있다",
+      "평가 결과를 JSON 파일로 저장하고 실험 run_id와 연결하여 재현 가능한 평가 파이프라인을 구성할 수 있다"
+    ],
+    "summary": "이 레슨에서는 학습된 LLM 분류 모델을 홀드아웃 데이터셋에 적용하여 전체 성능, 클래스별 성능, 특정 데이터 슬라이스별 성능을 종합적으로 평가하는 방법을 다룹니다. scikit-learn의 precision_recall_fscore_support와 Snorkel의 슬라이싱 기능을 활용해 모델의 약점을 세밀하게 파악할 수 있습니다. 평가 결과는 JSON으로 저장되며, MLflow run_id와 연동되어 실험 추적이 가능합니다.",
+    "keyConcepts": [
+      "홀드아웃 데이터셋(Holdout Dataset)",
+      "Precision(정밀도)",
+      "Recall(재현율)",
+      "F1 Score",
+      "클래스별 평가(Per-class Metrics)",
+      "슬라이싱 함수(Slicing Function)",
+      "weighted average",
+      "TorchPredictor"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:41:20.484Z"
+  },
+  "ml-engineering__development__inference": {
+    "objectives": [
+      "MLflow 실험에서 최적의 Run ID를 조회할 수 있다",
+      "저장된 체크포인트로부터 TorchPredictor를 로드하여 추론 환경을 구성할 수 있다",
+      "입력 데이터를 전처리하고 모델을 통해 클래스 확률을 예측할 수 있다",
+      "예측 결과를 클래스 레이블과 확률값이 담긴 딕셔너리 형태로 해석할 수 있다",
+      "CLI 명령어를 사용하여 실제 추론 파이프라인을 실행할 수 있다"
+    ],
+    "summary": "이 레슨에서는 MLflow에 저장된 최적 실험 결과를 불러와 LLM 기반 텍스트 분류 모델로 추론을 수행하는 전체 파이프라인을 다룹니다. TorchPredictor 클래스가 체크포인트로부터 전처리기와 모델을 복원하고, Ray Data를 활용해 배치 단위로 클래스 확률을 계산합니다. 최종 결과는 각 클래스에 대한 확률값과 최종 예측 레이블로 반환됩니다.",
+    "keyConcepts": [
+      "Run ID",
+      "TorchCheckpoint",
+      "TorchPredictor",
+      "get_best_run_id",
+      "predict_proba",
+      "CustomPreprocessor",
+      "index_to_class",
+      "Ray Data"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:41:47.597Z"
+  },
+  "ml-engineering__serving__serving": {
+    "objectives": [
+      "Ray Serve와 FastAPI를 활용하여 ML 모델 서빙 애플리케이션을 구성할 수 있다",
+      "MLflow에서 최적의 실험 run ID를 조회하여 서빙에 활용할 수 있다",
+      "로컬 및 Anyscale 환경에서 모델 서빙 서버를 시작하고 종료할 수 있다",
+      "HTTP 엔드포인트를 통해 Python 또는 cURL로 예측 요청을 보내고 결과를 받을 수 있다",
+      "확률 임계값(threshold) 로직을 적용하여 예측 결과를 후처리할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Ray Serve와 FastAPI를 결합하여 학습된 ML 모델을 REST API 형태로 서빙하는 방법을 다룹니다. MLflow에서 최적의 체크포인트를 불러와 ModelDeployment 클래스로 배포하며, 예측 결과에 확률 임계값을 적용해 신뢰도가 낮은 예측을 'other'로 처리하는 후처리 로직을 구현합니다. 로컬 환경과 Anyscale 환경 모두에서 동일한 방식으로 서빙할 수 있습니다.",
+    "keyConcepts": [
+      "Ray Serve",
+      "FastAPI",
+      "ModelDeployment",
+      "run_id",
+      "임계값(threshold)",
+      "TorchPredictor",
+      "@serve.deployment",
+      "@serve.ingress"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:42:10.981Z"
+  },
+  "ml-engineering__serving__testing": {
+    "objectives": [
+      "pytest를 사용하여 코드, 데이터, 모델 테스트를 각각 실행할 수 있다",
+      "환경 변수를 설정하여 데이터셋 경로와 실험 실행 ID를 테스트에 전달할 수 있다",
+      "최적의 모델 실행 ID를 자동으로 조회하여 모델 테스트에 활용할 수 있다",
+      "pytest-cov를 이용해 코드 커버리지 리포트를 HTML 및 터미널 형식으로 생성할 수 있다"
+    ],
+    "summary": "이 레슨은 머신러닝 프로젝트에서 코드, 데이터, 모델을 체계적으로 검증하기 위한 pytest 기반 테스트 전략을 다룹니다. 환경 변수를 활용해 데이터셋 위치와 모델 실행 ID를 동적으로 주입하고, 각 영역별로 독립적인 테스트를 수행하는 방법을 학습합니다. 추가로 pytest-cov를 통해 테스트 커버리지를 측정하고 리포트를 생성하는 방법도 익힙니다.",
+    "keyConcepts": [
+      "pytest",
+      "테스트 커버리지(Coverage)",
+      "환경 변수(Environment Variable)",
+      "--verbose 플래그",
+      "--disable-warnings 플래그",
+      "Run ID",
+      "실험 이름(Experiment Name)",
+      "cov-report"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:42:36.346Z"
+  },
+  "ml-engineering__production__authentication": {
+    "objectives": [
+      "Anyscale 인증에 필요한 환경 변수를 식별할 수 있다",
+      "Anyscale Workspaces 환경과 로컬/외부 클러스터 환경의 인증 차이를 설명할 수 있다",
+      "CLI 토큰을 Anyscale 자격 증명 페이지에서 발급받아 환경 변수로 설정할 수 있다"
+    ],
+    "summary": "Anyscale 인증은 ANYSCALE_HOST와 ANYSCALE_CLI_TOKEN 두 가지 환경 변수를 통해 이루어집니다. Anyscale Workspaces 환경에서는 이 자격 증명이 자동으로 설정되므로 별도 작업이 불필요하지만, 로컬 환경이나 외부 클러스터에서는 직접 설정해야 합니다.",
+    "keyConcepts": [
+      "ANYSCALE_HOST",
+      "ANYSCALE_CLI_TOKEN",
+      "Anyscale Workspaces",
+      "환경 변수 (Environment Variable)",
+      "자격 증명 (Credentials)",
+      "Anyscale Jobs",
+      "Anyscale Services",
+      "CLI 토큰 (CLI Token)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:42:52.361Z"
+  },
+  "ml-engineering__production__cluster-environment": {
+    "objectives": [
+      "클러스터 환경의 개념과 역할을 설명할 수 있다",
+      "클러스터 환경 YAML 파일의 구성 요소를 파악할 수 있다",
+      "Anyscale CLI를 사용하여 클러스터 환경을 직접 생성할 수 있다",
+      "환경 변수를 활용하여 클러스터 환경 이름을 설정할 수 있다"
+    ],
+    "summary": "클러스터 환경은 워크로드가 실행될 운영체제, 의존성 패키지 등 실행 기반 환경을 정의합니다. Anyscale CLI의 `anyscale cluster-env build` 명령어와 YAML 설정 파일을 사용하여 클러스터 환경을 생성하거나 업데이트할 수 있습니다. 환경 변수를 통해 클러스터 환경 이름을 관리하면 반복적인 배포 작업을 효율적으로 수행할 수 있습니다.",
+    "keyConcepts": [
+      "클러스터 환경 (Cluster Environment)",
+      "YAML 설정 파일",
+      "Anyscale CLI",
+      "anyscale cluster-env build",
+      "환경 변수 (CLUSTER_ENV_NAME)",
+      "의존성 (Dependencies)",
+      "워크로드 (Workload)",
+      "배포 (Deploy)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:43:10.075Z"
+  },
+  "ml-engineering__production__compute-configuration": {
+    "objectives": [
+      "컴퓨트 구성의 개념과 역할을 설명할 수 있다",
+      "클러스터 컴퓨트 YAML 파일을 작성하고 구성할 수 있다",
+      "Anyscale CLI 명령어를 사용하여 컴퓨트 구성을 생성할 수 있다",
+      "환경 변수를 활용하여 클러스터 컴퓨트 이름을 지정할 수 있다"
+    ],
+    "summary": "컴퓨트 구성(Compute Configuration)은 워크로드가 실행될 리소스를 결정하는 핵심 설정입니다. Anyscale CLI의 `anyscale cluster-compute create` 명령어와 YAML 파일을 통해 클러스터 컴퓨트를 손쉽게 생성할 수 있습니다. 환경 변수를 사용하여 클러스터 이름을 관리하면 반복적인 배포 작업을 효율적으로 수행할 수 있습니다.",
+    "keyConcepts": [
+      "컴퓨트 구성 (Compute Configuration)",
+      "클러스터 컴퓨트 (Cluster Compute)",
+      "YAML 파일",
+      "Anyscale CLI",
+      "환경 변수 (export)",
+      "워크로드 (Workload)",
+      "G5.4xlarge 인스턴스",
+      "anyscale cluster-compute create"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:43:32.594Z"
+  },
+  "ml-engineering__production__anyscale-jobs": {
+    "objectives": [
+      "배치 작업(Job)의 개념과 구조를 설명할 수 있다",
+      "workloads.yaml 파일을 편집하여 실행 환경을 설정할 수 있다",
+      "Anyscale Job을 제출하여 ML 워크로드를 실행할 수 있다",
+      "runtime_env의 역할과 S3 업로드 경로를 구성할 수 있다"
+    ],
+    "summary": "배치 작업(Job)은 학습, 평가 등 여러 ML 워크로드를 하나의 파이프라인으로 묶어 실행하는 방식입니다. workloads.yaml 파일에서 runtime_env를 설정하면 작업 코드가 S3 버킷에 업로드되어 모든 워커가 접근할 수 있습니다. `anyscale job submit` 명령어 한 줄로 전체 ML 워크로드를 클라우드 환경에서 실행할 수 있습니다.",
+    "keyConcepts": [
+      "배치 작업 (Job)",
+      "workloads.yaml",
+      "runtime_env",
+      "working_dir",
+      "upload_path",
+      "S3 버킷",
+      "GITHUB_USERNAME 환경 변수",
+      "anyscale job submit"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:43:53.983Z"
+  },
+  "ml-engineering__production__anyscale-services": {
+    "objectives": [
+      "serve_model.yaml 설정 파일에서 사용자 이름을 올바르게 수정할 수 있다",
+      "anyscale service rollout 명령어를 사용하여 ML 모델을 프로덕션에 배포할 수 있다",
+      "curl 명령어를 통해 배포된 서비스에 예측 요청을 전송하고 결과를 확인할 수 있다",
+      "anyscale service rollback 명령어로 이전 버전의 서비스로 롤백할 수 있다",
+      "anyscale service terminate 명령어를 사용하여 실행 중인 서비스를 종료할 수 있다"
+    ],
+    "summary": "ML 워크로드 실행 후 모델을 프로덕션에 배포하려면 serve_model.yaml 파일에서 GitHub 사용자 이름을 설정하고 Anyscale Service를 통해 롤아웃합니다. 배포된 서비스는 curl 명령어로 HTTP 요청을 보내 예측 결과를 받을 수 있으며, 필요 시 롤백 또는 종료 명령어로 서비스를 관리할 수 있습니다.",
+    "keyConcepts": [
+      "서비스 배포 (Service Rollout)",
+      "serve_model.yaml",
+      "ray_serve_config",
+      "import_path",
+      "runtime_env / upload_path",
+      "롤백 (Rollback)",
+      "서비스 종료 (Terminate)",
+      "SECRET_TOKEN / SERVICE_ENDPOINT"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:44:12.176Z"
+  },
+  "ml-engineering__production__cicd": {
+    "objectives": [
+      "GitHub Actions를 사용하여 CI/CD 파이프라인을 구성할 수 있다",
+      "Git 브랜치 전략(dev/main)을 활용하여 코드 변경사항을 안전하게 관리할 수 있다",
+      "GitHub 저장소에 Anyscale 자격증명(Secrets)을 등록하고 활용할 수 있다",
+      "Pull Request를 통해 자동화된 워크플로우를 트리거하고 결과를 확인할 수 있다",
+      "PR 검토 후 main 브랜치에 머지하여 프로덕션 배포를 자동으로 수행할 수 있다"
+    ],
+    "summary": "CI/CD 파이프라인은 코드 변경 시 매번 수동으로 배포하는 대신 GitHub Actions를 통해 학습, 평가, 서빙 과정을 자동화하는 체계입니다. 개발자는 dev 브랜치에서 코드를 수정하고 PR을 생성하면 자동으로 워크플로우가 실행되어 결과를 PR 코멘트로 확인할 수 있습니다. 결과가 만족스러우면 main 브랜치에 머지함으로써 프로덕션 환경에 새로운 서비스가 자동 배포됩니다.",
+    "keyConcepts": [
+      "CI/CD (지속적 통합/지속적 배포)",
+      "GitHub Actions",
+      "브랜치 전략 (dev/main)",
+      "Pull Request (PR)",
+      "GitHub Secrets (자격증명 관리)",
+      "Personal Access Token",
+      "워크플로우 (workloads / serve)",
+      "Anyscale Job"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:44:36.890Z"
+  },
+  "ml-engineering__production__continual-learning": {
+    "objectives": [
+      "CI/CD 워크플로우를 기반으로 지속적인 모델 개선 파이프라인을 구성할 수 있다",
+      "크론(cron) 스케줄링을 활용하여 정기적인 모델 재학습을 자동화할 수 있다",
+      "데이터 드리프트 모니터링과 온라인 평가를 CI/CD 파이프라인에 연결할 수 있다",
+      "현재 프로덕션 모델과 새 실험을 PR 단계에서 직접 비교할 수 있다"
+    ],
+    "summary": "CI/CD 워크플로우가 구축된 후에는 스케줄링, 데이터 파이프라인, 드리프트 모니터링, 온라인 평가 등 다양한 트리거를 연결하여 모델을 지속적으로 개선할 수 있습니다. 또한 실험 결과를 현재 프로덕션 버전과 PR 단계에서 직접 비교함으로써 배포 의사결정을 더욱 명확하게 내릴 수 있습니다. 이러한 지속 학습 체계는 MLOps의 핵심 기반이 됩니다.",
+    "keyConcepts": [
+      "지속 학습(Continual Learning)",
+      "CI/CD 워크플로우",
+      "크론 스케줄링(Cron)",
+      "데이터 파이프라인(Data Pipeline)",
+      "드리프트 모니터링(Drift Monitoring)",
+      "온라인 평가(Online Evaluation)",
+      "프로덕션 비교(Production Comparison)",
+      "풀 리퀘스트(PR) 기반 검토"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:45:01.659Z"
+  },
+  "python__foundations__day-01-introduction": {
+    "objectives": [
+      "Python의 역사와 특징을 설명할 수 있다",
+      "자신의 컴퓨터에 Python을 설치하고 버전을 확인할 수 있다",
+      "Python 인터랙티브 셸을 열고 간단한 코드를 실행할 수 있다",
+      "Python 셸에서 발생하는 기본 오류를 인식하고 디버깅할 수 있다"
+    ],
+    "summary": "Python은 인간의 언어에 가까운 고수준 프로그래밍 언어로, 웹 개발, 데이터 과학, 머신러닝 등 다양한 분야에서 널리 사용됩니다. 이 레슨에서는 Python의 탄생 배경과 특징을 소개하고, 설치 방법 및 Python 인터랙티브 셸 사용법을 안내합니다. 또한 코드 실행 중 발생하는 오류의 개념과 간단한 디버깅 방법도 함께 다룹니다.",
+    "keyConcepts": [
+      "고수준 프로그래밍 언어(High-level Programming Language)",
+      "인터프리터(Interpreter)",
+      "오픈 소스(Open Source)",
+      "Python 인터랙티브 셸(Interactive Shell)",
+      "구문 오류(SyntaxError)",
+      "디버깅(Debugging)",
+      "Guido van Rossum",
+      "객체지향 프로그래밍(OOP)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:45:18.647Z"
+  },
+  "python__foundations__day-02-variables-builtin-functions": {
+    "objectives": [
+      "Python의 대표적인 내장 함수(print, len, type, input 등)를 호출하고 결과를 확인할 수 있다",
+      "변수 명명 규칙을 이해하고 유효한 변수 이름을 작성할 수 있다",
+      "변수에 다양한 데이터 타입의 값을 선언하고 할당할 수 있다",
+      "한 줄에 여러 변수를 동시에 선언하고 값을 할당할 수 있다",
+      "input() 함수를 사용하여 사용자로부터 데이터를 입력받아 변수에 저장할 수 있다"
+    ],
+    "summary": "Python에는 별도의 설치 없이 바로 사용할 수 있는 다양한 내장 함수(print, len, type, min, max 등)가 제공되며, 이를 통해 데이터를 출력하거나 조작할 수 있습니다. 변수는 컴퓨터 메모리에 데이터를 저장하는 공간으로, Python에서는 snake_case 명명 규칙을 따르며 문자나 언더스코어로 시작해야 합니다. 한 줄에 여러 변수를 동시에 선언할 수 있고, input() 함수를 이용해 사용자 입력을 변수에 저장할 수 있습니다.",
+    "keyConcepts": [
+      "내장 함수(Built-in Function)",
+      "print()",
+      "len()",
+      "input()",
+      "변수(Variable)",
+      "snake_case 명명 규칙",
+      "변수 선언 및 할당",
+      "다중 변수 선언"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:45:39.932Z"
+  },
+  "python__foundations__day-03-operators": {
+    "objectives": [
+      "불리언(Boolean) 데이터 타입의 개념과 True/False 값을 설명할 수 있다",
+      "산술 연산자(+, -, *, /, //, %, **)를 사용하여 수식을 계산할 수 있다",
+      "할당 연산자를 활용하여 변수에 값을 저장할 수 있다",
+      "비교 연산자를 사용하여 두 값을 비교하고 결과를 해석할 수 있다",
+      "실생활 문제(넓이, 무게 등)에 산술 연산자를 적용하여 파이썬 코드를 작성할 수 있다"
+    ],
+    "summary": "이 레슨에서는 파이썬의 핵심 연산자인 할당 연산자, 산술 연산자, 비교 연산자를 학습합니다. 불리언 데이터 타입(True/False)의 개념을 이해하고, 다양한 연산자를 활용해 수식 계산 및 값 비교를 수행하는 방법을 익힙니다. 실생활 예제(원의 넓이, 무게 계산 등)를 통해 연산자를 실전에 적용하는 능력을 키웁니다.",
+    "keyConcepts": [
+      "불리언(Boolean): True / False 두 가지 값만 가지는 데이터 타입",
+      "할당 연산자(=): 변수에 값을 저장하는 연산자",
+      "산술 연산자: +, -, *, /, //, %, ** 등 수치 계산에 사용",
+      "정수 나눗셈(//)와 일반 나눗셈(/)의 차이: //는 소수점 이하를 버림",
+      "나머지 연산자(%): 나눗셈의 나머지를 반환",
+      "거듭제곱 연산자(**): a**b는 a의 b승을 의미",
+      "비교 연산자: ==, !=, >, <, >=, <= 두 값을 비교하여 Boolean 반환",
+      "변수 네이밍: 의미 있는 이름(mnemonic)을 사용하는 것이 권장됨"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:45:59.364Z"
+  },
+  "python__foundations__day-04-strings": {
+    "objectives": [
+      "문자열을 다양한 방법(작은따옴표, 큰따옴표, 삼중따옴표)으로 생성할 수 있다",
+      "+ 연산자를 사용하여 문자열을 연결(concatenation)할 수 있다",
+      "이스케이프 시퀀스(\\n, \\t 등)를 올바르게 사용할 수 있다",
+      "%, str.format(), f-string 세 가지 방식으로 문자열을 포맷할 수 있다",
+      "인덱싱과 슬라이싱을 이용하여 문자열의 특정 문자나 부분 문자열을 추출할 수 있다"
+    ],
+    "summary": "Python에서 문자열은 텍스트 데이터를 다루는 기본 자료형으로, 단일·이중·삼중 따옴표로 생성할 수 있습니다. 문자열은 + 연산자로 연결하고, %, str.format(), f-string 세 가지 방법으로 포맷할 수 있으며, 인덱싱과 슬라이싱을 통해 원하는 부분을 자유롭게 접근할 수 있습니다. 이스케이프 시퀀스를 활용하면 줄바꿈, 탭 등 특수 문자를 문자열 안에 표현할 수 있습니다.",
+    "keyConcepts": [
+      "문자열(String)",
+      "문자열 연결(Concatenation)",
+      "이스케이프 시퀀스(Escape Sequence)",
+      "% 포맷팅",
+      "str.format()",
+      "f-string (문자열 보간)",
+      "인덱싱(Indexing)",
+      "슬라이싱(Slicing)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:46:22.629Z"
+  },
+  "python__foundations__day-05-lists": {
+    "objectives": [
+      "리스트(List)를 생성하고 초기화할 수 있다",
+      "양수 및 음수 인덱싱을 사용하여 리스트 항목에 접근할 수 있다",
+      "슬라이싱, 언패킹 등 다양한 방법으로 리스트 데이터를 추출할 수 있다",
+      "append, insert, remove, pop 등의 메서드로 리스트를 수정할 수 있다",
+      "sort, reverse, count, index 등의 메서드로 리스트를 관리할 수 있다"
+    ],
+    "summary": "파이썬의 리스트(List)는 순서가 있고 수정 가능한 컬렉션 자료형으로, 다양한 데이터 타입을 함께 저장할 수 있습니다. 인덱싱, 슬라이싱, 언패킹을 통해 데이터에 접근하고, append/insert/remove/pop 등의 메서드를 활용해 리스트를 동적으로 변경할 수 있습니다. 또한 sort, reverse, count, index 등의 메서드로 리스트를 효율적으로 관리할 수 있습니다.",
+    "keyConcepts": [
+      "리스트(List): 순서 있고 변경 가능한 컬렉션",
+      "인덱싱(Indexing): 0부터 시작하는 위치 접근",
+      "음수 인덱싱: -1이 마지막 요소",
+      "슬라이싱(Slicing): 범위로 부분 추출",
+      "언패킹(Unpacking): 변수에 리스트 요소 분배",
+      "append() / insert(): 요소 추가 메서드",
+      "remove() / pop() / del: 요소 삭제 방법",
+      "sort() / reverse(): 정렬 및 역순 메서드"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:46:43.070Z"
+  },
+  "python__foundations__day-06-tuples": {
+    "objectives": [
+      "튜플을 생성하고 기본 속성을 설명할 수 있다",
+      "인덱싱과 슬라이싱을 사용하여 튜플의 요소에 접근할 수 있다",
+      "튜플과 리스트를 상호 변환하여 데이터를 수정할 수 있다",
+      "in 연산자를 사용하여 튜플 내 특정 요소의 존재 여부를 확인할 수 있다",
+      "+ 연산자를 사용하여 두 개 이상의 튜플을 결합할 수 있다"
+    ],
+    "summary": "튜플은 순서가 있고 변경 불가능한(불변, immutable) 데이터 컬렉션으로 소괄호()를 사용하여 생성합니다. 리스트와 달리 요소를 추가·수정·삭제할 수 없으므로, 수정이 필요한 경우 list()로 변환한 뒤 작업하고 다시 tuple()로 변환해야 합니다. 인덱싱, 슬라이싱, in 연산자, + 연산자 등을 통해 튜플의 데이터를 효과적으로 활용할 수 있습니다.",
+    "keyConcepts": [
+      "튜플(Tuple): 순서가 있고 변경 불가능한 자료형",
+      "불변성(Immutable): 생성 후 값을 변경할 수 없는 특성",
+      "양수 인덱싱(Positive Indexing): 0부터 시작하는 순방향 인덱스",
+      "음수 인덱싱(Negative Indexing): -1부터 시작하는 역방향 인덱스",
+      "슬라이싱(Slicing): 범위를 지정해 부분 튜플 추출",
+      "tuple() / list() 변환: 튜플↔리스트 상호 변환 함수",
+      "in 연산자: 요소 존재 여부를 불리언으로 반환",
+      "+ 연산자: 두 튜플을 연결하여 새 튜플 생성"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:47:05.731Z"
+  },
+  "python__foundations__day-07-sets": {
+    "objectives": [
+      "파이썬에서 세트(Set)를 생성하고 기본 특성을 설명할 수 있다",
+      "add(), update(), remove(), discard() 등 세트 메서드를 활용하여 항목을 추가·삭제할 수 있다",
+      "union(), intersection(), difference(), symmetric_difference() 메서드로 집합 연산을 수행할 수 있다",
+      "리스트를 세트로 변환하여 중복 항목을 제거할 수 있다",
+      "issubset(), issuperset() 메서드로 부분집합과 상위집합 관계를 판별할 수 있다"
+    ],
+    "summary": "파이썬의 세트(Set)는 순서가 없고 중복을 허용하지 않는 고유 항목들의 집합입니다. add(), remove(), discard() 등의 메서드로 항목을 관리하며, union(합집합), intersection(교집합), difference(차집합), symmetric_difference(대칭 차집합) 등 다양한 집합 연산을 지원합니다. 리스트를 세트로 변환하면 중복을 자동으로 제거할 수 있어 실무에서 매우 유용하게 활용됩니다.",
+    "keyConcepts": [
+      "세트(Set): 순서 없고 중복 없는 자료구조",
+      "set() 함수로 빈 세트 생성",
+      "add(): 단일 항목 추가",
+      "update(): 여러 항목 동시 추가",
+      "remove() vs discard(): 오류 발생 여부 차이",
+      "union(합집합) / intersection(교집합)",
+      "difference(차집합) / symmetric_difference(대칭 차집합)",
+      "issubset() / issuperset(): 부분집합·상위집합 판별"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:47:25.461Z"
+  },
+  "python__foundations__day-08-dictionaries": {
+    "objectives": [
+      "딕셔너리를 생성하고 기본 구조(키-값 쌍)를 설명할 수 있다",
+      "딕셔너리의 항목에 접근하고 get() 메서드를 활용할 수 있다",
+      "딕셔너리에 항목을 추가, 수정, 삭제할 수 있다",
+      "in 연산자로 키 존재 여부를 확인할 수 있다",
+      "keys(), values(), items() 메서드로 딕셔너리 데이터를 리스트로 변환할 수 있다"
+    ],
+    "summary": "파이썬 딕셔너리는 키-값 쌍으로 구성된 변경 가능한 컬렉션으로, 중괄호({}) 또는 dict() 함수로 생성합니다. 항목 접근 시 키를 직접 사용하거나 get() 메서드를 활용하며, 키가 없을 경우 에러 대신 None을 반환하는 get()이 더 안전합니다. pop(), popitem(), del 등 다양한 방법으로 항목을 삭제할 수 있으며, keys()·values()·items() 메서드로 데이터를 리스트 형태로 추출할 수 있습니다.",
+    "keyConcepts": [
+      "딕셔너리(Dictionary)",
+      "키-값 쌍(Key-Value Pair)",
+      "get() 메서드",
+      "pop() / popitem()",
+      "in 연산자",
+      "keys() / values() / items()",
+      "copy() 메서드",
+      "len() 함수"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:47:50.861Z"
+  },
+  "python__control-and-functions__day-09-conditionals": {
+    "objectives": [
+      "if, elif, else 조건문을 사용하여 분기 로직을 작성할 수 있다",
+      "삼항 연산자(Short Hand)를 활용하여 간결한 조건식을 표현할 수 있다",
+      "중첩 조건문(Nested Conditions)을 구성하고 읽을 수 있다",
+      "and, or 논리 연산자를 조건문과 결합하여 복합 조건을 처리할 수 있다",
+      "실생활 문제를 조건문으로 모델링하여 파이썬 코드로 구현할 수 있다"
+    ],
+    "summary": "파이썬의 조건문(if, elif, else)은 프로그램의 실행 흐름을 제어하는 핵심 구조로, 특정 조건이 참(True)일 때만 해당 코드 블록을 실행하게 합니다. 삼항 연산자를 이용한 단축 표현과 중첩 조건문을 통해 다양한 분기 로직을 구현할 수 있으며, and·or 같은 논리 연산자와 결합하면 복잡한 조건도 간결하게 표현할 수 있습니다.",
+    "keyConcepts": [
+      "if 조건문",
+      "else 블록",
+      "elif (다중 조건)",
+      "Short Hand (삼항 연산자)",
+      "중첩 조건문 (Nested Conditions)",
+      "and 논리 연산자",
+      "or 논리 연산자",
+      "들여쓰기 (Indentation)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:48:11.659Z"
+  },
+  "python__control-and-functions__day-10-loops": {
+    "objectives": [
+      "while 루프와 for 루프의 문법을 작성하고 실행할 수 있다",
+      "break와 continue를 사용하여 루프의 흐름을 제어할 수 있다",
+      "range() 함수를 활용하여 다양한 숫자 시퀀스를 생성할 수 있다",
+      "중첩 for 루프를 작성하여 복잡한 반복 구조를 구현할 수 있다",
+      "for-else 구문을 사용하여 루프 종료 후 추가 동작을 정의할 수 있다"
+    ],
+    "summary": "파이썬의 두 가지 루프인 while과 for를 사용하면 반복적인 작업을 효율적으로 처리할 수 있습니다. break와 continue를 통해 루프 흐름을 세밀하게 제어할 수 있으며, range() 함수를 활용하면 숫자 시퀀스를 쉽게 생성하여 반복에 활용할 수 있습니다. 또한 중첩 루프와 for-else 구문을 통해 더 복잡한 로직도 간결하게 표현할 수 있습니다.",
+    "keyConcepts": [
+      "while 루프 (while loop)",
+      "for 루프 (for loop)",
+      "break (루프 강제 종료)",
+      "continue (현재 반복 건너뜀)",
+      "range() 함수",
+      "중첩 루프 (nested loop)",
+      "for-else 구문",
+      "pass 문"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:48:33.572Z"
+  },
+  "python__control-and-functions__day-11-functions": {
+    "objectives": [
+      "파이썬에서 def 키워드를 사용하여 함수를 선언하고 호출할 수 있다",
+      "매개변수가 없는 함수와 매개변수가 있는 함수를 구분하여 작성할 수 있다",
+      "return 문을 사용하여 함수에서 값을 반환할 수 있다",
+      "키워드 인수(key-value)와 기본 매개변수를 활용하여 함수를 유연하게 정의할 수 있다",
+      "*args를 사용하여 임의 개수의 인수를 받는 함수를 작성할 수 있다"
+    ],
+    "summary": "파이썬 함수는 def 키워드로 선언하며, 코드 재사용성을 높이는 핵심 구조입니다. 함수는 매개변수 유무, 반환값 유무, 기본값 설정, 가변 인수(*args) 등 다양한 형태로 정의할 수 있습니다. 함수를 적절히 활용하면 복잡한 프로그램을 논리적 단위로 나누어 가독성과 유지보수성을 크게 향상시킬 수 있습니다.",
+    "keyConcepts": [
+      "함수(Function)",
+      "def 키워드",
+      "매개변수(Parameter)",
+      "인수(Argument)",
+      "return 문",
+      "기본 매개변수(Default Parameter)",
+      "키워드 인수(Keyword Argument)",
+      "가변 인수(*args)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:48:51.339Z"
+  },
+  "python__control-and-functions__day-12-modules": {
+    "objectives": [
+      "모듈의 개념을 설명하고 직접 모듈 파일을 생성할 수 있다",
+      "import 키워드를 사용하여 사용자 정의 모듈을 불러올 수 있다",
+      "from ... import 구문과 as 키워드로 함수를 선택적으로 가져오고 별칭을 지정할 수 있다",
+      "os, sys, math, statistics, random 등 파이썬 내장 모듈을 활용할 수 있다",
+      "math 및 statistics 모듈의 주요 함수를 사용하여 수치 계산을 수행할 수 있다"
+    ],
+    "summary": "모듈은 코드와 함수의 집합을 담은 .py 파일로, import 키워드를 통해 다른 파일에서 재사용할 수 있습니다. 사용자 정의 모듈을 직접 만들 수 있을 뿐만 아니라, 파이썬이 기본으로 제공하는 os, sys, math, statistics, random 등의 내장 모듈도 활용할 수 있습니다. from ... import 구문과 as 키워드를 사용하면 필요한 함수만 선택적으로 가져오거나 별칭을 붙여 코드를 더욱 간결하게 작성할 수 있습니다.",
+    "keyConcepts": [
+      "모듈(Module)",
+      "import 키워드",
+      "from ... import 구문",
+      "as (별칭/Alias)",
+      "내장 모듈(Built-in Module)",
+      "os 모듈",
+      "math 모듈",
+      "statistics 모듈"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:49:13.424Z"
+  },
+  "python__control-and-functions__day-13-list-comprehension": {
+    "objectives": [
+      "리스트 컴프리헨션 문법을 이해하고 다양한 리스트를 간결하게 생성할 수 있다",
+      "if 조건식을 결합한 리스트 컴프리헨션으로 데이터를 필터링할 수 있다",
+      "lambda 키워드를 사용하여 익명 함수를 정의하고 호출할 수 있다",
+      "lambda 함수를 다른 함수 내부에서 활용하여 고차 함수를 작성할 수 있다",
+      "2차원 리스트를 리스트 컴프리헨션으로 1차원으로 평탄화할 수 있다"
+    ],
+    "summary": "리스트 컴프리헨션은 반복문보다 간결하고 빠르게 새로운 리스트를 생성하는 파이썬의 핵심 문법으로, 조건식을 결합하여 필터링과 변환을 동시에 수행할 수 있습니다. 람다 함수는 이름 없는 익명 함수를 한 줄로 정의하는 방법으로, 다른 함수 내부에서 간단한 연산을 표현할 때 유용하게 사용됩니다. 두 기능 모두 코드의 가독성과 효율성을 높이는 파이썬다운(Pythonic) 프로그래밍 방식입니다.",
+    "keyConcepts": [
+      "리스트 컴프리헨션 (List Comprehension)",
+      "표현식 (Expression)",
+      "이터러블 (Iterable)",
+      "조건 필터링 (if condition)",
+      "람다 함수 (Lambda Function)",
+      "익명 함수 (Anonymous Function)",
+      "고차 함수 (Higher-order Function)",
+      "평탄화 (Flattening)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:49:34.689Z"
+  },
+  "python__control-and-functions__day-14-higher-order-functions": {
+    "objectives": [
+      "고차 함수(Higher Order Functions)의 개념을 설명할 수 있다",
+      "함수를 매개변수로 전달하고 반환값으로 사용하는 코드를 작성할 수 있다",
+      "클로저(Closure)의 동작 원리를 이해하고 활용할 수 있다",
+      "데코레이터(Decorator)를 생성하고 함수에 적용할 수 있다",
+      "map(), filter(), reduce() 내장 고차 함수를 람다와 함께 사용할 수 있다"
+    ],
+    "summary": "고차 함수란 다른 함수를 매개변수로 받거나 함수를 반환값으로 돌려주는 함수로, Python에서 함수는 일급 객체로 취급됩니다. 클로저와 데코레이터는 고차 함수의 대표적인 응용 패턴으로, 기존 함수의 구조를 변경하지 않고 새로운 기능을 추가할 수 있게 해줍니다. 또한 map(), filter(), reduce() 같은 내장 고차 함수를 람다와 함께 활용하면 간결하고 함수형 스타일의 코드를 작성할 수 있습니다.",
+    "keyConcepts": [
+      "고차 함수 (Higher Order Function)",
+      "일급 객체 (First Class Citizen)",
+      "클로저 (Closure)",
+      "데코레이터 (Decorator)",
+      "래퍼 함수 (Wrapper Function)",
+      "map() 함수",
+      "filter() 함수",
+      "reduce() 함수"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:49:57.994Z"
+  },
+  "python__robust-python__day-15-python-type-errors": {
+    "objectives": [
+      "Python에서 발생하는 주요 에러 유형 10가지를 나열하고 설명할 수 있다",
+      "각 에러 메시지를 보고 발생 원인을 파악할 수 있다",
+      "에러 메시지를 분석하여 코드의 버그를 신속하게 수정할 수 있다",
+      "Python 인터랙티브 셸에서 직접 에러를 재현하고 디버깅할 수 있다"
+    ],
+    "summary": "Python 코드 실행 중 발생하는 다양한 에러 유형(SyntaxError, NameError, IndexError, ModuleNotFoundError, AttributeError, KeyError, TypeError, ImportError, ValueError, ZeroDivisionError)을 이해하는 것은 효율적인 디버깅의 핵심입니다. 각 에러는 고유한 원인을 가지며, 인터프리터가 제공하는 메시지를 통해 문제의 위치와 종류를 파악할 수 있습니다. 에러 유형을 숙지하면 코드 품질을 높이고 개발 속도를 향상시킬 수 있습니다.",
+    "keyConcepts": [
+      "SyntaxError: 문법 오류",
+      "NameError: 정의되지 않은 변수 참조",
+      "IndexError: 리스트 인덱스 범위 초과",
+      "ModuleNotFoundError: 존재하지 않는 모듈 임포트",
+      "AttributeError: 객체에 없는 속성 접근",
+      "KeyError: 딕셔너리에 없는 키 접근",
+      "TypeError: 잘못된 타입 연산",
+      "ZeroDivisionError: 0으로 나누기"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:50:18.124Z"
+  },
+  "python__robust-python__day-16-python-date-time": {
+    "objectives": [
+      "datetime 모듈을 import하여 현재 날짜와 시간 정보를 추출할 수 있다",
+      "strftime 메서드를 사용하여 날짜/시간을 원하는 형식의 문자열로 포맷할 수 있다",
+      "strptime 메서드를 사용하여 문자열을 datetime 객체로 변환할 수 있다",
+      "date, time, timedelta 객체를 활용하여 날짜와 시간을 표현할 수 있다",
+      "두 시점 간의 시간 차이를 계산하고 timedelta 객체를 다룰 수 있다"
+    ],
+    "summary": "Python의 datetime 모듈은 날짜와 시간을 다루는 다양한 클래스(date, datetime, time, timedelta)를 제공합니다. strftime으로 날짜를 원하는 문자열 형식으로 출력하고, strptime으로 문자열을 datetime 객체로 변환할 수 있습니다. 또한 두 날짜 사이의 차이를 계산하거나 timedelta를 이용해 시간 간격을 직접 조작하는 것도 가능합니다.",
+    "keyConcepts": [
+      "datetime 모듈",
+      "datetime.now()",
+      "strftime (날짜→문자열 포맷)",
+      "strptime (문자열→datetime 변환)",
+      "date 객체",
+      "time 객체",
+      "timedelta (시간 차이/간격)",
+      "타임스탬프 (Unix timestamp)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:50:41.422Z"
+  },
+  "python__robust-python__day-17-exception-handling": {
+    "objectives": [
+      "try-except 구문을 사용하여 예외를 처리하는 코드를 작성할 수 있다",
+      "TypeError, ValueError 등 다양한 예외 유형을 구분하여 처리할 수 있다",
+      "else와 finally 블록의 역할을 설명하고 올바르게 활용할 수 있다",
+      "* 연산자를 사용하여 리스트와 튜플을 언패킹하고 함수 인수로 전달할 수 있다",
+      "** 연산자를 사용하여 딕셔너리를 언패킹하거나 임의 키워드 인수를 패킹할 수 있다"
+    ],
+    "summary": "Python의 예외 처리는 try-except 구문을 통해 프로그램 실행 중 발생하는 오류를 우아하게 처리하여 애플리케이션 충돌을 방지합니다. 또한 * 연산자와 ** 연산자를 이용한 인수 패킹 및 언패킹을 통해 함수에 리스트나 딕셔너리를 유연하게 전달하거나 임의 개수의 인수를 받을 수 있습니다. else 블록은 예외가 없을 때, finally 블록은 항상 실행되어 안정적인 코드 흐름을 구성할 수 있습니다.",
+    "keyConcepts": [
+      "try-except 구문",
+      "예외 처리(Exception Handling)",
+      "TypeError / ValueError / ZeroDivisionError",
+      "else 블록",
+      "finally 블록",
+      "언패킹(Unpacking): * 연산자",
+      "패킹(Packing): *args / **kwargs",
+      "딕셔너리 언패킹: ** 연산자"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:51:05.300Z"
+  },
+  "python__robust-python__day-18-regular-expressions": {
+    "objectives": [
+      "Python의 re 모듈을 import하여 정규표현식을 사용할 수 있다",
+      "re.match(), re.search(), re.findall()의 차이를 설명하고 적절히 활용할 수 있다",
+      "re.sub()와 re.split()을 사용하여 문자열을 치환하고 분리할 수 있다",
+      "대괄호, 이스케이프 문자, 수량자 등 정규표현식 패턴 문법을 작성할 수 있다",
+      "re.I 플래그를 활용하여 대소문자 구분 없이 패턴을 검색할 수 있다"
+    ],
+    "summary": "정규표현식(RegEx)은 문자열에서 특정 패턴을 찾고 처리하는 강력한 도구로, Python에서는 re 모듈을 통해 사용합니다. re.match(), re.search(), re.findall(), re.sub(), re.split() 등의 메서드를 활용하면 문자열 검색, 치환, 분리 작업을 효율적으로 수행할 수 있습니다. 대괄호, 수량자(+, *, ?), 이스케이프 문자 등 다양한 패턴 문법을 익히면 복잡한 문자열 처리도 간결하게 구현할 수 있습니다.",
+    "keyConcepts": [
+      "정규표현식 (RegEx)",
+      "re 모듈",
+      "re.match() - 문자열 시작부터 탐색",
+      "re.search() - 전체 문자열 탐색",
+      "re.findall() - 모든 일치 항목 반환",
+      "re.sub() - 패턴 치환",
+      "re.split() - 패턴 기준 분리",
+      "re.I - 대소문자 무시 플래그"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:51:30.246Z"
+  },
+  "python__robust-python__day-19-file-handling": {
+    "objectives": [
+      "파이썬의 open() 함수를 사용하여 파일을 읽기, 쓰기, 추가 모드로 열 수 있다",
+      "read(), readline(), readlines() 메서드를 구분하여 파일 내용을 읽을 수 있다",
+      "with 문을 활용하여 파일을 안전하게 열고 자동으로 닫을 수 있다",
+      "os 모듈을 이용하여 파일을 삭제할 수 있다",
+      "JSON, CSV, XML 등 다양한 파일 형식을 파이썬으로 처리할 수 있다"
+    ],
+    "summary": "파이썬의 파일 처리는 open() 내장 함수를 통해 파일을 생성, 읽기, 수정, 삭제하는 작업을 수행합니다. 읽기(r), 쓰기(w), 추가(a) 등 다양한 모드를 활용하며, with 문을 사용하면 파일을 자동으로 닫아 안전하게 관리할 수 있습니다. 또한 txt 외에도 JSON, CSV, XML 등 다양한 파일 형식을 처리하는 방법을 학습합니다.",
+    "keyConcepts": [
+      "open() 함수",
+      "파일 모드 (r, w, a, x, b)",
+      "read() / readline() / readlines()",
+      "with 문 (컨텍스트 매니저)",
+      "파일 닫기 close()",
+      "os.remove() 파일 삭제",
+      "JSON 파일 처리",
+      "CSV 파일 처리"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:51:51.380Z"
+  },
+  "python__robust-python__day-20-python-package-manager": {
+    "objectives": [
+      "pip 명령어를 사용하여 Python 패키지를 설치하고 제거할 수 있다",
+      "pip list, pip show, pip freeze 명령어로 설치된 패키지 정보를 조회할 수 있다",
+      "numpy, pandas 등 외부 패키지를 설치한 후 Python 코드에서 import하여 활용할 수 있다",
+      "requirements.txt 파일의 역할을 설명하고 pip freeze를 이용해 생성할 수 있다"
+    ],
+    "summary": "PIP(Preferred Installer Program)는 Python의 공식 패키지 관리자로, 외부 라이브러리를 손쉽게 설치·제거·관리할 수 있게 해줍니다. pip install, pip uninstall, pip list, pip show, pip freeze 등의 명령어를 통해 패키지를 효율적으로 관리할 수 있습니다. numpy, pandas 같은 인기 패키지를 설치하고 import하면 강력한 기능을 직접 코드에 활용할 수 있습니다.",
+    "keyConcepts": [
+      "PIP (Preferred Installer Program)",
+      "패키지 (Package)",
+      "모듈 (Module)",
+      "pip install",
+      "pip uninstall",
+      "pip freeze",
+      "requirements.txt",
+      "numpy / pandas"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:52:08.215Z"
+  },
+  "python__robust-python__day-21-classes-and-objects": {
+    "objectives": [
+      "클래스와 객체의 개념을 설명하고 Python에서 클래스를 직접 정의할 수 있다",
+      "__init__ 생성자를 활용하여 객체의 속성을 초기화할 수 있다",
+      "객체 메서드를 작성하고 호출하여 객체의 동작을 구현할 수 있다",
+      "상속(Inheritance)을 이용해 부모 클래스를 확장하는 자식 클래스를 작성할 수 있다",
+      "부모 클래스의 메서드를 오버라이딩하여 자식 클래스에 맞게 재정의할 수 있다"
+    ],
+    "summary": "Python은 객체 지향 프로그래밍 언어로, 모든 데이터는 클래스의 인스턴스(객체)입니다. 클래스는 __init__ 생성자를 통해 속성을 초기화하고 메서드를 정의하여 객체의 행동을 명세하는 설계도 역할을 합니다. 상속을 활용하면 기존 클래스를 재사용하고 확장할 수 있으며, 메서드 오버라이딩으로 자식 클래스에 맞는 동작을 재정의할 수 있습니다.",
+    "keyConcepts": [
+      "클래스(Class)",
+      "객체(Object)",
+      "인스턴스화(Instantiation)",
+      "__init__ 생성자",
+      "self 매개변수",
+      "객체 메서드(Object Method)",
+      "상속(Inheritance)",
+      "메서드 오버라이딩(Method Overriding)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:52:31.505Z"
+  },
+  "python__applied-python__day-22-web-scraping": {
+    "objectives": [
+      "requests와 BeautifulSoup 라이브러리를 설치하고 임포트할 수 있다",
+      "requests.get()을 사용하여 웹 페이지의 데이터를 가져올 수 있다",
+      "BeautifulSoup으로 HTML 콘텐츠를 파싱할 수 있다",
+      "HTML 태그와 속성을 기반으로 원하는 데이터를 추출할 수 있다",
+      "스크래핑한 데이터를 JSON 파일로 저장할 수 있다"
+    ],
+    "summary": "웹 스크래핑은 웹사이트에서 데이터를 자동으로 추출하여 로컬 머신이나 데이터베이스에 저장하는 과정입니다. Python의 requests 라이브러리로 웹 페이지에 HTTP 요청을 보내고, BeautifulSoup4로 반환된 HTML을 파싱하여 원하는 정보를 선택적으로 수집할 수 있습니다. HTML 태그, 클래스, ID 등의 CSS 선택자를 이해하면 더욱 정확하게 데이터를 타겟팅할 수 있습니다.",
+    "keyConcepts": [
+      "웹 스크래핑(Web Scraping)",
+      "requests 라이브러리",
+      "BeautifulSoup4",
+      "HTML 파싱(Parsing)",
+      "response.status_code",
+      "soup.find_all()",
+      "HTML 태그/클래스/ID 선택자",
+      "response.content"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:52:51.080Z"
+  },
+  "python__applied-python__day-23-virtual-environment": {
+    "objectives": [
+      "가상 환경(Virtual Environment)의 개념과 필요성을 설명할 수 있다",
+      "virtualenv 패키지를 설치하고 새로운 가상 환경을 생성할 수 있다",
+      "Mac/Linux 및 Windows 환경에서 가상 환경을 활성화하고 비활성화할 수 있다",
+      "pip freeze 명령어로 설치된 패키지 목록을 확인할 수 있다",
+      "가상 환경 내에서 Flask 패키지를 설치하고 프로젝트 환경을 구성할 수 있다"
+    ],
+    "summary": "가상 환경(Virtual Environment)은 프로젝트별로 독립된 Python 실행 환경을 만들어 패키지 간 충돌을 방지하는 도구입니다. virtualenv 또는 venv를 사용해 생성하고 활성화하면, 해당 프로젝트에서만 사용하는 패키지를 별도로 관리할 수 있습니다. 프로젝트 완료 후에는 deactivate 명령으로 환경을 종료하며, venv 폴더는 .gitignore에 추가해 GitHub에 올리지 않는 것이 권장됩니다.",
+    "keyConcepts": [
+      "가상 환경 (Virtual Environment)",
+      "virtualenv",
+      "venv",
+      "pip install",
+      "pip freeze",
+      "activate / deactivate",
+      ".gitignore",
+      "패키지 의존성 충돌"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:53:10.137Z"
+  },
+  "python__applied-python__day-24-statistics": {
+    "objectives": [
+      "Python의 statistics 모듈을 사용하여 기본 통계 함수를 호출할 수 있다",
+      "NumPy 라이브러리를 설치하고 임포트할 수 있다",
+      "np.array()를 이용해 다양한 데이터 타입의 NumPy 배열을 생성할 수 있다",
+      "Python 리스트와 튜플을 NumPy 배열로 변환하고, 다시 리스트로 되돌릴 수 있다",
+      "shape 속성을 활용하여 배열의 차원과 크기를 확인할 수 있다"
+    ],
+    "summary": "이 레슨에서는 통계의 기본 개념과 Python의 statistics 모듈을 소개하고, 과학 계산의 핵심 라이브러리인 NumPy를 활용하는 방법을 학습합니다. NumPy를 사용하면 정수, 실수, 불리언 등 다양한 타입의 1차원 및 다차원 배열을 효율적으로 생성하고 조작할 수 있습니다. 데이터 분석, 머신러닝, 데이터 과학으로 나아가기 위한 필수적인 기초 역량을 다집니다.",
+    "keyConcepts": [
+      "통계(Statistics)",
+      "데이터(Data)",
+      "statistics 모듈",
+      "NumPy",
+      "ndarray",
+      "dtype(데이터 타입)",
+      "shape(배열 형태)",
+      "다차원 배열(Multidimensional Array)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:53:32.345Z"
+  },
+  "python__applied-python__day-25-pandas": {
+    "objectives": [
+      "Pandas의 Series와 DataFrame 자료구조를 설명할 수 있다",
+      "다양한 방법(리스트, 딕셔너리, numpy 등)으로 Series와 DataFrame을 생성할 수 있다",
+      "CSV 파일을 Pandas로 읽어들이고 기본 탐색 함수를 활용할 수 있다",
+      "DataFrame에 새로운 열을 추가하고 기존 열 값을 수정할 수 있다",
+      "불리언 인덱싱을 사용하여 조건에 맞는 데이터를 필터링할 수 있다"
+    ],
+    "summary": "Pandas는 Python에서 테이블 형태의 데이터를 다루기 위한 고성능 오픈소스 라이브러리로, 1차원 자료구조인 Series와 다차원 표 형태의 DataFrame을 핵심 자료구조로 제공합니다. 리스트, 딕셔너리, CSV 파일 등 다양한 소스로부터 데이터를 생성·불러올 수 있으며, 열 추가·수정·불리언 인덱싱 등 강력한 데이터 조작 기능을 지원합니다. 데이터 분석 실무에서 필수적으로 활용되는 라이브러리이므로 Series와 DataFrame의 생성 및 조작 방법을 확실히 익히는 것이 중요합니다.",
+    "keyConcepts": [
+      "Series (1차원 자료구조)",
+      "DataFrame (다차원 표 자료구조)",
+      "pd.Series()",
+      "pd.DataFrame()",
+      "인덱스(Index)",
+      "불리언 인덱싱(Boolean Indexing)",
+      "CSV 파일 읽기 (read_csv)",
+      "데이터 탐색 (head, tail, info, describe)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:53:57.515Z"
+  },
+  "python__applied-python__day-26-python-web": {
+    "objectives": [
+      "Flask를 사용하여 기본적인 Python 웹 애플리케이션을 구축할 수 있다",
+      "virtualenv를 설치하고 가상 환경을 설정하여 프로젝트 의존성을 격리할 수 있다",
+      "라우트(route)와 데코레이터를 활용하여 여러 페이지 경로를 정의할 수 있다",
+      "Jinja2 템플릿과 render_template 함수를 사용하여 HTML 파일을 렌더링할 수 있다",
+      "Flask 프로젝트의 표준 폴더 구조(templates, static 등)를 올바르게 구성할 수 있다"
+    ],
+    "summary": "Flask는 Python으로 작성된 경량 웹 프레임워크로, Jinja2 템플릿 엔진을 사용하여 동적인 웹 페이지를 쉽게 만들 수 있습니다. virtualenv를 통해 프로젝트 의존성을 격리하고, @app.route() 데코레이터로 URL 경로를 정의하며, render_template 함수로 HTML 파일을 렌더링하는 것이 Flask 개발의 핵심 흐름입니다. 프로젝트는 templates, static 등의 표준 폴더 구조로 구성되며 Heroku와 같은 플랫폼에 배포할 수 있습니다.",
+    "keyConcepts": [
+      "Flask",
+      "virtualenv (가상 환경)",
+      "라우트 (Route)",
+      "@app.route() 데코레이터",
+      "render_template",
+      "Jinja2 템플릿 엔진",
+      "templates 폴더",
+      "requirements.txt / Procfile"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:54:16.772Z"
+  },
+  "python__applied-python__day-27-python-with-mongodb": {
+    "objectives": [
+      "MongoDB와 Python을 연결하기 위해 pymongo와 dnspython을 설치하고 설정할 수 있다",
+      "MongoDB URI를 사용하여 Python 애플리케이션에서 MongoDB 클러스터에 접속할 수 있다",
+      "MongoDB에서 데이터베이스와 컬렉션을 생성하고 문서를 삽입할 수 있다",
+      "find, query, sort, limit 등의 방법으로 MongoDB에서 데이터를 조회할 수 있다",
+      "MongoDB 문서를 조건에 따라 수정하거나 삭제할 수 있다"
+    ],
+    "summary": "이 레슨은 Python과 NoSQL 데이터베이스인 MongoDB를 연동하는 방법을 다룹니다. pymongo와 dnspython 라이브러리를 활용하여 MongoDB 클러스터에 접속하고, 데이터베이스와 컬렉션을 생성한 뒤 문서를 삽입·조회·수정·삭제하는 핵심 CRUD 작업을 실습합니다. SQL과 NoSQL의 차이를 이해하고, Flask 애플리케이션과 MongoDB를 함께 사용하는 방법도 학습합니다.",
+    "keyConcepts": [
+      "NoSQL",
+      "MongoDB",
+      "pymongo",
+      "MongoDB URI (Connection String)",
+      "컬렉션 (Collection)",
+      "문서 (Document)",
+      "CRUD (삽입·조회·수정·삭제)",
+      "dnspython"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:54:36.161Z"
+  },
+  "python__applied-python__day-28-api": {
+    "objectives": [
+      "API의 개념과 RESTful API의 특징을 설명할 수 있다",
+      "HTTP 프로토콜의 구조와 요청/응답 사이클을 설명할 수 있다",
+      "HTTP 요청 메서드(GET, POST, PUT, DELETE)의 역할을 구분할 수 있다",
+      "HTTP 상태 코드의 의미를 해석할 수 있다",
+      "Python Flask와 MongoDB를 활용하여 RESTful API를 구축할 수 있다"
+    ],
+    "summary": "API(Application Programming Interface)는 애플리케이션 간 상호작용을 가능하게 하는 인터페이스로, 현대 웹 개발에서는 주로 RESTful 방식의 Web API가 사용됩니다. HTTP 프로토콜을 기반으로 GET, POST, PUT, DELETE 요청 메서드를 통해 데이터를 조회, 생성, 수정, 삭제하는 CRUD 작업을 수행하며, Python Flask와 MongoDB를 결합하여 직접 RESTful API를 구축할 수 있습니다.",
+    "keyConcepts": [
+      "API (Application Programming Interface)",
+      "RESTful API",
+      "HTTP (Hypertext Transfer Protocol)",
+      "HTTP 요청 메서드 (GET, POST, PUT, DELETE)",
+      "HTTP 상태 코드 (200, 404, 500)",
+      "CRUD (Create, Read, Update, Delete)",
+      "클라이언트-서버 모델",
+      "헤더 필드 (Header Fields)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:54:56.162Z"
+  },
+  "python__applied-python__day-29-building-api": {
+    "objectives": [
+      "Flask와 MongoDB를 연동하여 RESTful API를 구축할 수 있다",
+      "HTTP 메서드(GET, POST, PUT, DELETE)의 역할을 설명하고 각각을 Flask 라우트에 적용할 수 있다",
+      "Postman을 사용하여 API 엔드포인트를 테스트할 수 있다",
+      "MongoDB의 ObjectId를 활용하여 특정 문서를 조회·수정·삭제할 수 있다",
+      "CRUD 작업에 맞는 올바른 HTTP 메서드와 상태 코드를 선택할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Python, Flask, MongoDB를 사용하여 RESTful API를 구축하는 방법을 학습합니다. GET, POST, PUT, DELETE 등 HTTP 메서드를 활용해 데이터를 조회·생성·수정·삭제하는 CRUD 기능을 구현하며, Postman을 통해 각 엔드포인트를 테스트하는 실습을 진행합니다. API 엔드포인트의 구조와 URL 설계 원칙도 함께 다룹니다.",
+    "keyConcepts": [
+      "RESTful API",
+      "HTTP 메서드 (GET, POST, PUT, DELETE)",
+      "CRUD (Create, Read, Update, Delete)",
+      "API 엔드포인트 (Endpoint)",
+      "Flask 라우트 (@app.route)",
+      "MongoDB / pymongo",
+      "ObjectId (bson.objectid)",
+      "Postman"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:55:13.630Z"
+  },
+  "python__applied-python__day-30-conclusions": {
+    "objectives": [
+      "30일간의 Python 학습 과정을 완주했음을 스스로 확인한다",
+      "데이터 분석, 데이터 사이언스, 머신러닝, 웹 개발 등 다음 학습 경로를 식별한다",
+      "학습 경험을 바탕으로 자신의 성장을 되돌아보고 피드백을 작성한다",
+      "오픈소스 학습 자료 기여자에게 감사를 표현하는 방법을 실천한다"
+    ],
+    "summary": "30일간의 Python 학습 과정이 마무리되었습니다. 모든 실습과 프로젝트를 완료한 학습자는 데이터 분석, 데이터 사이언스, 머신러닝, 웹 개발 등 다양한 분야로 나아갈 준비가 된 것입니다. 이제 학습 여정을 돌아보고 다음 단계의 목표를 설정할 시간입니다.",
+    "keyConcepts": [
+      "30DaysOfPython 완주",
+      "데이터 분석(Data Analysis)",
+      "데이터 사이언스(Data Science)",
+      "머신러닝(Machine Learning)",
+      "웹 개발(Web Development)",
+      "학습 피드백(Feedback)",
+      "다음 학습 경로(Next Learning Path)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:55:36.500Z"
+  },
+  "ml-engineering__development__training": {
+    "objectives": [
+      "분산 학습 환경에서 Ray Train을 사용하여 LLM 파인튜닝 학습을 실행할 수 있다",
+      "train_step과 eval_step 함수의 역할과 차이점을 설명할 수 있다",
+      "하이퍼파라미터(dropout, lr, lr_factor, lr_patience)의 의미와 설정 방법을 이해할 수 있다",
+      "MLflow를 활용하여 실험 결과를 추적하고 체크포인트를 저장하는 방법을 적용할 수 있다",
+      "ScalingConfig를 통해 워커 수, CPU/GPU 자원을 설정하는 방법을 구성할 수 있다"
+    ],
+    "summary": "이 레슨에서는 Ray Train과 PyTorch를 결합하여 SciBERT 기반의 LLM을 파인튜닝하는 전체 학습 파이프라인을 구성합니다. train_step(순전파→손실 계산→역전파→가중치 업데이트)과 eval_step(추론 모드)을 분리하여 학습과 평가를 진행하며, 각 에포크마다 체크포인트를 저장하고 MLflow로 실험 결과를 기록합니다. 분산 학습을 위해 TorchTrainer와 ScalingConfig를 사용하여 여러 워커에 배치를 나누어 효율적으로 학습합니다.",
+    "keyConcepts": [
+      "Ray Train / TorchTrainer",
+      "ScalingConfig (워커·CPU·GPU 설정)",
+      "train_step (순전파·역전파·가중치 업데이트)",
+      "eval_step (추론 모드·손실·예측)",
+      "FinetunedLLM / SciBERT 파인튜닝",
+      "BCEWithLogitsLoss (손실 함수)",
+      "ReduceLROnPlateau (학습률 스케줄러)",
+      "MLflow 실험 추적 및 Checkpoint"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-16T12:56:33.420Z"
+  }
+}

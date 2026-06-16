@@ -1,0 +1,3230 @@
+{
+  "ml-engineering__foundations__overview": {
+    "questions": [
+      {
+        "id": "ml-engineering__foundations__overview-q0",
+        "prompt": "ML 시스템 개발의 두 가지 주요 단계는 무엇인가요?",
+        "choices": [
+          "데이터 수집과 모델 평가",
+          "실험(설계·개발)과 프로덕션(배포·반복)",
+          "학습과 추론",
+          "전처리와 후처리"
+        ],
+        "answerIndex": 1,
+        "explanation": "ML 시스템은 크게 실험 단계(설계 및 개발)와 프로덕션 단계(배포 및 반복)로 나뉘며, 이 두 단계를 반복적으로 수행하여 신뢰할 수 있는 시스템을 구축합니다."
+      },
+      {
+        "id": "ml-engineering__foundations__overview-q1",
+        "prompt": "MLOps의 구성 요소로 올바르게 나열된 것은 무엇인가요?",
+        "choices": [
+          "데이터 수집, 라벨링, 증강, 시각화",
+          "추적(Tracking), 테스트, 서빙, 오케스트레이션",
+          "회귀, 분류, 클러스터링, 강화학습",
+          "배치, 스트림, 실시간, 엣지 처리"
+        ],
+        "answerIndex": 1,
+        "explanation": "MLOps는 모델 추적, 테스트, 서빙, 오케스트레이션 등의 구성 요소를 연결하여 엔드-투-엔드 머신러닝 시스템을 구축하는 방법론입니다."
+      },
+      {
+        "id": "ml-engineering__foundations__overview-q2",
+        "prompt": "이 강의에서 강조하는 '퍼스트 프린시플(First Principles)' 접근법의 의미는 무엇인가요?",
+        "choices": [
+          "코드를 먼저 작성한 뒤 개념을 이해하는 방식",
+          "새로운 프로그래밍 언어를 먼저 배우는 방식",
+          "코드로 바로 들어가기 전에 머신러닝 개념의 근본 원리를 먼저 이해하는 방식",
+          "최신 논문을 먼저 읽고 구현하는 방식"
+        ],
+        "answerIndex": 2,
+        "explanation": "퍼스트 프린시플 접근법은 코드 구현 전에 각 머신러닝 개념의 근본적인 원리를 먼저 이해하는 방식으로, 깊이 있는 학습을 가능하게 합니다."
+      },
+      {
+        "id": "ml-engineering__foundations__overview-q3",
+        "prompt": "CI/CD 워크플로우를 ML 시스템에 적용했을 때의 주요 이점은 무엇인가요?",
+        "choices": [
+          "모델의 크기를 줄여 추론 속도를 높인다",
+          "더 나은 모델을 지속적으로 학습하고 배포할 수 있다",
+          "데이터 전처리를 자동화하여 품질을 높인다",
+          "하이퍼파라미터 튜닝을 자동으로 수행한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "CI/CD 워크플로우를 ML 시스템에 적용하면 모델을 지속적으로 학습(Continuous Training)하고 배포(Continuous Deployment)할 수 있어, 더 나은 모델을 빠르고 안정적으로 출시할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__foundations__overview-q4",
+        "prompt": "이 강의에서 ML 워크로드 확장(Scale)을 위해 사용하는 언어는 무엇인가요?",
+        "choices": [
+          "Java",
+          "Go",
+          "Python",
+          "Scala"
+        ],
+        "answerIndex": 2,
+        "explanation": "이 강의에서는 Python을 사용하여 데이터, 학습, 튜닝, 서빙 등 ML 워크로드를 쉽게 확장할 수 있도록 하며, 새로운 언어를 배울 필요 없이 진행됩니다."
+      }
+    ]
+  },
+  "ml-engineering__foundations__audience": {
+    "questions": [
+      {
+        "id": "ml-engineering__foundations__audience-q0",
+        "prompt": "이 레슨에서 머신러닝을 어떻게 정의하고 있나요?",
+        "choices": [
+          "특정 IT 기업에서만 사용하는 전문 기술",
+          "데이터를 바라보는 강력한 사고방식",
+          "대학원 이상의 전문가만을 위한 학문",
+          "소프트웨어 개발을 대체하는 독립적인 산업"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 머신러닝을 독립된 산업이 아니라 '데이터에 대해 생각하는 강력한 방식(a powerful way of thinking about data)'으로 정의하며, 특정 직군에만 국한되지 않는다고 설명합니다."
+      },
+      {
+        "id": "ml-engineering__foundations__audience-q1",
+        "prompt": "이 코스의 대상 학습자로 올바르게 나열된 것은 무엇인가요?",
+        "choices": [
+          "초등학생, 중학생, 고등학생",
+          "소프트웨어 엔지니어, 대학 졸업자, 제품/리더십 직군",
+          "데이터 과학자 전문가만",
+          "머신러닝 박사 과정 연구자만"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 개발자(소프트웨어/인프라 엔지니어, 데이터 과학자), 대학 졸업자, 제품 및 리더십 직군 세 그룹을 주요 대상으로 명시하고 있습니다."
+      },
+      {
+        "id": "ml-engineering__foundations__audience-q2",
+        "prompt": "대학 졸업자가 이 코스를 수강해야 하는 주된 이유는 무엇인가요?",
+        "choices": [
+          "대학원 입시 준비를 위해",
+          "대학 커리큘럼과 산업 현장 사이의 격차를 좁히기 위해",
+          "단순히 이력서를 채우기 위해",
+          "머신러닝 논문 작성 능력을 키우기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 대학 졸업자가 산업 현장에서 요구하는 실무 기술을 습득하고 대학 교육과 산업 기대 사이의 간극(gap)을 메우기 위해 이 코스가 도움이 된다고 설명합니다."
+      },
+      {
+        "id": "ml-engineering__foundations__audience-q3",
+        "prompt": "제품 기획자나 리더십 직군이 이 코스에서 얻고자 하는 것은 무엇인가요?",
+        "choices": [
+          "머신러닝 모델을 직접 코딩하는 능력",
+          "머신러닝 기반의 뛰어나고 신뢰할 수 있는 제품을 만들기 위한 기술적 기반",
+          "머신러닝 관련 특허를 출원하는 방법",
+          "데이터 센터 운영 관리 능력"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 제품/리더십 직군이 머신러닝을 활용한 훌륭하고 신뢰할 수 있는 제품(amazing and reliable products)을 만들기 위한 기술적 기반(technical foundation)을 쌓는 것을 목표로 한다고 설명합니다."
+      },
+      {
+        "id": "ml-engineering__foundations__audience-q4",
+        "prompt": "이 레슨이 전달하는 핵심 메시지로 가장 적절한 것은 무엇인가요?",
+        "choices": [
+          "머신러닝은 데이터 과학자에게만 필요한 기술이다",
+          "머신러닝은 어렵기 때문에 전공자만 배울 수 있다",
+          "머신러닝은 다양한 직군의 사람들이 배울 수 있는 범용적인 사고방식이다",
+          "머신러닝은 별도의 산업 분야로 독립적으로 발전하고 있다"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨은 머신러닝이 특정 직군이나 산업에 국한되지 않으며, 개발자부터 리더십까지 다양한 배경을 가진 모든 사람이 배울 수 있는 강력한 사고 도구임을 강조합니다."
+      }
+    ]
+  },
+  "ml-engineering__setup__cluster": {
+    "questions": [
+      {
+        "id": "ml-engineering__setup__cluster-q0",
+        "prompt": "로컬 환경에서 클러스터를 구성할 때 헤드 노드의 역할을 맡는 것은 무엇인가요?",
+        "choices": [
+          "GPU",
+          "하나의 CPU",
+          "전체 RAM",
+          "네트워크 인터페이스"
+        ],
+        "answerIndex": 1,
+        "explanation": "로컬 환경에서는 개인 노트북의 CPU 하나가 헤드 노드 역할을 하고, 나머지 CPU 일부가 워커 노드 역할을 합니다."
+      },
+      {
+        "id": "ml-engineering__setup__cluster-q1",
+        "prompt": "Anyscale Workspace를 생성할 때 올바른 Workspace 이름은 무엇인가요?",
+        "choices": [
+          "anyscale-workspace",
+          "ray-cluster",
+          "madewithml",
+          "ml-project"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에 명시된 설정에 따르면 Workspace 이름은 'madewithml'로 지정합니다."
+      },
+      {
+        "id": "ml-engineering__setup__cluster-q2",
+        "prompt": "Anyscale에서 CLI를 통해 워크스페이스를 생성하려면 어떤 명령어를 사용하나요?",
+        "choices": [
+          "anyscale cluster create",
+          "anyscale workspace create",
+          "ray start --head",
+          "kubectl apply -f workspace.yaml"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anyscale CLI를 통해 워크스페이스를 생성할 때는 'anyscale workspace create ...' 명령어를 사용합니다."
+      },
+      {
+        "id": "ml-engineering__setup__cluster-q3",
+        "prompt": "Kubernetes 환경에서 Ray 클러스터를 공식적으로 지원하는 프로젝트 이름은 무엇인가요?",
+        "choices": [
+          "RayK8s",
+          "KubeRay",
+          "RayOps",
+          "K8sRay"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에 따르면 Kubernetes에서 Ray를 배포할 때는 공식 지원 프로젝트인 KubeRay를 통해 진행합니다."
+      },
+      {
+        "id": "ml-engineering__setup__cluster-q4",
+        "prompt": "로컬 환경에서 클러스터를 실행할 때의 단점으로 가장 적절한 것은 무엇인가요?",
+        "choices": [
+          "코드가 실행되지 않는다",
+          "클러스터 노드를 구성할 수 없다",
+          "더 큰 클러스터 대비 실행 속도가 느리다",
+          "Anyscale 계정이 필요하다"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서 로컬 환경은 모든 코드가 동작하지만, 더 큰 클러스터에서 동일한 작업을 실행하는 것보다 속도가 느리다고 명시되어 있습니다."
+      }
+    ]
+  },
+  "ml-engineering__setup__git-setup": {
+    "questions": [
+      {
+        "id": "ml-engineering__setup__git-setup-q0",
+        "prompt": "GitHub에서 새 저장소를 생성할 때 README 파일을 추가해야 하는 가장 중요한 이유는 무엇인가요?",
+        "choices": [
+          "저장소의 용량을 늘리기 위해",
+          "main 브랜치가 자동으로 생성되기 때문에",
+          "다른 사용자가 저장소를 검색할 수 있게 하기 위해",
+          "코드 파일을 자동으로 생성하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "README 파일을 추가하면 GitHub가 자동으로 첫 번째 커밋을 생성하며, 이 과정에서 main 브랜치가 만들어집니다. main 브랜치가 없으면 저장소가 비어 있는 상태가 되어 이후 작업에 문제가 생길 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__setup__git-setup-q1",
+        "prompt": "다음 중 git clone 명령어의 역할로 올바른 것은 무엇인가요?",
+        "choices": [
+          "로컬 저장소의 변경 사항을 원격 저장소에 업로드한다",
+          "원격 저장소의 코드를 로컬 환경으로 복제한다",
+          "새로운 브랜치를 생성한다",
+          "파일의 변경 이력을 확인한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "git clone은 원격 저장소(GitHub 등)에 있는 코드와 전체 이력을 로컬 컴퓨터로 복사(복제)하는 명령어입니다. 이를 통해 로컬에서 코드를 수정하고 개발할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__setup__git-setup-q2",
+        "prompt": "아래 명령어에서 마지막의 '.' (점)은 무엇을 의미하나요?\n`git clone https://github.com/GokuMohandas/Made-With-ML.git .`",
+        "choices": [
+          "숨김 파일을 포함하여 복제하라는 옵션",
+          "현재 디렉토리에 저장소를 복제하라는 의미",
+          "파일 확장자를 지정하는 기호",
+          "명령어의 종료를 나타내는 기호"
+        ],
+        "answerIndex": 1,
+        "explanation": "git clone 명령어 끝의 '.'은 새 폴더를 만들지 않고 현재 작업 디렉토리에 저장소 내용을 바로 복제하라는 의미입니다. 점을 생략하면 저장소 이름의 새 폴더가 생성됩니다."
+      },
+      {
+        "id": "ml-engineering__setup__git-setup-q3",
+        "prompt": "GitHub에서 새 저장소를 만드는 올바른 순서는 무엇인가요?",
+        "choices": [
+          "저장소 이름 입력 → README 추가 토글 → Create repository 클릭",
+          "Create repository 클릭 → 저장소 이름 입력 → README 추가 토글",
+          "README 추가 토글 → 저장소 이름 입력 → Create repository 클릭",
+          "저장소 이름 입력 → Create repository 클릭 → README 추가 토글"
+        ],
+        "answerIndex": 0,
+        "explanation": "GitHub 저장소 생성 순서는 이름 입력 → README 파일 추가 옵션 활성화 → Create repository 버튼 클릭입니다. README를 먼저 토글한 뒤 생성 버튼을 눌러야 main 브랜치가 올바르게 만들어집니다."
+      },
+      {
+        "id": "ml-engineering__setup__git-setup-q4",
+        "prompt": "git clone으로 복제된 로컬 저장소와 원격 저장소의 관계로 올바른 설명은 무엇인가요?",
+        "choices": [
+          "로컬 저장소는 원격 저장소와 완전히 독립적으로 존재한다",
+          "로컬 저장소는 원격 저장소의 코드와 변경 이력을 모두 포함한다",
+          "로컬 저장소는 최신 파일만 가져오고 이력은 가져오지 않는다",
+          "로컬 저장소를 수정하면 원격 저장소가 자동으로 업데이트된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "git clone은 원격 저장소의 모든 파일뿐만 아니라 커밋 이력까지 함께 복제합니다. 단, 로컬에서 변경한 내용은 git push를 통해 명시적으로 원격 저장소에 업로드해야 반영됩니다."
+      }
+    ]
+  },
+  "ml-engineering__setup__credentials": {
+    "questions": [
+      {
+        "id": "ml-engineering__setup__credentials-q0",
+        "prompt": "`.env` 파일을 생성하기 위해 사용하는 명령어는 무엇인가요?",
+        "choices": [
+          "mkdir .env",
+          "create .env",
+          "touch .env",
+          "make .env"
+        ],
+        "answerIndex": 2,
+        "explanation": "`touch` 명령어는 새로운 빈 파일을 생성할 때 사용합니다. `touch .env`를 실행하면 현재 디렉터리에 `.env` 파일이 생성됩니다."
+      },
+      {
+        "id": "ml-engineering__setup__credentials-q1",
+        "prompt": "`.env` 파일에 정의된 환경 변수를 현재 셸 세션에 적용하려면 어떤 명령어를 사용해야 하나요?",
+        "choices": [
+          "run .env",
+          "load .env",
+          "import .env",
+          "source .env"
+        ],
+        "answerIndex": 3,
+        "explanation": "`source` 명령어는 지정한 파일을 현재 셸 환경에서 실행하여, 파일 안에 정의된 변수들을 현재 세션에 적용합니다."
+      },
+      {
+        "id": "ml-engineering__setup__credentials-q2",
+        "prompt": "`.env` 파일을 사용하는 주된 이유는 무엇인가요?",
+        "choices": [
+          "코드 실행 속도를 높이기 위해",
+          "민감한 자격 증명을 코드와 분리하여 보안을 강화하기 위해",
+          "파일 용량을 줄이기 위해",
+          "여러 파일을 하나로 합치기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "`.env` 파일은 API 키, 비밀번호, 사용자 이름 등 민감한 정보를 소스 코드와 분리하여 관리함으로써 보안 사고를 예방하는 데 사용됩니다."
+      },
+      {
+        "id": "ml-engineering__setup__credentials-q3",
+        "prompt": "다음 중 `.env` 파일 내 환경 변수 정의 형식으로 올바른 것은 무엇인가요?",
+        "choices": [
+          "GITHUB_USERNAME == 'myuser'",
+          "set GITHUB_USERNAME 'myuser'",
+          "GITHUB_USERNAME=\"myuser\"",
+          "export(GITHUB_USERNAME, 'myuser')"
+        ],
+        "answerIndex": 2,
+        "explanation": "`.env` 파일에서 환경 변수는 `변수명=\"값\"` 형식으로 정의합니다. 등호(=) 양쪽에 공백이 없어야 하며, 값은 따옴표로 감쌀 수 있습니다."
+      }
+    ]
+  },
+  "ml-engineering__setup__virtual-environment": {
+    "questions": [
+      {
+        "id": "ml-engineering__setup__virtual-environment-q0",
+        "prompt": "로컬 환경에서 Python 가상 환경을 생성하는 올바른 명령어는 무엇인가요?",
+        "choices": [
+          "python3 -m pip install venv",
+          "python3 -m venv venv",
+          "python3 venv --create",
+          "source venv/bin/activate"
+        ],
+        "answerIndex": 1,
+        "explanation": "python3 -m venv venv 명령어는 현재 디렉터리에 'venv'라는 이름의 가상 환경을 생성합니다. source venv/bin/activate는 생성된 환경을 활성화하는 명령어입니다."
+      },
+      {
+        "id": "ml-engineering__setup__virtual-environment-q1",
+        "prompt": "Windows 환경에서 가상 환경을 활성화하는 올바른 명령어는 무엇인가요?",
+        "choices": [
+          "source venv/bin/activate",
+          "venv/Scripts/activate.sh",
+          "venv\\Scripts\\activate",
+          "python3 -m activate venv"
+        ],
+        "answerIndex": 2,
+        "explanation": "Windows에서는 venv\\Scripts\\activate 명령어로 가상 환경을 활성화합니다. macOS/Linux에서는 source venv/bin/activate를 사용합니다."
+      },
+      {
+        "id": "ml-engineering__setup__virtual-environment-q2",
+        "prompt": "pre-commit install 이후에 pre-commit autoupdate를 실행하는 이유는 무엇인가요?",
+        "choices": [
+          "가상 환경을 최신 버전으로 업그레이드하기 위해",
+          "등록된 pre-commit 훅을 최신 버전으로 업데이트하기 위해",
+          "Python 인터프리터를 업데이트하기 위해",
+          "requirements.txt의 패키지를 최신화하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "pre-commit autoupdate는 .pre-commit-config.yaml에 정의된 훅들의 버전을 최신 상태로 업데이트하여 코드 품질 검사 도구가 최신 규칙을 적용하도록 합니다."
+      },
+      {
+        "id": "ml-engineering__setup__virtual-environment-q3",
+        "prompt": "Anyscale 환경에서 로컬 환경과 달리 생략할 수 있는 단계는 무엇인가요?",
+        "choices": [
+          "PYTHONPATH 환경 변수 설정",
+          "pre-commit install 실행",
+          "venv 생성 및 패키지 설치",
+          "pre-commit autoupdate 실행"
+        ],
+        "answerIndex": 2,
+        "explanation": "Anyscale Workspace는 클러스터 환경을 통해 적절한 Python 버전과 라이브러리가 이미 설치되어 있으므로, venv 생성과 pip install 단계를 별도로 수행할 필요가 없습니다."
+      },
+      {
+        "id": "ml-engineering__setup__virtual-environment-q4",
+        "prompt": "이 레슨에서 권장하는 Python 버전은 무엇인가요?",
+        "choices": [
+          "Python 3.8",
+          "Python 3.9",
+          "Python 3.10",
+          "Python 3.11"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서는 호환성과 안정성을 위해 Python 3.10 사용을 강력히 권장하며, pyenv(Mac) 또는 pyenv-win(Windows)을 통해 해당 버전을 관리하도록 안내하고 있습니다."
+      }
+    ]
+  },
+  "ml-engineering__development__notebook": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__notebook-q0",
+        "prompt": "로컬 환경에서 Jupyter 노트북을 실행하기 위한 올바른 터미널 명령어는 무엇인가요?",
+        "choices": [
+          "python notebooks/madewithml.ipynb",
+          "jupyter run notebooks/madewithml.ipynb",
+          "jupyter lab notebooks/madewithml.ipynb",
+          "jupyter start madewithml.ipynb"
+        ],
+        "answerIndex": 2,
+        "explanation": "로컬 환경에서는 'jupyter lab notebooks/madewithml.ipynb' 명령어를 사용하여 JupyterLab에서 해당 노트북을 실행합니다."
+      },
+      {
+        "id": "ml-engineering__development__notebook-q1",
+        "prompt": "Anyscale 환경에서 JupyterLab을 열기 위해 클릭해야 하는 것은 무엇인가요?",
+        "choices": [
+          "Workspace 하단의 터미널 아이콘",
+          "Workspace 상단 오른쪽의 Jupyter 아이콘",
+          "Workspace 메뉴의 Settings 버튼",
+          "Workspace 좌측의 파일 탐색기"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anyscale Workspace 페이지의 상단 오른쪽에 있는 Jupyter 아이콘을 클릭하면 새 탭에서 JupyterLab 인스턴스가 열립니다."
+      },
+      {
+        "id": "ml-engineering__development__notebook-q2",
+        "prompt": "이 레슨에서 사용하는 노트북 파일의 이름은 무엇인가요?",
+        "choices": [
+          "mlops.ipynb",
+          "madewithml.ipynb",
+          "notebook.ipynb",
+          "workloads.ipynb"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서 사용하는 노트북 파일은 'madewithml.ipynb'이며, notebooks 디렉토리 안에 위치합니다."
+      },
+      {
+        "id": "ml-engineering__development__notebook-q3",
+        "prompt": "이 레슨의 노트북을 통해 학습할 수 있는 주요 내용은 무엇인가요?",
+        "choices": [
+          "웹 서버 배포 방법",
+          "데이터베이스 쿼리 최적화",
+          "머신러닝 핵심 워크로드의 전체 흐름",
+          "클라우드 인프라 비용 절감 전략"
+        ],
+        "answerIndex": 2,
+        "explanation": "이 노트북은 머신러닝의 핵심 워크로드(core machine learning workloads)를 대화형으로 탐색할 수 있도록 설계되어 있습니다."
+      }
+    ]
+  },
+  "ml-engineering__development__tuning": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__tuning-q0",
+        "prompt": "Ray Tune에서 HyperOptSearch에 `points_to_evaluate`를 전달하는 이유는 무엇인가요?",
+        "choices": [
+          "무작위 탐색의 기본 시드를 고정하기 위해",
+          "튜닝 시작 시 평가할 초기 하이퍼파라미터 값을 지정하기 위해",
+          "최대 동시 실행 trial 수를 제한하기 위해",
+          "학습 데이터를 분할하는 기준을 설정하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "HyperOptSearch의 `points_to_evaluate` 인자는 탐색을 시작할 때 먼저 평가할 초기 하이퍼파라미터 조합을 지정합니다. 이를 통해 도메인 지식을 활용한 좋은 출발점에서 탐색을 시작할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__development__tuning-q1",
+        "prompt": "AsyncHyperBandScheduler(ASHA)에서 `grace_period` 파라미터의 역할은 무엇인가요?",
+        "choices": [
+          "하나의 trial이 사용할 수 있는 최대 GPU 수를 지정한다",
+          "각 trial이 조기 종료되기 전에 반드시 실행해야 하는 최소 에폭 수를 지정한다",
+          "전체 튜닝 실험의 최대 실행 시간을 초 단위로 지정한다",
+          "동시에 실행되는 trial의 최대 개수를 제한한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "`grace_period`는 ASHA 스케줄러가 trial을 조기 종료(pruning)하기 전에 각 trial이 최소한 실행해야 하는 에폭(time_attr 기준) 수입니다. 너무 이른 종료를 방지하여 trial이 학습할 충분한 기회를 보장합니다."
+      },
+      {
+        "id": "ml-engineering__development__tuning-q2",
+        "prompt": "코드에서 `ConcurrencyLimiter`를 사용하는 주된 목적은 무엇인가요?",
+        "choices": [
+          "MLflow에 동시에 기록할 수 있는 실험 수를 제한하기 위해",
+          "최적화 품질과 탐색 공간 커버리지 사이의 균형을 맞추기 위해 동시 trial 수를 제한하기 위해",
+          "데이터셋 로딩 시 사용하는 워커 수를 제한하기 위해",
+          "체크포인트를 동시에 저장하는 횟수를 제한하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "ConcurrencyLimiter는 동시에 실행되는 trial의 수를 제한합니다. HyperOptSearch 같은 순차적 탐색 알고리즘은 이전 결과를 참고하여 다음 파라미터를 제안하는데, 동시 실행 수를 제한하면 이 정보를 더 잘 활용하여 탐색 품질과 병렬성 사이의 균형을 맞출 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__development__tuning-q3",
+        "prompt": "이 튜닝 실험에서 `CheckpointConfig`의 `checkpoint_score_attribute`가 `val_loss`이고 `checkpoint_score_order`가 `min`으로 설정된 이유는 무엇인가요?",
+        "choices": [
+          "학습 속도가 가장 빠른 체크포인트를 저장하기 위해",
+          "검증 손실이 가장 낮은, 즉 가장 성능이 좋은 체크포인트만 보관하기 위해",
+          "에폭 번호가 가장 큰 마지막 체크포인트를 저장하기 위해",
+          "GPU 메모리 사용량이 최소인 체크포인트를 저장하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "val_loss(검증 손실)는 모델의 일반화 성능을 나타내며, 값이 낮을수록 좋습니다. `checkpoint_score_order='min'`으로 설정하면 val_loss가 가장 낮은 체크포인트가 최적으로 판단되어 저장되므로, 가장 성능이 좋은 모델 상태를 보존할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__development__tuning-q4",
+        "prompt": "다음 중 `param_space`에서 `tune.loguniform(1e-5, 5e-4)`을 학습률(lr) 탐색에 사용하는 이유로 가장 적절한 것은 무엇인가요?",
+        "choices": [
+          "학습률은 항상 정수여야 하기 때문에",
+          "학습률은 로그 스케일에서 균등하게 탐색해야 1e-5와 5e-4처럼 크기 차이가 큰 범위를 효율적으로 탐색할 수 있기 때문에",
+          "loguniform이 uniform보다 항상 더 빠르게 수렴하기 때문에",
+          "학습률 범위가 1보다 커서 로그 변환이 필요하기 때문에"
+        ],
+        "answerIndex": 1,
+        "explanation": "학습률은 일반적으로 수십 배 이상 차이 나는 범위(예: 1e-5 ~ 5e-4)를 탐색합니다. loguniform을 사용하면 로그 스케일에서 균등하게 샘플링되어 작은 값(1e-5 근처)과 큰 값(5e-4 근처) 모두 충분히 탐색됩니다. uniform을 사용하면 대부분의 샘플이 큰 값 근처에 몰려 작은 학습률 영역이 제대로 탐색되지 않습니다."
+      }
+    ]
+  },
+  "ml-engineering__development__experiment-tracking": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__experiment-tracking-q0",
+        "prompt": "MLflow에서 실험 결과를 시각적으로 확인할 수 있는 도구는 무엇인가요?",
+        "choices": [
+          "MLflow Model Registry",
+          "MLflow Tracking UI",
+          "MLflow Projects",
+          "MLflow Pipelines"
+        ],
+        "answerIndex": 1,
+        "explanation": "MLflow Tracking UI는 실험 결과, 파라미터, 메트릭 등을 시각적으로 확인할 수 있는 대시보드입니다."
+      },
+      {
+        "id": "ml-engineering__development__experiment-tracking-q1",
+        "prompt": "로컬 환경에서 MLflow 서버를 포트 8080으로 실행할 때 사용하는 올바른 명령어는 무엇인가요?",
+        "choices": [
+          "mlflow run -h 0.0.0.0 -p 8080",
+          "mlflow server -h 0.0.0.0 -p 8080 --backend-store-uri $MODEL_REGISTRY",
+          "mlflow ui --port 8080 --host 0.0.0.0",
+          "mlflow start -h 0.0.0.0 -p 8080"
+        ],
+        "answerIndex": 1,
+        "explanation": "MLflow 서버는 'mlflow server' 명령어로 실행하며, -h로 호스트, -p로 포트, --backend-store-uri로 저장 경로를 지정합니다."
+      },
+      {
+        "id": "ml-engineering__development__experiment-tracking-q2",
+        "prompt": "Anyscale Workspaces 환경에서 MLflow 대시보드에 접근하기 위해 필요한 추가 작업은 무엇인가요?",
+        "choices": [
+          "별도의 작업 없이 localhost:8080으로 접근한다",
+          "APP_PORT 변수를 설정하고 ANYSCALE_SESSION_DOMAIN을 이용해 공개 URL을 생성한다",
+          "MLflow 서버를 재시작한다",
+          "방화벽 설정을 직접 변경한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anyscale 환경에서는 포트를 외부에 노출해야 하므로 APP_PORT와 ANYSCALE_SESSION_DOMAIN을 조합하여 공개 URL을 생성해야 합니다."
+      },
+      {
+        "id": "ml-engineering__development__experiment-tracking-q3",
+        "prompt": "실제 프로덕션 환경에서 실험 관리를 위해 권장되는 방식은 무엇인가요?",
+        "choices": [
+          "각 팀원이 개별 로컬 디렉터리에 실험을 저장한다",
+          "팀 전체가 공유하는 중앙 집중식 서버 또는 관리형 솔루션을 사용한다",
+          "실험 추적 도구를 사용하지 않고 수동으로 기록한다",
+          "매 실험마다 새로운 MLflow 서버를 생성한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "프로덕션 환경에서는 팀 협업과 일관된 관리를 위해 중앙 집중식 MLflow 서버 또는 Weights & Biases, Comet 같은 관리형 솔루션을 사용하는 것이 권장됩니다."
+      },
+      {
+        "id": "ml-engineering__development__experiment-tracking-q4",
+        "prompt": "다음 중 MLflow의 대안으로 언급된 관리형 실험 추적 솔루션이 아닌 것은 무엇인가요?",
+        "choices": [
+          "Weights & Biases",
+          "Comet",
+          "TensorBoard",
+          "Anyscale"
+        ],
+        "answerIndex": 3,
+        "explanation": "레슨에서 관리형 솔루션으로 언급된 것은 Weights & Biases와 Comet입니다. Anyscale은 클라우드 워크스페이스 플랫폼이며, TensorBoard는 별도의 시각화 도구입니다."
+      }
+    ]
+  },
+  "ml-engineering__development__evaluation": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__evaluation-q0",
+        "prompt": "전체(overall) 성능 지표 계산 시 사용하는 average 방식은 무엇인가요?",
+        "choices": [
+          "macro",
+          "micro",
+          "weighted",
+          "binary"
+        ],
+        "answerIndex": 2,
+        "explanation": "get_overall_metrics 함수에서 precision_recall_fscore_support를 average='weighted'로 호출합니다. 이는 각 클래스의 샘플 수를 가중치로 반영하여 전체 지표를 계산합니다."
+      },
+      {
+        "id": "ml-engineering__development__evaluation-q1",
+        "prompt": "슬라이싱 함수(slicing function)를 사용하는 주된 목적은 무엇인가요?",
+        "choices": [
+          "모델 학습 속도를 높이기 위해",
+          "특정 데이터 부분집합에서의 모델 성능을 세밀하게 분석하기 위해",
+          "데이터 전처리 오류를 자동으로 수정하기 위해",
+          "하이퍼파라미터를 자동으로 탐색하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "슬라이싱 함수는 nlp_llm이나 short_text처럼 특정 조건에 해당하는 데이터 부분집합을 정의하고, 해당 슬라이스에서 모델 성능이 얼마나 되는지 따로 측정하여 모델의 약점을 파악하는 데 사용됩니다."
+      },
+      {
+        "id": "ml-engineering__development__evaluation-q2",
+        "prompt": "evaluate.py에서 최적 모델 체크포인트를 불러오기 위해 사용하는 함수는 무엇인가요?",
+        "choices": [
+          "predict.load_model(run_id)",
+          "predict.get_best_checkpoint(run_id)",
+          "ray.train.load_checkpoint(run_id)",
+          "TorchPredictor.load(run_id)"
+        ],
+        "answerIndex": 1,
+        "explanation": "소스 코드에서 best_checkpoint = predict.get_best_checkpoint(run_id=run_id)를 호출하여 특정 run_id에 해당하는 최적 체크포인트를 가져옵니다."
+      },
+      {
+        "id": "ml-engineering__development__evaluation-q3",
+        "prompt": "per-class 지표를 반환할 때 결과를 어떤 기준으로 정렬하나요?",
+        "choices": [
+          "클래스 이름 오름차순",
+          "샘플 수 내림차순",
+          "F1 점수 내림차순",
+          "Precision 오름차순"
+        ],
+        "answerIndex": 2,
+        "explanation": "get_per_class_metrics 함수 내에서 OrderedDict(sorted(..., key=lambda tag: tag[1]['f1'], reverse=True))를 사용하여 F1 점수 내림차순으로 클래스별 결과를 정렬합니다."
+      },
+      {
+        "id": "ml-engineering__development__evaluation-q4",
+        "prompt": "short_text 슬라이싱 함수가 True를 반환하는 조건은 무엇인가요?",
+        "choices": [
+          "텍스트 길이가 8자 미만인 경우",
+          "단어 수가 8개 미만인 경우",
+          "문장 수가 8개 미만인 경우",
+          "텍스트에 숫자가 8개 이상 포함된 경우"
+        ],
+        "answerIndex": 1,
+        "explanation": "short_text 함수는 len(x.text.split()) < 8 조건을 사용합니다. split()은 공백 기준으로 텍스트를 단어로 분리하므로, 단어 수가 8개 미만일 때 True를 반환합니다."
+      }
+    ]
+  },
+  "ml-engineering__development__inference": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__inference-q0",
+        "prompt": "MLflow에서 val_loss 기준으로 가장 좋은 실험 결과를 가져올 때 올바른 mode 값은 무엇인가요?",
+        "choices": [
+          "DESC",
+          "RANDOM",
+          "ASC",
+          "BEST"
+        ],
+        "answerIndex": 2,
+        "explanation": "val_loss는 낮을수록 좋은 지표이므로 오름차순(ASC)으로 정렬하여 가장 낮은 값을 가진 Run ID를 선택해야 합니다."
+      },
+      {
+        "id": "ml-engineering__development__inference-q1",
+        "prompt": "TorchPredictor.from_checkpoint() 메서드가 체크포인트에서 복원하는 두 가지 핵심 컴포넌트는 무엇인가요?",
+        "choices": [
+          "Optimizer와 Scheduler",
+          "CustomPreprocessor와 FinetunedLLM",
+          "DataLoader와 Tokenizer",
+          "MLflow Client와 Ray Worker"
+        ],
+        "answerIndex": 1,
+        "explanation": "from_checkpoint()는 체크포인트 메타데이터에서 class_to_index 정보를 꺼내 CustomPreprocessor를 생성하고, args.json과 model.pt 파일로 FinetunedLLM 모델을 복원합니다."
+      },
+      {
+        "id": "ml-engineering__development__inference-q2",
+        "prompt": "predict_proba 함수에서 최종 예측 클래스를 결정하는 방법은 무엇인가요?",
+        "choices": [
+          "확률값 중 가장 낮은 인덱스를 선택한다",
+          "모든 확률의 평균을 구해 임계값과 비교한다",
+          "확률 배열에서 argmax()를 사용해 가장 높은 확률의 인덱스를 선택한다",
+          "사용자가 직접 클래스를 지정한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "prob.argmax()를 통해 확률 배열에서 가장 높은 값의 인덱스를 구하고, index_to_class 딕셔너리로 해당 인덱스를 클래스 레이블로 변환합니다."
+      },
+      {
+        "id": "ml-engineering__development__inference-q3",
+        "prompt": "추론 시 입력 데이터를 Ray Dataset으로 만들 때 'tag' 필드에 'other'를 넣는 이유로 가장 적절한 것은 무엇인가요?",
+        "choices": [
+          "'other' 클래스로만 예측하기 위해",
+          "모델이 'other' 태그만 처리할 수 있어서",
+          "데이터 스키마를 맞추기 위한 플레이스홀더로 사용하기 위해",
+          "MLflow 로깅 요구사항 때문에"
+        ],
+        "answerIndex": 2,
+        "explanation": "실제 추론 시에는 정답 레이블이 없지만, 데이터셋의 스키마(컬럼 구조)를 전처리 파이프라인에 맞추기 위해 임시 플레이스홀더로 'other'를 입력합니다."
+      },
+      {
+        "id": "ml-engineering__development__inference-q4",
+        "prompt": "아래 예측 결과에서 모델이 'natural-language-processing'으로 분류한 확률은 얼마인가요?\n{\"computer-vision\": 0.0009, \"mlops\": 0.0008, \"natural-language-processing\": 0.9976, \"other\": 0.0005}",
+        "choices": [
+          "약 0.09%",
+          "약 9.76%",
+          "약 99.76%",
+          "약 0.99%"
+        ],
+        "answerIndex": 2,
+        "explanation": "natural-language-processing의 확률값은 0.99762577로, 퍼센트로 환산하면 약 99.76%입니다. 이는 모델이 해당 입력을 NLP 프로젝트로 매우 높은 신뢰도로 분류했음을 의미합니다."
+      }
+    ]
+  },
+  "ml-engineering__serving__serving": {
+    "questions": [
+      {
+        "id": "ml-engineering__serving__serving-q0",
+        "prompt": "Ray Serve에서 `@serve.deployment` 데코레이터의 `num_replicas` 파라미터는 무엇을 의미하나요?",
+        "choices": [
+          "모델을 학습할 때 사용할 GPU 수",
+          "배포할 서비스 복제본(인스턴스)의 수",
+          "MLflow 실험의 반복 횟수",
+          "FastAPI 라우터의 엔드포인트 수"
+        ],
+        "answerIndex": 0,
+        "explanation": "`num_replicas`는 Ray Serve가 해당 배포를 실행할 복제본(인스턴스)의 수를 지정합니다. 여기서는 '1'로 설정되어 하나의 인스턴스만 실행됩니다."
+      },
+      {
+        "id": "ml-engineering__serving__serving-q1",
+        "prompt": "코드에서 예측 확률이 threshold(기본값 0.9)보다 낮을 경우 어떻게 처리되나요?",
+        "choices": [
+          "예측을 재시도한다",
+          "예측 결과를 'other'로 변경한다",
+          "서버가 오류를 반환한다",
+          "가장 높은 확률의 다른 클래스로 대체한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "_predict 메서드에서 예측 확률이 threshold보다 낮으면 `results[i]['prediction'] = 'other'`로 설정합니다. 이는 모델이 충분히 확신하지 못하는 예측을 'other'로 처리하는 후처리 로직입니다."
+      },
+      {
+        "id": "ml-engineering__serving__serving-q2",
+        "prompt": "로컬 환경에서 최적의 run_id를 가져오기 위해 사용하는 기준 metric과 mode는 무엇인가요?",
+        "choices": [
+          "metric: val_accuracy, mode: DESC",
+          "metric: val_loss, mode: DESC",
+          "metric: val_loss, mode: ASC",
+          "metric: train_loss, mode: ASC"
+        ],
+        "answerIndex": 2,
+        "explanation": "스크립트에서 `--metric val_loss --mode ASC`를 사용합니다. val_loss가 가장 낮은(ASC, 오름차순 기준 최솟값) 실험을 최적 모델로 선택합니다."
+      },
+      {
+        "id": "ml-engineering__serving__serving-q3",
+        "prompt": "Anyscale 환경이 로컬 환경과 다른 점은 무엇인가요?",
+        "choices": [
+          "Anyscale에서는 FastAPI 대신 Flask를 사용한다",
+          "Anyscale에서는 Ray를 수동으로 시작하고 종료할 필요가 없다",
+          "Anyscale에서는 MLflow를 사용할 수 없다",
+          "Anyscale에서는 GPU를 반드시 사용해야 한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anyscale Workspaces에서는 Ray가 이미 실행 중이므로 `ray start --head`나 `ray stop` 명령을 수동으로 실행할 필요가 없습니다."
+      },
+      {
+        "id": "ml-engineering__serving__serving-q4",
+        "prompt": "`/` 엔드포인트(GET)의 주요 역할은 무엇인가요?",
+        "choices": [
+          "모델 예측 결과를 반환한다",
+          "서버의 헬스 체크(상태 확인)를 수행한다",
+          "현재 run_id를 반환한다",
+          "데이터셋을 평가한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "_index 메서드는 HTTP 200 OK 상태와 함께 간단한 응답을 반환하며, 코드 주석에도 'Health check'라고 명시되어 있습니다. 이는 서버가 정상 작동 중인지 확인하는 용도입니다."
+      }
+    ]
+  },
+  "ml-engineering__serving__testing": {
+    "questions": [
+      {
+        "id": "ml-engineering__serving__testing-q0",
+        "prompt": "데이터 테스트 시 데이터셋 경로를 pytest에 전달하는 올바른 방법은 무엇인가요?",
+        "choices": [
+          "pytest tests/data --dataset-loc=URL 형태로 직접 인자를 전달한다",
+          "환경 변수 DATASET_LOC을 설정한 후 --dataset-loc=$DATASET_LOC 옵션으로 전달한다",
+          "pytest.ini 파일에 URL을 하드코딩한다",
+          "데이터셋 경로는 테스트 코드 내부에만 작성해야 한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "환경 변수 DATASET_LOC에 URL을 저장한 뒤, --dataset-loc=$DATASET_LOC 옵션으로 pytest에 전달합니다. 이렇게 하면 경로를 코드에 하드코딩하지 않고 유연하게 관리할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__serving__testing-q1",
+        "prompt": "최적의 모델 Run ID를 자동으로 가져오기 위해 사용하는 명령어의 목적으로 올바른 것은?",
+        "choices": [
+          "모델을 새로 학습시켜 Run ID를 생성한다",
+          "지정한 실험에서 val_loss 기준 가장 낮은 값의 Run ID를 조회한다",
+          "모든 실험의 Run ID 목록을 출력한다",
+          "데이터셋을 다운로드하여 Run ID를 할당한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "predict.py의 get-best-run-id 명령은 --experiment-name, --metric val_loss, --mode ASC 옵션을 조합하여 검증 손실이 가장 낮은(오름차순 첫 번째) 최적 Run ID를 반환합니다."
+      },
+      {
+        "id": "ml-engineering__serving__testing-q2",
+        "prompt": "pytest-cov로 HTML 형식의 커버리지 리포트를 생성하는 올바른 명령어는?",
+        "choices": [
+          "python3 -m pytest tests/code --cov madewithml --cov-report term",
+          "python3 -m pytest tests/code --cov madewithml --cov-report html",
+          "python3 -m pytest tests/code --coverage html",
+          "python3 -m pytest --html-report tests/code"
+        ],
+        "answerIndex": 1,
+        "explanation": "--cov-report html 옵션을 사용하면 htmlcov 디렉터리에 HTML 형식의 커버리지 리포트가 생성됩니다. term 옵션은 터미널에 출력하는 방식입니다."
+      },
+      {
+        "id": "ml-engineering__serving__testing-q3",
+        "prompt": "--disable-warnings 플래그를 사용하는 주된 이유는 무엇인가요?",
+        "choices": [
+          "테스트 실패를 무시하기 위해",
+          "테스트 출력에서 경고 메시지를 숨겨 결과를 보기 쉽게 하기 위해",
+          "테스트 속도를 높이기 위해",
+          "코드 커버리지 측정을 비활성화하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "--disable-warnings 플래그는 pytest 실행 시 출력되는 경고(warning) 메시지를 억제하여, 실제 테스트 결과에만 집중할 수 있도록 터미널 출력을 깔끔하게 만들어 줍니다."
+      },
+      {
+        "id": "ml-engineering__serving__testing-q4",
+        "prompt": "코드, 데이터, 모델 테스트를 각각 분리하여 실행하는 방식의 장점으로 가장 적절한 것은?",
+        "choices": [
+          "모든 테스트를 한 번에 실행하므로 시간이 절약된다",
+          "각 영역의 문제를 독립적으로 식별하고 필요한 테스트만 선택 실행할 수 있다",
+          "데이터 테스트 없이도 모델 테스트가 항상 통과된다",
+          "커버리지 측정이 자동으로 포함된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "코드, 데이터, 모델 테스트를 분리하면 특정 영역에서 문제가 발생했을 때 해당 테스트만 실행하여 빠르게 원인을 파악할 수 있고, 변경된 부분에 대한 테스트만 선택적으로 수행할 수 있어 효율적입니다."
+      }
+    ]
+  },
+  "ml-engineering__production__authentication": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__authentication-q0",
+        "prompt": "Anyscale Workspaces에서 인증 자격 증명(Credentials)을 어떻게 설정해야 하나요?",
+        "choices": [
+          "매번 수동으로 환경 변수를 직접 입력해야 한다",
+          "자동으로 설정되므로 별도로 설정할 필요가 없다",
+          "Anyscale 웹사이트에 로그인하여 매번 갱신해야 한다",
+          "로컬 파일에 직접 저장해야 한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anyscale Workspaces 환경에서는 ANYSCALE_HOST와 ANYSCALE_CLI_TOKEN이 자동으로 설정되기 때문에 사용자가 별도로 설정할 필요가 없습니다."
+      },
+      {
+        "id": "ml-engineering__production__authentication-q1",
+        "prompt": "로컬 환경에서 Anyscale을 사용하려면 반드시 설정해야 하는 환경 변수는 무엇인가요?",
+        "choices": [
+          "ANYSCALE_USER와 ANYSCALE_PASSWORD",
+          "ANYSCALE_HOST와 ANYSCALE_CLI_TOKEN",
+          "ANYSCALE_API_KEY와 ANYSCALE_SECRET",
+          "ANYSCALE_PROJECT와 ANYSCALE_REGION"
+        ],
+        "answerIndex": 1,
+        "explanation": "로컬 환경 또는 외부 클러스터에서는 ANYSCALE_HOST와 ANYSCALE_CLI_TOKEN 두 환경 변수를 명시적으로 설정해야 Anyscale에 인증할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__authentication-q2",
+        "prompt": "ANYSCALE_CLI_TOKEN은 어디서 확인할 수 있나요?",
+        "choices": [
+          "Anyscale 공식 GitHub 저장소",
+          "Anyscale 자격 증명 페이지 (Credentials Page)",
+          "로컬 시스템의 기본 설정 파일",
+          "Anyscale 이메일 초대장"
+        ],
+        "answerIndex": 1,
+        "explanation": "CLI 토큰은 Anyscale의 자격 증명 페이지(Credentials Page)에서 발급 및 확인할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__authentication-q3",
+        "prompt": "다음 중 Anyscale 인증이 자동으로 처리되지 않아 수동 설정이 필요한 환경은 어디인가요?",
+        "choices": [
+          "Anyscale Workspaces",
+          "Anyscale이 구성된 클라우드 내부 환경",
+          "로컬 개발 환경",
+          "Anyscale Jobs가 실행되는 기본 환경"
+        ],
+        "answerIndex": 2,
+        "explanation": "로컬 개발 환경에서는 Anyscale Workspaces처럼 자격 증명이 자동으로 주입되지 않으므로, 사용자가 직접 환경 변수를 설정해야 합니다."
+      }
+    ]
+  },
+  "ml-engineering__production__cluster-environment": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__cluster-environment-q0",
+        "prompt": "클러스터 환경(Cluster Environment)의 주된 역할은 무엇입니까?",
+        "choices": [
+          "데이터베이스의 스키마를 정의한다",
+          "워크로드가 실행될 OS 및 의존성 환경을 결정한다",
+          "네트워크 방화벽 규칙을 설정한다",
+          "사용자 인증 및 권한을 관리한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "클러스터 환경은 워크로드가 어디서(운영체제, 의존성 등) 실행될지를 결정하는 실행 기반 환경입니다."
+      },
+      {
+        "id": "ml-engineering__production__cluster-environment-q1",
+        "prompt": "다음 중 클러스터 환경을 생성하기 위한 올바른 Anyscale CLI 명령어는 무엇입니까?",
+        "choices": [
+          "anyscale cluster-env deploy deploy/cluster_env.yaml",
+          "anyscale env create deploy/cluster_env.yaml --name $CLUSTER_ENV_NAME",
+          "anyscale cluster-env build deploy/cluster_env.yaml --name $CLUSTER_ENV_NAME",
+          "anyscale build cluster-env --config deploy/cluster_env.yaml"
+        ],
+        "answerIndex": 2,
+        "explanation": "`anyscale cluster-env build` 명령어에 YAML 파일 경로와 `--name` 옵션으로 환경 이름을 지정하여 클러스터 환경을 생성합니다."
+      },
+      {
+        "id": "ml-engineering__production__cluster-environment-q2",
+        "prompt": "레슨에서 클러스터 환경 이름을 지정하기 위해 사용된 환경 변수는 무엇입니까?",
+        "choices": [
+          "CLUSTER_NAME",
+          "ENV_NAME",
+          "CLUSTER_ENV_NAME",
+          "ANYSCALE_ENV"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서는 `export CLUSTER_ENV_NAME=\"madewithml-cluster-env\"` 명령어로 환경 변수 CLUSTER_ENV_NAME을 설정하여 클러스터 환경 이름을 관리합니다."
+      },
+      {
+        "id": "ml-engineering__production__cluster-environment-q3",
+        "prompt": "클러스터 환경 설정 파일의 형식으로 올바른 것은 무엇입니까?",
+        "choices": [
+          "JSON",
+          "XML",
+          "YAML",
+          "INI"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서 클러스터 환경은 `cluster_env.yaml`과 같이 YAML 형식의 파일로 정의됩니다."
+      },
+      {
+        "id": "ml-engineering__production__cluster-environment-q4",
+        "prompt": "기존 클러스터 환경을 업데이트하려면 어떻게 해야 합니까?",
+        "choices": [
+          "새로운 Anyscale 계정을 생성한다",
+          "YAML 파일을 수정한 후 동일한 build 명령어를 다시 실행한다",
+          "클러스터 환경은 한 번 생성하면 수정할 수 없다",
+          "관리 콘솔에서만 업데이트가 가능하다"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에 따르면 `anyscale cluster-env build` 명령어는 클러스터 환경의 생성뿐 아니라 업데이트에도 사용할 수 있으며, YAML 파일을 수정 후 동일 명령어를 재실행하면 됩니다."
+      }
+    ]
+  },
+  "ml-engineering__production__compute-configuration": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__compute-configuration-q0",
+        "prompt": "컴퓨트 구성(Compute Configuration)의 주요 역할은 무엇입니까?",
+        "choices": [
+          "모델의 학습 알고리즘을 결정한다",
+          "워크로드가 실행될 리소스를 결정한다",
+          "데이터 전처리 파이프라인을 설정한다",
+          "네트워크 보안 정책을 관리한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "컴퓨트 구성은 워크로드(workload)가 어떤 리소스 위에서 실행될지를 결정하는 설정입니다. 레슨에서 'The compute configuration determines what resources our workloads will be executed on'이라고 명시되어 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__compute-configuration-q1",
+        "prompt": "다음 중 클러스터 컴퓨트를 생성하는 올바른 Anyscale CLI 명령어는 무엇입니까?",
+        "choices": [
+          "anyscale cluster-compute init deploy/cluster_compute.yaml",
+          "anyscale cluster-compute create deploy/cluster_compute.yaml --name $CLUSTER_COMPUTE_NAME",
+          "anyscale compute-cluster create --file deploy/cluster_compute.yaml",
+          "anyscale cluster create --compute deploy/cluster_compute.yaml"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서 제시된 명령어는 `anyscale cluster-compute create deploy/cluster_compute.yaml --name $CLUSTER_COMPUTE_NAME`입니다. create 서브커맨드와 YAML 파일 경로, 그리고 --name 옵션으로 이름을 지정합니다."
+      },
+      {
+        "id": "ml-engineering__production__compute-configuration-q2",
+        "prompt": "레슨에서 사용된 환경 변수 CLUSTER_COMPUTE_NAME에 설정된 값은 무엇입니까?",
+        "choices": [
+          "madewithml-cluster-compute-g5.xlarge",
+          "madewithml-cluster-compute-g4.4xlarge",
+          "madewithml-cluster-compute-g5.4xlarge",
+          "madewithml-cluster-compute-p3.2xlarge"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서 `export CLUSTER_COMPUTE_NAME=\"madewithml-cluster-compute-g5.4xlarge\"`로 환경 변수를 설정하고 있습니다. G5.4xlarge는 AWS의 GPU 인스턴스 유형입니다."
+      },
+      {
+        "id": "ml-engineering__production__compute-configuration-q3",
+        "prompt": "클러스터 컴퓨트 구성을 YAML 파일로 관리하는 가장 큰 이점은 무엇입니까?",
+        "choices": [
+          "YAML 파일은 JSON보다 처리 속도가 빠르다",
+          "구성을 코드로 버전 관리하고 반복 사용할 수 있다",
+          "YAML 파일은 암호화되어 보안에 유리하다",
+          "YAML 파일은 자동으로 클라우드에 백업된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "YAML 파일로 컴퓨트 구성을 정의하면 구성을 코드(Configuration as Code)로 관리할 수 있어 버전 관리, 재사용, 팀 공유가 용이해집니다. 레슨에서도 미리 만들어 둔 YAML 파일을 활용하는 방식을 보여주고 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__compute-configuration-q4",
+        "prompt": "다음 중 `export` 명령어의 역할로 가장 적절한 것은 무엇입니까?",
+        "choices": [
+          "파일을 외부 저장소로 내보낸다",
+          "셸 환경 변수를 설정하여 이후 명령어에서 참조할 수 있게 한다",
+          "클러스터 설정을 YAML 형식으로 출력한다",
+          "Anyscale 프로젝트를 초기화한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "`export` 명령어는 셸에서 환경 변수를 설정하는 데 사용됩니다. `export CLUSTER_COMPUTE_NAME=\"...\"`로 설정한 값은 이후 `$CLUSTER_COMPUTE_NAME`으로 참조되어 명령어에 동적으로 적용됩니다."
+      }
+    ]
+  },
+  "ml-engineering__production__anyscale-jobs": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__anyscale-jobs-q0",
+        "prompt": "workloads.yaml에서 `runtime_env`의 주요 역할은 무엇인가요?",
+        "choices": [
+          "모델의 하이퍼파라미터를 설정한다",
+          "작업 실행 환경과 코드 업로드 경로를 지정한다",
+          "데이터셋의 위치와 형식을 정의한다",
+          "GPU 수와 메모리 용량을 할당한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "runtime_env는 작업 실행 시 사용할 working_dir를 S3 버킷에 업로드하고, 환경 변수 등 실행 환경 전반을 설정하는 역할을 합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-jobs-q1",
+        "prompt": "Anyscale Job을 제출할 때 사용하는 명령어는 무엇인가요?",
+        "choices": [
+          "anyscale run deploy/jobs/workloads.yaml",
+          "anyscale start deploy/jobs/workloads.yaml",
+          "anyscale job submit deploy/jobs/workloads.yaml",
+          "anyscale execute deploy/jobs/workloads.yaml"
+        ],
+        "answerIndex": 2,
+        "explanation": "`anyscale job submit [파일경로]` 명령어를 사용하여 yaml 파일에 정의된 ML 워크로드 작업을 제출합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-jobs-q2",
+        "prompt": "workloads.yaml에서 `upload_path`를 S3로 설정하는 이유는 무엇인가요?",
+        "choices": [
+          "모델 학습 속도를 높이기 위해",
+          "모든 워커가 동일한 코드에 접근할 수 있도록 하기 위해",
+          "로컬 디스크 용량을 절약하기 위해",
+          "GITHUB_USERNAME을 자동으로 생성하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "분산 실행 환경에서 여러 워커가 동일한 코드를 사용해야 하므로, working_dir를 S3에 업로드하여 모든 워커가 접근 가능하게 합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-jobs-q3",
+        "prompt": "`GITHUB_USERNAME` 환경 변수를 설정하는 주된 목적은 무엇인가요?",
+        "choices": [
+          "GitHub 저장소에 자동으로 커밋하기 위해",
+          "워크로드 결과물을 S3에 사용자별로 저장하기 위해",
+          "Anyscale 계정 인증을 처리하기 위해",
+          "학습 데이터를 다운로드하는 경로로 사용하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "GITHUB_USERNAME은 워크로드 실행 결과(예: 모델, 평가 지표)를 S3의 사용자별 경로에 저장하는 데 사용되며, 이후 서빙 시 해당 결과를 불러오는 데도 활용됩니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-jobs-q4",
+        "prompt": "여러 ML 워크로드(학습, 평가 등)를 하나의 Job으로 결합하는 방식의 장점은 무엇인가요?",
+        "choices": [
+          "각 워크로드를 독립적으로 별도 서버에서 실행할 수 있다",
+          "하나의 파이프라인으로 관리하여 실행과 관리가 간편해진다",
+          "GPU 없이도 대규모 학습이 가능해진다",
+          "YAML 파일 없이 커맨드라인만으로 실행할 수 있다"
+        ],
+        "answerIndex": 1,
+        "explanation": "여러 워크로드를 하나의 Job으로 묶으면 단일 파이프라인으로 전체 흐름을 관리할 수 있어 실행 및 모니터링이 간편해집니다. 물론 별도의 Job으로 분리하는 것도 가능합니다."
+      }
+    ]
+  },
+  "ml-engineering__production__anyscale-services": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__anyscale-services-q0",
+        "prompt": "serve_model.yaml 파일에서 반드시 변경해야 하는 항목은 무엇인가요?",
+        "choices": [
+          "import_path 경로",
+          "$GITHUB_USERNAME (대소문자 구분)",
+          "ray_serve_config 키 이름",
+          "working_dir 경로"
+        ],
+        "answerIndex": 1,
+        "explanation": "설정 파일에는 upload_path와 env_vars 모두에 $GITHUB_USERNAME이 포함되어 있으며, 주석에 'CHANGE USERNAME (case-sensitive)'라고 명시되어 있습니다. 대소문자를 정확히 맞춰 변경해야 합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-services-q1",
+        "prompt": "배포된 서비스에 예측 요청을 보낼 때 사용하는 명령어는 무엇인가요?",
+        "choices": [
+          "anyscale service predict",
+          "anyscale service query",
+          "curl -X POST",
+          "wget --post-data"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨에서 배포된 서비스에 예측 요청을 보낼 때 curl -X POST 명령어를 사용하며, Authorization 헤더에 Bearer 토큰을 포함하고 JSON 데이터를 전송합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-services-q2",
+        "prompt": "이전 버전의 서비스로 되돌리고 싶을 때 사용하는 Anyscale 명령어는 무엇인가요?",
+        "choices": [
+          "anyscale service rollout",
+          "anyscale service terminate",
+          "anyscale service rollback",
+          "anyscale service restore"
+        ],
+        "answerIndex": 2,
+        "explanation": "서비스를 이전 버전으로 되돌리려면 anyscale service rollback 명령어를 사용합니다. rollout은 새 배포, terminate는 서비스 종료에 사용됩니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-services-q3",
+        "prompt": "serve_model.yaml에서 upload_path에 사용되는 스토리지 서비스는 무엇인가요?",
+        "choices": [
+          "Google Cloud Storage",
+          "Azure Blob Storage",
+          "Amazon S3",
+          "Anyscale Object Store"
+        ],
+        "answerIndex": 2,
+        "explanation": "설정 파일의 upload_path 값이 's3://madewithml/...' 형식으로 시작하며, 이는 Amazon S3 버킷 경로를 의미합니다."
+      },
+      {
+        "id": "ml-engineering__production__anyscale-services-q4",
+        "prompt": "배포된 서비스를 완전히 중단하고 싶을 때 사용하는 명령어는 무엇인가요?",
+        "choices": [
+          "anyscale service stop --name $SERVICE_NAME",
+          "anyscale service terminate --name $SERVICE_NAME",
+          "anyscale service rollback --name $SERVICE_NAME",
+          "anyscale service delete --name $SERVICE_NAME"
+        ],
+        "answerIndex": 1,
+        "explanation": "서비스를 종료(중단)하려면 anyscale service terminate --name $SERVICE_NAME 명령어를 사용합니다. 레슨 코드 예시에서 Terminate 섹션에 명시되어 있습니다."
+      }
+    ]
+  },
+  "ml-engineering__production__cicd": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__cicd-q0",
+        "prompt": "CI/CD 파이프라인에서 'dev' 브랜치를 따로 사용하는 가장 중요한 이유는 무엇인가요?",
+        "choices": [
+          "저장소 용량을 절약하기 위해",
+          "main 브랜치를 안정적으로 유지하면서 변경사항을 안전하게 테스트하기 위해",
+          "GitHub Actions 요금을 줄이기 위해",
+          "개인 액세스 토큰 없이 푸시하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "dev 브랜치는 main 브랜치를 안정적인 상태로 보호하면서 새로운 코드 변경사항을 독립적으로 개발하고 테스트할 수 있도록 합니다. PR을 통해 검증된 변경사항만 main에 반영됩니다."
+      },
+      {
+        "id": "ml-engineering__production__cicd-q1",
+        "prompt": "GitHub 저장소의 /settings/secrets/actions 페이지에 자격증명을 등록하는 이유는 무엇인가요?",
+        "choices": [
+          "코드 실행 속도를 높이기 위해",
+          "GitHub Actions 워크플로우가 외부 서비스(Anyscale)에 안전하게 접근할 수 있도록 하기 위해",
+          "브랜치 생성 권한을 부여하기 위해",
+          "Pull Request를 자동으로 승인하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "API 토큰과 같은 민감한 자격증명을 코드에 직접 노출하지 않고 GitHub Secrets에 저장하면, 워크플로우 실행 시 안전하게 환경변수로 불러와 외부 서비스(Anyscale 등)에 접근할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__cicd-q2",
+        "prompt": "dev 브랜치에서 main 브랜치로 PR을 생성했을 때 자동으로 트리거되는 워크플로우는 무엇인가요?",
+        "choices": [
+          "serve workflow",
+          "deploy workflow",
+          "workloads workflow",
+          "test workflow"
+        ],
+        "answerIndex": 2,
+        "explanation": "PR 생성 시에는 workloads workflow가 트리거되어 Anyscale Job을 통한 학습 및 평가가 실행되고, 그 결과가 PR 코멘트로 게시됩니다. serve workflow는 main 브랜치에 머지될 때 실행됩니다."
+      },
+      {
+        "id": "ml-engineering__production__cicd-q3",
+        "prompt": "PR을 main 브랜치에 머지하면 어떤 일이 발생하나요?",
+        "choices": [
+          "workloads workflow가 다시 실행된다",
+          "serve workflow가 트리거되어 프로덕션에 새 서비스가 배포된다",
+          "GitHub 저장소가 자동으로 삭제된다",
+          "dev 브랜치가 자동으로 생성된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "main 브랜치에 머지가 완료되면 serve workflow가 자동으로 트리거되며, 이 워크플로우는 검증된 새 모델 서비스를 프로덕션 환경에 롤아웃합니다."
+      },
+      {
+        "id": "ml-engineering__production__cicd-q4",
+        "prompt": "GitHub에 코드를 푸시할 때 Personal Access Token이 필요한 이유는 무엇인가요?",
+        "choices": [
+          "코드 압축을 위해 필요하다",
+          "일반 비밀번호 대신 사용되는 보안 인증 수단으로, repo와 workflow 권한을 포함하기 때문이다",
+          "브랜치 이름을 자동 생성하기 위해 필요하다",
+          "GitHub Actions를 무료로 사용하기 위해 필요하다"
+        ],
+        "answerIndex": 1,
+        "explanation": "GitHub은 보안 강화를 위해 일반 계정 비밀번호 대신 Personal Access Token을 사용합니다. 토큰 생성 시 repo 및 workflow 권한을 부여해야 코드 푸시와 워크플로우 실행이 가능합니다."
+      }
+    ]
+  },
+  "ml-engineering__production__continual-learning": {
+    "questions": [
+      {
+        "id": "ml-engineering__production__continual-learning-q0",
+        "prompt": "CI/CD 워크플로우를 기반으로 지속 학습을 구현할 때, 정기적인 모델 재학습을 자동으로 트리거하는 데 사용되는 도구는 무엇인가요?",
+        "choices": [
+          "웹훅(Webhook)",
+          "크론(Cron) 스케줄링",
+          "수동 배포 스크립트",
+          "도커(Docker) 컨테이너"
+        ],
+        "answerIndex": 1,
+        "explanation": "크론(Cron) 스케줄링은 특정 시간 간격 또는 지정된 시각에 작업을 자동으로 실행하는 도구로, 정기적인 모델 재학습 트리거에 적합합니다."
+      },
+      {
+        "id": "ml-engineering__production__continual-learning-q1",
+        "prompt": "지속 학습 파이프라인에서 '드리프트(Drift)'가 감지되었을 때 가장 적절한 후속 조치는 무엇인가요?",
+        "choices": [
+          "모델 서비스를 즉시 종료한다",
+          "드리프트를 무시하고 기존 모델을 유지한다",
+          "드리프트를 트리거로 모델 재학습 파이프라인을 실행한다",
+          "데이터 수집을 완전히 중단한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "드리프트가 감지되면 모델의 성능이 저하될 수 있으므로, 이를 트리거로 활용하여 새로운 데이터로 모델을 재학습하는 파이프라인을 실행하는 것이 올바른 대응입니다."
+      },
+      {
+        "id": "ml-engineering__production__continual-learning-q2",
+        "prompt": "지속 학습 체계에서 새로운 실험 결과와 현재 프로덕션 모델을 비교하기에 가장 적합한 시점은 언제인가요?",
+        "choices": [
+          "배포 완료 후",
+          "PR(풀 리퀘스트) 단계",
+          "모델 학습 시작 전",
+          "데이터 수집 단계"
+        ],
+        "answerIndex": 1,
+        "explanation": "PR(풀 리퀘스트) 단계에서 새로운 실험 결과와 프로덕션 모델을 직접 비교하면, 배포 전에 성능 향상 여부를 검토하고 의사결정을 내릴 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__production__continual-learning-q3",
+        "prompt": "다음 중 지속 학습 파이프라인의 트리거(trigger)로 활용될 수 없는 것은 무엇인가요?",
+        "choices": [
+          "크론 스케줄에 의한 정기 실행",
+          "데이터 드리프트 감지 알림",
+          "온라인 평가 결과 저하",
+          "모델 파일의 용량 증가"
+        ],
+        "answerIndex": 3,
+        "explanation": "크론 스케줄, 데이터 드리프트 감지, 온라인 평가 결과 저하는 모두 재학습의 실질적인 트리거로 활용됩니다. 반면 모델 파일의 단순 용량 증가는 모델 품질과 직접적인 관련이 없어 트리거로 사용하기 부적절합니다."
+      },
+      {
+        "id": "ml-engineering__production__continual-learning-q4",
+        "prompt": "CI/CD 기반 지속 학습의 가장 큰 장점은 무엇인가요?",
+        "choices": [
+          "모델 학습에 필요한 데이터를 자동으로 생성한다",
+          "반복적인 모델 개선 과정을 자동화하고 확장성을 높인다",
+          "모델의 정확도를 항상 100%로 보장한다",
+          "클라우드 비용을 완전히 제거한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "CI/CD 기반 지속 학습은 스케줄링, 모니터링, 평가 등 다양한 트리거와 연결하여 반복적인 모델 개선 과정을 자동화하고 확장 가능한 MLOps 체계를 구축하는 것이 핵심 장점입니다."
+      }
+    ]
+  },
+  "python__foundations__day-01-introduction": {
+    "questions": [
+      {
+        "id": "python__foundations__day-01-introduction-q0",
+        "prompt": "Python 프로그래밍 언어를 만든 사람은 누구인가요?",
+        "choices": [
+          "Linus Torvalds",
+          "Guido van Rossum",
+          "James Gosling",
+          "Dennis Ritchie"
+        ],
+        "answerIndex": 1,
+        "explanation": "Python은 네덜란드 출신의 프로그래머 Guido van Rossum이 만들었으며, 1991년 2월 20일 첫 번째 버전이 공개되었습니다."
+      },
+      {
+        "id": "python__foundations__day-01-introduction-q1",
+        "prompt": "Python 인터랙티브 셸을 종료할 때 사용하는 명령어는 무엇인가요?",
+        "choices": [
+          "quit",
+          "close()",
+          "stop()",
+          "exit()"
+        ],
+        "answerIndex": 3,
+        "explanation": "Python 인터랙티브 셸에서 >>> 기호 옆에 exit()를 입력하고 Enter를 누르면 셸이 종료됩니다."
+      },
+      {
+        "id": "python__foundations__day-01-introduction-q2",
+        "prompt": "Python이 '인터프리터 언어'라는 것은 무엇을 의미하나요?",
+        "choices": [
+          "코드를 실행하기 전에 전체를 컴파일한다",
+          "코드를 한 줄씩 순서대로 해석하며 실행한다",
+          "코드를 기계어로만 변환한다",
+          "코드를 실행하기 위해 별도의 런타임이 필요 없다"
+        ],
+        "answerIndex": 1,
+        "explanation": "인터프리터 언어란 소스 코드를 미리 컴파일하지 않고, 코드를 한 줄씩 해석(interpret)하면서 바로 실행하는 방식을 의미합니다."
+      },
+      {
+        "id": "python__foundations__day-01-introduction-q3",
+        "prompt": "Python 코드에서 곱셈을 나타내는 올바른 기호는 무엇인가요?",
+        "choices": [
+          "x",
+          "×",
+          "*",
+          "·"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python에서 곱셈 연산자는 별표(*)입니다. 'x'를 곱셈 기호로 사용하면 SyntaxError가 발생합니다."
+      },
+      {
+        "id": "python__foundations__day-01-introduction-q4",
+        "prompt": "설치된 Python의 버전을 확인하기 위해 터미널에 입력하는 명령어는 무엇인가요?",
+        "choices": [
+          "python --check",
+          "python3 --version",
+          "check python3",
+          "version python"
+        ],
+        "answerIndex": 1,
+        "explanation": "터미널 또는 명령 프롬프트에서 'python3 --version'을 입력하면 현재 설치된 Python의 버전 정보를 확인할 수 있습니다."
+      }
+    ]
+  },
+  "python__foundations__day-02-variables-builtin-functions": {
+    "questions": [
+      {
+        "id": "python__foundations__day-02-variables-builtin-functions-q0",
+        "prompt": "다음 중 Python에서 유효한 변수 이름은 무엇인가요?",
+        "choices": [
+          "1num",
+          "first-name",
+          "_capital_city",
+          "first@name"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python 변수 이름은 문자 또는 언더스코어(_)로 시작해야 합니다. '_capital_city'는 언더스코어로 시작하므로 유효합니다. '1num'은 숫자로 시작하고, 'first-name'과 'first@name'은 허용되지 않는 특수문자를 포함합니다."
+      },
+      {
+        "id": "python__foundations__day-02-variables-builtin-functions-q1",
+        "prompt": "Python에서 변수에 값을 할당할 때 사용하는 연산자는 무엇인가요?",
+        "choices": [
+          "==",
+          "=>",
+          "=",
+          ":="
+        ],
+        "answerIndex": 2,
+        "explanation": "Python에서 '='는 대입(할당) 연산자로, 오른쪽 값을 왼쪽 변수에 저장합니다. '=='는 동등 비교 연산자이므로 혼동하지 않아야 합니다."
+      },
+      {
+        "id": "python__foundations__day-02-variables-builtin-functions-q2",
+        "prompt": "다음 코드의 실행 결과로 올바른 것은 무엇인가요?\n\nprint(len('Hello, World!'))",
+        "choices": [
+          "12",
+          "13",
+          "14",
+          "11"
+        ],
+        "answerIndex": 1,
+        "explanation": "'Hello, World!' 문자열은 H, e, l, l, o, ',', ' ', W, o, r, l, d, '!' 총 13개의 문자로 구성되어 있으므로 len() 함수의 반환값은 13입니다."
+      },
+      {
+        "id": "python__foundations__day-02-variables-builtin-functions-q3",
+        "prompt": "한 줄에 여러 변수를 동시에 선언하는 올바른 Python 문법은 무엇인가요?",
+        "choices": [
+          "first_name = 'Alice' and age = 30",
+          "first_name, age = 'Alice', 30",
+          "first_name; age = 'Alice'; 30",
+          "first_name = 'Alice', age = 30"
+        ],
+        "answerIndex": 1,
+        "explanation": "Python에서는 콤마(,)를 사용하여 'a, b = 값1, 값2' 형식으로 한 줄에 여러 변수를 동시에 선언하고 값을 할당할 수 있습니다."
+      },
+      {
+        "id": "python__foundations__day-02-variables-builtin-functions-q4",
+        "prompt": "사용자로부터 키보드 입력을 받아 변수에 저장하려고 합니다. 어떤 내장 함수를 사용해야 하나요?",
+        "choices": [
+          "read()",
+          "scan()",
+          "input()",
+          "get()"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python의 input() 내장 함수는 프로그램 실행 중 사용자로부터 텍스트 입력을 받아 반환합니다. 괄호 안에 안내 문자열을 넣어 사용자에게 입력을 안내할 수 있습니다."
+      }
+    ]
+  },
+  "python__foundations__day-03-operators": {
+    "questions": [
+      {
+        "id": "python__foundations__day-03-operators-q0",
+        "prompt": "파이썬에서 7 // 2의 결과는 무엇인가요?",
+        "choices": [
+          "3.5",
+          "3",
+          "4",
+          "2"
+        ],
+        "answerIndex": 1,
+        "explanation": "// 연산자는 바닥 나눗셈(floor division)으로, 소수점 이하를 버린 정수를 반환합니다. 7 ÷ 2 = 3.5이므로 소수점을 버린 3이 정답입니다."
+      },
+      {
+        "id": "python__foundations__day-03-operators-q1",
+        "prompt": "파이썬에서 불리언(Boolean) 값을 올바르게 표현한 것은?",
+        "choices": [
+          "true, false",
+          "TRUE, FALSE",
+          "True, False",
+          "1, 0만 사용 가능"
+        ],
+        "answerIndex": 2,
+        "explanation": "파이썬의 불리언 값은 첫 글자만 대문자인 True와 False로 표기해야 합니다. 모두 소문자이거나 모두 대문자이면 오류가 발생합니다."
+      },
+      {
+        "id": "python__foundations__day-03-operators-q2",
+        "prompt": "다음 중 2 ** 3의 결과로 올바른 것은?",
+        "choices": [
+          "6",
+          "9",
+          "8",
+          "5"
+        ],
+        "answerIndex": 2,
+        "explanation": "** 연산자는 거듭제곱을 의미합니다. 2 ** 3은 2의 3승, 즉 2 × 2 × 2 = 8입니다."
+      },
+      {
+        "id": "python__foundations__day-03-operators-q3",
+        "prompt": "print(3 == 2)의 출력 결과는 무엇인가요?",
+        "choices": [
+          "True",
+          "1",
+          "False",
+          "Error"
+        ],
+        "answerIndex": 2,
+        "explanation": "== 연산자는 두 값이 같은지 비교합니다. 3과 2는 다르므로 결과는 False입니다."
+      },
+      {
+        "id": "python__foundations__day-03-operators-q4",
+        "prompt": "파이썬에서 10 % 3의 결과는?",
+        "choices": [
+          "3",
+          "1",
+          "0",
+          "3.33"
+        ],
+        "answerIndex": 1,
+        "explanation": "% 연산자는 나머지 연산자(modulus)입니다. 10 ÷ 3 = 3 나머지 1이므로 결과는 1입니다."
+      }
+    ]
+  },
+  "python__foundations__day-04-strings": {
+    "questions": [
+      {
+        "id": "python__foundations__day-04-strings-q0",
+        "prompt": "Python에서 여러 줄에 걸친 문자열(multiline string)을 만들 때 사용하는 올바른 방법은?",
+        "choices": [
+          "작은따옴표 한 개(')로 감싼다",
+          "큰따옴표 두 개(\"\")로 감싼다",
+          "삼중 작은따옴표(''') 또는 삼중 큰따옴표(\"\"\")로 감싼다",
+          "백슬래시(\\)를 각 줄 끝에 붙인다"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python에서 여러 줄 문자열은 삼중 작은따옴표(''') 또는 삼중 큰따옴표(\"\"\")로 감싸서 만듭니다. 이렇게 하면 줄바꿈을 포함한 긴 텍스트를 그대로 표현할 수 있습니다."
+      },
+      {
+        "id": "python__foundations__day-04-strings-q1",
+        "prompt": "다음 중 Python 3.6 이상에서 사용할 수 있는 가장 현대적인 문자열 포맷팅 방식은?",
+        "choices": [
+          "% 연산자",
+          "str.format() 메서드",
+          "f-string (f'...')",
+          "string.Template()"
+        ],
+        "answerIndex": 2,
+        "explanation": "f-string(f'...')은 Python 3.6에서 도입된 문자열 보간(String Interpolation) 방식으로, 문자열 앞에 f를 붙이고 중괄호 {}안에 변수나 표현식을 직접 삽입할 수 있어 가장 간결하고 현대적인 방법입니다."
+      },
+      {
+        "id": "python__foundations__day-04-strings-q2",
+        "prompt": "name = 'Python' 일 때, name[0]의 결과로 올바른 것은?",
+        "choices": [
+          "P",
+          "y",
+          "n",
+          "Python"
+        ],
+        "answerIndex": 0,
+        "explanation": "Python에서 문자열 인덱싱은 0부터 시작합니다. name[0]은 문자열 'Python'의 첫 번째 문자인 'P'를 반환합니다."
+      },
+      {
+        "id": "python__foundations__day-04-strings-q3",
+        "prompt": "print('Hello\\nWorld') 를 실행했을 때 출력 결과로 올바른 것은?",
+        "choices": [
+          "Hello\\nWorld",
+          "Hello World",
+          "Hello\n그대로 출력",
+          "Hello 줄바꿈 후 World"
+        ],
+        "answerIndex": 3,
+        "explanation": "\\n은 줄바꿈(new line)을 나타내는 이스케이프 시퀀스입니다. 따라서 'Hello\\nWorld'를 출력하면 'Hello' 다음에 줄이 바뀌고 'World'가 출력됩니다."
+      },
+      {
+        "id": "python__foundations__day-04-strings-q4",
+        "prompt": "다음 코드의 출력 결과는 무엇인가요?\n\nlanguage = 'Python'\nprint('{} is fun!'.format(language))",
+        "choices": [
+          "{language} is fun!",
+          "Python is fun!",
+          "language is fun!",
+          "{} is fun!"
+        ],
+        "answerIndex": 1,
+        "explanation": "str.format() 메서드는 중괄호 {}를 자리 표시자로 사용하고, format() 안에 전달된 인수로 순서대로 치환합니다. 따라서 {}가 'Python'으로 대체되어 'Python is fun!'이 출력됩니다."
+      }
+    ]
+  },
+  "python__foundations__day-05-lists": {
+    "questions": [
+      {
+        "id": "python__foundations__day-05-lists-q0",
+        "prompt": "파이썬 리스트에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "순서가 없고 중복을 허용하지 않는다",
+          "순서가 있고 변경 가능하며 중복을 허용한다",
+          "순서가 있지만 변경이 불가능하다",
+          "인덱스로 접근할 수 없다"
+        ],
+        "answerIndex": 1,
+        "explanation": "리스트는 순서(order)가 있고 변경 가능(mutable)하며 중복 요소를 허용하는 컬렉션 자료형입니다. 이는 튜플(불변), 셋(중복 불가), 딕셔너리(비순서)와 구분되는 특징입니다."
+      },
+      {
+        "id": "python__foundations__day-05-lists-q1",
+        "prompt": "fruits = ['banana', 'orange', 'mango', 'lemon'] 일 때, fruits[-2]의 결과는?",
+        "choices": [
+          "banana",
+          "orange",
+          "mango",
+          "lemon"
+        ],
+        "answerIndex": 2,
+        "explanation": "음수 인덱싱에서 -1은 마지막 요소(lemon), -2는 뒤에서 두 번째 요소인 'mango'를 가리킵니다."
+      },
+      {
+        "id": "python__foundations__day-05-lists-q2",
+        "prompt": "리스트에서 특정 값을 가진 첫 번째 항목을 삭제할 때 사용하는 메서드는?",
+        "choices": [
+          "del",
+          "pop()",
+          "remove()",
+          "clear()"
+        ],
+        "answerIndex": 2,
+        "explanation": "remove() 메서드는 리스트에서 지정한 값과 일치하는 첫 번째 항목을 찾아 삭제합니다. pop()은 인덱스로 삭제, del은 인덱스나 슬라이스로 삭제, clear()는 전체 삭제입니다."
+      },
+      {
+        "id": "python__foundations__day-05-lists-q3",
+        "prompt": "다음 코드의 출력 결과는 무엇인가? first, second, *rest = [10, 20, 30, 40, 50]  print(rest)",
+        "choices": [
+          "[10, 20]",
+          "[30, 40, 50]",
+          "[20, 30, 40, 50]",
+          "[10, 20, 30, 40]"
+        ],
+        "answerIndex": 1,
+        "explanation": "언패킹에서 *rest는 나머지 모든 요소를 리스트로 받습니다. first=10, second=20이 할당되고, 나머지 [30, 40, 50]이 rest에 할당됩니다."
+      },
+      {
+        "id": "python__foundations__day-05-lists-q4",
+        "prompt": "리스트를 오름차순으로 정렬하는 올바른 방법은?",
+        "choices": [
+          "list.order()",
+          "list.sort()",
+          "list.arrange()",
+          "list.reverse()"
+        ],
+        "answerIndex": 1,
+        "explanation": "sort() 메서드는 리스트를 기본적으로 오름차순으로 정렬합니다. 내림차순 정렬을 원하면 sort(reverse=True)를 사용합니다. reverse()는 현재 순서를 뒤집는 메서드입니다."
+      }
+    ]
+  },
+  "python__foundations__day-06-tuples": {
+    "questions": [
+      {
+        "id": "python__foundations__day-06-tuples-q0",
+        "prompt": "다음 중 튜플(Tuple)의 특징으로 올바른 것은?",
+        "choices": [
+          "요소를 자유롭게 추가, 수정, 삭제할 수 있다",
+          "중괄호 {}를 사용하여 생성한다",
+          "순서가 있고 변경 불가능(immutable)하다",
+          "인덱싱을 사용할 수 없다"
+        ],
+        "answerIndex": 2,
+        "explanation": "튜플은 순서(order)가 있으며 한 번 생성되면 값을 변경할 수 없는 불변(immutable) 자료형입니다. 소괄호 ()를 사용하여 생성합니다."
+      },
+      {
+        "id": "python__foundations__day-06-tuples-q1",
+        "prompt": "fruits = ('banana', 'orange', 'mango', 'lemon') 일 때, fruits[-1]의 결과는?",
+        "choices": [
+          "'banana'",
+          "'orange'",
+          "'mango'",
+          "'lemon'"
+        ],
+        "answerIndex": 3,
+        "explanation": "음수 인덱싱에서 -1은 마지막 요소를 가리킵니다. 따라서 fruits[-1]은 튜플의 마지막 요소인 'lemon'을 반환합니다."
+      },
+      {
+        "id": "python__foundations__day-06-tuples-q2",
+        "prompt": "tpl = ('a', 'b', 'c', 'd') 일 때, tpl[1:3]의 결과는?",
+        "choices": [
+          "('a', 'b', 'c')",
+          "('b', 'c')",
+          "('b', 'c', 'd')",
+          "('a', 'b')"
+        ],
+        "answerIndex": 1,
+        "explanation": "슬라이싱 tpl[1:3]은 인덱스 1부터 시작하여 인덱스 3 직전(인덱스 2)까지의 요소를 반환합니다. 따라서 결과는 ('b', 'c')입니다."
+      },
+      {
+        "id": "python__foundations__day-06-tuples-q3",
+        "prompt": "튜플의 값을 수정하려고 할 때 올바른 방법은?",
+        "choices": [
+          "tuple.update()를 사용한다",
+          "직접 인덱스로 접근하여 값을 재할당한다",
+          "list()로 변환 후 수정하고 tuple()로 다시 변환한다",
+          "del 키워드로 해당 요소만 삭제한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "튜플은 불변(immutable)이므로 직접 수정이 불가능합니다. 수정이 필요할 때는 list()로 리스트로 변환한 후 수정하고, 다시 tuple()로 튜플로 변환하는 방법을 사용해야 합니다."
+      },
+      {
+        "id": "python__foundations__day-06-tuples-q4",
+        "prompt": "다음 코드의 실행 결과로 올바른 것은?\ntpl1 = (1, 2, 3)\ntpl2 = (4, 5, 6)\nprint(tpl1 + tpl2)",
+        "choices": [
+          "[1, 2, 3, 4, 5, 6]",
+          "(1, 2, 3, 4, 5, 6)",
+          "(5, 7, 9)",
+          "오류가 발생한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "튜플에서 + 연산자는 두 튜플을 연결(concatenation)하여 새로운 튜플을 생성합니다. 따라서 tpl1 + tpl2의 결과는 (1, 2, 3, 4, 5, 6)입니다."
+      }
+    ]
+  },
+  "python__foundations__day-07-sets": {
+    "questions": [
+      {
+        "id": "python__foundations__day-07-sets-q0",
+        "prompt": "파이썬에서 빈 세트를 올바르게 생성하는 방법은 무엇인가요?",
+        "choices": [
+          "st = {}",
+          "st = set()",
+          "st = []",
+          "st = dict()"
+        ],
+        "answerIndex": 1,
+        "explanation": "빈 중괄호 {}는 딕셔너리를 생성하므로, 빈 세트를 만들려면 반드시 set() 함수를 사용해야 합니다."
+      },
+      {
+        "id": "python__foundations__day-07-sets-q1",
+        "prompt": "세트에서 항목을 제거할 때, 항목이 존재하지 않아도 오류를 발생시키지 않는 메서드는 무엇인가요?",
+        "choices": [
+          "remove()",
+          "delete()",
+          "discard()",
+          "pop()"
+        ],
+        "answerIndex": 2,
+        "explanation": "discard()는 제거하려는 항목이 세트에 없어도 오류(에러)를 발생시키지 않습니다. 반면 remove()는 항목이 없으면 KeyError를 발생시킵니다."
+      },
+      {
+        "id": "python__foundations__day-07-sets-q2",
+        "prompt": "다음 코드의 실행 결과로 올바른 것은? lst = ['a', 'b', 'a', 'c', 'b'] st = set(lst) print(len(st))",
+        "choices": [
+          "5",
+          "4",
+          "3",
+          "2"
+        ],
+        "answerIndex": 2,
+        "explanation": "리스트를 세트로 변환하면 중복 항목이 제거됩니다. 'a', 'b', 'c' 세 가지 고유 항목만 남으므로 길이는 3입니다."
+      },
+      {
+        "id": "python__foundations__day-07-sets-q3",
+        "prompt": "두 세트 st1 = {1, 2, 3}과 st2 = {2, 3, 4}의 교집합(intersection) 결과는 무엇인가요?",
+        "choices": [
+          "{1, 2, 3, 4}",
+          "{1, 4}",
+          "{2, 3}",
+          "{1, 2, 3}"
+        ],
+        "answerIndex": 2,
+        "explanation": "교집합(intersection)은 두 세트 모두에 존재하는 항목을 반환합니다. st1과 st2에 공통으로 있는 항목은 2와 3이므로 결과는 {2, 3}입니다."
+      },
+      {
+        "id": "python__foundations__day-07-sets-q4",
+        "prompt": "st1 = {1, 2, 3, 4}, st2 = {3, 4, 5, 6}일 때, st1.difference(st2)의 결과는 무엇인가요?",
+        "choices": [
+          "{5, 6}",
+          "{1, 2}",
+          "{3, 4}",
+          "{1, 2, 5, 6}"
+        ],
+        "answerIndex": 1,
+        "explanation": "difference()는 st1에는 있지만 st2에는 없는 항목을 반환합니다. st1 기준으로 st2에 없는 항목은 1과 2이므로 결과는 {1, 2}입니다."
+      }
+    ]
+  },
+  "python__foundations__day-08-dictionaries": {
+    "questions": [
+      {
+        "id": "python__foundations__day-08-dictionaries-q0",
+        "prompt": "파이썬 딕셔너리에서 존재하지 않는 키에 접근할 때 에러를 발생시키지 않고 None을 반환하는 방법은?",
+        "choices": [
+          "dct['없는키']",
+          "dct.get('없는키')",
+          "dct.find('없는키')",
+          "dct.fetch('없는키')"
+        ],
+        "answerIndex": 1,
+        "explanation": "get() 메서드는 키가 존재하지 않을 경우 KeyError를 발생시키지 않고 None을 반환합니다. 대괄호([])로 직접 접근하면 존재하지 않는 키에 대해 KeyError가 발생합니다."
+      },
+      {
+        "id": "python__foundations__day-08-dictionaries-q1",
+        "prompt": "딕셔너리에서 마지막으로 삽입된 항목을 제거하는 메서드는?",
+        "choices": [
+          "pop()",
+          "del",
+          "popitem()",
+          "remove()"
+        ],
+        "answerIndex": 2,
+        "explanation": "popitem()은 딕셔너리에서 마지막으로 삽입된 키-값 쌍을 제거하고 반환합니다. pop()은 특정 키를 지정해야 하며, remove()는 딕셔너리 메서드가 아닙니다."
+      },
+      {
+        "id": "python__foundations__day-08-dictionaries-q2",
+        "prompt": "다음 코드의 출력 결과는? dct = {'a': 1, 'b': 2, 'c': 3}; print(len(dct))",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "오류 발생"
+        ],
+        "answerIndex": 1,
+        "explanation": "len() 함수는 딕셔너리 내 키-값 쌍의 수를 반환합니다. 해당 딕셔너리에는 'a', 'b', 'c' 총 3개의 쌍이 있으므로 결과는 3입니다."
+      },
+      {
+        "id": "python__foundations__day-08-dictionaries-q3",
+        "prompt": "딕셔너리에서 특정 키가 존재하는지 확인하는 올바른 방법은?",
+        "choices": [
+          "dct.has('key1')",
+          "'key1' in dct",
+          "dct.contains('key1')",
+          "dct.exist('key1')"
+        ],
+        "answerIndex": 1,
+        "explanation": "파이썬에서는 in 연산자를 사용해 딕셔너리에 특정 키가 존재하는지 확인합니다. 'key1' in dct는 키가 있으면 True, 없으면 False를 반환합니다."
+      },
+      {
+        "id": "python__foundations__day-08-dictionaries-q4",
+        "prompt": "딕셔너리의 모든 키를 리스트 형태로 얻으려면 어떤 메서드를 사용해야 하는가?",
+        "choices": [
+          "dct.values()",
+          "dct.items()",
+          "dct.keys()",
+          "dct.list()"
+        ],
+        "answerIndex": 2,
+        "explanation": "keys() 메서드는 딕셔너리의 모든 키를 dict_keys 객체로 반환하며, list()로 감싸면 리스트로 변환됩니다. values()는 값을, items()는 키-값 튜플 쌍을 반환합니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-09-conditionals": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-09-conditionals-q0",
+        "prompt": "파이썬에서 조건이 참일 때만 코드 블록을 실행하는 키워드는 무엇인가요?",
+        "choices": [
+          "for",
+          "while",
+          "if",
+          "def"
+        ],
+        "answerIndex": 2,
+        "explanation": "'if' 키워드는 조건이 참(True)일 때 해당 코드 블록을 실행하는 조건문의 시작입니다."
+      },
+      {
+        "id": "python__control-and-functions__day-09-conditionals-q1",
+        "prompt": "다음 코드의 출력 결과는 무엇인가요?\n\na = -5\nif a > 0:\n    print('양수')\nelif a == 0:\n    print('영')\nelse:\n    print('음수')",
+        "choices": [
+          "양수",
+          "영",
+          "음수",
+          "오류 발생"
+        ],
+        "answerIndex": 2,
+        "explanation": "a = -5이므로 a > 0은 False, a == 0도 False이기 때문에 else 블록이 실행되어 '음수'가 출력됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-09-conditionals-q2",
+        "prompt": "Short Hand(삼항 연산자) 문법으로 올바른 것은 무엇인가요?",
+        "choices": [
+          "if a > 0 then print('양수') else print('음수')",
+          "print('양수') if a > 0 else print('음수')",
+          "print('양수') else print('음수') if a > 0",
+          "if (a > 0) ? print('양수') : print('음수')"
+        ],
+        "answerIndex": 1,
+        "explanation": "파이썬의 삼항 연산자(Short Hand) 문법은 '참일 때 실행할 코드 if 조건 else 거짓일 때 실행할 코드' 형태입니다."
+      },
+      {
+        "id": "python__control-and-functions__day-09-conditionals-q3",
+        "prompt": "다음 코드에서 'Access granted!'가 출력되는 조건은 무엇인가요?\n\nif user == 'admin' or access_level >= 4:\n    print('Access granted!')",
+        "choices": [
+          "user가 'admin'이고 access_level이 4 이상일 때만",
+          "user가 'admin'이거나 access_level이 4 이상일 때",
+          "user가 'admin'이 아니고 access_level이 4 미만일 때",
+          "위 조건 중 어느 것도 해당하지 않을 때"
+        ],
+        "answerIndex": 1,
+        "explanation": "or 연산자는 두 조건 중 하나라도 참이면 전체가 참입니다. 따라서 user가 'admin'이거나 access_level이 4 이상인 경우 'Access granted!'가 출력됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-09-conditionals-q4",
+        "prompt": "중첩 조건문(Nested Conditions)을 논리 연산자로 대체할 때 주로 사용하는 것은 무엇인가요?",
+        "choices": [
+          "not",
+          "or",
+          "and",
+          "xor"
+        ],
+        "answerIndex": 2,
+        "explanation": "중첩된 if 조건문은 and 연산자를 사용하여 두 조건을 하나의 if 문으로 합칠 수 있습니다. 예를 들어 'if a > 0: if a % 2 == 0:'은 'if a > 0 and a % 2 == 0:'으로 대체 가능합니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-10-loops": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-10-loops-q0",
+        "prompt": "다음 코드의 출력 결과로 올바른 것은?\n\ncount = 0\nwhile count < 5:\n    if count == 3:\n        count += 1\n        continue\n    print(count)\n    count += 1",
+        "choices": [
+          "0 1 2 3 4",
+          "0 1 2 4",
+          "0 1 2 3",
+          "1 2 4 5"
+        ],
+        "answerIndex": 1,
+        "explanation": "continue는 현재 반복을 건너뛰므로 count가 3일 때 print(count)가 실행되지 않고 다음 반복으로 넘어갑니다. 따라서 0, 1, 2, 4가 출력됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-10-loops-q1",
+        "prompt": "range(1, 10, 2)가 생성하는 시퀀스로 올바른 것은?",
+        "choices": [
+          "[1, 3, 5, 7, 9]",
+          "[1, 2, 4, 6, 8, 10]",
+          "[2, 4, 6, 8]",
+          "[1, 3, 5, 7, 9, 11]"
+        ],
+        "answerIndex": 0,
+        "explanation": "range(start, end, step)에서 start=1, end=10(미포함), step=2이므로 1부터 2씩 증가하여 10 미만까지 [1, 3, 5, 7, 9]가 생성됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-10-loops-q2",
+        "prompt": "파이썬에서 for 루프로 딕셔너리를 순회할 때 기본적으로 반환되는 값은?",
+        "choices": [
+          "딕셔너리의 값(value)",
+          "딕셔너리의 키-값 쌍(tuple)",
+          "딕셔너리의 키(key)",
+          "딕셔너리의 인덱스(index)"
+        ],
+        "answerIndex": 2,
+        "explanation": "파이썬에서 for 루프로 딕셔너리를 직접 순회하면 기본적으로 키(key)가 반환됩니다. 키와 값을 모두 얻으려면 .items() 메서드를 사용해야 합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-10-loops-q3",
+        "prompt": "break 문에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "현재 반복만 건너뛰고 루프를 계속 실행한다",
+          "루프 전체를 즉시 종료한다",
+          "루프의 else 블록을 실행시킨다",
+          "다음 루프 반복으로 강제 이동한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "break 문은 루프 전체를 즉시 종료합니다. 반면 continue는 현재 반복만 건너뛰고 루프를 계속 실행합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-10-loops-q4",
+        "prompt": "다음 중 for-else 구문에서 else 블록이 실행되는 조건은?",
+        "choices": [
+          "루프 내부에서 break가 실행되었을 때",
+          "루프가 정상적으로 완료되었을 때(break 없이)",
+          "루프의 조건이 처음부터 거짓일 때",
+          "루프 내부에서 continue가 실행되었을 때"
+        ],
+        "answerIndex": 1,
+        "explanation": "for-else에서 else 블록은 루프가 break 없이 정상적으로 모든 반복을 완료했을 때 실행됩니다. break로 루프가 중단되면 else 블록은 실행되지 않습니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-11-functions": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-11-functions-q0",
+        "prompt": "파이썬에서 함수를 선언할 때 사용하는 키워드는 무엇인가요?",
+        "choices": [
+          "func",
+          "define",
+          "def",
+          "fun"
+        ],
+        "answerIndex": 2,
+        "explanation": "파이썬에서는 'def' 키워드를 사용하여 함수를 선언합니다. 예: def function_name():"
+      },
+      {
+        "id": "python__control-and-functions__day-11-functions-q1",
+        "prompt": "함수에 return 문이 없을 경우 함수가 반환하는 값은 무엇인가요?",
+        "choices": [
+          "0",
+          "False",
+          "''(빈 문자열)",
+          "None"
+        ],
+        "answerIndex": 3,
+        "explanation": "파이썬에서 return 문이 없는 함수는 기본적으로 None을 반환합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-11-functions-q2",
+        "prompt": "다음 중 키워드 인수(keyword argument)로 함수를 호출하는 올바른 방법은?",
+        "choices": [
+          "print(add(3, 2))",
+          "print(add(num1=2, num2=3))",
+          "print(add[num1=2, num2=3])",
+          "print(add{num1:2, num2:3})"
+        ],
+        "answerIndex": 1,
+        "explanation": "키워드 인수는 'parameter_name=value' 형식으로 전달하며, 이 경우 인수의 순서가 바뀌어도 올바르게 동작합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-11-functions-q3",
+        "prompt": "다음 코드의 실행 결과는 무엇인가요?\n\ndef add_ten(num):\n    return num + 10\nprint(add_ten(5))",
+        "choices": [
+          "5",
+          "10",
+          "15",
+          "None"
+        ],
+        "answerIndex": 2,
+        "explanation": "add_ten(5)는 5 + 10을 계산하여 15를 반환하고, print()가 이를 출력합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-11-functions-q4",
+        "prompt": "임의 개수의 인수를 받을 수 있는 함수를 정의할 때 사용하는 문법은?",
+        "choices": [
+          "def func(**params)",
+          "def func(*args)",
+          "def func(args[])",
+          "def func(params...)"
+        ],
+        "answerIndex": 1,
+        "explanation": "*args 문법을 사용하면 함수가 임의 개수의 위치 인수를 튜플 형태로 받을 수 있습니다. **kwargs는 키워드 인수를 받을 때 사용합니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-12-modules": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-12-modules-q0",
+        "prompt": "파이썬에서 모듈(Module)에 대한 설명으로 가장 올바른 것은?",
+        "choices": [
+          "모듈은 반드시 함수만 포함해야 한다",
+          "모듈은 코드나 함수의 집합을 담은 .py 파일이다",
+          "모듈은 파이썬 내장 라이브러리에서만 존재한다",
+          "모듈을 사용하려면 반드시 인터넷 연결이 필요하다"
+        ],
+        "answerIndex": 1,
+        "explanation": "모듈은 변수, 함수, 클래스 등 다양한 코드를 담을 수 있는 .py 확장자의 파일입니다. 사용자가 직접 만들 수도 있고 내장 모듈을 사용할 수도 있습니다."
+      },
+      {
+        "id": "python__control-and-functions__day-12-modules-q1",
+        "prompt": "mymodule.py에 정의된 generate_full_name 함수를 fullname이라는 별칭으로 가져오는 올바른 코드는?",
+        "choices": [
+          "import mymodule as fullname",
+          "from mymodule import generate_full_name as fullname",
+          "import generate_full_name from mymodule as fullname",
+          "from mymodule import fullname = generate_full_name"
+        ],
+        "answerIndex": 1,
+        "explanation": "from 모듈명 import 함수명 as 별칭 구문을 사용하면 특정 함수를 원하는 이름(별칭)으로 가져올 수 있습니다."
+      },
+      {
+        "id": "python__control-and-functions__day-12-modules-q2",
+        "prompt": "os 모듈에서 현재 작업 디렉토리를 반환하는 함수는?",
+        "choices": [
+          "os.mkdir()",
+          "os.chdir()",
+          "os.getcwd()",
+          "os.rmdir()"
+        ],
+        "answerIndex": 2,
+        "explanation": "os.getcwd()는 'get current working directory'의 약자로, 현재 작업 중인 디렉토리 경로를 반환합니다. mkdir은 생성, chdir은 변경, rmdir은 삭제에 사용됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-12-modules-q3",
+        "prompt": "math 모듈을 사용할 때 math.ceil(9.81)의 결과값은?",
+        "choices": [
+          "9",
+          "9.81",
+          "10",
+          "10.0"
+        ],
+        "answerIndex": 2,
+        "explanation": "math.ceil()은 올림 함수로, 주어진 숫자보다 크거나 같은 가장 작은 정수를 반환합니다. 9.81을 올림하면 10이 됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-12-modules-q4",
+        "prompt": "sys.argv에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "sys.argv는 파이썬 버전 정보를 담은 문자열이다",
+          "sys.argv[0]은 명령줄에서 첫 번째로 전달한 인수이다",
+          "sys.argv는 명령줄 인수 목록을 반환하며, 인덱스 0은 스크립트 파일명이다",
+          "sys.argv를 사용하면 프로그램을 즉시 종료할 수 있다"
+        ],
+        "answerIndex": 2,
+        "explanation": "sys.argv는 명령줄 인수를 리스트로 반환합니다. 인덱스 0에는 항상 실행된 스크립트의 파일명이, 인덱스 1부터 사용자가 전달한 인수가 저장됩니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-13-list-comprehension": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-13-list-comprehension-q0",
+        "prompt": "다음 중 리스트 컴프리헨션의 올바른 기본 문법은 무엇인가요?",
+        "choices": [
+          "[expression if condition for i in iterable]",
+          "[expression for i in iterable if condition]",
+          "(expression for i in iterable if condition)",
+          "{expression for i in iterable if condition}"
+        ],
+        "answerIndex": 1,
+        "explanation": "리스트 컴프리헨션의 기본 문법은 [expression for i in iterable if condition]입니다. 대괄호 안에 표현식, for 절, 선택적 if 조건 순으로 작성합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-13-list-comprehension-q1",
+        "prompt": "다음 코드의 출력 결과로 올바른 것은 무엇인가요?\n squares = [i * i for i in range(6)]",
+        "choices": [
+          "[1, 4, 9, 16, 25]",
+          "[0, 1, 4, 9, 16, 25]",
+          "[0, 1, 2, 3, 4, 5]",
+          "[1, 2, 3, 4, 5, 6]"
+        ],
+        "answerIndex": 1,
+        "explanation": "range(6)은 0부터 5까지의 숫자를 생성합니다. 각 숫자를 제곱하면 0, 1, 4, 9, 16, 25가 되므로 정답은 [0, 1, 4, 9, 16, 25]입니다."
+      },
+      {
+        "id": "python__control-and-functions__day-13-list-comprehension-q2",
+        "prompt": "다음 코드의 실행 결과는 무엇인가요?\n add = lambda a, b: a + b\n print(add(3, 7))",
+        "choices": [
+          "37",
+          "lambda a, b: a + b",
+          "10",
+          "오류 발생"
+        ],
+        "answerIndex": 2,
+        "explanation": "lambda a, b: a + b는 두 인수를 더하는 람다 함수를 정의합니다. add(3, 7)을 호출하면 3 + 7 = 10을 반환합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-13-list-comprehension-q3",
+        "prompt": "아래 코드의 출력 결과로 올바른 것은 무엇인가요?\n even = [i for i in range(11) if i % 2 == 0]",
+        "choices": [
+          "[1, 3, 5, 7, 9]",
+          "[0, 2, 4, 6, 8, 10]",
+          "[2, 4, 6, 8, 10]",
+          "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+        ],
+        "answerIndex": 1,
+        "explanation": "range(11)은 0~10을 생성하고, i % 2 == 0 조건으로 짝수만 필터링합니다. 0도 짝수이므로 결과는 [0, 2, 4, 6, 8, 10]입니다."
+      },
+      {
+        "id": "python__control-and-functions__day-13-list-comprehension-q4",
+        "prompt": "다음 코드에서 cube의 값은 무엇인가요?\n def power(x):\n     return lambda n: x ** n\n cube = power(2)(3)",
+        "choices": [
+          "6",
+          "9",
+          "8",
+          "27"
+        ],
+        "answerIndex": 2,
+        "explanation": "power(2)는 lambda n: 2 ** n을 반환하고, 여기에 (3)을 적용하면 2 ** 3 = 8이 됩니다. 따라서 cube의 값은 8입니다."
+      }
+    ]
+  },
+  "python__control-and-functions__day-14-higher-order-functions": {
+    "questions": [
+      {
+        "id": "python__control-and-functions__day-14-higher-order-functions-q0",
+        "prompt": "다음 중 고차 함수(Higher Order Function)의 정의로 가장 올바른 것은?",
+        "choices": [
+          "반복문을 내부에서 사용하는 함수",
+          "다른 함수를 매개변수로 받거나 함수를 반환값으로 돌려주는 함수",
+          "재귀적으로 자기 자신을 호출하는 함수",
+          "클래스 내부에 정의된 메서드"
+        ],
+        "answerIndex": 1,
+        "explanation": "고차 함수는 함수를 매개변수로 받거나 함수를 반환값으로 반환하는 함수입니다. Python에서 함수는 일급 객체이기 때문에 이러한 동작이 가능합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-14-higher-order-functions-q1",
+        "prompt": "Python 클로저(Closure)에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "클래스의 생성자 메서드를 의미한다",
+          "외부 함수의 변수를 내부 중첩 함수가 참조하고, 내부 함수를 반환하는 구조이다",
+          "함수 실행 후 메모리에서 즉시 제거되는 함수이다",
+          "전역 변수만을 사용하는 함수이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "클로저는 중첩 함수가 외부 함수의 스코프에 있는 변수에 접근하고, 외부 함수가 내부 함수를 반환하는 패턴입니다. 반환된 내부 함수는 외부 함수의 변수를 기억합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-14-higher-order-functions-q2",
+        "prompt": "아래 코드에서 @uppercase_decorator를 사용하는 것과 동일한 효과를 내는 코드는?\n\n@uppercase_decorator\ndef greeting():\n    return 'Welcome to Python'",
+        "choices": [
+          "greeting = uppercase_decorator(greeting())",
+          "greeting = uppercase_decorator(greeting)",
+          "greeting() = uppercase_decorator(greeting)",
+          "uppercase_decorator = greeting(uppercase_decorator)"
+        ],
+        "answerIndex": 1,
+        "explanation": "@데코레이터 문법은 함수를 정의한 후 greeting = uppercase_decorator(greeting)과 동일하게 동작합니다. 함수 객체 자체를 데코레이터 함수의 인자로 전달합니다."
+      },
+      {
+        "id": "python__control-and-functions__day-14-higher-order-functions-q3",
+        "prompt": "여러 데코레이터를 하나의 함수에 적용할 때 실행 순서는?",
+        "choices": [
+          "위에서 아래 순서로 실행된다",
+          "아래에서 위 순서로 실행된다",
+          "동시에 병렬로 실행된다",
+          "알파벳 순서로 실행된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "여러 데코레이터가 쌓여 있을 때는 함수에 가장 가까운(아래쪽) 데코레이터부터 먼저 적용되고, 그 위의 데코레이터가 나중에 적용됩니다. 즉, 아래에서 위 순서로 실행됩니다."
+      },
+      {
+        "id": "python__control-and-functions__day-14-higher-order-functions-q4",
+        "prompt": "map() 함수에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "딕셔너리의 키-값 쌍을 정렬하는 함수이다",
+          "함수와 이터러블을 인자로 받아, 이터러블의 각 요소에 함수를 적용한 결과를 반환하는 함수이다",
+          "리스트에서 중복 요소를 제거하는 함수이다",
+          "두 리스트를 합쳐서 하나의 리스트로 만드는 함수이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "map() 함수는 함수(function)와 이터러블(iterable)을 매개변수로 받아, 이터러블의 각 원소에 해당 함수를 적용한 결과를 map 객체로 반환하는 내장 고차 함수입니다."
+      }
+    ]
+  },
+  "python__robust-python__day-15-python-type-errors": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-15-python-type-errors-q0",
+        "prompt": "다음 코드를 실행했을 때 발생하는 에러는 무엇인가요?\n\nprint 'hello world'",
+        "choices": [
+          "NameError",
+          "IndexError",
+          "SyntaxError",
+          "TypeError"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python 3에서 print는 함수이므로 괄호가 필요합니다. 괄호 없이 사용하면 문법 규칙을 위반한 것으로 SyntaxError가 발생합니다."
+      },
+      {
+        "id": "python__robust-python__day-15-python-type-errors-q1",
+        "prompt": "아래 코드에서 발생하는 에러의 종류는 무엇인가요?\n\nnumbers = [1, 2, 3]\nprint(numbers[5])",
+        "choices": [
+          "KeyError",
+          "IndexError",
+          "ValueError",
+          "AttributeError"
+        ],
+        "answerIndex": 1,
+        "explanation": "리스트 numbers의 유효한 인덱스는 0, 1, 2인데 존재하지 않는 인덱스 5에 접근하려 했으므로 IndexError(list index out of range)가 발생합니다."
+      },
+      {
+        "id": "python__robust-python__day-15-python-type-errors-q2",
+        "prompt": "다음 중 NameError가 발생하는 상황으로 올바른 것은?",
+        "choices": [
+          "리스트의 범위를 벗어난 인덱스에 접근할 때",
+          "선언되지 않은 변수를 사용하려고 할 때",
+          "모듈 이름을 잘못 입력하여 import할 때",
+          "0으로 숫자를 나누려고 할 때"
+        ],
+        "answerIndex": 1,
+        "explanation": "NameError는 코드에서 정의된 적 없는 변수나 이름을 참조하려 할 때 발생합니다. 변수를 먼저 선언하고 값을 할당해야 합니다."
+      },
+      {
+        "id": "python__robust-python__day-15-python-type-errors-q3",
+        "prompt": "import math 후 math.PI를 호출했을 때 발생하는 에러는 무엇인가요?",
+        "choices": [
+          "ModuleNotFoundError",
+          "ImportError",
+          "AttributeError",
+          "NameError"
+        ],
+        "answerIndex": 2,
+        "explanation": "math 모듈에는 'PI'라는 속성이 존재하지 않고 소문자 'pi'가 올바른 속성명입니다. 존재하지 않는 속성에 접근할 때 AttributeError가 발생합니다."
+      },
+      {
+        "id": "python__robust-python__day-15-python-type-errors-q4",
+        "prompt": "다음 중 ZeroDivisionError가 발생하는 코드는 무엇인가요?",
+        "choices": [
+          "int('abc')",
+          "10 / 0",
+          "numbers[10]",
+          "print(undefined_var)"
+        ],
+        "answerIndex": 1,
+        "explanation": "ZeroDivisionError는 어떤 숫자를 0으로 나누려 할 때 발생합니다. 10 / 0은 수학적으로 정의되지 않으므로 Python이 이 에러를 발생시킵니다."
+      }
+    ]
+  },
+  "python__robust-python__day-16-python-date-time": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-16-python-date-time-q0",
+        "prompt": "Python에서 현재 날짜와 시간을 가져오는 올바른 코드는 무엇인가요?",
+        "choices": [
+          "from datetime import datetime; now = datetime.now()",
+          "import datetime; now = datetime.current()",
+          "from datetime import date; now = date.now()",
+          "import datetime; now = datetime.today()"
+        ],
+        "answerIndex": 0,
+        "explanation": "datetime 모듈에서 datetime 클래스를 import한 뒤 datetime.now()를 호출하면 현재 날짜와 시간을 담은 객체를 반환합니다. datetime.current()나 date.now()는 존재하지 않는 메서드입니다."
+      },
+      {
+        "id": "python__robust-python__day-16-python-date-time-q1",
+        "prompt": "strftime 메서드에 대한 설명으로 올바른 것은 무엇인가요?",
+        "choices": [
+          "문자열을 datetime 객체로 변환한다",
+          "datetime 객체를 원하는 형식의 문자열로 변환한다",
+          "두 날짜 사이의 차이를 계산한다",
+          "날짜에서 연도만 추출한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "strftime(string format time)은 datetime 객체를 지정한 포맷 코드(%Y, %m, %d 등)에 따라 문자열로 변환하는 메서드입니다. 반대로 문자열을 datetime으로 변환하는 것은 strptime입니다."
+      },
+      {
+        "id": "python__robust-python__day-16-python-date-time-q2",
+        "prompt": "다음 코드의 출력 결과로 올바른 것은 무엇인가요?\n\nfrom datetime import datetime\ndate_object = datetime.strptime(\"5 December, 2019\", \"%d %B, %Y\")\nprint(date_object)",
+        "choices": [
+          "5 December, 2019",
+          "05-12-2019 00:00:00",
+          "2019-12-05 00:00:00",
+          "2019/05/12 00:00:00"
+        ],
+        "answerIndex": 2,
+        "explanation": "strptime은 주어진 형식 문자열에 따라 파싱한 뒤 datetime 객체를 반환하며, 기본 출력 형식은 'YYYY-MM-DD HH:MM:SS'입니다. 따라서 2019-12-05 00:00:00이 출력됩니다."
+      },
+      {
+        "id": "python__robust-python__day-16-python-date-time-q3",
+        "prompt": "timedelta 객체의 주된 용도는 무엇인가요?",
+        "choices": [
+          "날짜를 특정 문자열 형식으로 포맷하기",
+          "현재 시간의 타임스탬프 값을 구하기",
+          "두 시점 간의 시간 차이를 표현하거나 날짜 연산을 수행하기",
+          "문자열을 datetime 객체로 파싱하기"
+        ],
+        "answerIndex": 2,
+        "explanation": "timedelta는 두 날짜/시간 객체 간의 차이를 나타내거나, 특정 날짜에 일정 기간을 더하거나 빼는 날짜 연산에 사용됩니다. weeks, days, hours, seconds 등의 인수를 받을 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-16-python-date-time-q4",
+        "prompt": "Unix 타임스탬프(timestamp)란 무엇인가요?",
+        "choices": [
+          "1900년 1월 1일부터 현재까지의 일(day) 수",
+          "1970년 1월 1일 UTC부터 현재까지 경과한 초(second) 수",
+          "현재 시각을 '%H:%M:%S' 형식으로 나타낸 문자열",
+          "Python이 내부적으로 날짜를 저장하는 정수 인덱스"
+        ],
+        "answerIndex": 1,
+        "explanation": "Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC를 기준으로 경과한 초(second)의 수를 나타냅니다. Python에서는 datetime 객체의 .timestamp() 메서드를 통해 얻을 수 있습니다."
+      }
+    ]
+  },
+  "python__robust-python__day-17-exception-handling": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-17-exception-handling-q0",
+        "prompt": "다음 중 try-except 구문에서 예외 발생 여부와 관계없이 항상 실행되는 블록은 무엇인가요?",
+        "choices": [
+          "try",
+          "except",
+          "else",
+          "finally"
+        ],
+        "answerIndex": 3,
+        "explanation": "finally 블록은 예외가 발생하든 발생하지 않든 항상 실행됩니다. else 블록은 예외가 발생하지 않았을 때만 실행됩니다."
+      },
+      {
+        "id": "python__robust-python__day-17-exception-handling-q1",
+        "prompt": "다음 코드에서 출력되는 결과는 무엇인가요?\n\nlst = [1, 2, 3, 4, 5]\nprint(sum_of_five_nums(*lst))",
+        "choices": [
+          "TypeError가 발생한다",
+          "[1, 2, 3, 4, 5]",
+          "15",
+          "(1, 2, 3, 4, 5)"
+        ],
+        "answerIndex": 2,
+        "explanation": "* 연산자를 사용하면 리스트를 언패킹하여 개별 인수로 전달합니다. 따라서 1+2+3+4+5=15가 반환됩니다."
+      },
+      {
+        "id": "python__robust-python__day-17-exception-handling-q2",
+        "prompt": "함수 정의에서 **kwargs를 사용하는 주된 목적은 무엇인가요?",
+        "choices": [
+          "리스트를 함수 인수로 언패킹하기 위해",
+          "임의 개수의 키워드 인수를 딕셔너리로 패킹하기 위해",
+          "튜플을 반환하기 위해",
+          "변수를 전역으로 선언하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "**kwargs는 함수 호출 시 전달된 임의 개수의 키워드 인수를 딕셔너리 형태로 패킹하여 받을 수 있게 해줍니다."
+      },
+      {
+        "id": "python__robust-python__day-17-exception-handling-q3",
+        "prompt": "다음 코드에서 except 블록이 실행되지 않을 때 출력되는 메시지로 올바른 것은?\n\ntry:\n    age = 2019 - int('1920')\nexcept TypeError:\n    print('Type error')\nelse:\n    print('else 블록 실행')\nfinally:\n    print('finally 블록 실행')",
+        "choices": [
+          "Type error",
+          "else 블록 실행 (finally 블록 실행은 출력 안 됨)",
+          "else 블록 실행\nfinally 블록 실행",
+          "finally 블록 실행만 출력됨"
+        ],
+        "answerIndex": 2,
+        "explanation": "int('1920')은 정상적으로 변환되므로 예외가 발생하지 않아 else 블록이 실행되고, finally 블록은 항상 실행되므로 두 메시지가 모두 출력됩니다."
+      },
+      {
+        "id": "python__robust-python__day-17-exception-handling-q4",
+        "prompt": "다음 언패킹 코드의 결과로 올바른 것은?\n\nnumbers = [1, 2, 3, 4, 5, 6, 7]\none, *middle, last = numbers\nprint(one, middle, last)",
+        "choices": [
+          "1 [2, 3, 4, 5, 6] 7",
+          "1 (2, 3, 4, 5, 6) 7",
+          "[1] [2, 3, 4, 5, 6] [7]",
+          "1 2 3 4 5 6 7"
+        ],
+        "answerIndex": 0,
+        "explanation": "*middle은 첫 번째와 마지막 요소를 제외한 나머지를 리스트로 받습니다. 따라서 one=1, middle=[2,3,4,5,6], last=7이 됩니다."
+      }
+    ]
+  },
+  "python__robust-python__day-18-regular-expressions": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-18-regular-expressions-q0",
+        "prompt": "re.match()와 re.search()의 차이점으로 올바른 것은?",
+        "choices": [
+          "match()는 문자열 전체를 검색하고 search()는 시작 부분만 검색한다",
+          "match()는 문자열의 시작 부분에서만 패턴을 찾고 search()는 문자열 전체에서 패턴을 찾는다",
+          "match()는 모든 일치 항목을 리스트로 반환하고 search()는 첫 번째 일치 항목만 반환한다",
+          "match()와 search()는 동일한 기능을 한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "re.match()는 문자열의 맨 첫 부분부터 패턴이 일치하는지 확인하고, re.search()는 문자열 전체를 탐색하여 패턴이 존재하는지 확인합니다. 패턴이 문자열 중간에 있을 경우 match()는 None을 반환하지만 search()는 일치 객체를 반환합니다."
+      },
+      {
+        "id": "python__robust-python__day-18-regular-expressions-q1",
+        "prompt": "re.findall('python', txt, re.I)를 실행했을 때 txt에 'Python'과 'python'이 하나씩 있다면 반환되는 결과는?",
+        "choices": [
+          "['python']",
+          "['Python']",
+          "['Python', 'python']",
+          "None"
+        ],
+        "answerIndex": 2,
+        "explanation": "re.I 플래그는 대소문자를 구분하지 않도록 하므로 'Python'과 'python' 모두 패턴에 매칭됩니다. re.findall()은 매칭된 모든 항목을 리스트로 반환하므로 ['Python', 'python']이 반환됩니다."
+      },
+      {
+        "id": "python__robust-python__day-18-regular-expressions-q2",
+        "prompt": "문자열에서 패턴에 해당하는 부분을 다른 문자열로 교체할 때 사용하는 re 모듈의 메서드는?",
+        "choices": [
+          "re.search()",
+          "re.split()",
+          "re.sub()",
+          "re.match()"
+        ],
+        "answerIndex": 2,
+        "explanation": "re.sub()는 문자열 내에서 지정한 패턴과 일치하는 부분을 새로운 문자열로 치환(substitute)하는 함수입니다. 예를 들어 re.sub('Python|python', 'JavaScript', txt)는 텍스트 내 모든 Python/python을 JavaScript로 바꿉니다."
+      },
+      {
+        "id": "python__robust-python__day-18-regular-expressions-q3",
+        "prompt": "정규표현식 패턴 '[Pp]ython'이 매칭할 수 있는 문자열은?",
+        "choices": [
+          "PYTHON과 python",
+          "Python과 python",
+          "pPython과 Ppython",
+          "python만"
+        ],
+        "answerIndex": 1,
+        "explanation": "대괄호 []는 괄호 안의 문자 중 하나와 일치함을 의미합니다. [Pp]는 'P' 또는 'p' 중 하나와 매칭되므로, [Pp]ython은 'Python' 또는 'python'과 일치합니다."
+      },
+      {
+        "id": "python__robust-python__day-18-regular-expressions-q4",
+        "prompt": "re.split()의 기능에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "문자열에서 패턴을 찾아 삭제한다",
+          "패턴을 기준으로 문자열을 나누어 리스트로 반환한다",
+          "패턴과 일치하는 첫 번째 항목만 반환한다",
+          "패턴을 다른 문자열로 대체한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "re.split()은 주어진 패턴이 나타나는 위치를 기준으로 문자열을 분리하여 리스트 형태로 반환합니다. 이는 Python 내장 str.split()과 유사하지만 정규표현식 패턴을 구분자로 사용할 수 있다는 점이 다릅니다."
+      }
+    ]
+  },
+  "python__robust-python__day-19-file-handling": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-19-file-handling-q0",
+        "prompt": "파이썬에서 파일을 열 때 기존 내용을 유지하면서 새 내용을 파일 끝에 추가하려면 어떤 모드를 사용해야 하나요?",
+        "choices": [
+          "r",
+          "w",
+          "a",
+          "x"
+        ],
+        "answerIndex": 2,
+        "explanation": "'a'(append) 모드는 파일의 기존 내용을 보존하면서 끝에 새 내용을 추가합니다. 'w' 모드는 기존 내용을 덮어씁니다."
+      },
+      {
+        "id": "python__robust-python__day-19-file-handling-q1",
+        "prompt": "open() 함수로 파일을 열었을 때 파일의 모든 줄을 리스트 형태로 반환하는 메서드는 무엇인가요?",
+        "choices": [
+          "read()",
+          "readline()",
+          "readlines()",
+          "splitread()"
+        ],
+        "answerIndex": 2,
+        "explanation": "readlines()는 파일의 모든 줄을 읽어 각 줄을 요소로 갖는 리스트를 반환합니다. read()는 전체 내용을 문자열로, readline()은 한 줄만 반환합니다."
+      },
+      {
+        "id": "python__robust-python__day-19-file-handling-q2",
+        "prompt": "with 문을 사용하여 파일을 여는 주요 장점은 무엇인가요?",
+        "choices": [
+          "파일을 더 빠르게 읽을 수 있다",
+          "블록이 끝나면 파일이 자동으로 닫힌다",
+          "파일을 이진 모드로만 열 수 있다",
+          "파일 쓰기 속도가 향상된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "with 문(컨텍스트 매니저)을 사용하면 블록이 끝날 때 자동으로 파일을 닫아주므로 close()를 명시적으로 호출하지 않아도 되어 실수를 방지할 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-19-file-handling-q3",
+        "prompt": "파이썬에서 파일을 삭제할 때 사용하는 모듈과 함수의 올바른 조합은 무엇인가요?",
+        "choices": [
+          "sys 모듈의 sys.delete()",
+          "os 모듈의 os.remove()",
+          "file 모듈의 file.delete()",
+          "io 모듈의 io.remove()"
+        ],
+        "answerIndex": 1,
+        "explanation": "파일 삭제는 os 모듈의 os.remove() 함수를 사용합니다. 파일이 존재하지 않으면 오류가 발생하므로 os.path.exists()로 존재 여부를 먼저 확인하는 것이 좋습니다."
+      },
+      {
+        "id": "python__robust-python__day-19-file-handling-q4",
+        "prompt": "open() 함수에서 'x' 모드의 동작으로 올바른 것은 무엇인가요?",
+        "choices": [
+          "기존 파일을 읽기 전용으로 열고 수정을 금지한다",
+          "파일이 존재하면 덮어쓰고 없으면 새로 생성한다",
+          "새 파일을 생성하되 파일이 이미 존재하면 오류를 반환한다",
+          "파일을 이진(binary) 모드로 연다"
+        ],
+        "answerIndex": 2,
+        "explanation": "'x' 모드는 새 파일을 생성하는 모드로, 지정한 파일이 이미 존재할 경우 오류(FileExistsError)를 발생시킵니다. 이는 'w' 모드가 기존 파일을 덮어쓰는 것과 다릅니다."
+      }
+    ]
+  },
+  "python__robust-python__day-20-python-package-manager": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-20-python-package-manager-q0",
+        "prompt": "PIP의 풀네임(Full Name)으로 올바른 것은 무엇인가요?",
+        "choices": [
+          "Python Install Program",
+          "Preferred Installer Program",
+          "Python Index Package",
+          "Package Install Platform"
+        ],
+        "answerIndex": 1,
+        "explanation": "PIP는 'Preferred Installer Program'의 약자로, Python 패키지를 설치하는 데 사용되는 공식 패키지 관리자입니다."
+      },
+      {
+        "id": "python__robust-python__day-20-python-package-manager-q1",
+        "prompt": "설치된 모든 Python 패키지 목록을 확인하는 올바른 명령어는 무엇인가요?",
+        "choices": [
+          "pip show",
+          "pip freeze",
+          "pip list",
+          "pip info"
+        ],
+        "answerIndex": 2,
+        "explanation": "'pip list' 명령어를 사용하면 현재 환경에 설치된 모든 Python 패키지의 목록을 확인할 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-20-python-package-manager-q2",
+        "prompt": "requirements.txt 파일을 생성하기에 가장 적합한 pip 명령어는 무엇인가요?",
+        "choices": [
+          "pip list > requirements.txt",
+          "pip show > requirements.txt",
+          "pip freeze > requirements.txt",
+          "pip export > requirements.txt"
+        ],
+        "answerIndex": 2,
+        "explanation": "'pip freeze'는 설치된 패키지와 버전을 requirements 파일 형식으로 출력하므로, 리다이렉션(>)을 이용해 requirements.txt 파일을 손쉽게 생성할 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-20-python-package-manager-q3",
+        "prompt": "특정 패키지를 제거하는 올바른 pip 명령어는 무엇인가요?",
+        "choices": [
+          "pip delete packagename",
+          "pip remove packagename",
+          "pip uninstall packagename",
+          "pip drop packagename"
+        ],
+        "answerIndex": 2,
+        "explanation": "'pip uninstall packagename' 명령어를 사용하면 설치된 패키지를 제거할 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-20-python-package-manager-q4",
+        "prompt": "다음 중 Python에 기본으로 내장되어 있어 별도 설치 없이 바로 import하여 사용할 수 있는 모듈은 무엇인가요?",
+        "choices": [
+          "numpy",
+          "pandas",
+          "webbrowser",
+          "scikit-learn"
+        ],
+        "answerIndex": 2,
+        "explanation": "'webbrowser' 모듈은 Python 표준 라이브러리에 포함되어 있어 pip로 별도 설치하지 않아도 바로 import하여 사용할 수 있습니다. numpy, pandas, scikit-learn은 외부 패키지로 pip install이 필요합니다."
+      }
+    ]
+  },
+  "python__robust-python__day-21-classes-and-objects": {
+    "questions": [
+      {
+        "id": "python__robust-python__day-21-classes-and-objects-q0",
+        "prompt": "Python에서 클래스를 정의할 때 사용하는 키워드와 올바른 네이밍 규칙은 무엇인가요?",
+        "choices": [
+          "def 키워드를 사용하며 snake_case로 작성한다",
+          "class 키워드를 사용하며 CamelCase로 작성한다",
+          "Class 키워드를 사용하며 UPPERCASE로 작성한다",
+          "object 키워드를 사용하며 lowercase로 작성한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Python에서 클래스는 'class' 키워드로 정의하며, 클래스 이름은 CamelCase(각 단어의 첫 글자를 대문자로) 규칙을 따릅니다. 예: class Person:"
+      },
+      {
+        "id": "python__robust-python__day-21-classes-and-objects-q1",
+        "prompt": "__init__ 메서드에서 'self' 매개변수가 의미하는 것은 무엇인가요?",
+        "choices": [
+          "클래스 자체를 가리키는 정적 참조이다",
+          "현재 클래스의 인스턴스(객체) 자신을 참조한다",
+          "부모 클래스를 참조하는 키워드이다",
+          "메서드의 반환값을 저장하는 변수이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "'self'는 현재 생성된 인스턴스(객체) 자신을 참조하는 매개변수입니다. self를 통해 인스턴스의 속성에 접근하거나 값을 설정할 수 있습니다."
+      },
+      {
+        "id": "python__robust-python__day-21-classes-and-objects-q2",
+        "prompt": "다음 중 객체의 기본값(default value)을 설정하는 올바른 방법은 무엇인가요?",
+        "choices": [
+          "__init__ 메서드 바깥에서 전역 변수로 선언한다",
+          "__init__ 생성자 매개변수에 기본값을 직접 지정한다",
+          "별도의 default() 메서드를 만들어 호출한다",
+          "클래스 이름 옆에 괄호로 기본값을 지정한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "__init__(self, name='홍길동') 처럼 생성자 매개변수에 기본값을 직접 지정하면, 객체 생성 시 해당 인자를 전달하지 않아도 오류 없이 기본값이 사용됩니다."
+      },
+      {
+        "id": "python__robust-python__day-21-classes-and-objects-q3",
+        "prompt": "Python에서 상속(Inheritance)을 구현하는 올바른 문법은 무엇인가요?",
+        "choices": [
+          "class Student extends Person:",
+          "class Student inherits Person:",
+          "class Student(Person):",
+          "class Student -> Person:"
+        ],
+        "answerIndex": 2,
+        "explanation": "Python에서 상속은 자식 클래스 이름 옆 괄호 안에 부모 클래스를 명시하는 방식으로 구현합니다. 예: class Student(Person):"
+      },
+      {
+        "id": "python__robust-python__day-21-classes-and-objects-q4",
+        "prompt": "메서드 오버라이딩(Method Overriding)에 대한 설명으로 옳은 것은 무엇인가요?",
+        "choices": [
+          "부모 클래스의 메서드를 완전히 삭제하는 것이다",
+          "자식 클래스에서 부모 클래스와 동일한 이름의 메서드를 재정의하는 것이다",
+          "새로운 메서드를 자식 클래스에만 추가하는 것이다",
+          "부모 클래스의 __init__을 자식 클래스에서 호출하지 않는 것이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "메서드 오버라이딩은 자식 클래스에서 부모 클래스에 이미 존재하는 메서드와 동일한 이름으로 메서드를 재정의하는 것입니다. 이를 통해 자식 클래스에 맞는 동작으로 변경할 수 있습니다."
+      }
+    ]
+  },
+  "python__applied-python__day-22-web-scraping": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-22-web-scraping-q0",
+        "prompt": "웹 스크래핑 시 requests.get(url)의 반환값에서 HTTP 요청 성공을 나타내는 status_code 값은 무엇인가요?",
+        "choices": [
+          "100",
+          "200",
+          "404",
+          "500"
+        ],
+        "answerIndex": 1,
+        "explanation": "HTTP 상태 코드 200은 요청이 성공적으로 처리되었음을 의미합니다. 404는 페이지를 찾을 수 없음, 500은 서버 오류를 나타냅니다."
+      },
+      {
+        "id": "python__applied-python__day-22-web-scraping-q1",
+        "prompt": "BeautifulSoup 객체를 생성할 때 올바른 코드는 무엇인가요?",
+        "choices": [
+          "soup = BeautifulSoup(url, 'html.parser')",
+          "soup = BeautifulSoup(response.status_code, 'html.parser')",
+          "soup = BeautifulSoup(response.content, 'html.parser')",
+          "soup = BeautifulSoup(response.text, 'requests')"
+        ],
+        "answerIndex": 2,
+        "explanation": "BeautifulSoup은 첫 번째 인자로 웹 페이지의 실제 콘텐츠(response.content)를, 두 번째 인자로 파서 종류('html.parser')를 받아 HTML을 파싱합니다."
+      },
+      {
+        "id": "python__applied-python__day-22-web-scraping-q2",
+        "prompt": "BeautifulSoup에서 특정 속성 값을 가진 모든 태그를 찾을 때 사용하는 메서드는?",
+        "choices": [
+          "soup.get()",
+          "soup.select()",
+          "soup.find_all()",
+          "soup.extract()"
+        ],
+        "answerIndex": 2,
+        "explanation": "find_all() 메서드는 조건에 맞는 모든 태그를 리스트로 반환합니다. 예: soup.find_all('table', {'cellpadding':'3'})처럼 태그명과 속성을 함께 지정할 수 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-22-web-scraping-q3",
+        "prompt": "다음 중 웹 스크래핑을 위해 필요한 라이브러리 설치 명령어로 올바른 것은?",
+        "choices": [
+          "pip install scraper beautifulsoup",
+          "pip install requests beautifulsoup4",
+          "pip install urllib beautifulsoup3",
+          "pip install httplib beautifulsoup4"
+        ],
+        "answerIndex": 1,
+        "explanation": "웹 스크래핑에는 HTTP 요청을 위한 requests와 HTML 파싱을 위한 beautifulsoup4가 필요합니다. 각각 'pip install requests'와 'pip install beautifulsoup4'로 설치합니다."
+      },
+      {
+        "id": "python__applied-python__day-22-web-scraping-q4",
+        "prompt": "soup.title.get_text()의 역할로 올바른 것은?",
+        "choices": [
+          "웹 페이지의 모든 텍스트를 반환한다",
+          "<title> 태그 안의 순수 텍스트 내용을 반환한다",
+          "페이지의 HTML 전체를 문자열로 반환한다",
+          "title 속성을 가진 모든 태그를 찾아 반환한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "soup.title은 HTML의 <title> 태그 객체를 선택하고, .get_text()는 해당 태그 내부의 HTML 마크업을 제외한 순수 텍스트만 추출하여 반환합니다."
+      }
+    ]
+  },
+  "python__applied-python__day-23-virtual-environment": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-23-virtual-environment-q0",
+        "prompt": "가상 환경을 사용하는 가장 큰 이유는 무엇인가요?",
+        "choices": [
+          "Python 실행 속도를 높이기 위해",
+          "프로젝트 간 패키지 의존성 충돌을 방지하기 위해",
+          "인터넷 없이 패키지를 사용하기 위해",
+          "운영체제를 가상화하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "가상 환경은 프로젝트마다 독립된 패키지 환경을 제공하여, 서로 다른 프로젝트 간에 패키지 버전 충돌이 발생하지 않도록 합니다."
+      },
+      {
+        "id": "python__applied-python__day-23-virtual-environment-q1",
+        "prompt": "Mac/Linux 환경에서 가상 환경을 활성화하는 올바른 명령어는 무엇인가요?",
+        "choices": [
+          "venv\\Scripts\\activate",
+          "source venv/bin/activate",
+          "python -m venv activate",
+          "pip activate venv"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mac/Linux에서는 'source venv/bin/activate' 명령어로 가상 환경을 활성화합니다. Windows의 경우 'venv\\Scripts\\activate'를 사용합니다."
+      },
+      {
+        "id": "python__applied-python__day-23-virtual-environment-q2",
+        "prompt": "현재 가상 환경에 설치된 패키지 목록을 확인하려면 어떤 명령어를 사용해야 하나요?",
+        "choices": [
+          "pip list --all",
+          "pip show packages",
+          "pip freeze",
+          "pip check"
+        ],
+        "answerIndex": 2,
+        "explanation": "'pip freeze' 명령어는 현재 환경에 설치된 모든 패키지와 버전을 목록으로 출력합니다. 가상 환경이 활성화된 상태에서 실행하면 해당 환경의 패키지만 표시됩니다."
+      },
+      {
+        "id": "python__applied-python__day-23-virtual-environment-q3",
+        "prompt": "가상 환경 사용이 끝난 후 비활성화하는 명령어는 무엇인가요?",
+        "choices": [
+          "exit",
+          "venv stop",
+          "deactivate",
+          "source venv/bin/deactivate"
+        ],
+        "answerIndex": 2,
+        "explanation": "'deactivate' 명령어를 사용하면 현재 활성화된 가상 환경을 종료하고 기본 시스템 Python 환경으로 돌아갑니다."
+      },
+      {
+        "id": "python__applied-python__day-23-virtual-environment-q4",
+        "prompt": "venv 폴더를 .gitignore에 추가하는 이유는 무엇인가요?",
+        "choices": [
+          "venv 폴더가 너무 커서 프로젝트 속도를 늦추기 때문에",
+          "가상 환경 폴더는 각자 로컬에서 생성해야 하므로 GitHub에 올릴 필요가 없기 때문에",
+          "GitHub가 venv 폴더를 지원하지 않기 때문에",
+          "venv 폴더 안에 개인 정보가 포함되어 있기 때문에"
+        ],
+        "answerIndex": 1,
+        "explanation": "가상 환경 폴더(venv)는 용량이 크고 각 개발자가 로컬에서 직접 생성할 수 있으므로, GitHub 저장소에 포함시키지 않는 것이 일반적인 관행입니다."
+      }
+    ]
+  },
+  "python__applied-python__day-24-statistics": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-24-statistics-q0",
+        "prompt": "Python의 statistics 모듈에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "NumPy나 SciPy와 경쟁하는 전문 통계 패키지이다",
+          "수치 데이터의 수학적 통계를 계산하는 함수를 제공한다",
+          "머신러닝 알고리즘을 직접 구현하기 위한 모듈이다",
+          "그래픽 처리와 이미지 분석에 특화된 모듈이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Python의 statistics 모듈은 수치 데이터의 수학적 통계를 계산하는 함수를 제공하며, 그래핑 계산기나 과학용 계산기 수준을 목표로 합니다. NumPy나 SciPy의 경쟁 상대가 아닙니다."
+      },
+      {
+        "id": "python__applied-python__day-24-statistics-q1",
+        "prompt": "다음 코드의 실행 결과로 올바른 것은?\nnumpy_bool_array = np.array([0, 1, -1, 0, 0], dtype=bool)",
+        "choices": [
+          "array([0, 1, -1, 0, 0])",
+          "array([True, True, True, True, True])",
+          "array([False, True, True, False, False])",
+          "array([False, True, False, False, False])"
+        ],
+        "answerIndex": 2,
+        "explanation": "bool 타입으로 변환 시 0은 False, 0이 아닌 값(1, -1 등)은 모두 True가 됩니다. 따라서 [0, 1, -1, 0, 0]은 [False, True, True, False, False]가 됩니다."
+      },
+      {
+        "id": "python__applied-python__day-24-statistics-q2",
+        "prompt": "NumPy 배열의 shape 속성이 (3, 4)를 반환할 때, 이 배열에 대한 설명으로 옳은 것은?",
+        "choices": [
+          "1차원 배열이며 원소가 7개이다",
+          "3행 4열의 2차원 배열이다",
+          "4행 3열의 2차원 배열이다",
+          "3차원 배열이며 총 12개의 차원을 가진다"
+        ],
+        "answerIndex": 1,
+        "explanation": "shape 속성은 (행, 열) 순서로 튜플을 반환합니다. (3, 4)는 3행 4열의 2차원 배열을 의미합니다."
+      },
+      {
+        "id": "python__applied-python__day-24-statistics-q3",
+        "prompt": "NumPy 배열을 다시 Python 리스트로 변환할 때 사용하는 메서드는?",
+        "choices": [
+          "to_list()",
+          "aslist()",
+          "tolist()",
+          "convert_list()"
+        ],
+        "answerIndex": 2,
+        "explanation": "NumPy 배열을 Python 리스트로 변환하려면 .tolist() 메서드를 사용합니다. 예: numpy_array.tolist()"
+      },
+      {
+        "id": "python__applied-python__day-24-statistics-q4",
+        "prompt": "np.array(python_list, dtype=float)와 같이 dtype=float을 지정했을 때 [1,2,3,4,5] 리스트의 변환 결과는?",
+        "choices": [
+          "array([1, 2, 3, 4, 5])",
+          "array([1.0, 2.0, 3.0, 4.0, 5.0])",
+          "array(['1', '2', '3', '4', '5'])",
+          "array([True, True, True, True, True])"
+        ],
+        "answerIndex": 1,
+        "explanation": "dtype=float을 지정하면 정수 리스트의 각 원소가 부동소수점 실수로 변환되어 [1., 2., 3., 4., 5.]와 같이 출력됩니다."
+      }
+    ]
+  },
+  "python__applied-python__day-25-pandas": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-25-pandas-q0",
+        "prompt": "Pandas에서 Series에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "행과 열로 구성된 2차원 테이블 자료구조이다",
+          "1차원 배열 형태의 자료구조로 하나의 열(column)에 해당한다",
+          "딕셔너리만을 입력으로 받아 생성할 수 있다",
+          "반드시 숫자형 데이터만 저장할 수 있다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pandas Series는 1차원 배열 형태의 자료구조로, DataFrame의 하나의 열(column)에 해당합니다. 리스트, 딕셔너리, numpy 배열 등 다양한 입력으로 생성할 수 있으며 숫자뿐 아니라 문자열 등 다양한 타입을 저장할 수 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-25-pandas-q1",
+        "prompt": "다음 코드의 실행 결과로 올바른 것은?\n\ns = pd.Series(10, index=[1, 2, 3])\nprint(s)",
+        "choices": [
+          "인덱스 1, 2, 3에 각각 1, 2, 3이 저장된 Series가 출력된다",
+          "인덱스 1, 2, 3에 모두 10이 저장된 상수 Series가 출력된다",
+          "오류가 발생한다",
+          "인덱스 0, 1, 2에 10이 저장된 Series가 출력된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "pd.Series(상수값, index=[...])로 생성하면 지정한 모든 인덱스에 동일한 상수값이 할당된 상수 Series가 만들어집니다. 따라서 인덱스 1, 2, 3 모두에 10이 저장됩니다."
+      },
+      {
+        "id": "python__applied-python__day-25-pandas-q2",
+        "prompt": "딕셔너리를 이용해 Pandas Series를 생성할 때, 딕셔너리의 키(key)는 Series에서 무엇이 되는가?",
+        "choices": [
+          "값(value)",
+          "데이터 타입(dtype)",
+          "인덱스(index)",
+          "열 이름(column name)"
+        ],
+        "answerIndex": 2,
+        "explanation": "딕셔너리로 Series를 생성하면 딕셔너리의 키(key)가 Series의 인덱스(index)가 되고, 딕셔너리의 값(value)이 Series의 데이터 값이 됩니다."
+      },
+      {
+        "id": "python__applied-python__day-25-pandas-q3",
+        "prompt": "Pandas DataFrame을 생성하는 방법으로 올바르지 않은 것은?",
+        "choices": [
+          "리스트의 리스트(list of lists)로 생성",
+          "딕셔너리(dictionary)로 생성",
+          "딕셔너리의 리스트(list of dictionaries)로 생성",
+          "단순 정수(int) 하나로 직접 생성"
+        ],
+        "answerIndex": 3,
+        "explanation": "DataFrame은 리스트의 리스트, 딕셔너리, 딕셔너리의 리스트, CSV 파일 등 다양한 방법으로 생성할 수 있지만, 단순 정수 하나만으로는 DataFrame을 직접 생성할 수 없습니다. (단, Series는 상수값으로 생성 가능합니다.)"
+      },
+      {
+        "id": "python__applied-python__day-25-pandas-q4",
+        "prompt": "불리언 인덱싱(Boolean Indexing)의 주요 목적은 무엇인가?",
+        "choices": [
+          "DataFrame의 열 이름을 변경하기 위해",
+          "특정 조건을 만족하는 행(row)의 데이터를 필터링하기 위해",
+          "DataFrame을 CSV 파일로 저장하기 위해",
+          "Series의 데이터 타입을 변환하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "불리언 인덱싱은 조건식을 통해 True/False 배열을 생성하고, 해당 조건을 만족하는(True인) 행만 선택하여 데이터를 필터링하는 데 사용됩니다."
+      }
+    ]
+  },
+  "python__applied-python__day-26-python-web": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-26-python-web-q0",
+        "prompt": "Flask에서 특정 URL 경로에 함수를 연결할 때 사용하는 것은 무엇인가요?",
+        "choices": [
+          "@app.connect() 데코레이터",
+          "@app.route() 데코레이터",
+          "@app.url() 데코레이터",
+          "@app.path() 데코레이터"
+        ],
+        "answerIndex": 1,
+        "explanation": "Flask에서는 @app.route('/경로') 데코레이터를 함수 위에 붙여서 해당 URL 요청이 들어왔을 때 실행될 함수를 지정합니다."
+      },
+      {
+        "id": "python__applied-python__day-26-python-web-q1",
+        "prompt": "Flask에서 HTML 파일을 렌더링하여 반환하려면 어떤 함수를 사용해야 하나요?",
+        "choices": [
+          "return_html()",
+          "send_file()",
+          "render_template()",
+          "load_template()"
+        ],
+        "answerIndex": 2,
+        "explanation": "Flask의 render_template() 함수를 사용하면 templates 폴더 안의 HTML 파일을 렌더링하여 클라이언트에 반환할 수 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-26-python-web-q2",
+        "prompt": "virtualenv를 사용하는 주된 이유는 무엇인가요?",
+        "choices": [
+          "웹 서버 성능을 향상시키기 위해",
+          "프로젝트별 의존성을 로컬 시스템과 격리하기 위해",
+          "HTML 템플릿을 자동으로 생성하기 위해",
+          "Flask를 더 빠르게 실행하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "virtualenv는 프로젝트마다 독립적인 패키지 환경을 만들어 로컬 시스템의 다른 패키지와 충돌 없이 개발할 수 있도록 의존성을 격리하는 도구입니다."
+      },
+      {
+        "id": "python__applied-python__day-26-python-web-q3",
+        "prompt": "Flask 프로젝트에서 HTML 템플릿 파일은 어느 폴더에 위치해야 하나요?",
+        "choices": [
+          "static 폴더",
+          "views 폴더",
+          "templates 폴더",
+          "pages 폴더"
+        ],
+        "answerIndex": 2,
+        "explanation": "Flask는 기본적으로 templates 폴더 안에서 HTML 파일을 찾습니다. render_template()을 사용할 때 이 폴더 안의 파일 이름을 지정해야 합니다."
+      },
+      {
+        "id": "python__applied-python__day-26-python-web-q4",
+        "prompt": "Flask 애플리케이션을 기본 설정으로 실행했을 때 로컬에서 접속하는 기본 포트 번호는 무엇인가요?",
+        "choices": [
+          "3000",
+          "8080",
+          "5000",
+          "8000"
+        ],
+        "answerIndex": 2,
+        "explanation": "Flask의 기본 개발 서버는 포트 5000에서 실행됩니다. 코드에서 os.environ.get('PORT', 5000)으로 기본값이 5000으로 설정되어 있는 것을 확인할 수 있습니다."
+      }
+    ]
+  },
+  "python__applied-python__day-27-python-with-mongodb": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-27-python-with-mongodb-q0",
+        "prompt": "MongoDB가 SQL 데이터베이스와 다른 가장 큰 특징은 무엇인가요?",
+        "choices": [
+          "테이블과 행(row) 구조로 데이터를 저장한다",
+          "JSON과 유사한 문서(Document) 형태로 데이터를 저장한다",
+          "반드시 스키마를 먼저 정의해야 한다",
+          "트랜잭션을 지원하지 않는다"
+        ],
+        "answerIndex": 1,
+        "explanation": "MongoDB는 NoSQL 데이터베이스로, JSON과 유사한 BSON 형식의 문서(Document) 구조로 데이터를 저장합니다. 이것이 SQL의 테이블-행 구조와 가장 큰 차이점입니다."
+      },
+      {
+        "id": "python__applied-python__day-27-python-with-mongodb-q1",
+        "prompt": "Python에서 MongoDB에 연결하기 위해 설치해야 하는 라이브러리는 무엇인가요?",
+        "choices": [
+          "requests와 flask",
+          "pymongo와 dnspython",
+          "sqlalchemy와 psycopg2",
+          "boto3와 botocore"
+        ],
+        "answerIndex": 1,
+        "explanation": "Python에서 mongodb+srv:// URI를 사용해 MongoDB에 접속하려면 pymongo(MongoDB 드라이버)와 dnspython(DNS 처리)을 함께 설치해야 합니다."
+      },
+      {
+        "id": "python__applied-python__day-27-python-with-mongodb-q2",
+        "prompt": "다음 중 MongoDB에서 데이터베이스 객체를 올바르게 생성하는 방법은?",
+        "choices": [
+          "db = pymongo.Database('thirty_days')",
+          "db = client.thirty_days_of_python 또는 db = client['thirty_days_of_python']",
+          "db = MongoDB.connect('thirty_days_of_python')",
+          "db = client.create_database('thirty_days_of_python')"
+        ],
+        "answerIndex": 1,
+        "explanation": "pymongo에서는 client.데이터베이스명 또는 client['데이터베이스명'] 두 가지 방법으로 데이터베이스 객체를 생성할 수 있으며, 존재하지 않으면 자동으로 생성됩니다."
+      },
+      {
+        "id": "python__applied-python__day-27-python-with-mongodb-q3",
+        "prompt": "MongoDB에서 여러 개의 문서를 한 번에 컬렉션에 삽입할 때 사용하는 메서드는?",
+        "choices": [
+          "insert_one()",
+          "insert_all()",
+          "insert_many()",
+          "bulk_insert()"
+        ],
+        "answerIndex": 2,
+        "explanation": "MongoDB에서 단일 문서 삽입은 insert_one(), 여러 문서를 한 번에 삽입할 때는 insert_many()를 사용합니다."
+      },
+      {
+        "id": "python__applied-python__day-27-python-with-mongodb-q4",
+        "prompt": "MongoDB URI에서 반드시 실제 비밀번호로 교체해야 하는 플레이스홀더는 무엇인가요?",
+        "choices": [
+          "<username>",
+          "<password>",
+          "<cluster>",
+          "<database>"
+        ],
+        "answerIndex": 1,
+        "explanation": "MongoDB URI에는 <password> 플레이스홀더가 포함되어 있으며, 이를 실제 사용자 비밀번호로 교체해야 정상적으로 데이터베이스에 연결할 수 있습니다."
+      }
+    ]
+  },
+  "python__applied-python__day-28-api": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-28-api-q0",
+        "prompt": "RESTful API에서 서버로부터 데이터를 '조회(읽기)'할 때 사용하는 HTTP 요청 메서드는 무엇인가요?",
+        "choices": [
+          "POST",
+          "DELETE",
+          "PUT",
+          "GET"
+        ],
+        "answerIndex": 3,
+        "explanation": "GET 메서드는 서버에서 리소스를 조회(읽기)할 때 사용하는 가장 일반적인 HTTP 메서드입니다. POST는 생성, PUT은 수정, DELETE는 삭제에 사용됩니다."
+      },
+      {
+        "id": "python__applied-python__day-28-api-q1",
+        "prompt": "HTTP 응답 상태 코드 200이 의미하는 것은 무엇인가요?",
+        "choices": [
+          "서버 내부 오류가 발생했다",
+          "요청한 리소스를 찾을 수 없다",
+          "요청이 성공적으로 처리되었다",
+          "클라이언트의 요청이 잘못되었다"
+        ],
+        "answerIndex": 2,
+        "explanation": "HTTP 상태 코드 200 OK는 요청이 성공적으로 처리되었으며, 요청한 리소스가 메시지 본문에 반환되었음을 의미합니다."
+      },
+      {
+        "id": "python__applied-python__day-28-api-q2",
+        "prompt": "HTTP 메시지의 구조에 포함되지 않는 것은 무엇인가요?",
+        "choices": [
+          "초기 라인 (Initial Line)",
+          "헤더 라인 (Header Lines)",
+          "메시지 본문 (Message Body)",
+          "데이터베이스 스키마 (Database Schema)"
+        ],
+        "answerIndex": 3,
+        "explanation": "HTTP 메시지는 초기 라인, 헤더 라인, 빈 줄(CRLF), 선택적 메시지 본문으로 구성됩니다. 데이터베이스 스키마는 HTTP 메시지 구조와 관련이 없습니다."
+      },
+      {
+        "id": "python__applied-python__day-28-api-q3",
+        "prompt": "CRUD에서 'U'가 의미하는 작업과 이에 대응하는 HTTP 메서드의 조합으로 올바른 것은?",
+        "choices": [
+          "Upload - POST",
+          "Update - PUT",
+          "Undo - PATCH",
+          "Unlink - DELETE"
+        ],
+        "answerIndex": 1,
+        "explanation": "CRUD의 'U'는 Update(수정)를 의미하며, RESTful API에서 데이터 수정 작업에는 PUT 메서드가 사용됩니다."
+      },
+      {
+        "id": "python__applied-python__day-28-api-q4",
+        "prompt": "HTTP에서 클라이언트와 서버의 관계로 올바른 것은?",
+        "choices": [
+          "서버가 먼저 요청을 보내고 클라이언트가 응답한다",
+          "클라이언트와 서버가 동시에 요청을 주고받는다",
+          "클라이언트가 요청을 보내면 서버가 응답을 반환한다",
+          "클라이언트와 서버는 직접 연결 없이 데이터를 공유한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "HTTP는 클라이언트-서버 모델을 사용합니다. 클라이언트(브라우저)가 HTTP 서버에 요청 메시지를 보내면, 서버는 요청한 리소스를 담은 응답 메시지를 클라이언트에게 반환합니다."
+      }
+    ]
+  },
+  "python__applied-python__day-29-building-api": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-29-building-api-q0",
+        "prompt": "RESTful API에서 데이터를 새로 생성할 때 사용하는 HTTP 메서드는 무엇인가요?",
+        "choices": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "answerIndex": 1,
+        "explanation": "POST 메서드는 서버에 새로운 리소스를 생성할 때 사용됩니다. GET은 조회, PUT은 수정, DELETE는 삭제에 사용됩니다."
+      },
+      {
+        "id": "python__applied-python__day-29-building-api-q1",
+        "prompt": "Flask에서 특정 URL 경로에 함수를 연결할 때 사용하는 데코레이터는 무엇인가요?",
+        "choices": [
+          "@app.run()",
+          "@app.connect()",
+          "@app.route()",
+          "@app.endpoint()"
+        ],
+        "answerIndex": 2,
+        "explanation": "@app.route() 데코레이터를 사용하여 특정 URL 경로와 Python 함수를 연결(라우팅)합니다."
+      },
+      {
+        "id": "python__applied-python__day-29-building-api-q2",
+        "prompt": "MongoDB에서 특정 문서를 고유하게 식별하기 위해 사용하는 필드는 무엇인가요?",
+        "choices": [
+          "document_id",
+          "primary_key",
+          "_id (ObjectId)",
+          "uid"
+        ],
+        "answerIndex": 2,
+        "explanation": "MongoDB는 각 문서에 자동으로 '_id' 필드를 부여하며, 이 값은 ObjectId 타입으로 문서를 고유하게 식별합니다."
+      },
+      {
+        "id": "python__applied-python__day-29-building-api-q3",
+        "prompt": "브라우저만으로는 처리할 수 없어 Postman 같은 도구가 필요한 이유는 무엇인가요?",
+        "choices": [
+          "브라우저는 JSON 형식을 지원하지 않기 때문에",
+          "브라우저는 GET 요청만 처리할 수 있기 때문에",
+          "브라우저는 MongoDB에 직접 접속할 수 없기 때문에",
+          "브라우저는 Python 코드를 실행할 수 없기 때문에"
+        ],
+        "answerIndex": 1,
+        "explanation": "브라우저는 기본적으로 GET 요청만 처리할 수 있습니다. POST, PUT, DELETE 등의 요청을 테스트하려면 Postman 같은 API 테스트 도구가 필요합니다."
+      },
+      {
+        "id": "python__applied-python__day-29-building-api-q4",
+        "prompt": "Flask에서 데이터를 JSON 형식으로 반환할 때 사용하는 클래스는 무엇인가요?",
+        "choices": [
+          "JsonResponse",
+          "HttpResponse",
+          "Response",
+          "Output"
+        ],
+        "answerIndex": 2,
+        "explanation": "Flask의 Response 클래스를 사용하고, json.dumps()로 직렬화한 데이터와 mimetype='application/json'을 함께 지정하여 JSON 응답을 반환합니다."
+      }
+    ]
+  },
+  "python__applied-python__day-30-conclusions": {
+    "questions": [
+      {
+        "id": "python__applied-python__day-30-conclusions-q0",
+        "prompt": "30일간의 Python 과정을 완료한 학습자가 진출할 수 있는 분야로 올바르게 묶인 것은?",
+        "choices": [
+          "데이터 분석, 머신러닝, 웹 개발",
+          "그래픽 디자인, 영상 편집, 음악 제작",
+          "회계, 세무, 법률 서비스",
+          "하드웨어 설계, 회로 공학, 전자기학"
+        ],
+        "answerIndex": 0,
+        "explanation": "레슨에서는 과정 완료 후 데이터 분석, 데이터 사이언스, 머신러닝, 웹 개발 경로로 나아갈 수 있다고 명시하고 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-30-conclusions-q1",
+        "prompt": "30DaysOfPython 과정의 저자는 누구입니까?",
+        "choices": [
+          "Guido van Rossum",
+          "Linus Torvalds",
+          "Asabeneh Yetayeh",
+          "Tim Peters"
+        ],
+        "answerIndex": 2,
+        "explanation": "레슨 상단과 본문에 저자가 Asabeneh Yetayeh임이 명확하게 표기되어 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-30-conclusions-q2",
+        "prompt": "학습자가 이 과정에 대한 후기(Testimonial)를 남길 수 있는 방법으로 레슨에서 안내된 것은?",
+        "choices": [
+          "저자에게 직접 이메일 발송",
+          "지정된 링크(asabeneh.com/testimonials)를 통해 작성",
+          "유튜브 댓글로 남기기",
+          "깃허브 이슈 등록"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 asabeneh.com/testimonials 링크를 통해 후기를 남길 수 있다고 안내하고 있습니다."
+      },
+      {
+        "id": "python__applied-python__day-30-conclusions-q3",
+        "prompt": "이 Python 30일 과정이 지향하는 최종 목표로 가장 적절한 것은?",
+        "choices": [
+          "Python 문법만 암기하여 시험을 통과하기",
+          "실습과 프로젝트를 통해 실제 개발 경로로 나아갈 역량 갖추기",
+          "단순히 코드를 복사해 실행하는 능력 기르기",
+          "Python으로 게임만 개발하는 전문가 되기"
+        ],
+        "answerIndex": 1,
+        "explanation": "레슨에서는 모든 실습과 프로젝트를 완료하면 다양한 실무 개발 경로(데이터 분석, 머신러닝, 웹 개발 등)로 진출할 수 있는 역량이 갖춰진다고 강조합니다."
+      },
+      {
+        "id": "python__applied-python__day-30-conclusions-q4",
+        "prompt": "과정을 마친 후 학습자에게 권장되지 않는 행동은?",
+        "choices": [
+          "다음 학습 경로를 탐색하고 계획 세우기",
+          "저자에게 피드백 남기기",
+          "학습한 내용을 바탕으로 프로젝트 심화 개발하기",
+          "배운 모든 것을 잊고 Python 학습을 영구히 중단하기"
+        ],
+        "answerIndex": 3,
+        "explanation": "레슨은 완주를 축하하며 더 나아가 데이터 분석, 머신러닝, 웹 개발 등으로 발전하도록 독려합니다. 학습을 중단하는 것은 과정의 목적에 반합니다."
+      }
+    ]
+  },
+  "ml-engineering__development__training": {
+    "questions": [
+      {
+        "id": "ml-engineering__development__training-q0",
+        "prompt": "train_step 함수에서 매 배치마다 `optimizer.zero_grad()`를 호출하는 이유는 무엇인가요?",
+        "choices": [
+          "모델의 가중치를 초기화하기 위해",
+          "이전 배치에서 누적된 그래디언트를 초기화하기 위해",
+          "학습률을 0으로 만들어 안정적으로 학습하기 위해",
+          "배치 크기를 동적으로 조정하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "PyTorch는 기본적으로 그래디언트를 누적합니다. 배치마다 `optimizer.zero_grad()`를 호출하지 않으면 이전 배치의 그래디언트가 더해져 잘못된 방향으로 가중치가 업데이트됩니다. 따라서 매 배치 시작 시 그래디언트를 초기화해야 올바른 학습이 이루어집니다."
+      },
+      {
+        "id": "ml-engineering__development__training-q1",
+        "prompt": "eval_step에서 `torch.inference_mode()`를 사용하는 주된 이유는 무엇인가요?",
+        "choices": [
+          "모델을 GPU로 이동시키기 위해",
+          "그래디언트 계산을 비활성화하여 메모리와 연산을 절약하기 위해",
+          "배치 정규화(Batch Normalization) 레이어를 활성화하기 위해",
+          "학습률 스케줄러를 업데이트하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "`torch.inference_mode()`는 그래디언트 추적을 완전히 비활성화하여 불필요한 메모리 사용과 연산 오버헤드를 줄입니다. 평가 시에는 역전파가 필요 없으므로 이를 사용해 더 빠르고 메모리 효율적인 추론이 가능합니다."
+      },
+      {
+        "id": "ml-engineering__development__training-q2",
+        "prompt": "이 코드에서 `ReduceLROnPlateau` 스케줄러의 역할로 가장 적절한 설명은 무엇인가요?",
+        "choices": [
+          "에포크마다 학습률을 고정 비율로 증가시킨다",
+          "검증 손실이 일정 에포크 동안 개선되지 않으면 학습률을 줄인다",
+          "훈련 손실이 0이 되면 학습을 자동으로 종료한다",
+          "배치 크기에 비례하여 학습률을 자동 조정한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "`ReduceLROnPlateau`는 `patience` 에포크 동안 모니터링 지표(여기서는 val_loss)가 개선되지 않으면 학습률에 `factor`를 곱하여 줄입니다. 이를 통해 학습이 정체될 때 학습률을 낮춰 더 세밀하게 최적점을 탐색할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__development__training-q3",
+        "prompt": "분산 학습 시 `batch_size_per_worker = batch_size // num_workers`로 계산하는 이유는 무엇인가요?",
+        "choices": [
+          "각 워커가 전체 데이터셋을 독립적으로 학습하도록 하기 위해",
+          "전체 유효 배치 크기를 유지하면서 각 워커의 부하를 균등하게 분배하기 위해",
+          "GPU 메모리를 최대한 많이 사용하기 위해",
+          "워커 간 그래디언트 동기화를 방지하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "분산 학습에서는 각 워커가 서로 다른 데이터 샤드를 처리합니다. 전체 배치 크기를 워커 수로 나누면 모든 워커가 처리하는 샘플의 합이 원하는 전체 배치 크기와 동일해집니다. 이를 통해 단일 머신 학습과 동일한 배치 크기 효과를 분산 환경에서 유지할 수 있습니다."
+      },
+      {
+        "id": "ml-engineering__development__training-q4",
+        "prompt": "이 학습 코드에서 MLflow의 주요 활용 목적은 무엇인가요?",
+        "choices": [
+          "모델의 추론 속도를 가속화하기 위해",
+          "실험별 하이퍼파라미터, 손실, 체크포인트 등 학습 결과를 추적·기록하기 위해",
+          "데이터 전처리 파이프라인을 자동화하기 위해",
+          "분산 학습 시 워커 간 통신을 관리하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "MLflow는 실험 추적(experiment tracking) 도구로, 각 실험의 하이퍼파라미터(lr, dropout_p 등), 에포크별 손실 지표, 모델 체크포인트를 체계적으로 기록하고 비교할 수 있게 해줍니다. `MLflowLoggerCallback`을 통해 Ray Train과 연동하여 자동으로 실험 결과가 저장됩니다."
+      }
+    ]
+  }
+}
