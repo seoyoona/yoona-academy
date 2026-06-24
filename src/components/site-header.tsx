@@ -21,6 +21,9 @@ export function SiteHeader() {
           <Link href="/resources" className="rounded-md px-3 py-1.5 transition-colors hover:bg-accent hover:text-accent-foreground">
             리소스
           </Link>
+          <Link href="/certifications" className="rounded-md px-3 py-1.5 transition-colors hover:bg-accent hover:text-accent-foreground">
+            인증
+          </Link>
         </nav>
         <div className="ml-auto flex items-center gap-1.5">
           <ThemeToggle />

@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ProgressSync } from "@/components/progress-sync";
+import { CertProgressSync } from "@/components/cert-progress-sync";
 import { Toaster } from "@/components/ui/sonner";
 import { authEnabled } from "@/lib/auth-config";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
             {authEnabled && <ProgressSync />}
+            {authEnabled && <CertProgressSync />}
           </MaybeClerk>
           <Toaster richColors position="top-center" />
         </ThemeProvider>

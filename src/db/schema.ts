@@ -29,6 +29,30 @@ export const progress = pgTable(
   (t) => [primaryKey({ columns: [t.userId, t.lessonId] })],
 );
 
+/**
+ * External certification courses (Salesforce, Databricks, Google …). Unlike
+ * lessons — which are binary complete — a cert tracks a status + percent + the
+ * earned badge URL + a free-form note. Catalog lives in committed JSON
+ * (src/content/certifications.ts); only the user's progress is stored here.
+ */
+export const certProgress = pgTable(
+  "cert_progress",
+  {
+    userId: text("user_id").notNull(),
+    certId: text("cert_id").notNull(),
+    status: text("status", {
+      enum: ["not_started", "in_progress", "completed"],
+    })
+      .notNull()
+      .default("not_started"),
+    percent: integer("percent").notNull().default(0),
+    badgeUrl: text("badge_url"),
+    notes: text("notes"),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.certId] })],
+);
+
 export const quizAttempts = pgTable("quiz_attempts", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: text("user_id").notNull(),
