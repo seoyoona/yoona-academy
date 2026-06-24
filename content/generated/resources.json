@@ -10539,7 +10539,7 @@
   {
     "id": "aieng-video-0",
     "title": "LangGraph 시리즈 (Python)",
-    "url": "https://www.youtube.com/results?search_query=LangGraph%20tutorial%20series%20python",
+    "url": "https://www.youtube.com/playlist?list=PLAMHV77MSKJ7Pn_OwuGzbDPs_MOibBRP-",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10547,12 +10547,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "LangGraph로 상태 그래프 기반 에이전트 직접 구현"
+    "description": "LangGraph로 상태 그래프 기반 에이전트 직접 구현 (RAG→멀티에이전트 시리즈)"
   },
   {
     "id": "aieng-video-1",
     "title": "Claude Code — The Net Ninja",
-    "url": "https://www.youtube.com/results?search_query=The%20Net%20Ninja%20Claude%20Code%20tutorial",
+    "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10560,12 +10560,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "Claude Code 실전 튜토리얼 (The Net Ninja)"
+    "description": "Claude Code 실전 튜토리얼 플레이리스트 (The Net Ninja)"
   },
   {
     "id": "aieng-video-2",
     "title": "Skills.md — 에이전트 말고 스킬을 만들어라",
-    "url": "https://www.youtube.com/results?search_query=don't%20build%20agents%20build%20skills%20instead",
+    "url": "https://www.youtube.com/watch?v=CEvIs9y1uog",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10573,12 +10573,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "에이전트 대신 재사용 가능한 skill로 설계하는 접근"
+    "description": "Don't Build Agents, Build Skills Instead — Barry Zhang & Mahesh Murag (Anthropic)"
   },
   {
     "id": "aieng-video-3",
     "title": "Machine Learning with Python — sentdex",
-    "url": "https://www.youtube.com/results?search_query=sentdex%20machine%20learning%20with%20python",
+    "url": "https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10586,12 +10586,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "파이썬으로 머신러닝 기초 (sentdex)"
+    "description": "파이썬으로 머신러닝 기초 풀 플레이리스트 (sentdex)"
   },
   {
     "id": "aieng-video-4",
     "title": "Agent Evaluation — Google Cloud",
-    "url": "https://www.youtube.com/results?search_query=Google%20Cloud%20the%20agent%20evaluation%20revolution",
+    "url": "https://www.youtube.com/watch?v=WZZLtwnZ4w0",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10599,12 +10599,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "에이전트 평가 방법론 (Google Cloud)"
+    "description": "The agent evaluation revolution — 에이전트 평가 방법론 (Google Cloud)"
   },
   {
     "id": "aieng-video-5",
-    "title": "LLM Overview — Stanford Lecture 9",
-    "url": "https://www.youtube.com/results?search_query=Stanford%20CS224n%20lecture%209%20LLM%20overview",
+    "title": "LLM Overview — Stanford CS224n",
+    "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10612,12 +10612,12 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "LLM 개요 스탠퍼드 강의"
+    "description": "Stanford CS224n NLP with Deep Learning — 사전학습/LLM 강의 (Lecture 9 포함)"
   },
   {
     "id": "aieng-video-6",
     "title": "LLMOps — Databricks",
-    "url": "https://www.youtube.com/results?search_query=Databricks%20exploring%20MLOps%20and%20LLMOps",
+    "url": "https://www.youtube.com/watch?v=1jvxxa7tdjw",
     "category": "추천 영상 · AI 엔지니어 7대 스킬",
     "tags": [
       "Video",
@@ -10625,7 +10625,7 @@
       "2026"
     ],
     "sourceRepo": "Bashiri Smith · instagram reel",
-    "description": "MLOps·LLMOps 운영 (Databricks)"
+    "description": "Exploring MLOps and LLMOps: Architectures and Best Practices (Databricks)"
   },
   {
     "id": "aieng-video-source",

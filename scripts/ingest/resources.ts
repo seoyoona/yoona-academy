@@ -57,19 +57,17 @@ const CS229: Resource[] = [
 
 /**
  * "7 AI Engineering Skills · 7 videos" — curated by Bashiri Smith
- * (instagram.com/reel/DYPnSM_B94c). We link to a YouTube search for each so the
- * pointer stays valid (no fabricated video IDs).
+ * (instagram.com/reel/DYPnSM_B94c). Each links to the actual canonical video /
+ * playlist (resolved from the reel's creator + topic), not a YouTube search.
  */
-const yt = (q: string) =>
-  `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
 const AI_ENG_VIDEOS: Resource[] = [
-  ["LangGraph 시리즈 (Python)", yt("LangGraph tutorial series python"), "LangGraph로 상태 그래프 기반 에이전트 직접 구현"],
-  ["Claude Code — The Net Ninja", yt("The Net Ninja Claude Code tutorial"), "Claude Code 실전 튜토리얼 (The Net Ninja)"],
-  ["Skills.md — 에이전트 말고 스킬을 만들어라", yt("don't build agents build skills instead"), "에이전트 대신 재사용 가능한 skill로 설계하는 접근"],
-  ["Machine Learning with Python — sentdex", yt("sentdex machine learning with python"), "파이썬으로 머신러닝 기초 (sentdex)"],
-  ["Agent Evaluation — Google Cloud", yt("Google Cloud the agent evaluation revolution"), "에이전트 평가 방법론 (Google Cloud)"],
-  ["LLM Overview — Stanford Lecture 9", yt("Stanford CS224n lecture 9 LLM overview"), "LLM 개요 스탠퍼드 강의"],
-  ["LLMOps — Databricks", yt("Databricks exploring MLOps and LLMOps"), "MLOps·LLMOps 운영 (Databricks)"],
+  ["LangGraph 시리즈 (Python)", "https://www.youtube.com/playlist?list=PLAMHV77MSKJ7Pn_OwuGzbDPs_MOibBRP-", "LangGraph로 상태 그래프 기반 에이전트 직접 구현 (RAG→멀티에이전트 시리즈)"],
+  ["Claude Code — The Net Ninja", "https://www.youtube.com/playlist?list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY", "Claude Code 실전 튜토리얼 플레이리스트 (The Net Ninja)"],
+  ["Skills.md — 에이전트 말고 스킬을 만들어라", "https://www.youtube.com/watch?v=CEvIs9y1uog", "Don't Build Agents, Build Skills Instead — Barry Zhang & Mahesh Murag (Anthropic)"],
+  ["Machine Learning with Python — sentdex", "https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v", "파이썬으로 머신러닝 기초 풀 플레이리스트 (sentdex)"],
+  ["Agent Evaluation — Google Cloud", "https://www.youtube.com/watch?v=WZZLtwnZ4w0", "The agent evaluation revolution — 에이전트 평가 방법론 (Google Cloud)"],
+  ["LLM Overview — Stanford CS224n", "https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D", "Stanford CS224n NLP with Deep Learning — 사전학습/LLM 강의 (Lecture 9 포함)"],
+  ["LLMOps — Databricks", "https://www.youtube.com/watch?v=1jvxxa7tdjw", "Exploring MLOps and LLMOps: Architectures and Best Practices (Databricks)"],
 ].map(([title, url, description], i) => ({
   id: `aieng-video-${i}`,
   title,
