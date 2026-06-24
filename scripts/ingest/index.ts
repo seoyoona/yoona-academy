@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { TrackSchema, ResourceSchema } from "../../src/content/types";
 import { buildPythonTrack } from "./thirty-days-python";
 import { buildMlTrack } from "./made-with-ml";
+import { buildAiEngineeringTrack } from "./ai-engineering";
 import { buildResources } from "./resources";
 
 const ROOT = process.cwd();
@@ -17,9 +18,11 @@ function writeJson(path: string, data: unknown) {
 function main() {
   mkdirSync(TRACKS, { recursive: true });
 
-  const tracks = [buildPythonTrack(SOURCES), buildMlTrack(SOURCES)].map((t) =>
-    TrackSchema.parse(t),
-  );
+  const tracks = [
+    buildPythonTrack(SOURCES),
+    buildMlTrack(SOURCES),
+    buildAiEngineeringTrack(SOURCES),
+  ].map((t) => TrackSchema.parse(t));
   for (const track of tracks) {
     writeJson(join(TRACKS, `${track.slug}.json`), track);
     const lessons = track.modules.reduce((n, m) => n + m.lessons.length, 0);

@@ -16,6 +16,8 @@ try {
 
 const MODEL = "claude-sonnet-4-6";
 const FORCE = process.argv.includes("--force");
+/** Optional: `--only=<substr>` restricts enrichment to lesson ids containing substr. */
+const ONLY = process.argv.find((a) => a.startsWith("--only="))?.slice("--only=".length);
 const GEN = join(process.cwd(), "content", "generated");
 const TRACKS = join(GEN, "tracks");
 
@@ -89,7 +91,9 @@ async function main() {
       m.lessons.map((l) => ({ id: l.id, title: l.title, content: l.contentMarkdown })),
     ),
   );
-  const todo = lessons.filter((l) => FORCE || !enrichments[l.id]);
+  const todo = lessons
+    .filter((l) => (ONLY ? l.id.includes(ONLY) : true))
+    .filter((l) => FORCE || !enrichments[l.id]);
   console.log(`${lessons.length} lessons total · ${todo.length} to enrich\n`);
 
   let done = 0;

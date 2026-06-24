@@ -1097,5 +1097,356 @@
     ],
     "model": "claude-sonnet-4-6",
     "generatedAt": "2026-06-16T12:56:33.420Z"
+  },
+  "ai-engineering__intro__what-is-ai-engineering": {
+    "objectives": [
+      "AI 엔지니어링과 ML 엔지니어링의 핵심 차이를 정확한 용어로 구분할 수 있다",
+      "프롬프트·검색·툴·평가·오케스트레이션이 AI 엔지니어의 통제 변수임을 설명할 수 있다",
+      "동일한 문제(예: 문의 분류)를 ML 방식과 AI 엔지니어링 방식으로 각각 접근하는 흐름을 비교할 수 있다",
+      "평가셋이 AI 시스템 개선의 전제 조건인 이유를 설명하고 직접 설계에 적용할 수 있다",
+      "추론 운영에서 발생하는 비용·지연·idempotency 문제를 식별하고 처방을 제시할 수 있다"
+    ],
+    "summary": "AI 엔지니어링은 이미 학습된 foundation model의 가중치를 상수로 두고, 프롬프트·검색·툴·오케스트레이션·평가라는 외부 변수를 설계해 애플리케이션을 구축하는 분야다. ML 엔지니어링이 데이터와 가중치 갱신을 레버로 삼는 것과 달리, AI 엔지니어링은 프롬프트 수정과 평가셋 기반 검증으로 빠르게 반복하며 품질을 개선한다. 두 접근법은 배타적이지 않으며, 상황(데이터 규모·비용·지연·변경 빈도)에 따라 혼합해서 사용하는 것이 현실적이다.",
+    "keyConcepts": [
+      "Foundation Model (기반 모델)",
+      "통제 변수 (프롬프트·retrieval·툴·평가·오케스트레이션)",
+      "평가셋 (Eval Set)",
+      "추론 비용 (Inference Cost)",
+      "Idempotency (멱등성)",
+      "Few-shot 예시",
+      "RAG (검색 증강 생성)",
+      "오케스트레이션 (Orchestration)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:20:53.404Z"
+  },
+  "ai-engineering__intro__the-three-pillars": {
+    "objectives": [
+      "Foundation model과 LLM의 포함관계를 설명하고, 품질 문제를 올바른 모델 종류에 귀속시킬 수 있다",
+      "적응·평가·추론 세 축의 역할과 상호 독립성을 구분하여 설명할 수 있다",
+      "프롬프팅→RAG→파인튜닝 사다리를 이해하고 상황에 맞는 적응 기법을 선택할 수 있다",
+      "평가셋의 필요성을 인식하고 적응 루프에서 평가를 선행 배치할 수 있다",
+      "실제 AI 시스템의 문제를 세 축으로 분해하여 원인을 진단하고 처방을 제시할 수 있다"
+    ],
+    "summary": "AI 엔지니어링은 적응·평가·추론이라는 세 축으로 구성되며, 각 축은 서로 독립적으로 다뤄야 한다. 적응 기법은 프롬프팅→RAG→파인튜닝 순서의 사다리를 이루며, 비용과 복잡도가 낮은 단계부터 순차적으로 시도해야 한다. 평가셋 없이 적응을 시도하는 것은 계기판 없는 운전과 같으므로, 반드시 측정 기준을 먼저 확립한 뒤 적응 루프를 돌려야 한다.",
+    "keyConcepts": [
+      "Foundation model",
+      "LLM (대형 언어 모델)",
+      "임베딩 모델",
+      "적응 (Adaptation)",
+      "평가 (Evaluation)",
+      "추론 (Inference)",
+      "RAG (검색 증강 생성)",
+      "파인튜닝 (Fine-tuning)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:21:26.692Z"
+  },
+  "ai-engineering__intro__working-on-foundation-models": {
+    "objectives": [
+      "자기회귀(autoregressive) 생성 과정에서 logits와 softmax가 어떻게 확률 분포를 만드는지 설명할 수 있다",
+      "temperature, top-k, top-p가 샘플링 결과에 미치는 영향을 각각 구분하여 설명할 수 있다",
+      "작업 유형(단일 정답 vs 다양한 정답)에 따라 temperature와 top-p 값을 적절히 설정할 수 있다",
+      "greedy decoding의 반복 루프 문제와 그 해결 방법을 설명할 수 있다",
+      "lost in the middle 현상을 이해하고 컨텍스트 배치 전략을 실제 시스템에 적용할 수 있다"
+    ],
+    "summary": "언어 모델은 매 스텝마다 logits를 softmax로 변환해 다음 토큰의 확률 분포를 구하는 자기회귀 방식으로 텍스트를 생성하며, temperature·top-k·top-p 같은 샘플링 파라미터로 그 분포의 모양과 후보 집합을 제어한다. 정답이 하나인 분류·라우팅 작업은 낮은 temperature로 결정성을 높이고, 창의적 생성 작업은 높은 temperature로 다양성을 확보하는 것이 핵심 원칙이다. 또한 긴 컨텍스트에서 중요한 정보는 lost in the middle을 피하기 위해 앞이나 뒤에 배치해야 한다.",
+    "keyConcepts": [
+      "자기회귀(Autoregressive) 생성",
+      "Logits",
+      "Temperature (softmax(logits/T))",
+      "Top-k 샘플링",
+      "Top-p (Nucleus) 샘플링",
+      "Greedy Decoding",
+      "Lost in the Middle",
+      "컨텍스트 윈도우 예산"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:22:04.164Z"
+  },
+  "ai-engineering__intro__evaluation-methodology": {
+    "objectives": [
+      "공개 벤치마크의 한계를 설명하고 작업별 eval set의 필요성을 근거와 함께 말할 수 있다",
+      "LLM-as-a-judge의 주요 편향(위치 편향, 자기선호, 점수 인플레이션)을 각각 완화하는 방법을 적용할 수 있다",
+      "pointwise와 pairwise 평가 방식의 차이를 구분하고 상황에 맞는 방식을 선택할 수 있다",
+      "faithfulness와 factuality를 구분하고 RAG 시스템에 적합한 평가 축을 선택할 수 있다",
+      "자신의 시스템 평가 지점에 대해 적절한 평가 방법론을 설계하고 편향 통제 방안을 명시할 수 있다"
+    ],
+    "summary": "공개 벤치마크 점수는 특정 작업의 성능을 보장하지 않으므로, 신뢰할 수 있는 평가를 위해서는 반드시 작업별 eval set을 구축해야 한다. LLM-as-a-judge는 자동화된 평가 도구로 유용하지만 위치 편향, 자기선호, 점수 인플레이션 등 체계적 편향이 존재하며, 이를 통제하지 않으면 잘못된 의사결정으로 이어진다. 상대적 우열 판단에는 pairwise, 절대 기준 통과 여부에는 pointwise를 쓰고, RAG 시스템의 환각은 faithfulness 축으로 측정하는 것이 핵심 원칙이다.",
+    "keyConcepts": [
+      "작업별 eval set",
+      "LLM-as-a-judge",
+      "위치 편향(position bias)",
+      "자기선호(self-preference)",
+      "점수 인플레이션",
+      "pointwise 평가",
+      "pairwise 평가",
+      "faithfulness vs factuality"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:22:43.217Z"
+  },
+  "ai-engineering__intro__building-evals": {
+    "objectives": [
+      "평가 하니스를 데이터셋·채점기·러너 세 부품으로 분해하여 설명할 수 있다",
+      "코드 기반·모델 기반·사람 채점기의 차이를 비교하고 상황에 맞게 선택할 수 있다",
+      "골든셋을 프로덕션 로그에서 부트스트랩하고 inter-annotator agreement를 측정할 수 있다",
+      "평가 하니스를 CI에 연결하여 프롬프트·모델 변경 시 자동으로 회귀를 감지할 수 있다",
+      "프로덕션 실패 케이스를 eval set에 지속적으로 추가하여 살아있는 자산으로 관리할 수 있다"
+    ],
+    "summary": "평가 하니스는 데이터셋·채점기·러너 세 부품으로 구성되며, LLM 시스템의 변경이 성능을 개선했는지 회귀를 일으켰는지 데이터로 판단하는 기반이다. 채점기는 코드 기반을 최우선으로 사용하고, 코드로 측정 불가능한 주관적 품질에만 LLM-judge나 사람을 투입해 비용과 재현성을 최적화해야 한다. eval set은 한 번 만들고 끝내는 것이 아니라 프로덕션 실패를 지속적으로 반영하는 살아있는 자산으로 운영해야 한다.",
+    "keyConcepts": [
+      "평가 하니스(Eval Harness)",
+      "데이터셋(골든셋)",
+      "채점기(Grader)",
+      "러너(Runner)",
+      "코드 기반 채점기",
+      "LLM-judge(모델 기반 채점기)",
+      "inter-annotator agreement(평가자 간 일치도)",
+      "eval set의 CI화"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:23:14.520Z"
+  },
+  "ai-engineering__intro__prompt-eng-tutorial": {
+    "objectives": [
+      "System 프롬프트와 User 프롬프트의 역할을 구분하여 올바르게 설계할 수 있다",
+      "Few-shot, Chain-of-thought, Structured output, 역할 명시 등 핵심 프롬프트 기법을 상황에 맞게 적용할 수 있다",
+      "Prefill과 JSON 스키마를 활용하여 모델 출력 형식을 안정적으로 강제할 수 있다",
+      "CoT 사용 여부를 추론 난도에 따라 판단하여 비용과 지연을 최적화할 수 있다",
+      "실제 파이프라인에서 발생하는 프롬프트 실패 모드를 진단하고 처방을 적용할 수 있다"
+    ],
+    "summary": "프롬프트 엔지니어링은 모델의 출력 분포를 원하는 영역으로 좁히는 인터페이스 설계이며, System/User 분리·Few-shot·CoT·Structured output 등 네 가지 핵심 기법을 통해 출력의 일관성과 안정성을 확보할 수 있다. 영구 규칙은 System 프롬프트에, 입력 데이터는 User 프롬프트에 분리하는 것이 제약의 신뢰성과 보안의 출발점이다. 파이프라인의 안정성을 위해 JSON 스키마 강제, Prefill, 스키마 검증 게이트를 함께 적용하고, CoT는 복잡한 추론이 필요한 호출에만 선택적으로 사용해야 한다.",
+    "keyConcepts": [
+      "출력 분포 좁히기",
+      "System/User 프롬프트 분리",
+      "Few-shot (in-context learning)",
+      "Chain-of-thought (CoT)",
+      "Structured output (구조화 출력)",
+      "Prefill (응답 선채우기)",
+      "스키마 검증 게이트",
+      "환각(Hallucination) 억제"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:23:49.875Z"
+  },
+  "ai-engineering__intro__real-world-prompting": {
+    "objectives": [
+      "프롬프트 체이닝의 개념을 설명하고, 단계별 검증 게이트를 설계할 수 있다",
+      "컨텍스트 엔지니어링 원칙에 따라 컨텍스트 윈도우 예산을 효과적으로 배분할 수 있다",
+      "프롬프트 인젝션의 작동 원리를 파악하고 계층 방어 전략을 적용할 수 있다",
+      "RAG 및 에이전트 시스템에서 외부 텍스트를 데이터와 지시로 명시적으로 분리할 수 있다",
+      "툴 화이트리스트와 위험 행동 전 출력 검증을 실제 시스템 설계에 적용할 수 있다"
+    ],
+    "summary": "복잡한 AI 파이프라인에서 신뢰성을 높이려면 작업을 단계별로 쪼개는 프롬프트 체이닝, 컨텍스트 윈도우 예산을 전략적으로 큐레이션하는 컨텍스트 엔지니어링, 그리고 외부 텍스트가 지시를 탈취하지 못하도록 막는 인젝션 방어를 함께 설계해야 한다. RAG와 에이전트는 구조적으로 신뢰할 수 없는 외부 텍스트에 노출되므로, 데이터·지시 분리, 툴 화이트리스트, 위험 행동 전 출력 검증이라는 계층 방어는 선택이 아닌 기본값이다.",
+    "keyConcepts": [
+      "프롬프트 체이닝(Prompt Chaining)",
+      "중간 검증 게이트",
+      "컨텍스트 엔지니어링(Context Engineering)",
+      "컨텍스트 예산(Context Budget)",
+      "프롬프트 인젝션(Prompt Injection)",
+      "데이터/지시 분리(<context> 태그)",
+      "툴 화이트리스트(Tool Whitelist)",
+      "위험 행동 전 출력 검증"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:24:24.642Z"
+  },
+  "ai-engineering__intro__embeddings-and-retrieval": {
+    "objectives": [
+      "임베딩이 텍스트를 벡터로 변환하는 원리를 설명할 수 있다",
+      "코사인 유사도 공식을 적용하여 두 벡터의 의미적 유사도를 직접 계산할 수 있다",
+      "Dense, Sparse, Hybrid 검색의 차이점과 각각의 장단점을 비교할 수 있다",
+      "RRF(Reciprocal Rank Fusion) 공식을 이용해 두 검색 결과를 융합할 수 있다",
+      "실제 RAG 시스템에서 발생하는 검색 실패 원인을 진단하고 적절한 처방을 선택할 수 있다"
+    ],
+    "summary": "임베딩은 텍스트를 고차원 실수 벡터로 변환하여 의미적 유사도를 코사인으로 측정할 수 있게 하며, L2 정규화를 통해 문서 길이 편향을 제거하는 것이 핵심이다. Dense 검색은 의미·패러프레이즈에 강하지만 고유명사에 약하고, Sparse(BM25)는 정확 토큰에 강하지만 동의어에 약하므로, RRF로 두 방식을 융합한 Hybrid 검색이 실무에서 가장 안정적인 성능을 낸다. 검색 품질은 LLM 모델 교체보다 우선적으로 점검해야 하며, 정규화 누락·모델 불일치·검색 방식 단일화가 가장 흔한 실패 원인이다.",
+    "keyConcepts": [
+      "임베딩(Embedding)",
+      "코사인 유사도(Cosine Similarity)",
+      "L2 정규화(L2 Normalization)",
+      "Dense Retrieval",
+      "Sparse Retrieval / BM25",
+      "Hybrid Retrieval",
+      "RRF(Reciprocal Rank Fusion)",
+      "ANN / HNSW"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:25:03.057Z"
+  },
+  "ai-engineering__intro__rag-architecture": {
+    "objectives": [
+      "RAG 파이프라인의 5단계(청킹, 임베딩, 검색, 리랭킹, 생성)를 각각 설명할 수 있다",
+      "고정 크기·의미 단위·오버랩 등 청킹 전략의 장단점을 비교하고 적절한 전략을 선택할 수 있다",
+      "recall@k, precision@k, MRR 지표를 활용해 검색 품질을 독립적으로 측정할 수 있다",
+      "bi-encoder와 cross-encoder의 차이를 설명하고 2단 리랭킹 구조를 설계할 수 있다",
+      "recall·precision 진단 결과에 따라 청킹·임베딩·리랭킹·프롬프트 중 적절한 처방을 선택할 수 있다"
+    ],
+    "summary": "RAG 품질은 프롬프트가 아닌 검색 단계에서 결정되며, 정답 청크가 컨텍스트에 포함되지 않으면 어떤 프롬프트 엔지니어링도 답을 만들어낼 수 없다. 검색을 생성과 분리해 recall@k와 MRR로 독립 측정하면 청킹·임베딩·리랭킹·프롬프트 중 어느 단계가 문제인지 정확히 진단할 수 있다. 소규모 retrieval eval set(질문↔정답 청크 쌍 20~50개)을 구축하면 파이프라인 변경 시마다 검색 품질 회귀를 즉시 검증할 수 있다.",
+    "keyConcepts": [
+      "청킹(Chunking): 고정 크기·의미 단위·오버랩",
+      "bi-encoder: 쿼리·문서 각각 임베딩, 빠르지만 정밀도 낮음",
+      "cross-encoder: 쿼리·문서 쌍으로 입력, 정밀하지만 느림",
+      "2단 리랭킹 구조: bi-encoder로 recall 확보 → cross-encoder로 precision 확보",
+      "recall@k: 정답 청크가 상위 k개 안에 포함되었는지 여부",
+      "precision@k / MRR: 검색 결과의 관련도 비율 및 정답 순위 품질",
+      "retrieval eval set: (질문, 정답 청크 ID) 쌍으로 구성된 평가 데이터셋",
+      "Garbage in, garbage out: 검색이 실패하면 생성도 반드시 실패"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:25:40.754Z"
+  },
+  "ai-engineering__intro__retrieval-latency-patterns": {
+    "objectives": [
+      "핫 패스(hot path)와 콜드 패스(cold path)를 구분하고 각 경로에 적합한 작업을 배치할 수 있다",
+      "지연 예산(latency budget)을 항목별로 배분하여 p95 응답 목표를 설계할 수 있다",
+      "비동기 인덱싱(큐+워커 구조)을 도입해 읽기/쓰기 경로를 분리할 수 있다",
+      "다중 표현 인덱싱(요약 기반 인덱싱)을 적용하여 검색 비용과 노이즈를 줄일 수 있다",
+      "RAG 시스템의 흔한 지연 실패 모드를 진단하고 적절한 처방을 제시할 수 있다"
+    ],
+    "summary": "RAG 시스템의 성능 병목은 모델 정확도가 아닌 운영 설계에서 비롯되며, 핵심 원리는 쿼리 시점에 처리할 작업을 인덱싱 시점(cold path)으로 최대한 옮기는 것이다. 비동기 인덱싱(큐+워커)으로 읽기와 쓰기 경로를 분리하면 쓰기 폭주 시에도 검색 응답이 안정적으로 유지된다. 다중 표현 인덱싱은 압축된 요약으로 검색하고 원문으로 생성하는 방식으로 검색 비용과 벡터 노이즈를 동시에 줄인다.",
+    "keyConcepts": [
+      "Hot path(쿼리 경로)",
+      "Cold path(인덱싱 경로)",
+      "지연 예산(Latency Budget)",
+      "비동기 인덱싱(Async Indexing)",
+      "큐+워커(Queue+Worker) 구조",
+      "Eventual Consistency(일관성 지연)",
+      "다중 표현 인덱싱(Summarization-based Indexing)",
+      "ANN(근사 최근접 이웃 검색)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:26:17.362Z"
+  },
+  "ai-engineering__intro__agent-fundamentals": {
+    "objectives": [
+      "워크플로우와 에이전트의 차이를 '제어흐름을 누가 쥐는가'라는 기준으로 설명할 수 있다",
+      "Function calling에서 모델의 역할(제안)과 런타임의 역할(실행)을 명확히 구분할 수 있다",
+      "ReAct 패턴의 Thought→Action→Observation 루프를 실제 트레이스로 추적할 수 있다",
+      "주어진 시스템 동작이 워크플로우인지 에이전트인지 판별 기준을 적용해 판정할 수 있다",
+      "에이전트 도입 시 정지 조건·비용 상한 등 위험 완화 장치를 설계할 수 있다"
+    ],
+    "summary": "워크플로우는 개발자가 코드로 제어흐름을 미리 고정하는 반면, 에이전트는 LLM이 런타임에 매 턴마다 다음 행동을 스스로 결정하므로 비용과 비결정성이 높아진다. Function calling에서 모델은 툴 호출을 '제안'할 뿐이며 실제 실행과 인가는 런타임의 책임이다. '경로를 미리 그릴 수 있으면 워크플로우'라는 판별식을 기준으로, 에이전트는 반드시 마지막 수단으로만 도입해야 한다.",
+    "keyConcepts": [
+      "워크플로우(Workflow): 개발자가 코드로 경로를 사전 고정",
+      "에이전트(Agent): LLM이 런타임에 제어흐름을 동적으로 결정",
+      "Function calling: 모델은 호출을 제안하고 런타임이 실행",
+      "ReAct 패턴: Thought→Action→Observation 반복 루프",
+      "비결정성: 같은 입력에도 다른 실행 궤적이 나올 수 있는 성질",
+      "정지 조건(max_steps): 루프 폭주 방지를 위한 최대 반복 횟수 제한",
+      "제안–실행 경계: 보안·디버깅을 위해 모델 출력과 런타임 실행을 분리",
+      "라우팅 워크플로우: 유한한 입력 유형을 사전 정의된 경로로 분기 처리"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:26:50.492Z"
+  },
+  "ai-engineering__intro__building-agents-frameworks": {
+    "objectives": [
+      "smolagents의 CodeAgent 방식과 JSON 툴 다회 호출 방식의 차이를 설명할 수 있다",
+      "LangGraph의 상태 그래프(노드·엣지·전이) 구조를 도식으로 표현할 수 있다",
+      "세 프레임워크(smolagents·LangGraph·LlamaIndex)의 제어 모델 철학을 각각 한 문장으로 요약할 수 있다",
+      "주어진 에이전트 요구사항을 분석하여 적합한 프레임워크를 선택 기준에 따라 정당화할 수 있다",
+      "코드 실행 샌드박스가 필요한 상황과 이유를 설명하고 적용할 수 있다"
+    ],
+    "summary": "smolagents·LangGraph·LlamaIndex는 단순한 라이브러리 선택이 아니라 '에이전트의 행동을 어떻게 표현하고 제어하는가'라는 제어 모델의 선택이다. smolagents는 코드 생성 기반의 투명한 행동을, LangGraph는 명시적 상태 그래프를 통한 복잡한 흐름 제어를, LlamaIndex는 데이터 검색 중심의 RAG 파이프라인을 지향한다. 올바른 선택은 제어흐름의 복잡성, 작업의 본체가 검색인지 여부, 필요한 추상화 수준을 기준으로 결정된다.",
+    "keyConcepts": [
+      "제어 모델(Control Model)",
+      "CodeAgent (코드 생성 기반 행동)",
+      "JSON 툴 호출 (다회 호출 방식)",
+      "상태 그래프 (노드·엣지·전이)",
+      "코드 실행 샌드박스",
+      "휴먼인더루프 (Human-in-the-Loop)",
+      "체크포인트 (Checkpoint)",
+      "RAG (검색 증강 생성)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:27:22.175Z"
+  },
+  "ai-engineering__intro__effective-agents-patterns": {
+    "objectives": [
+      "라우팅·오케스트레이터·검증 루프 등 주요 에이전트 워크플로우 패턴을 구분하여 설명할 수 있다",
+      "각 패턴이 적합한 사용 상황과 이유를 판단하여 올바른 패턴을 선택할 수 있다",
+      "Evaluator–optimizer 루프의 구조와 필수 안전장치(명시적 기준·정지 조건)를 구현 수준으로 기술할 수 있다",
+      "워크플로우와 자율 에이전트의 차이를 구분하고, 자율성이 필요한 조건을 설명할 수 있다",
+      "흔한 에이전트 실패 모드를 진단하고 각각의 처방을 적용할 수 있다"
+    ],
+    "summary": "LLM 에이전트 설계의 핵심은 복잡성을 최소화하는 것으로, 프롬프트 연쇄·라우팅·병렬화·오케스트레이터–워커·평가자–최적화자라는 다섯 가지 워크플로우 패턴을 상황에 맞게 선택하는 것이 중요하다. 완전 자율 에이전트는 경로를 사전에 결정할 수 없을 때만 정당화되며, 반드시 정지 조건·가드레일·비용 상한이라는 세 가지 안전장치를 갖춰야 한다. 단순함·투명성·잘 설계된 ACI(에이전트–컴퓨터 인터페이스)라는 3원칙을 지킴으로써 안정적이고 디버깅 가능한 시스템을 구축할 수 있다.",
+    "keyConcepts": [
+      "프롬프트 연쇄(Prompt Chaining)",
+      "라우팅(Routing)",
+      "병렬화(Parallelization) — Sectioning & Voting",
+      "오케스트레이터–워커(Orchestrator–Workers)",
+      "평가자–최적화자(Evaluator–Optimizer)",
+      "정지 조건(Stop Condition)",
+      "가드레일(Guardrail)",
+      "ACI(Agent–Computer Interface)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:28:02.086Z"
+  },
+  "ai-engineering__intro__agent-tracing-eval": {
+    "objectives": [
+      "트레이싱 span 트리를 해석하여 에이전트 실패의 정확한 위치를 식별할 수 있다",
+      "최종 성과·궤적·효율·툴 사용 정확도 네 가지 축으로 에이전트를 다축 평가할 수 있다",
+      "단순 RAG와 Agentic RAG의 차이를 설명하고 self-correction 재검색 흐름을 서술할 수 있다",
+      "OpenTelemetry 기반 트레이싱 도구를 선택하여 멀티 에이전트 시스템에 적용 방안을 설계할 수 있다",
+      "에이전트 시스템의 흔한 실패 모드를 진단하고 각각에 맞는 처방을 제안할 수 있다"
+    ],
+    "summary": "에이전트는 비결정적으로 동작하므로 관측 가능성 없이는 실패 원인을 사후에 재구성할 수 없다. 트레이싱으로 모든 실행 단계를 span 트리로 기록하고, 최종 성과뿐 아니라 궤적·효율·툴 사용 정확도까지 다축으로 평가해야 품질을 정확히 측정할 수 있다. 또한 Agentic RAG는 검색을 에이전트의 능동적 행동으로 전환하여 쿼리 재작성과 self-correction 재검색으로 단순 RAG의 recall 실패를 보완한다",
+    "keyConcepts": [
+      "관측 가능성(Observability)",
+      "트레이싱(Tracing)",
+      "Span 트리",
+      "OpenTelemetry",
+      "궤적 평가(Trajectory Evaluation)",
+      "다축 평가(Multi-axis Evaluation)",
+      "Agentic RAG",
+      "Self-correction 재검색"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:28:35.939Z"
+  },
+  "ai-engineering__intro__inference-and-deployment": {
+    "objectives": [
+      "추론 지연을 prefill과 decode 두 단계로 분해하고 각 단계의 병목 원인을 설명할 수 있다",
+      "TTFT와 TPOT 지표를 구분하고 각 지표가 어떤 병목과 연결되는지 진단할 수 있다",
+      "프리픽스 캐싱의 작동 원리와 캐싱 친화적 프롬프트 구조를 설계할 수 있다",
+      "모델 cascade(라우팅)를 설계하고 에스컬레이션 판정 기준을 수립할 수 있다",
+      "지연·비용·처리량·품질 간의 트레이드오프를 고려해 워크로드에 맞는 최적화 손잡이를 선택할 수 있다"
+    ],
+    "summary": "LLM 추론 지연은 prefill(연산 바운드)과 decode(메모리 대역폭 바운드) 두 단계로 나뉘며, TTFT와 TPOT 지표로 각각 측정된다. 병목이 어느 단계에 있는지를 먼저 진단한 뒤, 프리픽스 캐싱으로 반복 prefill 비용을 줄이거나 모델 cascade로 평균 비용과 지연을 동시에 낮추는 손잡이를 선택해야 한다. 배칭·양자화 등 인프라 레벨 최적화는 처리량과 지연 사이의 트레이드오프를 수반하므로, 워크로드 성격과 SLO를 먼저 정의하는 것이 최적화의 출발점이다.",
+    "keyConcepts": [
+      "prefill (연산 바운드)",
+      "decode (메모리 대역폭 바운드)",
+      "TTFT (Time To First Token)",
+      "TPOT / inter-token latency",
+      "프리픽스 캐싱 (Prefix Caching)",
+      "모델 cascade (라우팅)",
+      "처리량 (Throughput)",
+      "데이터 드리프트"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:29:13.557Z"
+  },
+  "ai-engineering__intro__queues-and-idempotency": {
+    "objectives": [
+      "at-least-once와 exactly-once 전달 보장의 차이를 설명하고, 현실적인 effectively-once 전략을 도출할 수 있다",
+      "idempotency(멱등성)의 개념을 정의하고, idempotency key를 활용한 중복 처리 방지 로직을 설계할 수 있다",
+      "지수 백오프와 DLQ를 조합하여 영구 실패 메시지를 안전하게 격리하는 구조를 구현할 수 있다",
+      "LLM 기반 비동기 시스템에서 발생하는 3가지 주요 실패 모드를 식별하고 각각의 처방을 적용할 수 있다"
+    ],
+    "summary": "LLM 호출은 느리고 비싸며 실패할 수 있어 프로덕션 AI 시스템은 큐 기반 비동기 구조로 설계되는데, 대부분의 큐는 at-least-once 전달을 기본으로 하여 중복 처리 위험이 존재한다. 이를 해결하기 위해 idempotency key로 중복을 무해하게 흡수하고(effectively-once), 지수 백오프와 DLQ로 영구 실패 메시지를 격리함으로써 신뢰성 있는 비동기 처리 구조를 완성한다.",
+    "keyConcepts": [
+      "at-least-once (최소 한 번 전달 보장)",
+      "exactly-once (정확히 한 번 처리)",
+      "effectively-once (at-least-once + 멱등 처리기)",
+      "idempotency / 멱등성",
+      "idempotency key",
+      "지수 백오프 (exponential backoff)",
+      "DLQ (dead-letter queue)",
+      "poison message (독성 메시지)"
+    ],
+    "model": "claude-sonnet-4-6",
+    "generatedAt": "2026-06-23T02:30:40.476Z"
   }
 }

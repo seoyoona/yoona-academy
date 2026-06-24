@@ -55,6 +55,40 @@ const CS229: Resource[] = [
   description: "Stanford CS229 머신러닝 공식 치트시트 (PDF)",
 }));
 
+/**
+ * "7 AI Engineering Skills · 7 videos" — curated by Bashiri Smith
+ * (instagram.com/reel/DYPnSM_B94c). We link to a YouTube search for each so the
+ * pointer stays valid (no fabricated video IDs).
+ */
+const yt = (q: string) =>
+  `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+const AI_ENG_VIDEOS: Resource[] = [
+  ["LangGraph 시리즈 (Python)", yt("LangGraph tutorial series python"), "LangGraph로 상태 그래프 기반 에이전트 직접 구현"],
+  ["Claude Code — The Net Ninja", yt("The Net Ninja Claude Code tutorial"), "Claude Code 실전 튜토리얼 (The Net Ninja)"],
+  ["Skills.md — 에이전트 말고 스킬을 만들어라", yt("don't build agents build skills instead"), "에이전트 대신 재사용 가능한 skill로 설계하는 접근"],
+  ["Machine Learning with Python — sentdex", yt("sentdex machine learning with python"), "파이썬으로 머신러닝 기초 (sentdex)"],
+  ["Agent Evaluation — Google Cloud", yt("Google Cloud the agent evaluation revolution"), "에이전트 평가 방법론 (Google Cloud)"],
+  ["LLM Overview — Stanford Lecture 9", yt("Stanford CS224n lecture 9 LLM overview"), "LLM 개요 스탠퍼드 강의"],
+  ["LLMOps — Databricks", yt("Databricks exploring MLOps and LLMOps"), "MLOps·LLMOps 운영 (Databricks)"],
+].map(([title, url, description], i) => ({
+  id: `aieng-video-${i}`,
+  title,
+  url,
+  category: "추천 영상 · AI 엔지니어 7대 스킬",
+  tags: ["Video", "AI Engineering", "2026"],
+  sourceRepo: "Bashiri Smith · instagram reel",
+  description,
+}));
+AI_ENG_VIDEOS.push({
+  id: "aieng-video-source",
+  title: "7 AI Engineering Skills (출처 릴스)",
+  url: "https://www.instagram.com/reel/DYPnSM_B94c/",
+  category: "추천 영상 · AI 엔지니어 7대 스킬",
+  tags: ["Video", "AI Engineering", "2026"],
+  sourceRepo: "Bashiri Smith · instagram reel",
+  description: "2026년 SWE가 AI 엔지니어가 되기 위한 7대 스킬 큐레이션 (원본 릴스)",
+});
+
 export function buildResources(sourcesDir: string): Resource[] {
   return [
     ...fromIndexRepo({
@@ -72,5 +106,6 @@ export function buildResources(sourcesDir: string): Resource[] {
       perCategoryCap: 40,
     }),
     ...CS229,
+    ...AI_ENG_VIDEOS,
   ];
 }

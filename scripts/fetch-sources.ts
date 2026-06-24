@@ -14,6 +14,7 @@ const REPOS: Array<{ dir: string; url: string }> = [
   { dir: "cs229", url: "https://github.com/afshinea/stanford-cs-229-machine-learning.git" },
   { dir: "project-based-learning", url: "https://github.com/practical-tutorials/project-based-learning.git" },
   { dir: "awesome-ml", url: "https://github.com/josephmisiti/awesome-machine-learning.git" },
+  { dir: "ai-engineering-from-scratch", url: "https://github.com/rohitg00/ai-engineering-from-scratch.git" },
 ];
 
 function run(args: string[], cwd?: string) {
