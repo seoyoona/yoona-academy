@@ -112,12 +112,12 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             className="w-full rounded-xl border border-border bg-background py-2.5 pl-9 pr-3 text-sm outline-none focus:border-primary"
           />
         </div>
-        <div className="flex items-center gap-1 rounded-xl border border-border p-0.5 text-xs">
+        <div className="flex items-center gap-1 rounded-xl border border-border p-0.5 text-sm">
           {SORTS.map((s) => (
             <button
               key={s.key}
               onClick={() => setSort(s.key)}
-              className={`rounded-lg px-3 py-1.5 font-medium transition-colors ${
+              className={`rounded-lg px-3.5 py-1.5 font-medium transition-colors ${
                 sort === s.key
                   ? "bg-primary text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -130,50 +130,73 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
       </div>
 
       {/* level 1 — folder/type */}
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {typeChips.map((c) => (
-          <button
-            key={c.name}
-            onClick={() => {
-              setType(c.name);
-              setSub(ALL);
-            }}
-            className={`rounded-full border px-3 py-1 text-xs transition-colors ${
-              type === c.name
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border hover:bg-accent"
-            }`}
-          >
-            {c.name}{" "}
-            <span className={type === c.name ? "opacity-80" : "text-muted-foreground"}>
-              {c.n}
-            </span>
-          </button>
-        ))}
+      <div className="mt-6">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          유형
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {typeChips.map((c) => (
+            <button
+              key={c.name}
+              onClick={() => {
+                setType(c.name);
+                setSub(ALL);
+              }}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                type === c.name
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border text-foreground hover:bg-accent"
+              }`}
+            >
+              {c.name}
+              <span
+                className={`tabular-nums text-xs ${
+                  type === c.name ? "text-primary-foreground/75" : "text-muted-foreground"
+                }`}
+              >
+                {c.n}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* level 2 — language/subcategory, only inside a folder */}
       {subChips.length > 0 && (
-        <div className="mt-2 flex flex-wrap gap-1.5 border-l-2 border-border pl-3">
-          {subChips.map((c) => (
-            <button
-              key={c.name}
-              onClick={() => setSub(c.name)}
-              className={`rounded-full px-2.5 py-0.5 text-xs transition-colors ${
-                sub === c.name
-                  ? "bg-foreground text-background"
-                  : "bg-muted text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {c.name === ALL ? `${type} 전체` : c.name}{" "}
-              <span className="opacity-70">{c.n}</span>
-            </button>
-          ))}
+        <div className="mt-4 border-l-2 border-primary/30 pl-3.5">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {type} 세부
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {subChips.map((c) => (
+              <button
+                key={c.name}
+                onClick={() => setSub(c.name)}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium transition-colors ${
+                  sub === c.name
+                    ? "bg-foreground text-background"
+                    : "bg-secondary text-secondary-foreground hover:bg-accent"
+                }`}
+              >
+                {c.name === ALL ? `${type} 전체` : c.name}
+                <span
+                  className={`tabular-nums text-xs ${
+                    sub === c.name ? "text-background/75" : "text-muted-foreground"
+                  }`}
+                >
+                  {c.n}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
-      <p className="mt-4 text-sm text-muted-foreground">
-        {filtered.length.toLocaleString()}개 일치
+      <p className="mt-5 text-sm text-muted-foreground">
+        <span className="font-semibold text-foreground">
+          {filtered.length.toLocaleString()}
+        </span>
+        개 일치
         {videoCount > 0 && (
           <span className="ml-1 inline-flex items-center gap-0.5">
             · <Play className="size-3" /> 영상 {videoCount}
@@ -193,7 +216,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             className="group flex flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40"
           >
             <span className="flex items-start justify-between gap-2">
-              <span className="text-xs text-muted-foreground">{it.r.category}</span>
+              <span className="text-xs font-medium text-muted-foreground">{it.r.category}</span>
               {it.video ? (
                 <Play className="size-3.5 shrink-0 text-red-500" />
               ) : (

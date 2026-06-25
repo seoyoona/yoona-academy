@@ -10,6 +10,7 @@
     "sources": "tsx scripts/fetch-sources.ts",
     "ingest": "tsx scripts/ingest/index.ts",
     "enrich": "tsx scripts/enrich.ts",
+    "translate": "tsx scripts/translate.ts",
     "content": "pnpm ingest && pnpm enrich",
     "refresh": "pnpm sources && pnpm ingest && pnpm enrich",
     "db:push": "drizzle-kit push"

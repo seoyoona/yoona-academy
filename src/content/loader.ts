@@ -6,6 +6,7 @@ import {
   type Resource,
   type Enrichment,
   type Quiz,
+  type Translation,
   type LessonView,
   type Lesson,
   type Module,
@@ -28,6 +29,7 @@ let _tracks: Track[] | null = null;
 let _resources: Resource[] | null = null;
 let _enrichments: Record<string, Enrichment> | null = null;
 let _quizzes: Record<string, Quiz> | null = null;
+let _translations: Record<string, Translation> | null = null;
 
 export function getAllTracks(): Track[] {
   if (_tracks) return _tracks;
@@ -64,6 +66,21 @@ function getQuizzes(): Record<string, Quiz> {
   return _quizzes;
 }
 
+/**
+ * Korean translation overlay (scripts/translate.ts). Read leniently — a missing
+ * file or entry is a clean no-op, so untranslated tracks render unchanged.
+ */
+function getTranslations(): Record<string, Translation> {
+  if (_translations) return _translations;
+  _translations = readJson(join(GEN_DIR, "translations.json"), {});
+  return _translations;
+}
+
+/** Korean lesson title when available, else the original. */
+function localizedTitle(lessonId: string, fallback: string): string {
+  return getTranslations()[lessonId]?.title ?? fallback;
+}
+
 /** All lessons of a track in reading order, each tagged with its module. */
 export function flattenLessons(
   track: Track,
@@ -92,8 +109,12 @@ export function getLessonView(lessonId: string): LessonView | undefined {
     const { lesson, module } = flat[idx];
     const prev = flat[idx - 1]?.lesson;
     const next = flat[idx + 1]?.lesson;
+    const tr = getTranslations()[lessonId];
+    const localized = tr
+      ? { ...lesson, title: tr.title, contentMarkdown: tr.contentMarkdown }
+      : lesson;
     return {
-      ...lesson,
+      ...localized,
       enrichment: getEnrichments()[lessonId],
       quiz: getQuizzes()[lessonId],
       track: {
@@ -104,8 +125,8 @@ export function getLessonView(lessonId: string): LessonView | undefined {
         accent: track.accent,
       },
       module: { id: module.id, slug: module.slug, title: module.title },
-      prev: prev ? { id: prev.id, title: prev.title } : undefined,
-      next: next ? { id: next.id, title: next.title } : undefined,
+      prev: prev ? { id: prev.id, title: localizedTitle(prev.id, prev.title) } : undefined,
+      next: next ? { id: next.id, title: localizedTitle(next.id, next.title) } : undefined,
     };
   }
   return undefined;
@@ -133,13 +154,28 @@ export function lessonRefs() {
   return getAllTracks().flatMap((track) =>
     flattenLessons(track).map(({ lesson, module }) => ({
       id: lesson.id,
-      title: lesson.title,
+      title: localizedTitle(lesson.id, lesson.title),
       trackSlug: track.slug,
       trackTitle: track.title,
       emoji: track.emoji,
       moduleTitle: module.title,
     })),
   );
+}
+
+/** Ordered modules of a track with Korean lesson titles applied (lesson sidebar nav). */
+export function getLocalizedModules(slug: string) {
+  const track = getTrack(slug);
+  if (!track) return [];
+  return [...track.modules]
+    .sort((a, b) => a.order - b.order)
+    .map((m) => ({
+      id: m.id,
+      title: m.title,
+      lessons: [...m.lessons]
+        .sort((a, b) => a.order - b.order)
+        .map((l) => ({ id: l.id, title: localizedTitle(l.id, l.title) })),
+    }));
 }
 
 export function trackStats(track: Track) {

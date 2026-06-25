@@ -5,7 +5,7 @@ import { Clock, ExternalLink, Target, ListChecks, FileText } from "lucide-react"
 import {
   getAllLessonIds,
   getLessonView,
-  getTrack,
+  getLocalizedModules,
 } from "@/content/loader";
 import { renderMarkdown } from "@/lib/render-markdown";
 import { aiEnabled } from "@/lib/ai";
@@ -38,19 +38,7 @@ export default async function LessonPage({
   if (!view) notFound();
 
   const html = await renderMarkdown(view.contentMarkdown);
-  const track = getTrack(view.track.slug);
-  const modules =
-    track?.modules
-      .slice()
-      .sort((a, b) => a.order - b.order)
-      .map((m) => ({
-        id: m.id,
-        title: m.title,
-        lessons: m.lessons
-          .slice()
-          .sort((a, b) => a.order - b.order)
-          .map((l) => ({ id: l.id, title: l.title })),
-      })) ?? [];
+  const modules = getLocalizedModules(view.track.slug);
 
   return (
     <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_1fr]">

@@ -82,9 +82,22 @@ export const ResourceSchema = z.object({
 });
 export type Resource = z.infer<typeof ResourceSchema>;
 
+/** Korean translation overlay for a lesson, produced by scripts/translate.ts. */
+export const TranslationSchema = z.object({
+  title: z.string(),
+  contentMarkdown: z.string(),
+  /** sha256 fingerprint of the English source — invalidates the cache on change. */
+  hash: z.string(),
+  model: z.string().optional(),
+  generatedAt: z.string().optional(),
+});
+export type Translation = z.infer<typeof TranslationSchema>;
+
 /** Maps keyed by lesson id, produced by the enrichment step (idempotent cache). */
 export const EnrichmentMapSchema = z.record(z.string(), EnrichmentSchema);
 export const QuizMapSchema = z.record(z.string(), QuizSchema);
+/** Permissive on purpose — a malformed/missing entry must never break rendering. */
+export const TranslationMapSchema = z.record(z.string(), z.unknown());
 
 /** A lesson with its enrichment + quiz merged in, plus navigation context. */
 export type LessonView = Lesson & {
