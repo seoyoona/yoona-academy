@@ -1,0 +1,547 @@
+{
+  "artificial-intelligence-6034": {
+    "courseSlug": "6-034-artificial-intelligence-fall-2010",
+    "galleryUrl": "https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/video_galleries/lecture-videos/",
+    "lectures": [
+      {
+        "slug": "lecture-1-introduction-and-scope",
+        "title": "Lecture 1: Introduction and Scope",
+        "youtubeId": "TjZBTDzGeGg"
+      },
+      {
+        "slug": "lecture-2-reasoning-goal-trees-and-problem-solving",
+        "title": "Lecture 2: Reasoning: Goal Trees and Problem Solving",
+        "youtubeId": "PNKj529yY5c"
+      },
+      {
+        "slug": "lecture-3-reasoning-goal-trees-and-rule-based-expert-systems",
+        "title": "Lecture 3: Reasoning: Goal Trees and Rule-Based Expert Systems",
+        "youtubeId": "leXa7EKUPFk"
+      },
+      {
+        "slug": "lecture-4-search-depth-first-hill-climbing-beam",
+        "title": "Lecture 4: Search: Depth-First, Hill Climbing, Beam",
+        "youtubeId": "j1H3jAAGlEA"
+      },
+      {
+        "slug": "lecture-5-search-optimal-branch-and-bound-a",
+        "title": "Lecture 5: Search: Optimal, Branch and Bound, A*",
+        "youtubeId": "gGQ-vAmdAOI"
+      },
+      {
+        "slug": "lecture-6-search-games-minimax-and-alpha-beta",
+        "title": "Lecture 6: Search: Games, Minimax, and Alpha-Beta",
+        "youtubeId": "STjW3eH0Cik"
+      },
+      {
+        "slug": "lecture-7-constraints-interpreting-line-drawings",
+        "title": "Lecture 7: Constraints: Interpreting Line Drawings",
+        "youtubeId": "l-tzjenXrvI"
+      },
+      {
+        "slug": "lecture-8-constraints-search-domain-reduction",
+        "title": "Lecture 8: Constraints: Search, Domain Reduction",
+        "youtubeId": "dARl_gGrS4o"
+      },
+      {
+        "slug": "lecture-9-constraints-visual-object-recognition",
+        "title": "Lecture 9: Constraints: Visual Object Recognition",
+        "youtubeId": "gvmfbePC2pc"
+      },
+      {
+        "slug": "lecture-10-introduction-to-learning-nearest-neighbors",
+        "title": "Lecture 10: Introduction to Learning, Nearest Neighbors",
+        "youtubeId": "09mb78oiPkA"
+      },
+      {
+        "slug": "lecture-11-learning-identification-trees-disorder",
+        "title": "Lecture 11: Learning: Identification Trees, Disorder",
+        "youtubeId": "SXBG3RGr_Rc"
+      },
+      {
+        "slug": "lecture-12a-neural-nets",
+        "title": "Lecture 12A: Neural Nets",
+        "youtubeId": "uXt8qF2Zzfo"
+      },
+      {
+        "slug": "lecture-12b-deep-neural-nets",
+        "title": "Lecture 12B: Deep Neural Nets",
+        "youtubeId": "VrMHA3yX_QI"
+      },
+      {
+        "slug": "lecture-13-learning-genetic-algorithms",
+        "title": "Lecture 13: Learning: Genetic Algorithms",
+        "youtubeId": "kHyNqSnzP8Y"
+      },
+      {
+        "slug": "lecture-14-learning-sparse-spaces-phonology",
+        "title": "Lecture 14: Learning: Sparse Spaces, Phonology",
+        "youtubeId": "L73hY1pBcQI"
+      },
+      {
+        "slug": "lecture-15-learning-near-misses-felicity-conditions",
+        "title": "Lecture 15: Learning: Near Misses, Felicity Conditions",
+        "youtubeId": "sh3EPjhhd40"
+      },
+      {
+        "slug": "lecture-16-learning-support-vector-machines",
+        "title": "Lecture 16: Learning: Support Vector Machines",
+        "youtubeId": "_PwhiWxHK8o"
+      },
+      {
+        "slug": "lecture-17-learning-boosting",
+        "title": "Lecture 17: Learning: Boosting",
+        "youtubeId": "UHBmv7qCey4"
+      },
+      {
+        "slug": "lecture-18-representations-classes-trajectories-transitions",
+        "title": "Lecture 18: Representations: Classes, Trajectories, Transitions",
+        "youtubeId": "bQI0OmJPby4"
+      },
+      {
+        "slug": "lecture-19-architectures-gps-soar-subsumption-society-of-mind",
+        "title": "Lecture 19: Architectures: GPS, SOAR, Subsumption, Society of Mind",
+        "youtubeId": "PimSbFGrwXM"
+      },
+      {
+        "slug": "lecture-21-probabilistic-inference-i",
+        "title": "Lecture 21: Probabilistic Inference I",
+        "youtubeId": "A6Ud6oUCRak"
+      },
+      {
+        "slug": "lecture-22-probabilistic-inference-ii",
+        "title": "Lecture 22: Probabilistic Inference II",
+        "youtubeId": "EC6bf8JCpDQ"
+      },
+      {
+        "slug": "lecture-23-model-merging-cross-modal-coupling-course-summary",
+        "title": "Lecture 23: Model Merging, Cross-Modal Coupling, Course Summary",
+        "youtubeId": "XPEJg_6Cg6o"
+      }
+    ]
+  },
+  "deep-learning-67960": {
+    "courseSlug": "6-7960-deep-learning-fall-2024",
+    "galleryUrl": "https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/video_galleries/lecture-videos/",
+    "lectures": [
+      {
+        "slug": "mit6_7960f24_lec01_mp4",
+        "title": "Lec 01. Introduction to Deep Learning",
+        "youtubeId": "6FkRvTtUc-o"
+      },
+      {
+        "slug": "mit6_7960f24_lec02_mp4",
+        "title": "Lec 02. How to Train a Neural Net",
+        "youtubeId": "vidCX_dMCu0"
+      },
+      {
+        "slug": "mit6_7960f24_lec03_mp4",
+        "title": "Lec 03. Approximation Theory",
+        "youtubeId": "ySaoWrv3T_Q"
+      },
+      {
+        "slug": "mit6_7960f24_lec04_mp4",
+        "title": "Lec 04. Architectures: Grids",
+        "youtubeId": "bxVkZ4M-hIE"
+      },
+      {
+        "slug": "mit6_7960f24_lec05_mp4",
+        "title": "Lec 05. Architectures: Graphs",
+        "youtubeId": "0niIwb37nF0"
+      },
+      {
+        "slug": "mit6_7960f24_lec06_mp4",
+        "title": "Lec 06. Generalization Theory",
+        "youtubeId": "EiO8BBa-xdc"
+      },
+      {
+        "slug": "mit6_7960f24_lec07_mp4",
+        "title": "Lec 07. Scaling Rules for Optimization",
+        "youtubeId": "VcGPE4s_oNw"
+      },
+      {
+        "slug": "mit6_7960f24_lec08_mp4",
+        "title": "Lec 08. Architectures: Transformers",
+        "youtubeId": "Q1HOKrNeh2M"
+      },
+      {
+        "slug": "mit6_7960f24_lec09_mp4",
+        "title": "Lec 09. Hacker's Guide to Deep Learning",
+        "youtubeId": "DC2Hw9DiLCg"
+      },
+      {
+        "slug": "mit6_7960f24_lec10_mp4",
+        "title": "Lec 10. Architectures: Memory",
+        "youtubeId": "IiHknRHA-Gk"
+      },
+      {
+        "slug": "mit6_7960f24_lec11_mp4",
+        "title": "Lec 11. Representation Learning: Reconstruction-Based",
+        "youtubeId": "QxOzQRtd440"
+      },
+      {
+        "slug": "mit6_7960f24_lec12_mp4",
+        "title": "Lec 12. Representation Learning: Similarity-Based",
+        "youtubeId": "yUh1fEGGdl4"
+      },
+      {
+        "slug": "mit6_7960f24_lec13_mp4",
+        "title": "Lec 13. Representation Learning: Theory",
+        "youtubeId": "-eC0-5mXHQg"
+      },
+      {
+        "slug": "mit6_7960f24_lec14_mp4",
+        "title": "Lec 14. Generative Models: Basics",
+        "youtubeId": "hJlrAHqGOS8"
+      },
+      {
+        "slug": "mit6_7960f24_lec15_mp4",
+        "title": "Lec 15. Generative Models: Representation Learning Meets Generative Modeling",
+        "youtubeId": "8zzfcYIELdo"
+      },
+      {
+        "slug": "mit6_7960f24_lec16_mp4",
+        "title": "Lec 16. Generative Models: Conditional Models",
+        "youtubeId": "zaMcHuJwe1w"
+      },
+      {
+        "slug": "mit6_7960f24_lec17_mp4",
+        "title": "Lec 17. Generalization: Out-of-Distribution (OOD)",
+        "youtubeId": "tjD9LIzIIek"
+      },
+      {
+        "slug": "mit6_7960f24_lec18_mp4",
+        "title": "Lec 18. Transfer Learning: Models",
+        "youtubeId": "tNfuZ9Imt3M"
+      },
+      {
+        "slug": "mit6_7960f24_lec19_mp4",
+        "title": "Lec 19. Transfer Learning: Data",
+        "youtubeId": "RUdQMHV-7KM"
+      },
+      {
+        "slug": "mit6_7960f24_lec20_mp4",
+        "title": "Lec 20. Scaling Laws",
+        "youtubeId": "7hbf4klU3ks"
+      },
+      {
+        "slug": "mit6_7960f24_lec21_mp4",
+        "title": "Lec 21. Language Models",
+        "youtubeId": "9GWd3SAWLbA"
+      },
+      {
+        "slug": "mit6_7960f24_lec23_mp4",
+        "title": "Lec 23. Metrized Deep Learning",
+        "youtubeId": "zBvsoxC6tAo"
+      },
+      {
+        "slug": "mit6_7960f24_lec24_mp4",
+        "title": "Lec 24. Inference Methods for Deep Learning",
+        "youtubeId": "mbgFTqKxR7A"
+      },
+      {
+        "slug": "mit6_7960f24_review_mp4",
+        "title": "PyTorch Tutorial",
+        "youtubeId": "o5gPABcGZwc"
+      }
+    ]
+  },
+  "hands-on-deep-learning-15773": {
+    "courseSlug": "15-773-hands-on-deep-learning-spring-2024",
+    "galleryUrl": "https://ocw.mit.edu/courses/15-773-hands-on-deep-learning-spring-2024/video_galleries/lecture-videos/",
+    "lectures": [
+      {
+        "slug": "15773-sp24-lecture-1-version-3_mp4",
+        "title": "1: Introduction to Neural Networks and Deep Learning; Training Deep NNs",
+        "youtubeId": "kyQ0CRkYhy4"
+      },
+      {
+        "slug": "15773-sp24-lecture-2-version-2_mp4",
+        "title": "2: Training Deep NNs (cont.); Introduction to Keras/Tensorflow; Application to Tabular Data",
+        "youtubeId": "3Lr8nVUDCpk"
+      },
+      {
+        "slug": "15773-sp24-lecture-3-version-2_mp4",
+        "title": "3: Deep Learning for Computer Vision – Building Convolutional Neural Networks from Scratch",
+        "youtubeId": "8QuyDcMIdRc"
+      },
+      {
+        "slug": "15773-sp24-lecture-4-version-2_mp4",
+        "title": "4: Deep Learning for Computer Vision – Transfer Learning and Fine-Tuning; Intro to HuggingFace",
+        "youtubeId": "8xh7Y0pBrCE"
+      },
+      {
+        "slug": "15773-sp24-lecture-5-version-2_mp4",
+        "title": "5: Deep Learning for Natural Language – The Basics",
+        "youtubeId": "duBLxHjaecQ"
+      },
+      {
+        "slug": "15773-sp24-lecture-6-version-2_mp4",
+        "title": "6: Deep Learning for Natural Language – Embeddings",
+        "youtubeId": "LqFc0z-pQTg"
+      },
+      {
+        "slug": "15773-sp24-lecture-7-version-2_mp4",
+        "title": "7: Deep Learning for Natural Language – Transformers",
+        "youtubeId": "IeF7aATDaw4"
+      },
+      {
+        "slug": "15773-sp24-lecture-8-version-2_mp4",
+        "title": "8: Deep Learning for Natural Language – Transformers, Self-Supervised Learning",
+        "youtubeId": "v-lHsawHyaI"
+      },
+      {
+        "slug": "15773-sp24-lecture-9-version-2_mp4",
+        "title": "9: Generative AI – Large Language Models (LLMs) and Retrieval Augmented Generation (RAG)",
+        "youtubeId": "KGDe1QvfKJ8"
+      },
+      {
+        "slug": "15773-sp24-lecture-10-version-4_mp4",
+        "title": "10: Generative AI – Adapting LLMs with Parameter-Efficient Fine-Tuning",
+        "youtubeId": "d-tngNnaG4U"
+      },
+      {
+        "slug": "15773-sp24-lecture-11-version-2_mp4",
+        "title": "11: Generative AI – Text-to-Image Models",
+        "youtubeId": "NQBhhRG-Pe4"
+      }
+    ]
+  },
+  "neural-computation-940": {
+    "courseSlug": "9-40-introduction-to-neural-computation-spring-2018",
+    "galleryUrl": "https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/video_galleries/lecture-videos/",
+    "lectures": [
+      {
+        "slug": "overview-and-ionic-currents",
+        "title": "1. Overview and Ionic Currents",
+        "youtubeId": "PnJEj6TokDA"
+      },
+      {
+        "slug": "10",
+        "title": "2. RC Circuit and Nernst Potential",
+        "youtubeId": "3GC721pNRLE"
+      },
+      {
+        "slug": "11",
+        "title": "3. Nernst Potential and Integrate and Fire Models",
+        "youtubeId": "KXnHxZdn8NU"
+      },
+      {
+        "slug": "12",
+        "title": "4. Hodgkin-Huxley Model Part 1",
+        "youtubeId": "88tKZLGOr3M"
+      },
+      {
+        "slug": "13",
+        "title": "5. Hodgkin-Huxley Model Part 2",
+        "youtubeId": "K1pxJVdqlxw"
+      },
+      {
+        "slug": "14",
+        "title": "6. Dendrites",
+        "youtubeId": "dNHqd6nGr5o"
+      },
+      {
+        "slug": "15",
+        "title": "7. Synapses",
+        "youtubeId": "r1VX3WXrYUw"
+      },
+      {
+        "slug": "16",
+        "title": "8. Spike Trains",
+        "youtubeId": "osYGG7TKcz8"
+      },
+      {
+        "slug": "17",
+        "title": "9. Receptive Fields",
+        "youtubeId": "fCqt07IXUPI"
+      },
+      {
+        "slug": "18",
+        "title": "10. Time Series",
+        "youtubeId": "smHwRzk81b0"
+      },
+      {
+        "slug": "19",
+        "title": "11. Spectral Analysis Part 1",
+        "youtubeId": "4ip-4ai6kN8"
+      },
+      {
+        "slug": "20",
+        "title": "12. Spectral Analysis Part 2",
+        "youtubeId": "Hf1Ma9YkOMY"
+      },
+      {
+        "slug": "video-13",
+        "title": "13. Spectral Analysis Part 3",
+        "youtubeId": "VQXxs59Eiak"
+      },
+      {
+        "slug": "video-14",
+        "title": "14. Rate Models and Perceptrons",
+        "youtubeId": "5KhcA454er0"
+      },
+      {
+        "slug": "video-15",
+        "title": "15. Matrix Operations",
+        "youtubeId": "Oq_k8F2T1Jc"
+      },
+      {
+        "slug": "video-16",
+        "title": "16. Basis Sets",
+        "youtubeId": "Yjeexoq_WAI"
+      },
+      {
+        "slug": "video-17",
+        "title": "17. Principal Components Analysis​",
+        "youtubeId": "N-49t1j-XWY"
+      },
+      {
+        "slug": "video-18",
+        "title": "18. Recurrent Networks",
+        "youtubeId": "EpPtCLkCGOk"
+      },
+      {
+        "slug": "video-19",
+        "title": "19. Neural Integrators",
+        "youtubeId": "vQpo3rTwUjc"
+      },
+      {
+        "slug": "video-20",
+        "title": "20. Hopfield Networks",
+        "youtubeId": "gt52wUN3VrQ"
+      }
+    ]
+  },
+  "ml-for-healthcare-6s897": {
+    "courseSlug": "6-s897-machine-learning-for-healthcare-spring-2019",
+    "galleryUrl": "https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/video_galleries/lecture-videos/",
+    "lectures": [
+      {
+        "slug": "lecture-1-what-makes-healthcare-unique",
+        "title": "Lecture 1: What Makes Healthcare Unique?",
+        "youtubeId": "vof7x8r_ZUA"
+      },
+      {
+        "slug": "lecture-2-overview-of-clinical-care",
+        "title": "Lecture 2: Overview of Clinical Care",
+        "youtubeId": "DS97JV_o0Fs"
+      },
+      {
+        "slug": "lecture-3-deep-dive-into-clinical-data",
+        "title": "Lecture 3: Deep Dive Into Clinical Data",
+        "youtubeId": "0UFwGJe6ubg"
+      },
+      {
+        "slug": "lecture-4-risk-stratification-part-1",
+        "title": "Lecture 4: Risk Stratification, Part 1",
+        "youtubeId": "_shuV1tJbTU"
+      },
+      {
+        "slug": "lecture-5-risk-stratification-part-2",
+        "title": "Lecture 5: Risk Stratification, Part 2",
+        "youtubeId": "wqI_z1yumzY"
+      },
+      {
+        "slug": "lecture-6-physiological-time-series",
+        "title": "Lecture 6: Physiological Time-Series",
+        "youtubeId": "lLhfDSOwWtU"
+      },
+      {
+        "slug": "lecture-7-natural-language-processing-nlp-part-1",
+        "title": "Lecture 7: Natural Language Processing (NLP), Part 1",
+        "youtubeId": "IiD3YZkkCmE"
+      },
+      {
+        "slug": "lecture-8-natural-language-processing-nlp-part-2",
+        "title": "Lecture 8: Natural Language Processing (NLP), Part 2",
+        "youtubeId": "lkO2ocJBsmI"
+      },
+      {
+        "slug": "lecture-9-translating-technology-into-the-clinic",
+        "title": "Lecture 9: Translating Technology Into the Clinic",
+        "youtubeId": "ZQu2B3GyI_k"
+      },
+      {
+        "slug": "lecture-10-application-of-machine-learning-to-cardiac-imaging",
+        "title": "Lecture 10: Application of Machine Learning to Cardiac Imaging",
+        "youtubeId": "MoEaRpLNo9A"
+      },
+      {
+        "slug": "lecture-11-differential-diagnosis",
+        "title": "Lecture 11: Differential Diagnosis",
+        "youtubeId": "VuKOW8d4KHw"
+      },
+      {
+        "slug": "lecture-12-machine-learning-for-pathology",
+        "title": "Lecture 12: Machine Learning for Pathology",
+        "youtubeId": "PKCMH5KOcxQ"
+      },
+      {
+        "slug": "lecture-13-machine-learning-for-mammography",
+        "title": "Lecture 13: Machine Learning for Mammography",
+        "youtubeId": "2ZXYM1h9pgY"
+      },
+      {
+        "slug": "lecture-14-causal-inference-part-1",
+        "title": "Lecture 14: Causal Inference, Part 1",
+        "youtubeId": "gRkUhg9Wb-I"
+      },
+      {
+        "slug": "lecture-15-causal-inference-part-2",
+        "title": "Lecture 15: Causal Inference, Part 2",
+        "youtubeId": "g5v-NvNoJQQ"
+      },
+      {
+        "slug": "lecture-16-reinforcement-learning-part-1",
+        "title": "Lecture 16: Reinforcement Learning, Part 1",
+        "youtubeId": "YZ5pOgY5hEE"
+      },
+      {
+        "slug": "lecture-17-reinforcement-learning-part-2",
+        "title": "Lecture 17: Reinforcement Learning, Part 2",
+        "youtubeId": "zdotUAxiPGM"
+      },
+      {
+        "slug": "lecture-18-disease-progression-modeling-and-subtyping-part-1",
+        "title": "Lecture 18: Disease Progression Modeling and Subtyping, Part 1",
+        "youtubeId": "yYWyLZrdRRI"
+      },
+      {
+        "slug": "lecture-19-disease-progression-modeling-and-subtyping-part-2",
+        "title": "Lecture 19: Disease Progression Modeling and Subtyping, Part 2",
+        "youtubeId": "aJqgO8e37_g"
+      },
+      {
+        "slug": "lecture-20-precision-medicine",
+        "title": "Lecture 20: Precision Medicine",
+        "youtubeId": "kZrb6ZIwJqg"
+      },
+      {
+        "slug": "lecture-21-automating-clinical-work-flows",
+        "title": "Lecture 21: Automating Clinical Work Flows",
+        "youtubeId": "Td01vFP3uJo"
+      },
+      {
+        "slug": "lecture-22-regulation-of-machine-learning-artificial-intelligence-in-the-us",
+        "title": "Lecture 22: Regulation of Machine Learning / Artificial Intelligence in the US",
+        "youtubeId": "k95abdkdCPk"
+      },
+      {
+        "slug": "lecture-23-fairness",
+        "title": "Lecture 23: Fairness",
+        "youtubeId": "zYgkr0KfWM0"
+      },
+      {
+        "slug": "lecture-24-robustness-to-dataset-shift",
+        "title": "Lecture 24: Robustness to Dataset Shift",
+        "youtubeId": "MdUnh4PaGKw"
+      },
+      {
+        "slug": "lecture-25-interpretability",
+        "title": "Lecture 25: Interpretability",
+        "youtubeId": "wDLzLN1tArA"
+      }
+    ]
+  }
+}
