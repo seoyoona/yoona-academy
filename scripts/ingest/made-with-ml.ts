@@ -7,6 +7,7 @@ import {
   extractAllSections,
   rewriteRelativeUrls,
 } from "../lib/markdown";
+import { MADE_WITH_ML_COURSE_PAGES, courseUrl } from "../lib/madewithml-course";
 
 const REPO = "made-with-ml";
 const SOURCE_REPO = "GokuMohandas/Made-With-ML";
@@ -99,6 +100,31 @@ const IMPLEMENTATION_INTERNALS: SourceItem[] = [
     path: "madewithml/utils.py",
     title: "공통 유틸리티와 배치 변환",
     focus: "seed 고정, JSON 저장, run id 조회, torch batch collation처럼 여러 워크로드가 공유하는 작은 경계를 다룹니다.",
+  },
+  {
+    path: "madewithml/train.py",
+    title: "분산 학습 워크로드",
+    focus: "Ray Train, TorchTrainer, checkpoint, MLflow logging을 하나의 학습 실행 경계로 묶습니다.",
+  },
+  {
+    path: "madewithml/tune.py",
+    title: "튜닝 워크로드",
+    focus: "Ray Tune search space, scheduler, initial parameter, result selection을 반복 가능한 최적화 실행으로 구성합니다.",
+  },
+  {
+    path: "madewithml/evaluate.py",
+    title: "평가 워크로드",
+    focus: "best run으로부터 모델을 불러와 holdout dataset에 대한 metric과 slice 결과를 산출합니다.",
+  },
+  {
+    path: "madewithml/predict.py",
+    title: "예측 유틸리티",
+    focus: "등록된 run id와 입력 텍스트를 받아 production serving과 CLI가 공유하는 예측 형식을 만듭니다.",
+  },
+  {
+    path: "madewithml/serve.py",
+    title: "Ray Serve 배포 코드",
+    focus: "모델 로딩, request parsing, batch prediction, Ray Serve deployment boundary를 정의합니다.",
   },
 ];
 
@@ -269,6 +295,12 @@ function notebookLessonMarkdown(srcDir: string, item: SourceItem): string {
 export function buildMlTrack(sourcesDir: string): Track {
   const srcDir = join(sourcesDir, REPO);
   if (!existsSync(srcDir)) throw new Error(`Missing source: ${srcDir}`);
+  const courseDir = join(process.cwd(), "content", "external", "madewithml-course");
+  if (!existsSync(courseDir)) {
+    throw new Error(
+      `Missing Made With ML course cache: ${courseDir}. Run \`pnpm sources:ml-course\`.`,
+    );
+  }
 
   const readme = rewriteRelativeUrls(
     readFileSync(join(srcDir, "README.md"), "utf8"),
@@ -327,8 +359,8 @@ export function buildMlTrack(sourcesDir: string): Track {
     };
   }
 
-  function buildSourceModule(slug: string, title: string, items: SourceItem[]): Module {
-    const lessons: Lesson[] = items.map((item) => {
+  function buildSourceLessons(slug: string, items: SourceItem[]): Lesson[] {
+    return items.map((item) => {
       const lessonSlug = item.slug ?? slugify(item.path);
       const body =
         item.path.endsWith(".ipynb")
@@ -347,6 +379,10 @@ export function buildMlTrack(sourcesDir: string): Track {
         license: LICENSE,
       };
     });
+  }
+
+  function buildSourceModule(slug: string, title: string, items: SourceItem[]): Module {
+    const lessons = buildSourceLessons(slug, items);
 
     return {
       id: `${TRACK_SLUG}__${slug}`,
@@ -357,14 +393,43 @@ export function buildMlTrack(sourcesDir: string): Track {
     };
   }
 
+  function buildCourseLessons(slug: string): Lesson[] {
+    return MADE_WITH_ML_COURSE_PAGES.filter((page) => page.moduleSlug === slug).map((page) => {
+      const body = readFileSync(join(courseDir, `${page.slug}.md`), "utf8").trim();
+      lessonOrder += 1;
+      return {
+        id: `${TRACK_SLUG}__${slug}__${page.slug}`,
+        slug: page.slug,
+        title: page.koreanTitle,
+        order: lessonOrder,
+        estMinutes: estimateMinutes(body),
+        contentMarkdown: body,
+        sourceRepo: "madewithml.com",
+        sourceUrl: courseUrl(page.slug),
+        license: LICENSE,
+      } satisfies Lesson;
+    });
+  }
+
+  function buildCourseModule(slug: string, title: string, items: SourceItem[] = []): Module {
+    const lessons = [...buildCourseLessons(slug), ...buildSourceLessons(slug, items)];
+    return {
+      id: `${TRACK_SLUG}__${slug}`,
+      slug,
+      title,
+      order: 0,
+      lessons,
+    };
+  }
+
   const modules = [
-    buildReadmeModule(readmePlan("foundations")),
-    buildReadmeModule(readmePlan("setup")),
-    buildReadmeModule(readmePlan("development")),
+    buildCourseModule("foundations", "ML 시스템 기초"),
+    buildCourseModule("setup", "환경 셋업"),
+    buildCourseModule("development", "데이터와 모델 개발"),
     buildSourceModule("implementation-internals", "구현 내부", IMPLEMENTATION_INTERNALS),
-    buildReadmeModule(readmePlan("serving")),
-    buildSourceModule("testing-quality", "테스트와 품질", TESTING_QUALITY),
-    buildSourceModule("deployment-ops", "배포 운영", DEPLOYMENT_OPS),
+    buildCourseModule("serving", "서빙과 인터페이스"),
+    buildCourseModule("testing-quality", "테스트와 품질", TESTING_QUALITY),
+    buildCourseModule("deployment-ops", "배포 운영", DEPLOYMENT_OPS),
     buildReadmeModule(readmePlan("production")),
   ]
     .filter((m) => m.lessons.length > 0)

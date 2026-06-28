@@ -35,6 +35,7 @@ function stripMarkdownCode(markdown: string): string {
   return markdown
     .replace(/```[\s\S]*?```/g, " ")
     .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*]\([^)]+\)/g, " ")
     .replace(/https?:\/\/\S+/g, " ")
     .replace(/<[^>]+>/g, " ");
 }
@@ -45,6 +46,7 @@ function hasKorean(text: string): boolean {
 
 function likelyEnglishSentence(line: string): boolean {
   const clean = line
+    .replace(/!\[[^\]]*]\([^)]+\)/g, " ")
     .replace(/\[[^\]]+\]\([^)]+\)/g, " ")
     .replace(/&nbsp;/g, " ")
     .trim();
@@ -86,6 +88,57 @@ function main() {
     failures.push({
       check: "ml lesson coverage",
       detail: `expected at least 40 ML lessons after source expansion, found ${lessons.length}`,
+    });
+  }
+
+  const expectedCourseSlugs = [
+    "setup",
+    "product-design",
+    "systems-design",
+    "preparation",
+    "exploratory-data-analysis",
+    "preprocessing",
+    "distributed-data",
+    "training",
+    "experiment-tracking",
+    "tuning",
+    "evaluation",
+    "serving",
+    "scripting",
+    "cli",
+    "logging",
+    "documentation",
+    "styling",
+    "pre-commit",
+    "testing",
+    "versioning",
+    "jobs-and-services",
+    "cicd",
+    "monitoring",
+    "data-engineering",
+  ];
+  const courseLessons = lessons.filter(({ lesson }) =>
+    lesson.sourceUrl?.startsWith("https://madewithml.com/courses/mlops/"),
+  );
+  for (const slug of expectedCourseSlugs) {
+    const courseUrl = `https://madewithml.com/courses/mlops/${slug}/`;
+    if (!courseLessons.some(({ lesson }) => lesson.sourceUrl === courseUrl)) {
+      failures.push({
+        check: "ml detailed course coverage",
+        detail: `missing detailed Made With ML course page ${courseUrl}`,
+      });
+    }
+  }
+  const shortCourseLessons = courseLessons.filter(
+    ({ lesson }) => lesson.contentMarkdown.length < 1800,
+  );
+  if (shortCourseLessons.length > 0) {
+    failures.push({
+      check: "ml detailed course depth",
+      detail: `course lessons below 1800 chars: ${shortCourseLessons
+        .slice(0, 6)
+        .map(({ lesson }) => `${lesson.id} (${lesson.contentMarkdown.length})`)
+        .join(", ")}`,
     });
   }
 

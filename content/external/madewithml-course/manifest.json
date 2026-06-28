@@ -1,0 +1,174 @@
+{
+  "source": "Made With ML MLOps course",
+  "fetchedAt": "2026-06-28T08:00:43.468Z",
+  "pages": [
+    {
+      "slug": "setup",
+      "title": "Setup",
+      "url": "https://madewithml.com/courses/mlops/setup/",
+      "path": "setup.md",
+      "chars": 5916
+    },
+    {
+      "slug": "product-design",
+      "title": "Product design",
+      "url": "https://madewithml.com/courses/mlops/product-design/",
+      "path": "product-design.md",
+      "chars": 6045
+    },
+    {
+      "slug": "systems-design",
+      "title": "Systems design",
+      "url": "https://madewithml.com/courses/mlops/systems-design/",
+      "path": "systems-design.md",
+      "chars": 13475
+    },
+    {
+      "slug": "preparation",
+      "title": "Data preparation",
+      "url": "https://madewithml.com/courses/mlops/preparation/",
+      "path": "preparation.md",
+      "chars": 6450
+    },
+    {
+      "slug": "exploratory-data-analysis",
+      "title": "Exploratory data analysis",
+      "url": "https://madewithml.com/courses/mlops/exploratory-data-analysis/",
+      "path": "exploratory-data-analysis.md",
+      "chars": 4795
+    },
+    {
+      "slug": "preprocessing",
+      "title": "Preprocessing",
+      "url": "https://madewithml.com/courses/mlops/preprocessing/",
+      "path": "preprocessing.md",
+      "chars": 19899
+    },
+    {
+      "slug": "distributed-data",
+      "title": "Distributed data processing",
+      "url": "https://madewithml.com/courses/mlops/distributed-data/",
+      "path": "distributed-data.md",
+      "chars": 5475
+    },
+    {
+      "slug": "training",
+      "title": "Distributed training",
+      "url": "https://madewithml.com/courses/mlops/training/",
+      "path": "training.md",
+      "chars": 52607
+    },
+    {
+      "slug": "experiment-tracking",
+      "title": "Experiment tracking",
+      "url": "https://madewithml.com/courses/mlops/experiment-tracking/",
+      "path": "experiment-tracking.md",
+      "chars": 9429
+    },
+    {
+      "slug": "tuning",
+      "title": "Tuning",
+      "url": "https://madewithml.com/courses/mlops/tuning/",
+      "path": "tuning.md",
+      "chars": 13950
+    },
+    {
+      "slug": "evaluation",
+      "title": "Evaluation",
+      "url": "https://madewithml.com/courses/mlops/evaluation/",
+      "path": "evaluation.md",
+      "chars": 29993
+    },
+    {
+      "slug": "serving",
+      "title": "Serving",
+      "url": "https://madewithml.com/courses/mlops/serving/",
+      "path": "serving.md",
+      "chars": 12688
+    },
+    {
+      "slug": "scripting",
+      "title": "Scripting",
+      "url": "https://madewithml.com/courses/mlops/scripting/",
+      "path": "scripting.md",
+      "chars": 7078
+    },
+    {
+      "slug": "cli",
+      "title": "Command-line interface",
+      "url": "https://madewithml.com/courses/mlops/cli/",
+      "path": "cli.md",
+      "chars": 3586
+    },
+    {
+      "slug": "logging",
+      "title": "Logging",
+      "url": "https://madewithml.com/courses/mlops/logging/",
+      "path": "logging.md",
+      "chars": 10352
+    },
+    {
+      "slug": "documentation",
+      "title": "Documentation",
+      "url": "https://madewithml.com/courses/mlops/documentation/",
+      "path": "documentation.md",
+      "chars": 5731
+    },
+    {
+      "slug": "styling",
+      "title": "Code styling",
+      "url": "https://madewithml.com/courses/mlops/styling/",
+      "path": "styling.md",
+      "chars": 4555
+    },
+    {
+      "slug": "pre-commit",
+      "title": "Pre-commit",
+      "url": "https://madewithml.com/courses/mlops/pre-commit/",
+      "path": "pre-commit.md",
+      "chars": 3606
+    },
+    {
+      "slug": "testing",
+      "title": "Testing",
+      "url": "https://madewithml.com/courses/mlops/testing/",
+      "path": "testing.md",
+      "chars": 26198
+    },
+    {
+      "slug": "versioning",
+      "title": "Versioning",
+      "url": "https://madewithml.com/courses/mlops/versioning/",
+      "path": "versioning.md",
+      "chars": 1877
+    },
+    {
+      "slug": "jobs-and-services",
+      "title": "Jobs and services",
+      "url": "https://madewithml.com/courses/mlops/jobs-and-services/",
+      "path": "jobs-and-services.md",
+      "chars": 8860
+    },
+    {
+      "slug": "cicd",
+      "title": "CI/CD",
+      "url": "https://madewithml.com/courses/mlops/cicd/",
+      "path": "cicd.md",
+      "chars": 11963
+    },
+    {
+      "slug": "monitoring",
+      "title": "Monitoring",
+      "url": "https://madewithml.com/courses/mlops/monitoring/",
+      "path": "monitoring.md",
+      "chars": 32274
+    },
+    {
+      "slug": "data-engineering",
+      "title": "Data engineering",
+      "url": "https://madewithml.com/courses/mlops/data-engineering/",
+      "path": "data-engineering.md",
+      "chars": 12449
+    }
+  ]
+}

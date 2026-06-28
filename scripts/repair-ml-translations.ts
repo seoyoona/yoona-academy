@@ -84,6 +84,9 @@ function needsSeed(lesson: Lesson, translation: Translation | undefined): boolea
 }
 
 function isTemplateSeedable(lesson: Lesson): boolean {
+  if (lesson.sourceUrl?.startsWith("https://madewithml.com/courses/mlops/")) {
+    return false;
+  }
   return (
     lesson.id.includes("__implementation-internals__") ||
     lesson.id.includes("__testing-quality__") ||

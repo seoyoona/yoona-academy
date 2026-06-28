@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sources": "tsx scripts/fetch-sources.ts",
+    "sources": "tsx scripts/fetch-sources.ts && tsx scripts/fetch-made-with-ml-course.ts",
+    "sources:ml-course": "tsx scripts/fetch-made-with-ml-course.ts",
     "ingest": "tsx scripts/ingest/index.ts",
     "enrich": "tsx scripts/enrich.ts",
     "translate": "tsx scripts/translate.ts",
@@ -15,6 +16,8 @@
     "refresh": "pnpm sources && pnpm ingest && pnpm enrich",
     "verify:content": "tsx scripts/verify-content.ts",
     "repair:ml-translations": "tsx scripts/repair-ml-translations.ts",
+    "translate:ml-course": "tsx scripts/translate-ml-course-openai.ts",
+    "translate:ml-course:free": "tsx scripts/translate-ml-course-google.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
