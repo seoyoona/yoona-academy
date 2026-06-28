@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Play, Search } from "lucide-react";
 import type { Resource } from "@/content/types";
+import { getYouTubeEmbed } from "@/lib/video-embeds";
 
 const PAGE = 60;
 const VIDEO_RE = /youtube\.com|youtu\.be|vimeo\.com|instagram\.com/i;
@@ -40,7 +41,8 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     () =>
       resources.map((r, i) => {
         const [t, s] = splitCategory(r.category);
-        return { r, t, s, i, video: VIDEO_RE.test(r.url), host: hostOf(r.url) };
+        const embed = getYouTubeEmbed(r.url, r.title);
+        return { r, t, s, i, video: VIDEO_RE.test(r.url), host: hostOf(r.url), embed };
       }),
     [resources],
   );
@@ -207,35 +209,76 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
       </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {shown.map((it) => (
-          <a
-            key={it.r.id}
-            href={it.r.url}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40"
-          >
-            <span className="flex items-start justify-between gap-2">
-              <span className="text-xs font-medium text-muted-foreground">{it.r.category}</span>
-              {it.video ? (
-                <Play className="size-3.5 shrink-0 text-red-500" />
-              ) : (
-                <ExternalLink className="size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+        {shown.map((it) =>
+          it.embed ? (
+            <div
+              key={it.r.id}
+              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/40"
+            >
+              <div className="relative aspect-video bg-black">
+                <iframe
+                  className="absolute inset-0 size-full border-0"
+                  src={it.embed.src}
+                  title={it.embed.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-4">
+                <span className="flex items-start justify-between gap-2">
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {it.r.category}
+                  </span>
+                  <Play className="size-3.5 shrink-0 text-red-500" />
+                </span>
+                <span className="mt-1.5 font-medium leading-snug">{it.r.title}</span>
+                {it.r.description && (
+                  <span className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                    {it.r.description}
+                  </span>
+                )}
+                <a
+                  href={it.r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <ExternalLink className="size-3" />
+                  YouTube에서 열기
+                </a>
+              </div>
+            </div>
+          ) : (
+            <a
+              key={it.r.id}
+              href={it.r.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40"
+            >
+              <span className="flex items-start justify-between gap-2">
+                <span className="text-xs font-medium text-muted-foreground">{it.r.category}</span>
+                {it.video ? (
+                  <Play className="size-3.5 shrink-0 text-red-500" />
+                ) : (
+                  <ExternalLink className="size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                )}
+              </span>
+              <span className="mt-1.5 font-medium leading-snug">{it.r.title}</span>
+              {it.r.description && (
+                <span className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                  {it.r.description}
+                </span>
               )}
-            </span>
-            <span className="mt-1.5 font-medium leading-snug">{it.r.title}</span>
-            {it.r.description && (
-              <span className="mt-1 line-clamp-2 text-xs text-muted-foreground">
-                {it.r.description}
-              </span>
-            )}
-            {it.host && (
-              <span className="mt-2 truncate text-[11px] text-muted-foreground/70">
-                {it.host}
-              </span>
-            )}
-          </a>
-        ))}
+              {it.host && (
+                <span className="mt-2 truncate text-[11px] text-muted-foreground/70">
+                  {it.host}
+                </span>
+              )}
+            </a>
+          ),
+        )}
       </div>
 
       {shown.length < filtered.length && (
