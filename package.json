@@ -10,15 +10,18 @@
     "sources": "tsx scripts/fetch-sources.ts",
     "ingest": "tsx scripts/ingest/index.ts",
     "enrich": "tsx scripts/enrich.ts",
+    "enrich:mit-ai": "tsx scripts/enrich-mit-ai.ts",
     "translate": "tsx scripts/translate.ts",
     "content": "pnpm ingest && pnpm enrich",
     "refresh": "pnpm sources && pnpm ingest && pnpm enrich",
+    "test:mit-ai-notes": "tsx --test scripts/lib/mit-ai-notes.test.ts",
     "verify:content": "tsx scripts/verify-content.ts",
     "repair:ml-translations": "tsx scripts/repair-ml-translations.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.84",
+    "@ai-sdk/openai": "^3.0.77",
     "@ai-sdk/react": "^3.0.208",
     "@base-ui/react": "^1.5.0",
     "@clerk/nextjs": "^7.5.3",

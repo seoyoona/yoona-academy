@@ -1,13 +1,21 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { Track, Translation } from "../src/content/types";
+import type { Enrichment, Quiz, Track, Translation } from "../src/content/types";
+import {
+  isMitVideoLesson,
+  stripMarkupUrlsAndCode,
+  validateMitLessonQuality,
+} from "./lib/mit-ai-notes";
 
 const ROOT = process.cwd();
 const GEN = join(ROOT, "content", "generated");
 const TRACKS = join(GEN, "tracks");
 const ML_TRACK = join(TRACKS, "ml-engineering.json");
+const MIT_TRACK = join(TRACKS, "mit-ai.json");
 const TRANSLATIONS = join(GEN, "translations.json");
+const ENRICHMENTS = join(GEN, "enrichments.json");
+const QUIZZES = join(GEN, "quizzes.json");
 
 type Failure = {
   check: string;
@@ -173,6 +181,8 @@ function main() {
     }
   }
 
+  verifyMitAi(failures);
+
   if (failures.length > 0) {
     console.error(`Content verification failed (${failures.length}):`);
     for (const failure of failures) {
@@ -182,8 +192,75 @@ function main() {
   }
 
   console.log(
-    `Content verification passed: ${lessons.length} ML lessons, ${track.modules.length} modules, translations fresh.`,
+    `Content verification passed: ${lessons.length} ML lessons, ${track.modules.length} modules, translations fresh; MIT AI content verified.`,
   );
+}
+
+function verifyMitAi(failures: Failure[]) {
+  const track = readJson<Track>(MIT_TRACK);
+  const enrichments = readJson<Record<string, Enrichment>>(ENRICHMENTS);
+  const quizzes = readJson<Record<string, Quiz>>(QUIZZES);
+  const lessons = flatten(track);
+  const videoLessons = lessons.filter(({ lesson }) => isMitVideoLesson(lesson));
+
+  if (lessons.length !== 124) {
+    failures.push({
+      check: "mit lesson coverage",
+      detail: `expected 124 MIT lessons, found ${lessons.length}`,
+    });
+  }
+  if (videoLessons.length !== 103) {
+    failures.push({
+      check: "mit video coverage",
+      detail: `expected 103 MIT video lessons, found ${videoLessons.length}`,
+    });
+  }
+
+  for (const { lesson } of lessons) {
+    const enrichment = enrichments[lesson.id];
+    if (!enrichment) {
+      failures.push({
+        check: "mit enrichment coverage",
+        detail: `missing enrichment for ${lesson.id}`,
+      });
+    } else {
+      if (!hasKorean(stripMarkupUrlsAndCode(enrichment.summary))) {
+        failures.push({
+          check: "mit enrichment language",
+          detail: `${lesson.id} summary has no Korean prose`,
+        });
+      }
+      if (enrichment.objectives.length < 2) {
+        failures.push({
+          check: "mit enrichment objectives",
+          detail: `${lesson.id} has fewer than 2 objectives`,
+        });
+      }
+      if (enrichment.keyConcepts.length < 3) {
+        failures.push({
+          check: "mit enrichment concepts",
+          detail: `${lesson.id} has fewer than 3 key concepts`,
+        });
+      }
+    }
+
+    const quiz = quizzes[lesson.id];
+    if (!quiz || quiz.questions.length < 3) {
+      failures.push({
+        check: "mit quiz coverage",
+        detail: `${lesson.id} has fewer than 3 quiz questions`,
+      });
+    }
+
+    if (isMitVideoLesson(lesson)) {
+      for (const detail of validateMitLessonQuality(lesson.id, lesson.contentMarkdown)) {
+        failures.push({
+          check: "mit lecture note quality",
+          detail: `${lesson.id}: ${detail}`,
+        });
+      }
+    }
+  }
 }
 
 main();
