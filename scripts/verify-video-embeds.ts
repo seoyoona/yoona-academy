@@ -20,6 +20,8 @@ function main() {
     "",
     "[Named lecture](https://www.youtube.com/playlist?list=PLAMHV77MSKJ7Pn_OwuGzbDPs_MOibBRP-)",
     "",
+    "- [3Blue1Brown: Backpropagation calculus](https://www.youtube.com/watch?v=tIeHLnjs5U8) -- visual explanation",
+    "",
     "```",
     "https://www.youtube.com/watch?v=shouldNotConvert",
     "```",
@@ -42,6 +44,10 @@ function main() {
       'src="https://www.youtube.com/embed/videoseries?list=PLAMHV77MSKJ7Pn_OwuGzbDPs_MOibBRP-"',
     ),
     "expected YouTube playlist URL to convert to a playlist iframe embed",
+  );
+  assert(
+    markdown.includes('src="https://www.youtube.com/embed/tIeHLnjs5U8"'),
+    "expected bullet markdown YouTube links to convert to iframe embeds",
   );
   assert(
     markdown.includes("https://www.youtube.com/watch?v=shouldNotConvert"),

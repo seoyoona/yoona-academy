@@ -37,9 +37,12 @@ function embedStandaloneYouTubeLine(line: string): string {
   const trimmed = line.trim();
   if (!trimmed) return line;
 
-  const markdownLink = trimmed.match(/^\[([^\]]+)]\((https?:\/\/[^)]+)\)$/);
+  const markdownLink = trimmed.match(
+    /^(?:[-*]\s+)?\[([^\]]+)]\((https?:\/\/[^)]+)\)(?:\s*(?:--|[-–—:])\s*(.+))?$/,
+  );
   const title = markdownLink?.[1];
   const url = markdownLink?.[2] ?? trimmed;
+  const description = markdownLink?.[3];
   if (!/^https?:\/\/\S+$/.test(url)) return line;
 
   const embed = getYouTubeEmbed(url, title);
@@ -50,8 +53,11 @@ function embedStandaloneYouTubeLine(line: string): string {
     `  <iframe style="${IFRAME_STYLE}" src="${embed.src}" title="${escapeAttr(embed.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
     `</div>`,
     "",
+    title || description
+      ? `<p><strong>${escapeHtml(title ?? embed.title)}</strong>${description ? ` — ${escapeHtml(description)}` : ""}</p>`
+      : "",
     `[YouTube에서 바로 보기](${embed.originalUrl})`,
-  ].join("\n");
+  ].filter(Boolean).join("\n");
 }
 
 export function getYouTubeEmbed(url: string, title?: string): YouTubeEmbed | null {
@@ -120,6 +126,13 @@ function escapeAttr(value: string): string {
   return value
     .replace(/&/g, "&amp;")
     .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
