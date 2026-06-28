@@ -142,6 +142,23 @@ function main() {
     });
   }
 
+  const lateModuleSlugs = new Set(["testing-quality", "deployment-ops", "production"]);
+  const shortLateSourceLessons = lessons.filter(
+    ({ module, lesson }) =>
+      lateModuleSlugs.has(module.slug) &&
+      !lesson.sourceUrl?.startsWith("https://madewithml.com/courses/mlops/") &&
+      lesson.contentMarkdown.length < 1800,
+  );
+  if (shortLateSourceLessons.length > 0) {
+    failures.push({
+      check: "ml late-module source lesson depth",
+      detail: `module 6+ source lessons below 1800 chars: ${shortLateSourceLessons
+        .slice(0, 8)
+        .map(({ lesson }) => `${lesson.id} (${lesson.contentMarkdown.length})`)
+        .join(", ")}`,
+    });
+  }
+
   const sourceNeedles = [
     "madewithml/config.py",
     "madewithml/data.py",

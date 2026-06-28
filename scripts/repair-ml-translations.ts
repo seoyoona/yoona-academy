@@ -90,7 +90,8 @@ function isTemplateSeedable(lesson: Lesson): boolean {
   return (
     lesson.id.includes("__implementation-internals__") ||
     lesson.id.includes("__testing-quality__") ||
-    lesson.id.includes("__deployment-ops__")
+    lesson.id.includes("__deployment-ops__") ||
+    lesson.id.includes("__production__")
   );
 }
 
