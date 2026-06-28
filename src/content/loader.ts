@@ -86,9 +86,9 @@ export function flattenLessons(
   track: Track,
 ): Array<{ lesson: Lesson; module: Module }> {
   const out: Array<{ lesson: Lesson; module: Module }> = [];
-  for (const module of [...track.modules].sort((a, b) => a.order - b.order)) {
-    for (const lesson of [...module.lessons].sort((a, b) => a.order - b.order)) {
-      out.push({ lesson, module });
+  for (const courseModule of [...track.modules].sort((a, b) => a.order - b.order)) {
+    for (const lesson of [...courseModule.lessons].sort((a, b) => a.order - b.order)) {
+      out.push({ lesson, module: courseModule });
     }
   }
   return out;
@@ -106,7 +106,7 @@ export function getLessonView(lessonId: string): LessonView | undefined {
     const flat = flattenLessons(track);
     const idx = flat.findIndex(({ lesson }) => lesson.id === lessonId);
     if (idx === -1) continue;
-    const { lesson, module } = flat[idx];
+    const { lesson, module: courseModule } = flat[idx];
     const prev = flat[idx - 1]?.lesson;
     const next = flat[idx + 1]?.lesson;
     const tr = getTranslations()[lessonId];
@@ -124,7 +124,7 @@ export function getLessonView(lessonId: string): LessonView | undefined {
         emoji: track.emoji,
         accent: track.accent,
       },
-      module: { id: module.id, slug: module.slug, title: module.title },
+      module: { id: courseModule.id, slug: courseModule.slug, title: courseModule.title },
       prev: prev ? { id: prev.id, title: localizedTitle(prev.id, prev.title) } : undefined,
       next: next ? { id: next.id, title: localizedTitle(next.id, next.title) } : undefined,
     };
@@ -152,13 +152,13 @@ export function trackCard(track: Track) {
 /** Flat, ordered lesson references across all tracks (for continue-learning). */
 export function lessonRefs() {
   return getAllTracks().flatMap((track) =>
-    flattenLessons(track).map(({ lesson, module }) => ({
+    flattenLessons(track).map(({ lesson, module: courseModule }) => ({
       id: lesson.id,
       title: localizedTitle(lesson.id, lesson.title),
       trackSlug: track.slug,
       trackTitle: track.title,
       emoji: track.emoji,
-      moduleTitle: module.title,
+      moduleTitle: courseModule.title,
     })),
   );
 }

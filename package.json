@@ -13,6 +13,8 @@
     "translate": "tsx scripts/translate.ts",
     "content": "pnpm ingest && pnpm enrich",
     "refresh": "pnpm sources && pnpm ingest && pnpm enrich",
+    "verify:content": "tsx scripts/verify-content.ts",
+    "repair:ml-translations": "tsx scripts/repair-ml-translations.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {

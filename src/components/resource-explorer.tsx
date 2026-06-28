@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ExternalLink, Play, Search } from "lucide-react";
 import type { Resource } from "@/content/types";
 
@@ -33,7 +33,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
   const [type, setType] = useState<string>(ALL); // level 1 (folder)
   const [sub, setSub] = useState<string>(ALL); //   level 2 (language/subcategory)
   const [sort, setSort] = useState<SortKey>("default");
-  const [visible, setVisible] = useState(PAGE);
+  const [paging, setPaging] = useState({ key: "", visible: PAGE });
 
   // Pre-split once so filtering/counting is cheap.
   const items = useMemo(
@@ -93,8 +93,8 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     return out;
   }, [items, query, type, sub, sort]);
 
-  // Reset paging whenever the result set changes.
-  useEffect(() => setVisible(PAGE), [query, type, sub, sort]);
+  const pagingKey = `${query}\u0000${type}\u0000${sub}\u0000${sort}`;
+  const visible = paging.key === pagingKey ? paging.visible : PAGE;
 
   const videoCount = filtered.filter((it) => it.video).length;
   const shown = filtered.slice(0, visible);
@@ -241,7 +241,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
       {shown.length < filtered.length && (
         <div className="mt-6 flex justify-center">
           <button
-            onClick={() => setVisible((v) => v + PAGE)}
+            onClick={() => setPaging({ key: pagingKey, visible: visible + PAGE })}
             className="rounded-xl border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
           >
             더보기 ({(filtered.length - shown.length).toLocaleString()}개 남음)

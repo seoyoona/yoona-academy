@@ -68,7 +68,7 @@ const DEFAULT: CertState = { status: "not_started", percent: 0, updatedAt: 0 };
 /** Patch one cert's state; status drives percent (completed→100, not_started→0). */
 export function patchCert(id: string, patch: Partial<CertState>) {
   const prev = snapshot[id] ?? DEFAULT;
-  let next: CertState = { ...prev, ...patch, updatedAt: Date.now() };
+  const next: CertState = { ...prev, ...patch, updatedAt: Date.now() };
   if (patch.status === "completed" && patch.percent === undefined)
     next.percent = 100;
   if (patch.status === "not_started" && patch.percent === undefined)
