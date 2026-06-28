@@ -146,6 +146,7 @@ export function trackCard(track: Track) {
     lessonIds: flat.map(({ lesson }) => lesson.id),
     moduleCount: stats.moduleCount,
     hours: stats.hours,
+    comingSoon: track.slug === "mit-ai",
   };
 }
 
