@@ -7,10 +7,28 @@ export function embedYouTubeLinks(markdown: string): string {
 type FencePart = { fenced: boolean; text: string };
 export type YouTubeEmbed = { src: string; title: string; originalUrl: string };
 
+const TOP_VIDEO_THRESHOLD_CHARS = 1200;
 const IFRAME_STYLE =
   "position:absolute;inset:0;width:100%;height:100%;border:0";
 const WRAPPER_STYLE =
   "position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.25rem 0;background:#000";
+
+export function promoteYouTubeEmbeds(markdown: string, sourceMarkdown = markdown): string {
+  const firstEmbedIndex = markdown.indexOf('class="video-embed"');
+  if (firstEmbedIndex !== -1 && firstEmbedIndex <= TOP_VIDEO_THRESHOLD_CHARS) {
+    return markdown;
+  }
+
+  const embeds = extractYouTubeEmbeds(sourceMarkdown);
+  if (!embeds.length) return markdown;
+
+  return [
+    "## 영상 자료",
+    "",
+    ...embeds.flatMap((embed) => [renderYouTubeEmbed(embed), ""]),
+    markdown,
+  ].join("\n").trimEnd();
+}
 
 function splitFencedBlocks(markdown: string): FencePart[] {
   const parts: FencePart[] = [];
@@ -88,6 +106,19 @@ function extractInlineYouTubeEmbeds(line: string): YouTubeEmbed[] {
     addEmbed(match[0]);
   }
 
+  return Array.from(embeds.values());
+}
+
+function extractYouTubeEmbeds(markdown: string): YouTubeEmbed[] {
+  const embeds = new Map<string, YouTubeEmbed>();
+  for (const part of splitFencedBlocks(markdown)) {
+    if (part.fenced) continue;
+    for (const line of part.text.split("\n")) {
+      for (const embed of extractInlineYouTubeEmbeds(line)) {
+        if (!embeds.has(embed.src)) embeds.set(embed.src, embed);
+      }
+    }
+  }
   return Array.from(embeds.values());
 }
 

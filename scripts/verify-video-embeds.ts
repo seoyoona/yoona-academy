@@ -1,4 +1,8 @@
-import { embedYouTubeLinks, getYouTubeEmbed } from "../src/lib/video-embeds";
+import {
+  embedYouTubeLinks,
+  getYouTubeEmbed,
+  promoteYouTubeEmbeds,
+} from "../src/lib/video-embeds";
 
 function assert(condition: boolean, message: string): void {
   if (!condition) {
@@ -69,6 +73,31 @@ function main() {
   assert(
     resourceEmbed?.src === "https://www.youtube.com/embed/1jvxxa7tdjw",
     "expected resource YouTube URLs to expose reusable embed metadata",
+  );
+
+  const longLesson = [
+    "# Long lesson",
+    "",
+    "This lesson starts with a long explanation.",
+    "",
+    "Content ".repeat(260),
+    "",
+    "Learn about all the other observability features through this [video](https://www.youtube.com/playlist?list=PLzTswPQNepXlh3SWAgwZZxqLxYjXzcVbn).",
+  ].join("\n");
+  const promoted = promoteYouTubeEmbeds(embedYouTubeLinks(longLesson), longLesson);
+  assert(
+    promoted.indexOf("## 영상 자료") !== -1 &&
+      promoted.indexOf("## 영상 자료") < promoted.indexOf("# Long lesson"),
+    "expected long lessons with buried YouTube links to expose a top video section",
+  );
+
+  const alreadyVisible = promoteYouTubeEmbeds(
+    embedYouTubeLinks("https://youtu.be/WZZLtwnZ4w0"),
+    "https://youtu.be/WZZLtwnZ4w0",
+  );
+  assert(
+    !alreadyVisible.includes("## 영상 자료"),
+    "expected lessons that already start with a video embed not to add a duplicate top video section",
   );
 }
 
