@@ -7,6 +7,7 @@ import {
   type Enrichment,
   type Quiz,
   type Translation,
+  type LessonTranscripts,
   type LessonView,
   type Lesson,
   type Module,
@@ -14,6 +15,7 @@ import {
   ResourceSchema,
   EnrichmentMapSchema,
   QuizMapSchema,
+  VideoTranscriptMapSchema,
 } from "./types";
 
 const GEN_DIR = join(process.cwd(), "content", "generated");
@@ -29,6 +31,7 @@ let _tracks: Track[] | null = null;
 let _resources: Resource[] | null = null;
 let _enrichments: Record<string, Enrichment> | null = null;
 let _quizzes: Record<string, Quiz> | null = null;
+let _videoTranscripts: Record<string, LessonTranscripts> | null = null;
 let _translations: Record<string, Translation> | null = null;
 
 export function getAllTracks(): Track[] {
@@ -64,6 +67,14 @@ function getQuizzes(): Record<string, Quiz> {
   if (_quizzes) return _quizzes;
   _quizzes = QuizMapSchema.parse(readJson(join(GEN_DIR, "quizzes.json"), {}));
   return _quizzes;
+}
+
+function getVideoTranscripts(): Record<string, LessonTranscripts> {
+  if (_videoTranscripts) return _videoTranscripts;
+  _videoTranscripts = VideoTranscriptMapSchema.parse(
+    readJson(join(GEN_DIR, "video-transcripts.json"), {}),
+  );
+  return _videoTranscripts;
 }
 
 /**
@@ -117,6 +128,7 @@ export function getLessonView(lessonId: string): LessonView | undefined {
       ...localized,
       enrichment: getEnrichments()[lessonId],
       quiz: getQuizzes()[lessonId],
+      transcripts: getVideoTranscripts()[lessonId],
       track: {
         id: track.id,
         slug: track.slug,

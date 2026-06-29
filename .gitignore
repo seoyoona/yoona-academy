@@ -42,3 +42,5 @@ next-env.d.ts
 
 # content pipeline (cloned sources are not committed; generated output IS)
 /content/sources/
+/.tmp/
+/.venv-transcripts/

@@ -13,6 +13,7 @@ import { LessonNav } from "@/components/lesson/lesson-nav";
 import { LessonFooter } from "@/components/lesson/lesson-footer";
 import { LessonQuiz } from "@/components/lesson/lesson-quiz";
 import { TutorLauncher } from "@/components/lesson/tutor-chat";
+import type { LessonTranscripts } from "@/content/types";
 
 export function generateStaticParams() {
   return getAllLessonIds().map((lessonId) => ({ lessonId }));
@@ -126,6 +127,10 @@ export default async function LessonPage({
           dangerouslySetInnerHTML={{ __html: html }}
         />
 
+        {view.transcripts && view.transcripts.videos.length > 0 && (
+          <TranscriptSection transcripts={view.transcripts} />
+        )}
+
         {view.quiz && view.quiz.questions.length > 0 && (
           <LessonQuiz quiz={view.quiz} />
         )}
@@ -139,5 +144,51 @@ export default async function LessonPage({
         aiEnabled={aiEnabled}
       />
     </div>
+  );
+}
+
+function TranscriptSection({
+  transcripts,
+}: {
+  transcripts: LessonTranscripts;
+}) {
+  return (
+    <section className="mt-12 rounded-2xl border border-border bg-card p-5 sm:p-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h2 className="text-lg font-semibold">영상 Transcript</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {transcripts.videos.length}개 영상 · 한국어 자막
+          </p>
+        </div>
+      </div>
+      <div className="mt-5 space-y-3">
+        {transcripts.videos.map((video, index) => (
+          <details
+            key={`${video.videoId}-${index}`}
+            className="group rounded-xl border border-border bg-background/60"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-sm font-medium">
+              <span className="min-w-0 truncate">{video.title}</span>
+              <span className="shrink-0 text-xs text-muted-foreground">
+                {video.segments.length}구간
+              </span>
+            </summary>
+            <div className="border-t border-border px-4 py-4">
+              <div className="space-y-4">
+                {video.segments.map((segment, segmentIndex) => (
+                  <p key={segmentIndex} className="grid gap-2 text-sm leading-7 sm:grid-cols-[4.5rem_1fr]">
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {segment.start}
+                    </span>
+                    <span>{segment.text}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
   );
 }

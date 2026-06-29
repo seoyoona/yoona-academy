@@ -33,6 +33,31 @@ export const EnrichmentSchema = z.object({
 });
 export type Enrichment = z.infer<typeof EnrichmentSchema>;
 
+export const TranscriptSegmentSchema = z.object({
+  start: z.string(),
+  end: z.string(),
+  text: z.string(),
+});
+export type TranscriptSegment = z.infer<typeof TranscriptSegmentSchema>;
+
+export const VideoTranscriptSchema = z.object({
+  videoId: z.string(),
+  order: z.number().int().positive().optional(),
+  title: z.string(),
+  url: z.string(),
+  language: z.string(),
+  source: z.string(),
+  segments: z.array(TranscriptSegmentSchema),
+});
+export type VideoTranscript = z.infer<typeof VideoTranscriptSchema>;
+
+export const LessonTranscriptsSchema = z.object({
+  generatedAt: z.string(),
+  provider: z.string(),
+  videos: z.array(VideoTranscriptSchema),
+});
+export type LessonTranscripts = z.infer<typeof LessonTranscriptsSchema>;
+
 /** A single lesson — the atomic unit of learning. */
 export const LessonSchema = z.object({
   /** Globally unique, URL-safe: `${trackSlug}__${moduleSlug}__${lessonSlug}` */
@@ -96,6 +121,7 @@ export type Translation = z.infer<typeof TranslationSchema>;
 /** Maps keyed by lesson id, produced by the enrichment step (idempotent cache). */
 export const EnrichmentMapSchema = z.record(z.string(), EnrichmentSchema);
 export const QuizMapSchema = z.record(z.string(), QuizSchema);
+export const VideoTranscriptMapSchema = z.record(z.string(), LessonTranscriptsSchema);
 /** Permissive on purpose — a malformed/missing entry must never break rendering. */
 export const TranslationMapSchema = z.record(z.string(), z.unknown());
 
@@ -103,6 +129,7 @@ export const TranslationMapSchema = z.record(z.string(), z.unknown());
 export type LessonView = Lesson & {
   enrichment?: Enrichment;
   quiz?: Quiz;
+  transcripts?: LessonTranscripts;
   track: Pick<Track, "id" | "slug" | "title" | "emoji" | "accent">;
   module: Pick<Module, "id" | "slug" | "title">;
   prev?: { id: string; title: string };
