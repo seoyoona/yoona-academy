@@ -158,34 +158,31 @@ function TranscriptSection({
   transcripts: LessonTranscripts;
 }) {
   return (
-    <section className="mt-12 rounded-2xl border border-border bg-card p-5 sm:p-6">
-      <div className="flex items-start justify-between gap-4">
+    <details className="mt-12 rounded-2xl border border-border bg-card">
+      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 sm:p-6">
         <div>
-          <h2 className="text-lg font-semibold">영상 자료 및 Transcript</h2>
+          <h2 className="text-lg font-semibold">보충 영상 및 Transcript</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             {transcripts.videos.length}개 영상 · 한국어 자막
           </p>
         </div>
-      </div>
-      <div className="mt-5 space-y-5">
-        {transcripts.videos.map((video, index) => (
-          <VideoTranscriptCard
-            key={`${video.videoId}-${index}`}
-            video={video}
-            defaultOpen={index === 0}
-          />
+        <span className="shrink-0 rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">
+          열기
+        </span>
+      </summary>
+      <div className="space-y-5 border-t border-border p-5 sm:p-6">
+        {transcripts.videos.map((video) => (
+          <VideoTranscriptCard key={video.videoId} video={video} />
         ))}
       </div>
-    </section>
+    </details>
   );
 }
 
 function VideoTranscriptCard({
   video,
-  defaultOpen,
 }: {
   video: LessonTranscripts["videos"][number];
-  defaultOpen: boolean;
 }) {
   const embed = getYouTubeEmbed(video.url, video.title);
 
@@ -214,7 +211,7 @@ function VideoTranscriptCard({
           />
         </div>
       )}
-      <details open={defaultOpen} className="group border-t border-border">
+      <details className="group border-t border-border">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-sm font-medium">
           <span>Transcript</span>
           <span className="shrink-0 text-xs text-muted-foreground">

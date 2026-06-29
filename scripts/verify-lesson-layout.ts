@@ -31,6 +31,16 @@ function main() {
     page.includes("<iframe") && page.includes("<details"),
     "expected TranscriptSection to group each video iframe with its transcript details",
   );
+  assert(
+    page.includes('<details className="mt-12') &&
+      page.includes("<summary") &&
+      page.includes("보충 영상"),
+    "expected supplemental video transcript section to be collapsed by default",
+  );
+  assert(
+    !page.includes("defaultOpen") && !page.includes("open={"),
+    "expected supplemental videos and transcripts not to be expanded by default",
+  );
 }
 
 try {
