@@ -121,15 +121,15 @@ export default async function LessonPage({
           </div>
         )}
 
+        {view.transcripts && view.transcripts.videos.length > 0 && (
+          <TranscriptSection transcripts={view.transcripts} />
+        )}
+
         {/* content */}
         <div
           className="lesson-prose prose prose-neutral mt-8 max-w-none dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-
-        {view.transcripts && view.transcripts.videos.length > 0 && (
-          <TranscriptSection transcripts={view.transcripts} />
-        )}
 
         {view.quiz && view.quiz.questions.length > 0 && (
           <LessonQuiz quiz={view.quiz} />
