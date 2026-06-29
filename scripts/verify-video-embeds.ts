@@ -22,6 +22,8 @@ function main() {
     "",
     "- [3Blue1Brown: Backpropagation calculus](https://www.youtube.com/watch?v=tIeHLnjs5U8) -- visual explanation",
     "",
+    "Learn about all the other observability features on the Ray Dashboard through this [video](https://www.youtube.com/playlist?list=PLzTswPQNepXlh3SWAgwZZxqLxYjXzcVbn).",
+    "",
     "```",
     "https://www.youtube.com/watch?v=shouldNotConvert",
     "```",
@@ -48,6 +50,12 @@ function main() {
   assert(
     markdown.includes('src="https://www.youtube.com/embed/tIeHLnjs5U8"'),
     "expected bullet markdown YouTube links to convert to iframe embeds",
+  );
+  assert(
+    markdown.includes(
+      'src="https://www.youtube.com/embed/videoseries?list=PLzTswPQNepXlh3SWAgwZZxqLxYjXzcVbn"',
+    ),
+    "expected inline markdown YouTube links to append iframe embeds",
   );
   assert(
     markdown.includes("https://www.youtube.com/watch?v=shouldNotConvert"),

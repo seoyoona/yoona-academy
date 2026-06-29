@@ -29,8 +29,14 @@ function splitFencedBlocks(markdown: string): FencePart[] {
 function embedYouTubeLinksInProse(markdown: string): string {
   return markdown
     .split("\n")
-    .map((line) => embedStandaloneYouTubeLine(line))
+    .map((line) => embedYouTubeLinksInLine(line))
     .join("\n");
+}
+
+function embedYouTubeLinksInLine(line: string): string {
+  const standalone = embedStandaloneYouTubeLine(line);
+  if (standalone !== line) return standalone;
+  return appendInlineYouTubeEmbeds(line);
 }
 
 function embedStandaloneYouTubeLine(line: string): string {
@@ -48,6 +54,48 @@ function embedStandaloneYouTubeLine(line: string): string {
   const embed = getYouTubeEmbed(url, title);
   if (!embed) return line;
 
+  return renderYouTubeEmbed(embed, title, description);
+}
+
+function appendInlineYouTubeEmbeds(line: string): string {
+  if (!line.trim() || line.includes("video-embed") || line.includes("<iframe")) return line;
+
+  const embeds = extractInlineYouTubeEmbeds(line);
+  if (!embeds.length) return line;
+
+  return [
+    line,
+    "",
+    ...embeds.flatMap((embed) => [renderYouTubeEmbed(embed), ""]),
+  ].join("\n").trimEnd();
+}
+
+function extractInlineYouTubeEmbeds(line: string): YouTubeEmbed[] {
+  const embeds = new Map<string, YouTubeEmbed>();
+  const addEmbed = (url: string, title?: string) => {
+    const embed = getYouTubeEmbed(stripTrailingPunctuation(url), title);
+    if (embed && !embeds.has(embed.src)) embeds.set(embed.src, embed);
+  };
+
+  const markdownLinkPattern = /\[([^\]]+)]\((https?:\/\/[^)\s]+)\)/g;
+  for (const match of line.matchAll(markdownLinkPattern)) {
+    addEmbed(match[2], match[1]);
+  }
+
+  const rawUrlPattern =
+    /https?:\/\/(?:www\.|m\.|music\.)?(?:youtube\.com|youtu\.be)\/[^\s)\]]+/g;
+  for (const match of line.matchAll(rawUrlPattern)) {
+    addEmbed(match[0]);
+  }
+
+  return Array.from(embeds.values());
+}
+
+function renderYouTubeEmbed(
+  embed: YouTubeEmbed,
+  title?: string,
+  description?: string,
+): string {
   return [
     `<div class="video-embed" style="${WRAPPER_STYLE}">`,
     `  <iframe style="${IFRAME_STYLE}" src="${embed.src}" title="${escapeAttr(embed.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
@@ -120,6 +168,10 @@ function cleanYouTubeId(value: string): string {
 
 function cleanPlaylistId(value: string): string {
   return value.match(/^[A-Za-z0-9_-]{8,}$/)?.[0] ?? "";
+}
+
+function stripTrailingPunctuation(value: string): string {
+  return value.replace(/[.,;:!?]+$/, "");
 }
 
 function escapeAttr(value: string): string {
