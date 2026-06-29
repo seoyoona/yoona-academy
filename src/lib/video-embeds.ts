@@ -21,12 +21,13 @@ export function promoteYouTubeEmbeds(markdown: string, sourceMarkdown = markdown
 
   const embeds = extractYouTubeEmbeds(sourceMarkdown);
   if (!embeds.length) return markdown;
+  const bodyWithoutPromotedEmbeds = stripPromotedYouTubeEmbedBlocks(markdown, embeds);
 
   return [
     "## 영상 자료",
     "",
     ...embeds.flatMap((embed) => [renderYouTubeEmbed(embed), ""]),
-    markdown,
+    bodyWithoutPromotedEmbeds,
   ].join("\n").trimEnd();
 }
 
@@ -120,6 +121,52 @@ function extractYouTubeEmbeds(markdown: string): YouTubeEmbed[] {
     }
   }
   return Array.from(embeds.values());
+}
+
+function stripPromotedYouTubeEmbedBlocks(
+  markdown: string,
+  promotedEmbeds: YouTubeEmbed[],
+): string {
+  const promotedSrcs = new Set(promotedEmbeds.map((embed) => embed.src));
+  const lines = markdown.split("\n");
+  const out: string[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line.includes('<div class="video-embed"')) {
+      out.push(line);
+      i++;
+      continue;
+    }
+
+    const block: string[] = [];
+    let j = i;
+    while (j < lines.length) {
+      block.push(lines[j]);
+      const closed = lines[j].includes("</div>");
+      j++;
+      if (closed) break;
+    }
+
+    const blockText = block.join("\n");
+    const src = blockText.match(/\ssrc="([^"]+)"/)?.[1];
+    if (!src || !promotedSrcs.has(src)) {
+      out.push(...block);
+      i = j;
+      continue;
+    }
+
+    while (j < lines.length && !lines[j].trim()) j++;
+    if (lines[j]?.startsWith("<p><strong>")) j++;
+    while (j < lines.length && !lines[j].trim()) j++;
+    if (lines[j]?.startsWith("[YouTube에서 바로 보기](")) j++;
+
+    if (out.length > 0 && out[out.length - 1].trim()) out.push("");
+    i = j;
+  }
+
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd();
 }
 
 function renderYouTubeEmbed(

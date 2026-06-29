@@ -26,8 +26,20 @@ const processor = unified()
   })
   .use(rehypeStringify, { allowDangerousHtml: true });
 
-export async function renderMarkdown(md: string): Promise<string> {
-  const embedded = embedYouTubeLinks(md);
-  const file = await processor.process(promoteYouTubeEmbeds(embedded, md));
+type RenderMarkdownOptions = {
+  embedYouTubeLinks?: boolean;
+  promoteYouTubeEmbeds?: boolean;
+};
+
+export async function renderMarkdown(
+  md: string,
+  options: RenderMarkdownOptions = {},
+): Promise<string> {
+  const embedded = options.embedYouTubeLinks === false ? md : embedYouTubeLinks(md);
+  const promoted =
+    options.promoteYouTubeEmbeds === false
+      ? embedded
+      : promoteYouTubeEmbeds(embedded, md);
+  const file = await processor.process(promoted);
   return String(file);
 }

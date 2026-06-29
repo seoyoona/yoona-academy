@@ -85,10 +85,19 @@ function main() {
     "Learn about all the other observability features through this [video](https://www.youtube.com/playlist?list=PLzTswPQNepXlh3SWAgwZZxqLxYjXzcVbn).",
   ].join("\n");
   const promoted = promoteYouTubeEmbeds(embedYouTubeLinks(longLesson), longLesson);
+  const promotedPlaylistEmbedCount = (
+    promoted.match(
+      /src="https:\/\/www\.youtube\.com\/embed\/videoseries\?list=PLzTswPQNepXlh3SWAgwZZxqLxYjXzcVbn"/g,
+    ) ?? []
+  ).length;
   assert(
     promoted.indexOf("## 영상 자료") !== -1 &&
       promoted.indexOf("## 영상 자료") < promoted.indexOf("# Long lesson"),
     "expected long lessons with buried YouTube links to expose a top video section",
+  );
+  assert(
+    promotedPlaylistEmbedCount === 1,
+    "expected promoted buried YouTube playlist embeds not to render again in the lesson body",
   );
 
   const alreadyVisible = promoteYouTubeEmbeds(

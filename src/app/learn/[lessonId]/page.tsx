@@ -8,6 +8,7 @@ import {
   getLocalizedModules,
 } from "@/content/loader";
 import { renderMarkdown } from "@/lib/render-markdown";
+import { getYouTubeEmbed } from "@/lib/video-embeds";
 import { aiEnabled } from "@/lib/ai";
 import { LessonNav } from "@/components/lesson/lesson-nav";
 import { LessonFooter } from "@/components/lesson/lesson-footer";
@@ -38,7 +39,11 @@ export default async function LessonPage({
   const view = getLessonView(lessonId);
   if (!view) notFound();
 
-  const html = await renderMarkdown(view.contentMarkdown);
+  const hasTranscripts = Boolean(view.transcripts?.videos.length);
+  const html = await renderMarkdown(view.contentMarkdown, {
+    embedYouTubeLinks: !hasTranscripts,
+    promoteYouTubeEmbeds: !hasTranscripts,
+  });
   const modules = getLocalizedModules(view.track.slug);
 
   return (
@@ -156,39 +161,82 @@ function TranscriptSection({
     <section className="mt-12 rounded-2xl border border-border bg-card p-5 sm:p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-lg font-semibold">영상 Transcript</h2>
+          <h2 className="text-lg font-semibold">영상 자료 및 Transcript</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             {transcripts.videos.length}개 영상 · 한국어 자막
           </p>
         </div>
       </div>
-      <div className="mt-5 space-y-3">
+      <div className="mt-5 space-y-5">
         {transcripts.videos.map((video, index) => (
-          <details
+          <VideoTranscriptCard
             key={`${video.videoId}-${index}`}
-            className="group rounded-xl border border-border bg-background/60"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-sm font-medium">
-              <span className="min-w-0 truncate">{video.title}</span>
-              <span className="shrink-0 text-xs text-muted-foreground">
-                {video.segments.length}구간
-              </span>
-            </summary>
-            <div className="border-t border-border px-4 py-4">
-              <div className="space-y-4">
-                {video.segments.map((segment, segmentIndex) => (
-                  <p key={segmentIndex} className="grid gap-2 text-sm leading-7 sm:grid-cols-[4.5rem_1fr]">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {segment.start}
-                    </span>
-                    <span>{segment.text}</span>
-                  </p>
-                ))}
-              </div>
-            </div>
-          </details>
+            video={video}
+            defaultOpen={index === 0}
+          />
         ))}
       </div>
     </section>
+  );
+}
+
+function VideoTranscriptCard({
+  video,
+  defaultOpen,
+}: {
+  video: LessonTranscripts["videos"][number];
+  defaultOpen: boolean;
+}) {
+  const embed = getYouTubeEmbed(video.url, video.title);
+
+  return (
+    <article className="overflow-hidden rounded-xl border border-border bg-background/60">
+      <div className="px-4 py-3">
+        <h3 className="text-sm font-semibold">{video.title}</h3>
+        <a
+          href={video.url}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+        >
+          <ExternalLink className="size-3.5" /> YouTube에서 바로 보기
+        </a>
+      </div>
+      {embed && (
+        <div className="relative aspect-video w-full bg-black">
+          <iframe
+            className="absolute inset-0 h-full w-full border-0"
+            src={embed.src}
+            title={embed.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      )}
+      <details open={defaultOpen} className="group border-t border-border">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-sm font-medium">
+          <span>Transcript</span>
+          <span className="shrink-0 text-xs text-muted-foreground">
+            {video.segments.length}구간
+          </span>
+        </summary>
+        <div className="border-t border-border px-4 py-4">
+          <div className="space-y-4">
+            {video.segments.map((segment, segmentIndex) => (
+              <p
+                key={segmentIndex}
+                className="grid gap-2 text-sm leading-7 sm:grid-cols-[4.5rem_1fr]"
+              >
+                <span className="font-mono text-xs text-muted-foreground">
+                  {segment.start}
+                </span>
+                <span>{segment.text}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </details>
+    </article>
   );
 }
