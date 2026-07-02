@@ -5,6 +5,7 @@ import { buildPythonTrack } from "./thirty-days-python";
 import { buildMlTrack } from "./made-with-ml";
 import { buildAiEngineeringTrack } from "./ai-engineering";
 import { buildMitAiTrack } from "./mit-ai";
+import { buildAiConsultantTrack } from "./ai-consultant";
 import { buildResources } from "./resources";
 
 const ROOT = process.cwd();
@@ -24,6 +25,7 @@ function main() {
     buildMlTrack(SOURCES),
     buildAiEngineeringTrack(SOURCES),
     buildMitAiTrack(),
+    buildAiConsultantTrack(),
   ].map((t) => TrackSchema.parse(t));
   for (const track of tracks) {
     writeJson(join(TRACKS, `${track.slug}.json`), track);

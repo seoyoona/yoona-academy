@@ -4250,5 +4250,965 @@
         "explanation": "전달 차원의 진짜 exactly-once는 분산 환경에서 달성하기 매우 어렵습니다. 실용적 해법은 중복 전달을 허용하는 at-least-once 큐에, 같은 작업을 여러 번 실행해도 결과가 동일한 멱등 처리기를 결합하는 것입니다. 이렇게 하면 중복이 발생해도 부작용 없이 effectively-once를 달성합니다."
       }
     ]
+  },
+  "ai-consultant__web-app-structure__service-layers": {
+    "questions": [
+      {
+        "id": "ai-consultant__web-app-structure__service-layers-q0",
+        "prompt": "결제 완료 여부를 판단하는 일은 어디서 처리해야 할까?",
+        "choices": [
+          "프론트엔드에서 사용자 경험을 위해 빠르게 처리한다",
+          "백엔드(서버)에서 처리한다",
+          "데이터베이스에서 직접 처리한다",
+          "클라우드에서 자동으로 처리한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "결제 완료 같은 판단을 프론트엔드에 두면 누구든 이를 조작해 무료로 결제를 완료할 수 있다. 신뢰가 필요한 판단은 사용자 손이 닿지 않는 서버에 둬야 한다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__service-layers-q1",
+        "prompt": "API가 필요한 이유로 가장 적절한 것은?",
+        "choices": [
+          "화면을 더 빠르게 그리기 위해",
+          "데이터베이스 용량을 줄이기 위해",
+          "층을 독립적으로 바꿀 수 있게 하려고",
+          "클라우드 비용을 낮추려고"
+        ],
+        "answerIndex": 2,
+        "explanation": "API는 프론트엔드와 백엔드가 대화할 형식을 정한 계약이다. 계약이 명확하면 화면을 바꾸지 않고 서버 규칙만 고칠 수 있고, 반대로 서버를 건드리지 않고 새 화면을 붙일 수 있다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__service-layers-q2",
+        "prompt": "'데이터가 날아갔다'는 불만의 원인은 보통 어디에 있는가?",
+        "choices": [
+          "프론트엔드의 문제",
+          "데이터베이스의 문제",
+          "API의 문제",
+          "브라우저 캐시의 문제"
+        ],
+        "answerIndex": 1,
+        "explanation": "데이터베이스에 있는 사실은 서버가 꺼져도, 앱을 지워도 남는다. 그래서 데이터 유실은 거의 항상 데이터베이스의 문제이지 프론트엔드의 문제가 아니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__service-layers-q3",
+        "prompt": "프론트엔드 층의 가장 중요한 특징은?",
+        "choices": [
+          "영구적으로 데이터를 저장한다",
+          "결제 규칙을 검증한다",
+          "사용자 기기 안에서 돈다",
+          "층과 층을 잇는 계약을 정의한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "프론트엔드는 사용자가 보고 누르는 화면으로, 브라우저나 앱이라는 사용자 기기 안에서 돈다. 기기가 꺼지면 같이 사라진다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__service-layers-q4",
+        "prompt": "고객의 요구를 들었을 때 가장 먼저 해야 할 일은?",
+        "choices": [
+          "바로 개발자에게 요청을 넘긴다",
+          "'화면인가, 규칙인가, 데이터인가'로 분류한다",
+          "클라우드 비용부터 계산한다",
+          "디자인 시안부터 만든다"
+        ],
+        "answerIndex": 1,
+        "explanation": "요구를 이 세 단어로 먼저 분류하면 구체화 정도를 알 수 있다. 세 단어로 안 나뉘는 요구는 아직 구체화되지 않은 것이다."
+      }
+    ]
+  },
+  "ai-consultant__web-app-structure__how-the-web-works": {
+    "questions": [
+      {
+        "id": "ai-consultant__web-app-structure__how-the-web-works-q0",
+        "prompt": "DNS의 주된 역할은 무엇인가요?",
+        "choices": [
+          "웹페이지 코드를 화면에 그려주는 것",
+          "도메인 이름(mozilla.org)을 실제 IP 주소로 변환해 주는 것",
+          "데이터를 작은 패킷으로 나누어 전송하는 것",
+          "웹사이트 파일을 서버에 저장하는 것"
+        ],
+        "answerIndex": 1,
+        "explanation": "DNS는 도메인 이름을 주소록처럼 관리하여, 우리가 입력하기 쉬운 이름(mozilla.org)을 서버의 실제 위치인 IP 주소로 찾아 연결해 줍니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-the-web-works-q1",
+        "prompt": "클라이언트가 웹페이지를 요청했을 때, 서버가 요청을 승인했다는 의미의 HTTP 응답은 무엇인가요?",
+        "choices": [
+          "404 Not Found",
+          "301 Moved Permanently",
+          "200 OK",
+          "500 Internal Server Error"
+        ],
+        "answerIndex": 2,
+        "explanation": "200 OK는 '요청을 잘 받았고 보내주겠다'는 뜻으로, 이후 서버가 웹페이지 파일을 전송하기 시작합니다. 404는 찾을 수 없음, 500은 서버 오류를 뜻합니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-the-web-works-q2",
+        "prompt": "웹페이지 파일은 인터넷을 통해 어떻게 전달되나요?",
+        "choices": [
+          "하나의 큰 파일이 통째로 한 번에 전송된다",
+          "작은 조각인 패킷으로 나뉘어 전송된 뒤 브라우저가 조립한다",
+          "DNS가 직접 사용자 기기로 파일을 배달한다",
+          "HTTP가 파일을 이미지로 변환해 전송한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "데이터는 패킷이라는 작은 덩어리로 쪼개져 TCP/IP를 통해 전송되고, 브라우저가 이 조각들을 모아 완성된 웹페이지로 만들어 보여줍니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-the-web-works-q3",
+        "prompt": "다음 중 '클라이언트'에 해당하는 것은 무엇인가요?",
+        "choices": [
+          "웹페이지를 저장하고 보내주는 컴퓨터",
+          "웹 브라우저로 접속하는 사용자의 컴퓨터나 스마트폰",
+          "도메인 이름과 IP 주소를 연결해 주는 서버",
+          "데이터 통신 규칙을 정하는 표준 기관"
+        ],
+        "answerIndex": 1,
+        "explanation": "클라이언트는 사용자의 인터넷 연결 기기(컴퓨터, 폰)와 그 안에서 실행되는 웹 브라우저를 가리킵니다. 반대로 웹페이지를 저장해 두는 쪽이 서버입니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-the-web-works-q4",
+        "prompt": "HTTP의 역할을 가장 잘 설명한 것은 무엇인가요?",
+        "choices": [
+          "데이터가 인터넷 선을 타고 이동하는 물리적 방식을 정한다",
+          "클라이언트와 서버가 서로 요청과 응답을 주고받을 때 쓰는 통신 언어다",
+          "웹사이트에 들어가는 이미지·영상 같은 자료 파일을 뜻한다",
+          "도메인 이름을 IP 주소로 바꿔주는 시스템이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "HTTP(Hypertext Transfer Protocol)는 클라이언트와 서버가 대화하기 위한 응용 프로토콜입니다. 마치 가게에서 물건을 주문할 때 쓰는 언어와 같습니다."
+      }
+    ]
+  },
+  "ai-consultant__web-app-structure__how-browsers-load": {
+    "questions": [
+      {
+        "id": "ai-consultant__web-app-structure__how-browsers-load-q0",
+        "prompt": "브라우저가 받은 파일들을 조립해 사용자가 상호작용할 수 있는 웹 페이지로 만드는 과정을 무엇이라고 부르나요?",
+        "choices": [
+          "렌더링",
+          "컴파일링",
+          "라우팅",
+          "캐싱"
+        ],
+        "answerIndex": 0,
+        "explanation": "여러 HTTP 응답으로 받은 파일을 브라우저가 처리하고 하나의 웹 페이지로 조립하는 과정을 렌더링이라고 합니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-browsers-load-q1",
+        "prompt": "HTML이 파싱되어 컴퓨터 메모리에 만들어지는 트리 구조는 무엇인가요?",
+        "choices": [
+          "DOM 트리",
+          "렌더 트리",
+          "레이아웃 트리",
+          "CSSOM 트리"
+        ],
+        "answerIndex": 0,
+        "explanation": "HTML의 각 요소·속성·텍스트는 노드가 되어 부모-자식·형제 관계를 갖는 DOM 트리를 형성합니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-browsers-load-q2",
+        "prompt": "CSS 규칙이 정렬되어 요소에 스타일을 적용하기 전, 브라우저가 만드는 중간 단계의 이름은 무엇인가요?",
+        "choices": [
+          "렌더 트리",
+          "DOM 트리",
+          "이벤트 루프",
+          "콜 스택"
+        ],
+        "answerIndex": 0,
+        "explanation": "브라우저는 CSS 규칙을 적용할 요소별로 정렬한 뒤, DOM 노드에 스타일을 붙여 렌더 트리라는 중간 구조를 만듭니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-browsers-load-q3",
+        "prompt": "최종 렌더링 결과가 화면에 시각적으로 표시되는 단계는 무엇인가요?",
+        "choices": [
+          "페인팅",
+          "파싱",
+          "컴파일",
+          "라우팅"
+        ],
+        "answerIndex": 0,
+        "explanation": "렌더 트리가 레이아웃을 거쳐 배치된 뒤, 페이지의 시각적 표현이 화면에 그려지는 단계를 페인팅(painting)이라고 합니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__how-browsers-load-q4",
+        "prompt": "JavaScript가 브라우저 렌더링 결과에 영향을 줄 수 있는 가장 큰 이유는 무엇인가요?",
+        "choices": [
+          "DOM에 새 노드를 추가하거나 기존 노드를 수정할 수 있어서",
+          "HTML 문서를 직접 압축해서",
+          "CSS 규칙을 자동으로 삭제해서",
+          "HTTP 요청을 차단해서"
+        ],
+        "answerIndex": 0,
+        "explanation": "JavaScript는 렌더링 완료 전에 실행되어 DOM에 노드를 추가하거나 기존 노드를 변경할 수 있으므로 최종 화면에 영향을 미칩니다."
+      }
+    ]
+  },
+  "ai-consultant__web-app-structure__html-css-js-and-cloud": {
+    "questions": [
+      {
+        "id": "ai-consultant__web-app-structure__html-css-js-and-cloud-q0",
+        "prompt": "버튼을 눌러도 아무 반응이 없다면, 가장 먼저 의심해야 할 영역은?",
+        "choices": [
+          "HTML",
+          "CSS",
+          "JavaScript(JS)",
+          "배포 설정"
+        ],
+        "answerIndex": 2,
+        "explanation": "클릭에 반응하는 움직임·논리는 JS의 영역이다. '움직이는가?'가 안 되면 JS, 또는 그 너머 백엔드를 본다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__html-css-js-and-cloud-q1",
+        "prompt": "화면에 내용은 모두 보이지만 버튼의 위치와 색이 이상하다. 원인은?",
+        "choices": [
+          "HTML 구조 문제",
+          "CSS 문제",
+          "JS 로직 문제",
+          "DB 문제"
+        ],
+        "answerIndex": 1,
+        "explanation": "내용은 다 보이는데 생김새(위치·색)가 이상하면 '예쁜가?'를 다루는 CSS의 문제다. HTML은 정상이다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__html-css-js-and-cloud-q2",
+        "prompt": "'React로 만들었다'는 말의 정확한 의미는?",
+        "choices": [
+          "HTML·CSS·JS를 쓰지 않고 새 언어로 만들었다",
+          "HTML·CSS·JS를 React라는 틀 안에서 더 편하게 다룬다",
+          "화면이 자동으로 클라우드에 배포된다",
+          "CSS 없이도 화면을 꾸밀 수 있다"
+        ],
+        "answerIndex": 1,
+        "explanation": "프레임워크는 HTML·CSS·JS를 없애는 게 아니라 컴포넌트 단위로 더 편하게 다루게 해주는 도구다. 결국 화면에 나오는 건 여전히 HTML·CSS·JS다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__html-css-js-and-cloud-q3",
+        "prompt": "HTML·CSS·JS로만 만든 정적 화면을 사용자에게 제공하려면 어떤 배포가 적합한가?",
+        "choices": [
+          "EC2 같은 서버를 직접 운영해야 한다",
+          "Vercel·Netlify에 파일을 올리면 된다",
+          "RDS 같은 DB를 먼저 만들어야 한다",
+          "반드시 백엔드 개발이 선행되어야 한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "정적 화면은 서버 계산이 필요 없으므로 파일 자체를 올리면 끝이다. Vercel·Netlify 같은 곳이 그런 역할을 하며 싸고 빠르다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__html-css-js-and-cloud-q4",
+        "prompt": "'로컬(개발 환경)에서는 되는데 배포하면 안 된다'는 흔한 말의 가까운 원인은?",
+        "choices": [
+          "HTML 코드 자체의 오류",
+          "JS 로직의 논리 버그",
+          "올려놓는 자리(환경)의 설정 문제",
+          "CSS 색상값 오류"
+        ],
+        "answerIndex": 2,
+        "explanation": "코드 자체 문제가 아니라 환경 변수·배포 설정 등 올려놓는 자리의 설정 문제일 때가 많다. 이는 환경변수와 클라우드 단원에서 다룬다."
+      }
+    ]
+  },
+  "ai-consultant__web-app-structure__git-and-deploy": {
+    "questions": [
+      {
+        "id": "ai-consultant__web-app-structure__git-and-deploy-q0",
+        "prompt": "개발자가 \"코드를 저장(커밋)했습니다\"라고 했을 때, 실제 고객이 결과를 볼 수 있으려면 아직 거쳐야 하는 가장 핵심적인 단계는?",
+        "choices": [
+          "푸시만 하면 된다",
+          "새 브랜치를 만들면 된다",
+          "배포까지 가야 한다",
+          "커밋 메시지를 고치면 된다"
+        ],
+        "answerIndex": 2,
+        "explanation": "커밋은 내 PC에 저장한 상태로 아무도 보지 못한다. 푸시로 GitHub에 올리고 리뷰를 통과한 뒤 배포(5단계)까지 이르러야 비로소 사용자에게 보인다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__git-and-deploy-q1",
+        "prompt": "Git과 GitHub의 관계로 가장 알맞은 설명은?",
+        "choices": [
+          "Git은 GitHub의 하위 기능이다",
+          "GitHub는 Git 이력을 온라인에 올려 팀과 공유하는 원격 저장소다",
+          "둘은 이름만 다른 같은 도구다",
+          "GitHub가 로컬 컴퓨터에서 이력을 관리한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Git은 개인 컴퓨터 안에서 변경 이력을 관리하고, GitHub는 그 이력을 인터넷에 올려 '공식 원본' 역할을 하며 팀 전체가 같은 곳을 향해 작업하게 한다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__git-and-deploy-q2",
+        "prompt": "회의에서 \"PR 올렸습니다\"라는 말의 진짜 의미는?",
+        "choices": [
+          "코드를 로컬에 저장했다",
+          "실서버에 코드를 반영했다",
+          "메인에 합치기 전 검토를 요청하고 있다",
+          "비밀값을 안전하게 보관했다"
+        ],
+        "answerIndex": 2,
+        "explanation": "PR(풀 리퀘스트)은 '제가 이렇게 바꿨으니 검토하고 메인에 합쳐달라'는 요청이다. 즉 작업을 끝냈으니 리뷰해 달라는 뜻이지, 사용자에게 반영됐다는 뜻은 아니다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__git-and-deploy-q3",
+        "prompt": "개발자가 \".env는 커밋하지 않습니다\"라고 강조하는 이유는?",
+        "choices": [
+          ".env 파일이 너무 커서 빌드가 느려져서",
+          "비밀값이 이력에 영구히 남아 저장소가 노출되면 치명적 사고가 되어서",
+          "커밋 메시지를 깔끔하게 유지하려고",
+          "GitHub의 파일 개수 제한 때문에"
+        ],
+        "answerIndex": 1,
+        "explanation": "비밀번호·API 키·DB 접속 정보 등은 한 번 푸시되면 이력에 영구히 남는다. 그래서 .gitignore로 커밋 대상에서 빼고 환경변수로만 다룬다."
+      },
+      {
+        "id": "ai-consultant__web-app-structure__git-and-deploy-q4",
+        "prompt": "메인 브랜치에 코드가 합쳐지면 클라우드가 알아서 검사하고 사이트를 갈아끼우는 '파이프라인'을 가리키는 용어는?",
+        "choices": [
+          "머지(merge)",
+          "CI/CD",
+          "롤백(rollback)",
+          "리베이스(rebase)"
+        ],
+        "answerIndex": 1,
+        "explanation": "CI/CD(지속적 통합/배포)는 코드가 합쳐질 때 자동으로 테스트·빌드를 돌리고 배포까지 수행하는 파이프라인이다. CI 검사가 실패하면 배포는 멈춘다."
+      }
+    ]
+  },
+  "ai-consultant__backend-api__why-api": {
+    "questions": [
+      {
+        "id": "ai-consultant__backend-api__why-api-q0",
+        "prompt": "REST에서 자원과 행동은 각각 어떻게 표현하는가?",
+        "choices": [
+          "자원은 URL 주소의 명사로, 행동은 HTTP 메서드로 구분한다",
+          "자원은 HTTP 메서드로, 행동은 URL에 동사로 넣는다",
+          "자원과 행동 모두 JSON 본문에 적는다",
+          "자원은 상태 코드로, 행동은 헤더로 표현한다"
+        ],
+        "answerIndex": 0,
+        "explanation": "REST는 다루는 대상을 /reservations처럼 주소(명사)로 표현하고, 행동을 GET(조회)·POST(생성)·PATCH(수정)·DELETE(삭제) 같은 HTTP 메서드로 구분한다."
+      },
+      {
+        "id": "ai-consultant__backend-api__why-api-q1",
+        "prompt": "'예약 하나 만들어 달라'는 요청에 맞는 REST 표현은?",
+        "choices": [
+          "GET /reservations",
+          "POST /reservations",
+          "DELETE /reservations",
+          "GET /createReservation"
+        ],
+        "answerIndex": 1,
+        "explanation": "생성(POST) 행동에 같은 명사 주소 /reservations를 쓴다. 주소에 create 같은 동사를 넣으면 REST 규칙이 깨진다."
+      },
+      {
+        "id": "ai-consultant__backend-api__why-api-q2",
+        "prompt": "개발자가 '응답은 JSON으로 드릴게요'라고 했을 때 기대할 수 있는 것은?",
+        "choices": [
+          "중괄호와 키-값으로 된 텍스트 형식의 데이터",
+          "HTML로 만들어진 화면",
+          "숫자로만 된 암호화된 문자열",
+          "소리나 영상 형태의 데이터"
+        ],
+        "answerIndex": 0,
+        "explanation": "JSON은 { }와 키-값 쌍으로 데이터를 표현하는 글 형식이라 사람과 기계가 모두 읽기 쉽다."
+      },
+      {
+        "id": "ai-consultant__backend-api__why-api-q3",
+        "prompt": "새 기능 요구가 들어왔을 때 공수를 가장 빠르게 가늠하는 방법은?",
+        "choices": [
+          "화면 디자인부터 먼저 그려본다",
+          "'데이터를 만드는가, 조회하는가, 고치는가'로 동사를 먼저 붙여 엔드포인트 수를 본다",
+          "서버 비용부터 계산한다",
+          "개발자 채용부터 진행한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "요구를 GET/POST/PATCH/DELETE 동사로 분류하면 필요한 엔드포인트 수가 보이고, 그것이 공수의 기준이 된다."
+      },
+      {
+        "id": "ai-consultant__backend-api__why-api-q4",
+        "prompt": "엔드포인트에 대한 설명으로 옳은 것은?",
+        "choices": [
+          "엔드포인트는 API의 각 문 주소다",
+          "엔드포인트는 데이터를 암호화하는 방식이다",
+          "엔드포인트는 화면 버튼의 색상 규칙이다",
+          "엔드포인트는 데이터베이스 테이블 이름이다"
+        ],
+        "answerIndex": 0,
+        "explanation": "POST /reservations처럼 하나의 주소+메서드 조합이 하나의 엔드포인트, 즉 API의 문 주소다."
+      }
+    ]
+  },
+  "ai-consultant__backend-api__crud": {
+    "questions": [
+      {
+        "id": "ai-consultant__backend-api__crud-q0",
+        "prompt": "CRUD 동사와 HTTP 메서드의 짝으로 올바른 것은?",
+        "choices": [
+          "Create = GET, Read = POST",
+          "Create = POST, Read = GET",
+          "Create = DELETE, Read = PUT",
+          "Create = PATCH, Read = DELETE"
+        ],
+        "answerIndex": 1,
+        "explanation": "데이터를 새로 만들 때는 POST, 읽을 때는 GET을 쓴다. 따라서 Create = POST, Read = GET이 올바른 짝이다."
+      },
+      {
+        "id": "ai-consultant__backend-api__crud-q1",
+        "prompt": "\"게시판 하나 만들어주세요\"라는 요구가 보통 몇 개의 API 엔드포인트로 구성되는가?",
+        "choices": [
+          "1개",
+          "3개",
+          "5개",
+          "10개"
+        ],
+        "answerIndex": 2,
+        "explanation": "Read가 목록조회와 단건조회로 나뉘기 때문에, 한 자원에 대해 보통 목록·단건·생성·수정·삭제 5개 엔드포인트가 필요하다. 겉보기엔 한 기능이어도 엔드포인트 5개짜리 작업이다."
+      },
+      {
+        "id": "ai-consultant__backend-api__crud-q2",
+        "prompt": "입력값 검증에 대한 설명으로 가장 적절한 것은?",
+        "choices": [
+          "프론트엔드 검증만 있으면 보안상 충분하다.",
+          "검증은 백엔드에 있어야 안전하며, 프론트 검증은 편의용이다.",
+          "백엔드 검증은 사실상 필요 없다.",
+          "검증은 일단 기능을 만든 뒤 나중으로 미뤄도 무방하다."
+        ],
+        "answerIndex": 1,
+        "explanation": "프론트엔드 검증은 사용자가 조작할 수 있어 보안용이 아니다. 신뢰의 마지노선은 백엔드이며, Create/Update는 반드시 백엔드에서 다시 검증해야 잘못된 데이터가 DB로 들어가는 일을 막을 수 있다."
+      },
+      {
+        "id": "ai-consultant__backend-api__crud-q3",
+        "prompt": "소프트 삭제(Soft Delete)에 대한 설명으로 올바른 것은?",
+        "choices": [
+          "DB에서 행을 완전히 지워버리는 방식이다.",
+          "deleted_at 같은 표시만 하고 행은 남겨두는 '휴지통' 방식이다.",
+          "한 번 실행하면 절대 되돌릴 수 없다.",
+          "데이터를 보관할 필요가 없을 때만 쓴다."
+        ],
+        "answerIndex": 1,
+        "explanation": "소프트 삭제는 행을 실제로 지우지 않고 deleted_at 같은 표시만 남겨둔다. 복구가 필요하거나 탈퇴 회원 주문처럼 법적으로 보관해야 하는 데이터일 때 선택한다."
+      },
+      {
+        "id": "ai-consultant__backend-api__crud-q4",
+        "prompt": "보낸 필드만 고치고 나머지는 그대로 두는 부분 수정에 가장 적합한 HTTP 메서드는?",
+        "choices": [
+          "POST",
+          "GET",
+          "PATCH",
+          "DELETE"
+        ],
+        "answerIndex": 2,
+        "explanation": "PATCH는 보낸 필드만 고친다. 반면 PUT은 자원 전체를 바꿔 안 보낸 필드가 사라질 수 있으므로, 실수로 데이터를 날릴 위험이 적은 PATCH가 대개 더 안전하다."
+      }
+    ]
+  },
+  "ai-consultant__backend-api__auth-and-secrets": {
+    "questions": [
+      {
+        "id": "ai-consultant__backend-api__auth-and-secrets-q0",
+        "prompt": "일반 회원이 로그인했는데도 공지 삭제 버튼이 보이지 않는 이유는?",
+        "choices": [
+          "인증에 실패해서",
+          "인가(권한)가 없어서",
+          "서버가 무상태라서",
+          "세션 저장소가 없어서"
+        ],
+        "answerIndex": 1,
+        "explanation": "로그인(인증)은 통과했더라도, 공지 삭제는 관리자 권한(인가)이 있어야 가능합니다. 인증은 '너 누구야', 인가는 '이거 해도 돼'를 검사하는 별개의 단계입니다."
+      },
+      {
+        "id": "ai-consultant__backend-api__auth-and-secrets-q1",
+        "prompt": "HTTP가 무상태(stateless)라는 말의 의미는?",
+        "choices": [
+          "서버가 모든 사용자를 영원히 기억한다",
+          "서버가 매 요청을 처음 보는 것처럼 처리한다",
+          "서버는 비밀번호를 절대 저장하지 않는다",
+          "서버는 JWT를 사용할 수 없다"
+        ],
+        "answerIndex": 1,
+        "explanation": "무상태는 서버가 매 요청 사이의 상태를 기억하지 않고, 각 요청을 독립적으로 처리한다는 뜻입니다. 그래서 로그인 뒤에도 매 요청마다 '나 로그인한 사람이야'를 다시 증명해야 하며, 이를 가능하게 하는 것이 세션과 토큰입니다."
+      },
+      {
+        "id": "ai-consultant__backend-api__auth-and-secrets-q2",
+        "prompt": "세션(Session) 모델의 장점으로 가장 적절한 것은?",
+        "choices": [
+          "서버가 상태를 기억할 필요가 없다",
+          "로그아웃과 강제 퇴출이 쉽다",
+          "모바일 앱에 항상 유리하다",
+          "서버가 늘어나도 공유 문제가 없다"
+        ],
+        "answerIndex": 1,
+        "explanation": "세션은 로그인 상태를 서버가 기억합니다. 저장소에서 해당 세션을 지우면 즉시 로그아웃·강제 퇴출이 가능해 주도권이 서버에 있습니다. 단점은 서버에 저장소가 필요하고 서버가 늘어나면 세션 공유 문제가 생깁니다."
+      },
+      {
+        "id": "ai-consultant__backend-api__auth-and-secrets-q3",
+        "prompt": "JWT를 서명할 때 '시크릿(비밀값)'이 필요한 이유는?",
+        "choices": [
+          "서버 응답을 빠르게 하려고",
+          "누구나 서명하면 '나 관리자야'를 만들 수 있기 때문에",
+          "비밀번호를 평문으로 저장하려고",
+          "세션 저장소 용량을 줄이려고"
+        ],
+        "answerIndex": 1,
+        "explanation": "JWT는 서명으로 진짜임을 증명합니다. 그런데 누구나 서명할 수 있다면 악의적 사용자가 임의로 권한을 담은 토큰을 만들 수 있어 JWT의 의미가 사라집니다. 그래서 서버만 아는 비밀값으로 서명해 위조를 막습니다."
+      },
+      {
+        "id": "ai-consultant__backend-api__auth-and-secrets-q4",
+        "prompt": "권한 검사를 프론트(화면)에만 맡기면 생기는 가장 큰 문제는?",
+        "choices": [
+          "화면이 너무 빨라진다",
+          "누구나 API를 직접 호출해 권한을 우회할 수 있다",
+          "세션 ID가 브라우저에 남지 않는다",
+          "JWT 만료 시간이 길어진다"
+        ],
+        "answerIndex": 1,
+        "explanation": "프론트에서 일반 회원에게 버튼을 숨기는 건 편의일 뿐입니다. 실제 보안은 백엔드의 인가 검사가 담당해야 하며, 그렇지 않으면 누구가 API를 직접 호출해 삭제·수정 같은 민감한 행동을 할 수 있습니다."
+      }
+    ]
+  },
+  "ai-consultant__backend-api__client-vs-server": {
+    "questions": [
+      {
+        "id": "ai-consultant__backend-api__client-vs-server-q0",
+        "prompt": "쿠폰 코드를 입력하면 결제 금액에서 20%를 깎아주는 할인율 계산 로직은 어디에 두어야 할까?",
+        "choices": [
+          "프론트엔드(클라이언트) JS에서 계산",
+          "서버(백엔드)에서 계산",
+          "CSS 파일 안에서 계산",
+          "브라우저 캐시에 저장"
+        ],
+        "answerIndex": 1,
+        "explanation": "할인율은 결제 금액, 즉 돈에 직결되는 신뢰 판단이므로 사용자가 고칠 수 없는 서버에서 처리해야 한다. 클라이언트에 두면 사용자가 JS를 고쳐 90% 할인으로 바꿀 수 있어 결제 사고로 이어진다."
+      },
+      {
+        "id": "ai-consultant__backend-api__client-vs-server-q1",
+        "prompt": "다음 중 클라이언트사이드 코드의 특징이 아닌 것은?",
+        "choices": [
+          "사용자 기기에서 실행돼 서버를 오가지 않아 빠르다",
+          "브라우저 개발자 도구로 코드를 열어볼 수 있다",
+          "사용자가 코드를 고쳐 실행할 수 있다",
+          "사용자가 코드를 조작할 수 없어 신뢰도가 높다"
+        ],
+        "answerIndex": 3,
+        "explanation": "클라이언트 코드는 사용자가 직접 고칠 수 있어 신뢰도가 낮다. 신뢰가 필요한 판단은 사용자가 고칠 수 없는 서버사이드에 둬야 한다."
+      },
+      {
+        "id": "ai-consultant__backend-api__client-vs-server-q2",
+        "prompt": "'빈 칸 검사'를 클라이언트와 서버 양쪽에 모두 두는(double-check) 이유로 옳은 것은?",
+        "choices": [
+          "서버 자원과 비용을 절약하기 위해",
+          "클라이언트 검사는 사용자가 우회할 수 있어, 진짜 안전은 서버 재검증에 있기 때문",
+          "같은 검사를 두 번 짜면 페이지 성능이 좋아지기 때문",
+          "클라이언트 검사는 아예 신뢰할 수 없어 한쪽만 남겨야 하기 때문"
+        ],
+        "answerIndex": 1,
+        "explanation": "클라이언트 검사는 빠른 피드백(편의)을 주지만 사용자가 무시할 수 있다. 보안의 최종 방어선은 항상 서버 재검증이므로 공수가 두 배여도 생략할 수 없다."
+      },
+      {
+        "id": "ai-consultant__backend-api__client-vs-server-q3",
+        "prompt": "마케팅 랜딩 페이지가 구글 검색에 잘 노출되어야 한다면 어떤 렌더링 방식이 유리할까?",
+        "choices": [
+          "CSR(클라이언트 렌더링) — 빈 HTML을 JS로 그림",
+          "SSR(서버 렌더링) — 서버가 완성된 HTML을 보냄",
+          "두 방식 모두 SEO에 차이가 없다",
+          "렌더링 방식은 검색 노출과 무관하다"
+        ],
+        "answerIndex": 1,
+        "explanation": "SSR은 서버가 완성된 HTML을 보내 첫 화면이 빠르고 검색봇이 내용을 제때 읽을 수 있어 SEO에 유리하다. 반면 CSR은 빈 HTML과 JS로 화면을 그려 검색봇이 내용을 제때 못 읽으면 순위가 떨어질 수 있다."
+      },
+      {
+        "id": "ai-consultant__backend-api__client-vs-server-q4",
+        "prompt": "결제 버튼을 프론트에서 '숨기기만' 하고 서버의 권한(인가) 검사가 없다면 어떤 일이 벌어지나?",
+        "choices": [
+          "아무 문제 없다. 숨긴 버튼은 실행 자체가 불가능하다",
+          "누구나 숨겨진 API를 직접 호출해 우회 실행할 수 있다",
+          "페이지 로딩 속도만 느려질 뿐이다",
+          "CSS 레이아웃만 깨진다"
+        ],
+        "answerIndex": 1,
+        "explanation": "화면 숨김은 편의일 뿐 보안이 아니다. 서버 인가 검사가 없으면 사용자가 브라우저 도구로 API를 직접 호출해 권한을 우회할 수 있다. 보안은 항상 서버사이드 인가 검사로 처리해야 한다."
+      }
+    ]
+  },
+  "ai-consultant__backend-api__backend-vocab": {
+    "questions": [
+      {
+        "id": "ai-consultant__backend-api__backend-vocab-q0",
+        "prompt": "환경변수를 코드 밖(.env 등)으로 빼는 주된 이유가 아닌 것은?",
+        "choices": [
+          "보안: 비밀값이 Git에 올라가 유출되는 것을 막는다",
+          "환경 분리: 개발·검증·실서버에서 같은 코드에 다른 값을 쓴다",
+          "성능: 코드 실행 속도를 크게 높인다",
+          "변경 용이: 값이 바뀌어도 코드를 고칠 필요가 없다"
+        ],
+        "answerIndex": 2,
+        "explanation": "환경변수 분리의 목적은 보안·환경 분리·변경 용이이지, 실행 속도 향상이 아니다."
+      },
+      {
+        "id": "ai-consultant__backend-api__backend-vocab-q1",
+        "prompt": "결제사 웹훅을 처리할 때 반드시 갖춰야 할 안전장치 두 가지는?",
+        "choices": [
+          "폴링과 캐시",
+          "멱등성 처리와 서명 검증",
+          "파일 업로드와 접근 로그",
+          "환경변수 분리와 큐 적용"
+        ],
+        "answerIndex": 1,
+        "explanation": "같은 알림이 두 번 와도 한 번 처리(멱등)하고, 요청이 진짜 결제사가 보낸 건지 확인(서명 검증)해야 이중결제 사고를 막는다."
+      },
+      {
+        "id": "ai-consultant__backend-api__backend-vocab-q2",
+        "prompt": "사용자가 올린 프로필 사진 파일을 저장하는 바른 방식은?",
+        "choices": [
+          "DB의 텍스트 컬럼에 파일 통째로 저장",
+          "전용 저장소(S3 등)에 파일을 두고 DB에는 URL만 저장",
+          "로그 파일에 저장",
+          "클라이언트 환경변수에 저장"
+        ],
+        "answerIndex": 1,
+        "explanation": "파일을 DB에 넣으면 DB가 비대해지고 느려진다. 파일은 전용 저장소에 두고 DB에는 주소(URL)만 저장한다."
+      },
+      {
+        "id": "ai-consultant__backend-api__backend-vocab-q3",
+        "prompt": "\"어제 결제가 안 됐다\"는 문의가 들어왔을 때 원인을 추적하려면 가장 먼저 봐야 할 것은?",
+        "choices": [
+          "에러 로그",
+          "캐시",
+          "큐",
+          "NEXT_PUBLIC_ 접두어"
+        ],
+        "answerIndex": 0,
+        "explanation": "로그가 있어야 그 시간대 요청이 왜 실패했는지(예: 결제사 timeout) 추적할 수 있다. 로그가 없으면 재현하기 전엔 원인을 알 수 없다."
+      },
+      {
+        "id": "ai-consultant__backend-api__backend-vocab-q4",
+        "prompt": "\"엑셀 올리면 1천 명에게 카톡 알림\" 기능에서 즉시 응답하면서 오래 걸리는 작업을 뒤로 미루려면 필요한 것은?",
+        "choices": [
+          "캐시",
+          "큐(queue)",
+          "웹훅 서명 검증",
+          "접근 로그"
+        ],
+        "answerIndex": 1,
+        "explanation": "큐는 오래 걸리는 작업(엑셀 파싱·대량 발송)을 줄에 넣어 나중에 처리한다. 사용자에게 즉시 \"처리 중\" 응답을 주고 브라우저 타임아웃을 막는다."
+      }
+    ]
+  },
+  "ai-consultant__db-postgres__data-structure": {
+    "questions": [
+      {
+        "id": "ai-consultant__db-postgres__data-structure-q0",
+        "prompt": "Primary Key(PK)에 대한 설명으로 옳은 것은?",
+        "choices": [
+          "한 행을 유일하게 식별하는 열로, 값이 절대 겹치지 않는다",
+          "다른 표의 행을 가리키는 열이다",
+          "열에 저장할 값의 종류를 정의한다",
+          "데이터를 빠르게 찾기 위한 색인이다"
+        ],
+        "answerIndex": 0,
+        "explanation": "PK는 한 행을 유일하게 가리키는 열입니다. 이름이 두 명일 수 있어도 id처럼 절대 중복되지 않는 값을 쓰면 모호함이 사라집니다. 다른 표를 가리키는 것은 FK입니다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__data-structure-q1",
+        "prompt": "reservations 표의 user_id 열이 users 표의 id를 가리킬 때, 이 열의 역할은?",
+        "choices": [
+          "해당 표의 각 행을 유일하게 식별한다",
+          "다른 표의 행을 가리켜 표 사이의 관계를 만든다",
+          "열에 들어갈 값의 종류를 미리 정한다",
+          "데이터를 빠르게 찾기 위한 색인이다"
+        ],
+        "answerIndex": 1,
+        "explanation": "user_id는 다른 표(users)의 id(PK)를 가리키는 Foreign Key입니다. 이것이 표 사이의 관계를 만들어 '이 예약은 누가 했나'를 따라갈 수 있게 합니다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__data-structure-q2",
+        "prompt": "users 표에 예약 내역까지 한 표에 다 우겨넣을 때 발생하는 문제가 아닌 것은?",
+        "choices": [
+          "회원 정보가 여러 행에 중복된다",
+          "이메일 변경 시 여러 행을 모두 수정해야 한다",
+          "예약을 모두 지우면 회원 정보까지 사라질 수 있다",
+          "검색 속도가 항상 느려진다"
+        ],
+        "answerIndex": 3,
+        "explanation": "한 표에 몰아넣으면 중복, 갱신 이상(일부만 바뀜), 삭제 이상(예약 삭제 시 회원까지 사라짐)이 생깁니다. 검색 속도 저하는 이런 정규화 문제에 해당하지 않습니다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__data-structure-q3",
+        "prompt": "열마다 데이터 타입(정수, 글자, 날짜 등)을 정하는 주된 이유는?",
+        "choices": [
+          "표를 더 보기 좋게 꾸미려고",
+          "잘못된 종류의 값이 들어가는 것을 막고 정렬·계산을 가능하게 하려고",
+          "데이터베이스 용량을 무조건 줄이려고",
+          "모든 열을 자동으로 PK로 만들려고"
+        ],
+        "answerIndex": 1,
+        "explanation": "데이터 타입은 '나이' 열에 '스물다섯' 같은 글자가 들어가는 사고를 막고, 숫자 정렬과 계산을 가능하게 합니다. 항목이 숫자인지 글자인지 정해두면 개발자와 소통도 빨라집니다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__data-structure-q4",
+        "prompt": "FK 제약을 걸어두면 얻는 효과로 옳은 것은?",
+        "choices": [
+          "모든 열이 자동으로 인덱스가 된다",
+          "존재하지 않는 대상을 가리키는 데이터가 생기지 않는다",
+          "각 행이 자동으로 유일한 PK를 갖는다",
+          "데이터 타입을 따로 지정하지 않아도 된다"
+        ],
+        "answerIndex": 1,
+        "explanation": "FK 제약은 참조 무결성을 지켜 '없는 회원을 가리키는 예약' 같은 데이터가 생기지 않게 합니다. 인덱스나 PK 자동 생성과는 별개의 개념입니다."
+      }
+    ]
+  },
+  "ai-consultant__db-postgres__sql-reading": {
+    "questions": [
+      {
+        "id": "ai-consultant__db-postgres__sql-reading-q0",
+        "prompt": "`SELECT name, email FROM users WHERE is_admin = true;` 는 무슨 뜻인가요?",
+        "choices": [
+          "users 표에서 관리자인 사람의 모든 데이터를 삭제한다",
+          "users 표에서 관리자인 사람의 이름과 이메일만 가져온다",
+          "users 표에 새 관리자 계정을 추가한다",
+          "users 표의 모든 열을 조건 없이 가져온다"
+        ],
+        "answerIndex": 1,
+        "explanation": "SELECT는 가져올 열을, WHERE는 행을 거르는 조건을 정한다. is_admin = true 조건으로 관리자만 걸러 name과 email 열만 조회하므로 두 번째 보기가 맞다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__sql-reading-q1",
+        "prompt": "JOIN을 쓰는 가장 큰 이유는 무엇인가요?",
+        "choices": [
+          "검색 속도를 무조건 빠르게 만들기 위해",
+          "정규화로 여러 표에 나눠 둔 데이터를 다시 합쳐 함께 보기 위해",
+          "데이터베이스의 인덱스를 새로 만들기 위해",
+          "표의 행 수를 줄여 용량을 절약하기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "정규화로 데이터가 여러 표에 흩어져 있기 때문에, '예약한 사람의 이름'처럼 흩어진 정보를 함께 보려면 JOIN으로 표를 이어 붙여야 한다. '조인이 많다'는 말은 합칠 표가 많아 복잡하다는 뜻이다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__sql-reading-q2",
+        "prompt": "`WHERE email = 'hong@...'` 같은 조회가 느린 가장 흔한 원인은?",
+        "choices": [
+          "SELECT 절에 * 를 쓰지 않아서",
+          "ORDER BY 절이 빠져 있어서",
+          "email 열에 인덱스가 없어 표 전체를 훑기 때문",
+          "COUNT 함수를 쓰지 않아서"
+        ],
+        "answerIndex": 2,
+        "explanation": "인덱스가 없으면 DB가 처음부터 끝까지 모든 행을 확인하는 풀 스캔을 한다. 회원이 많으면 느려지므로, 자주 거르는 열에 인덱스를 두면 해결된다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__sql-reading-q3",
+        "prompt": "다음 중 느린 쿼리의 흔한 원인인 'N+1 쿼리' 패턴은?",
+        "choices": [
+          "필요한 열만 명시해 SELECT 하는 것",
+          "자주 검색하는 열에 인덱스를 두는 것",
+          "루프 안에서 한 건마다 쿼리를 따로 보내 수천 건을 쏘는 것",
+          "한 번의 JOIN으로 여러 표 데이터를 묶어 가져오는 것"
+        ],
+        "answerIndex": 2,
+        "explanation": "N+1은 루프마다 개별 쿼리를 보내 쿼리 수가 폭증하는 안티패턴이다. 한 번의 JOIN이나 IN으로 묶어 한 번에 가져오면 해결된다. 성능 장애의 흔한 원인이다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__sql-reading-q4",
+        "prompt": "PM이 '이번 달 결제 총액'을 보고 싶다고 했을 때 쓸 집계 함수는?",
+        "choices": [
+          "COUNT",
+          "SUM",
+          "JOIN",
+          "LIMIT"
+        ],
+        "answerIndex": 1,
+        "explanation": "'총액'처럼 값을 모두 더하려면 SUM(amount)를 쓴다. COUNT는 건수, AVG는 평균이고, JOIN과 LIMIT는 집계 함수가 아니다."
+      }
+    ]
+  },
+  "ai-consultant__db-postgres__erd-modeling": {
+    "questions": [
+      {
+        "id": "ai-consultant__db-postgres__erd-modeling-q0",
+        "prompt": "다음 중 별도 엔터티(표)로 분리해야 하는 것은?",
+        "choices": [
+          "회원의 이름",
+          "회원의 이메일",
+          "회원이 남긴 예약",
+          "회원의 성별"
+        ],
+        "answerIndex": 2,
+        "explanation": "회원 1명이 예약을 여러 번 반복해 만들 수 있으므로 독립 엔터티로 분리한다. 이름·이메일·성별은 한 번만 기록되는 회원의 속성(열)이다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__erd-modeling-q1",
+        "prompt": "한 회원이 여러 예약을, 한 상점이 여러 서비스를 갖는 관계의 수(cardinality)는?",
+        "choices": [
+          "1:1",
+          "1:N",
+          "N:M",
+          "0:0"
+        ],
+        "answerIndex": 1,
+        "explanation": "한 행이 여러 행과 연결되는 일대다(1:N)가 가장 흔한 관계다. users 1 ← reservations N이 그 예이다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__erd-modeling-q2",
+        "prompt": "회원과 관심태그 같은 N:M(다대다) 관계를 ERD로 풀 때 올바른 방법은?",
+        "choices": [
+          "회원 표에 태그를 쉼표로 넣는다",
+          "태그 표에 회원 열을 모두 만든다",
+          "user_tags(user_id, tag_id) 중간 표를 둔다",
+          "태그는 별도로 저장하지 않는다"
+        ],
+        "answerIndex": 2,
+        "explanation": "N:M은 중간 표(join table)를 두어 1:N 두 개로 쪼개야 검색·확장이 가능하다. 쉼표로 넣으면 검색과 확장이 모두 막힌다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__erd-modeling-q3",
+        "prompt": "'결제 안 한 예약(대기)'이 존재할 수 있다는 것은 예약-결제 관계에서 무엇을 의미하나?",
+        "choices": [
+          "결제는 예약에 대해 필수(mandatory) 관계다",
+          "결제는 예약에 대해 선택(optional) 관계다",
+          "예약과 결제는 1:1이 아니다",
+          "결제 표가 필요 없다"
+        ],
+        "answerIndex": 1,
+        "explanation": "결제 없는 예약이 있을 수 있으므로 결제는 선택(optional) 관계이며, 이는 해당 열이 NULL을 허용하는지로 이어진다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__erd-modeling-q4",
+        "prompt": "시니어 PM이 고객 요구를 들으면서 즉시 ERD를 그리는 이유로 가장 거리가 먼 것은?",
+        "choices": [
+          "공수(개발량)를 가늠하기 위해",
+          "리스크와 검증 포인트를 잡기 위해",
+          "확장성을 미리 점검하기 위해",
+          "화면 디자인 시안을 완성하기 위해"
+        ],
+        "answerIndex": 3,
+        "explanation": "ERD는 데이터 구조로 공수·리스크·확장성을 읽는 도구지, 화면 디자인 시안을 완성하는 도구가 아니다."
+      }
+    ]
+  },
+  "ai-consultant__db-postgres__transaction-migration": {
+    "questions": [
+      {
+        "id": "ai-consultant__db-postgres__transaction-migration-q0",
+        "prompt": "트랜잭션의 핵심 성질인 '원자성(atomicity)'을 가장 잘 설명한 것은?",
+        "choices": [
+          "묶음 안의 모든 변경이 전부 성공하거나, 하나라도 실패하면 전부 취소되는 것",
+          "동시에 도는 트랜잭션이 서로 간섭하지 않게 하는 것",
+          "성공한 변경이 정전이 나도 사라지지 않는 것",
+          "작업 후에도 항상 정해진 규칙(제약)이 만족되는 것"
+        ],
+        "answerIndex": 0,
+        "explanation": "원자성은 여러 변경을 쪼갤 수 없는 한 덩어리로 다뤄 전부 성공(커밋)하거나 하나라도 실패하면 전부 취소(롤백)되는 성질이다. 나머지 보기는 각각 격리성(I), 지속성(D), 일관성(C)에 해당한다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__transaction-migration-q1",
+        "prompt": "'예약 생성 + 결제 기록'을 트랜잭션 없이 처리하다 결제 단계에서 실패하면 어떤 일이 벌어지는가?",
+        "choices": [
+          "예약과 결제가 모두 자동으로 취소된다",
+          "예약만 남고 결제는 없는 불완전 상태가 된다",
+          "결제는 성공하고 예약만 사라진다",
+          "아무 일도 일어나지 않는다"
+        ],
+        "answerIndex": 1,
+        "explanation": "트랜잭션으로 묶지 않으면 먼저 실행된 예약 INSERT는 이미 저장된 채로 남는다. 그래서 '예약은 있는데 결제는 없는' 불완전 상태가 되어 고객 항의로 이어진다. 트랜잭션으로 묶었다면 결제 실패 시 예약까지 함께 롤백됐을 것이다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__transaction-migration-q2",
+        "prompt": "마지막 남은 예약 자리에 두 사람이 동시에 결제를 누를 때 초과 예약을 막는 장치로 가장 적절한 것은?",
+        "choices": [
+          "매일 정기 백업을 수행한다",
+          "스키마에 새로운 열을 추가한다",
+          "잠금(lock)이나 유니크 제약(constraint)을 건다",
+          "트랜잭션을 커밋하지 않고 방치한다"
+        ],
+        "answerIndex": 2,
+        "explanation": "동시성 문제는 잠금으로 한 사람이 자리를 점유하는 동안 다른 사람을 기다리게 하거나, DB 수준의 유니크 제약으로 두 번째 요청을 거절하는 방식으로 막는다. 백업·스키마 열 추가·커밋 방치는 초과 예약과 무관하다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__transaction-migration-q3",
+        "prompt": "이미 데이터가 들어있는 표의 구조를 변경할 때 마이그레이션(migration)을 사용하는 이유는?",
+        "choices": [
+          "백업 파일을 자동으로 생성하기 위해",
+          "변경을 버전이 있는 파일로 남기고 안전하게 적용·롤백하며 팀 전체에 같게 유지하기 위해",
+          "트랜잭션의 ACID를 보장받기 위해",
+          "동시 요청을 잠그기 위해"
+        ],
+        "answerIndex": 1,
+        "explanation": "실서비스 도중 표 구조를 직접 고치면 응답 장애, 데이터 손실, 환경 불일치가 생길 수 있다. 마이그레이션은 변경 내역을 파일로 남기고 순서대로 적용·롤백 가능하게 만들어 팀과 배포 환경의 구조를 일치시킨다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__transaction-migration-q4",
+        "prompt": "본문이 DB 관련 상담에서 PM이 반드시 해야 할 필수 질문으로 강조한 것은?",
+        "choices": [
+          "'이 표의 기본키(PK)는 무엇인가요?'",
+          "'DB 엔진은 무엇인가요?'",
+          "'데이터 백업은 어떻게 되죠?'",
+          "'인덱스는 몇 개인가요?'"
+        ],
+        "answerIndex": 2,
+        "explanation": "본문은 '데이터 백업은 어떻게 되나요?'를 필수 질문으로 강조하며, 보관 기간(7일? 30일?)과 복원 가능 여부까지 함께 확인해야 한다고 말한다. 백업이 없거나 너무 오래된 것만 있으면 장애 시 복구가 불가능한 큰 리스크다."
+      }
+    ]
+  },
+  "ai-consultant__db-postgres__managed-db-baas": {
+    "questions": [
+      {
+        "id": "ai-consultant__db-postgres__managed-db-baas-q0",
+        "prompt": "직접 운영, 관리형 DB(RDS), BaaS(Supabase) 세 방식의 공통점으로 가장 옳은 것은?",
+        "choices": [
+          "모두 NoSQL 문서형 DB를 사용한다",
+          "모두 결국 관계형 DB(또는 유사한 구조)가 내부에 있다",
+          "모두 백업을 사용자가 직접 해야 한다",
+          "모두 로그인 기능을 기본 제공한다"
+        ],
+        "answerIndex": 1,
+        "explanation": "Supabase도 PostgreSQL이고 RDS도 PostgreSQL이다. 셋 다 결국 관계형 DB가 밑에 있어서 표·PK·FK·트랜잭션·SQL이 그대로 적용된다. 달라지는 건 운영 주체와 빌리는 범위다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__managed-db-baas-q1",
+        "prompt": "초기 서비스에서 관리형 DB(RDS·Supabase Postgres)를 기본 추천하는 핵심 이유로 가장 옳은 것은?",
+        "choices": [
+          "DB 구조(스키마·ERD) 설계를 클라우드가 대신해 준다",
+          "백업·복구·업데이트 등 운영 노동을 클라우드가 대신해서 기능에 집중할 수 있다",
+          "비용이 직접 운영보다 항상 더 싸다",
+          "SQL을 몰라도 서비스를 만들 수 있다"
+        ],
+        "answerIndex": 1,
+        "explanation": "관리형은 설치·백업·복제·보안 패치·업데이트를 클라우드가 대신한다. 다만 스키마·관계·마이그레이션·쿼리 최적화는 여전히 우리가 설계해야 한다. 운영은 빌려도 구조 설계는 못 빌린다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__managed-db-baas-q2",
+        "prompt": "Supabase에서 '회원은 본인 예약만 본다'를 RLS로 거는 이유로 가장 옳은 것은?",
+        "choices": [
+          "쿼리 속도를 높이기 위해",
+          "백업 용량을 줄이기 위해",
+          "클라이언트에서 숨기는 것과 달리 DB 자체가 행 단위로 접근을 거르기 때문에 API 우회가 막힌다",
+          "마이그레이션을 자동화하기 위해"
+        ],
+        "answerIndex": 2,
+        "explanation": "RLS는 DB 수준에서 '이 사용자는 이 행만 본다'를 강제한다. 클라이언트에서 화면만 숨기는 것과 달리 API를 직접 쳐도 다른 사람 행이 나오지 않아 보안이 훨씬 강하다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__managed-db-baas-q3",
+        "prompt": "다음 중 '직접 백엔드(Node/Express, FastAPI)'가 BaaS보다 적합한 상황은?",
+        "choices": [
+          "로그인과 파일 업로드 정도만 필요한 MVP",
+          "시장 검증을 며칠 만에 끝내야 할 때",
+          "벡터 검색(RAG)을 붙일 가능성이 있을 때",
+          "복잡한 규칙, 대량 배치 처리, 외부 연동(PG·ERP)이 많고 강한 보안·감사가 필요할 때"
+        ],
+        "answerIndex": 3,
+        "explanation": "단순한 로그인·CRUD·파일 업로드는 BaaS가 가장 빠르다. 하지만 복잡한 비즈니스 로직, 배치·큐·스케줄러, 외부 연동, 강한 보안·감사·권한 요구가 크면 직접 백엔드가 유리하다. 현실에서는 섞어 쓰며 단계에 따라 이관한다."
+      },
+      {
+        "id": "ai-consultant__db-postgres__managed-db-baas-q4",
+        "prompt": "관리형 DB나 BaaS를 쓸 때 흔히 하는 착각(실패 모드)으로 가장 옳은 것은?",
+        "choices": [
+          "DB 구조(스키마·정규화·인덱스·마이그레이션)까지 클라우드가 알아서 해준다고 믿는 것",
+          "관리형 DB는 자동 백업이 아예 안 된다고 믿는 것",
+          "BaaS는 관계형 DB를 사용하지 않는다고 믿는 것",
+          "Supabase는 RLS를 설정할 수 없다고 믿는 것"
+        ],
+        "answerIndex": 0,
+        "explanation": "운영은 빌려도 구조 설계는 못 빌린다. Supabase·RDS 모두 스키마·관계·마이그레이션은 우리가 직접 설계해야 한다. 또 '관리형이니 백업 되겠지'라고 믿지 말고 보관기간과 복원시간을 반드시 확인해야 한다."
+      }
+    ]
   }
 }

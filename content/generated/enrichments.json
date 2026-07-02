@@ -1448,5 +1448,334 @@
     ],
     "model": "claude-sonnet-4-6",
     "generatedAt": "2026-06-23T02:30:40.476Z"
+  },
+  "ai-consultant__web-app-structure__service-layers": {
+    "objectives": [
+      "서비스를 프론트엔드·백엔드·데이터베이스·API·클라우드 다섯 층으로 쪼갤 수 있다",
+      "각 층에서 발생하는 문제를 층별로 구분해 원인을 찾을 수 있다",
+      "신뢰가 필요한 판단(권한·결제 등)이 왜 백엔드에 있어야 하는지 설명할 수 있다",
+      "고객의 요구를 '화면인가, 규칙인가, 데이터인가'로 분류할 수 있다",
+      "요구를 다섯 층으로 나눠 견적과 리스크를 잡을 수 있다"
+    ],
+    "summary": "하나의 서비스는 사용자가 만지는 화면(프론트엔드), 규칙을 계산하는 서버(백엔드), 사실을 저장하는 데이터베이스, 층 사이의 계약(API), 그것이 돌아갈 자리(클라우드)로 나뉜다. 이렇게 쪼개면 견적과 일정, 리스크가 잡히고 개발자와 같은 언어로 대화할 수 있다. 핵심은 신뢰가 필요한 판단은 사용자 손이 닿지 않는 서버에 둬야 한다는 것이다.",
+    "keyConcepts": [
+      "프론트엔드(화면층)",
+      "백엔드(규칙층)",
+      "데이터베이스(영속 저장)",
+      "API(층 간 계약)",
+      "클라우드(인프라 대여)",
+      "영속화(persist)",
+      "엔드포인트",
+      "상태(state)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:07:41.159Z"
+  },
+  "ai-consultant__web-app-structure__how-the-web-works": {
+    "objectives": [
+      "클라이언트와 서버의 역할을 구분하고 설명할 수 있다",
+      "DNS가 도메인 이름을 IP 주소로 변환하는 과정을 설명할 수 있다",
+      "TCP/IP, HTTP, 패킷이 웹 데이터 전송에서 하는 역할을 이해한다",
+      "주소창에 URL을 입력했을 때 일어나는 일련의 과정을 순서대로 말할 수 있다",
+      "URL의 기본 구성 요소를 식별할 수 있다"
+    ],
+    "summary": "웹은 클라이언트와 서버가 인터넷을 통해 데이터를 주고받으며 작동합니다. 주소창에 주소를 입력하면 브라우저는 DNS로 서버의 실제 위치를 찾고, HTTP 요청으로 웹페이지를 요청한 뒤 작은 패킷 단위로 받은 파일을 조립해 화면에 보여줍니다. 이 흐름을 이해하면 웹 개발의 기초가 한눈에 보입니다.",
+    "keyConcepts": [
+      "클라이언트(Client)",
+      "서버(Server)",
+      "DNS",
+      "IP 주소",
+      "TCP/IP",
+      "HTTP",
+      "패킷(Packet)",
+      "URL"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:09:58.207Z"
+  },
+  "ai-consultant__web-app-structure__how-browsers-load": {
+    "objectives": [
+      "HTTP 응답으로 전달되는 파일 종류(HTML, CSS, JavaScript, 미디어 자산 등)를 식별할 수 있다",
+      "브라우저가 HTML을 파싱하여 DOM 트리를 만드는 과정을 설명할 수 있다",
+      "CSS가 처리되어 렌더 트리 · 레이아웃 · 페인팅으로 이어지는 흐름을 설명할 수 있다",
+      "JavaScript가 렌더링 과정에 영향을 주는 방식을 이해한다",
+      "특정 HTML 요소가 추가 HTTP 요청을 유발하는 경우를 구분할 수 있다"
+    ],
+    "summary": "브라우저는 HTTP 응답으로 받은 HTML, CSS, JavaScript, 미디어 파일을 조립해 하나의 웹 페이지를 완성합니다. HTML은 파싱되어 메모리에 DOM 트리를 만들고, CSS는 규칙별로 정렬되어 요소에 스타일을 입힌 뒤 레이아웃과 페인팅 단계를 거쳐 화면에 그려집니다. JavaScript는 도중에 DOM을 수정할 수 있어 최종 렌더링 결과에 영향을 줍니다.",
+    "keyConcepts": [
+      "HTTP 응답 파일 종류",
+      "렌더링(rendering)",
+      "DOM 트리",
+      "DOM 노드(node)",
+      "렌더 트리(render tree)",
+      "레이아웃(layout)",
+      "페인팅(painting)",
+      "JavaScript의 DOM 조작"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:10:53.927Z"
+  },
+  "ai-consultant__web-app-structure__html-css-js-and-cloud": {
+    "objectives": [
+      "HTML·CSS·JS 각각의 담당 역할을 구분하여 설명할 수 있다",
+      "버그 리포트를 보고 생김새 문제(CSS)와 움직임 문제(JS)를 구분할 수 있다",
+      "프레임워크(React 등)가 기존 HTML·CSS·JS를 대체하지 않고 보조하는 도구임을 설명할 수 있다",
+      "정적 화면과 동적 서비스의 배포 방식 차이를 말할 수 있다",
+      "웹사이트의 화면 요소를 HTML·CSS·JS 세 층으로 분해할 수 있다"
+    ],
+    "summary": "HTML은 화면의 뼈와 내용을, CSS는 생김새를, JS는 움직임과 논리를 담당하며, 역할이 나뉘는 만큼 고장나는 방식도 다르다. '디자인이 깨졌다'는 주로 CSS의 문제이고 '기능이 안 된다'는 JS(또는 백엔드)의 문제다. 완성된 화면은 정적·동적 여부에 따라 클라우드의 서로 다른 자리에 배포된다.",
+    "keyConcepts": [
+      "HTML — 뼈와 내용",
+      "CSS — 생김새",
+      "JavaScript(JS) — 움직임·논리",
+      "프레임워크(React·Vue·Next.js)",
+      "정적 화면 vs 동적 서비스",
+      "배포(deploy)",
+      "반응형",
+      "DOM"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:12:23.960Z"
+  },
+  "ai-consultant__web-app-structure__git-and-deploy": {
+    "objectives": [
+      "Git과 GitHub의 역할 차이를 자신의 말로 설명할 수 있다",
+      "코드가 사용자에게 보이기까지 거치는 5단계(작성→커밋→푸시→리뷰→배포)를 순서대로 말할 수 있다",
+      "'수정했습니다'라는 보고가 커밋·푸시·배포 중 어디까지를 가리키는지 구분할 수 있다",
+      "푸시와 배포의 차이가 고객에게 미치는 영향을 설명할 수 있다",
+      "비밀값을 코드에 직접 올리지 않는 이유와 .gitignore·환경변수의 역할을 말할 수 있다"
+    ],
+    "summary": "Git은 코드 변경 이력을 로컬에 저장하는 도구이고, GitHub는 그 이력을 인터넷에 올려 팀과 공유하는 원격 저장소다. 코드는 작성→커밋→푸시→리뷰→배포의 흐름을 거쳐야 비로소 실제 사용자에게 보인다. 핵심은 '푸시는 GitHub에 올린 것일 뿐 사용자에게 보인 것이 아니다'라는 점을 이해하는 것이다.",
+    "keyConcepts": [
+      "커밋(commit)",
+      "브랜치(branch)",
+      "풀 리퀘스트(PR) / 머지(merge)",
+      "푸시(push) · 풀(pull)",
+      "배포(deploy) — 프리뷰 vs 프로덕션",
+      "CI/CD",
+      "main 브랜치",
+      ".gitignore · 환경변수(.env)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:13:23.760Z"
+  },
+  "ai-consultant__backend-api__why-api": {
+    "objectives": [
+      "API가 프로그램 간 계약이라는 점을 설명할 수 있다",
+      "REST에서 자원(명사)과 HTTP 메서드(동사)의 역할을 구분할 수 있다",
+      "JSON 형식의 요청·응답 데이터를 읽고 이해할 수 있다",
+      "엔드포인트 개념을 써서 API 공수를 가늠할 수 있다",
+      "새 기능 요구를 동사+명사 형태의 엔드포인트로 쪼갤 수 있다"
+    ],
+    "summary": "API는 화면과 서버가 대화하기 위해 미리 정한 계약이다. REST는 자원을 명사 주소로, 행동을 HTTP 메서드로 정리하는 관례이고, JSON은 데이터를 주고받는 글 형식, 엔드포인트는 그 문 주소다. 이 셋을 알면 개발자가 말하는 'API 명세 주세요'가 정확히 들리고, 새 기능 하나에 드는 공수도 짐작할 수 있다.",
+    "keyConcepts": [
+      "API(계약)",
+      "REST(명사 주소 + 동사 HTTP 메서드)",
+      "JSON(데이터 형식)",
+      "엔드포인트(문 주소)",
+      "HTTP 메서드(GET/POST/PUT/PATCH/DELETE)",
+      "페이로드(payload)",
+      "CRUD",
+      "상태 코드(200/400/401/404/500)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:14:20.699Z"
+  },
+  "ai-consultant__backend-api__crud": {
+    "objectives": [
+      "CRUD의 네 동사(Create, Read, Update, Delete) 뜻을 정의할 수 있다.",
+      "고객의 요구를 들었을 때 CRUD 중 어느 동사에 해당하는지 분류할 수 있다.",
+      "각 CRUD 동사가 어떤 HTTP 메서드(POST·GET·PUT/PATCH·DELETE)에 대응되는지 설명할 수 있다.",
+      "CRUD가 데이터베이스의 INSERT·SELECT·UPDATE·DELETE로 이어지는 흐름을 말할 수 있다.",
+      "하드 삭제와 소프트 삭제, PUT과 PATCH의 차이를 구분할 수 있다."
+    ],
+    "summary": "대부분의 서비스 기능은 만들고·읽고·고치고·지우는 네 동사, 곧 CRUD의 조합으로 쪼개진다. CRUD는 곧장 API의 HTTP 메서드로 이어지고, 그 아래에서는 데이터베이스의 INSERT·SELECT·UPDATE·DELETE가 실제로 일어난다. PM이 요구를 CRUD로 분류할 줄 알면 작업 규모와 위험을 한눈에 가늠할 수 있다.",
+    "keyConcepts": [
+      "CRUD(Create·Read·Update·Delete)",
+      "HTTP 메서드(POST·GET·PUT·PATCH·DELETE)",
+      "5개 엔드포인트(목록조회·단건조회·생성·수정·삭제)",
+      "SQL 네 동사(INSERT·SELECT·UPDATE·DELETE)",
+      "입력값 검증(프론트엔드 vs 백엔드)",
+      "PUT vs PATCH(전체 수정 vs 부분 수정)",
+      "하드 삭제 vs 소프트 삭제",
+      "멱등성(idempotent)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:15:36.994Z"
+  },
+  "ai-consultant__backend-api__auth-and-secrets": {
+    "objectives": [
+      "인증(Authentication)과 인가(Authorization)의 차이를 구분하고 설명할 수 있다",
+      "HTTP의 무상태(stateless) 특성이 로그인 유지에 미치는 영향을 설명할 수 있다",
+      "세션(Session) 모델과 토큰(JWT) 모델의 동작 방식과 장단점을 비교할 수 있다",
+      "JWT 시크릿이 필요한 이유와 환경변수로 관리해야 하는 근거를 설명할 수 있다",
+      "프론트가 아닌 백엔드에서 권한을 검사해야 하는 이유를 설명할 수 있다"
+    ],
+    "summary": "이 레슨은 로그인을 '누구인지 밝히는 인증'과 '무엇을 할 수 있는지 정하는 인가'로 나누어 설명합니다. 이어서 무상태 HTTP 환경에서 로그인 상태를 유지하는 두 가지 모델인 세션과 JWT 토큰의 동작 방식과 장단점을 비교하고, JWT 서명에 반드시 비밀값이 필요한 이유를 다룹니다. 마지막으로 권한 검사는 백엔드에서 해야 한다는 보안 원칙까지 짚어 실무 설계에 바로 적용할 수 있게 합니다.",
+    "keyConcepts": [
+      "인증(Authentication) vs 인가(Authorization)",
+      "무상태(stateless)",
+      "세션(Session) 모델",
+      "JWT(토큰) 모델",
+      "JWT 시크릿(서명 비밀값)",
+      "환경변수(env)",
+      "갱신 토큰(refresh token)",
+      "해시/솔트(비밀번호 저장)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:16:21.121Z"
+  },
+  "ai-consultant__backend-api__client-vs-server": {
+    "objectives": [
+      "클라이언트사이드와 서버사이드 코드의 실행 위치에 따른 차이(속도·조작 가능성·신뢰도·비용)를 설명할 수 있다",
+      "어떤 로직이 어디서 도는지 판단해, 돈·권한·정답이 걸린 신뢰 판단을 서버사이드에 배치할 수 있다",
+      "이중 확인(double-check) 패턴이 왜 필요한지, 클라이언트 검사와 서버 재검증의 역할을 구분해 말할 수 있다",
+      "CSR과 SSR의 차이를 '이 페이지는 검색에 떠야 하는가'라는 기획 질문과 연결지어 설명할 수 있다",
+      "클라이언트 검사 우회로 인한 보안 사고 사례를 분석하고 처방을 낼 수 있다"
+    ],
+    "summary": "코드가 실행되는 위치에 따라 사용자가 조작할 수 있는지, 신뢰할 수 있는지, 빠르고 싼지가 완전히 달라진다. 돈·권한·진실이 걸린 판단은 반드시 서버사이드에서 처리하고, 클라이언트는 빠른 피드백과 보기 좋은 처리만 담당한다. 기능을 받으면 '이 판단은 사용자가 고쳐도 되나?'를 묻는 습관이 핵심이다.",
+    "keyConcepts": [
+      "클라이언트사이드",
+      "서버사이드",
+      "이중 확인(double-check)",
+      "우회(bypass)",
+      "CSR / SSR / SSG",
+      "검증(validation)",
+      "비밀값(secret)은 서버에"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:17:33.708Z"
+  },
+  "ai-consultant__backend-api__backend-vocab": {
+    "objectives": [
+      "환경변수(env)를 코드 밖으로 분리하는 이유(보안·환경 분리·변경 용이)를 설명할 수 있다.",
+      "웹훅이 무엇이며 왜 멱등성 처리와 서명 검증이 필요한지 말할 수 있다.",
+      "파일 업로드 시 파일은 저장소에, DB에는 URL만 저장하는 흐름을 그릴 수 있다.",
+      "에러 로그·접근 로그·모니터링이 장애 원인 파악에 왜 필수인지 말할 수 있다.",
+      "큐와 캐시의 역할과 도입 시점을 개발자와 조율할 수 있다."
+    ],
+    "summary": "백엔드 회의에서 쏟아지는 환경변수·웹훅·파일저장·에러로그·큐·캐시는 모두 서비스를 굴리는 구체적 부품이지 입버릇이 아니다. 이 레슨은 PM이 반드시 가져야 할 백엔드 단어장을 정리하고, 각 단어가 빠지면 어떤 사고가 나는지까지 짚는다. \"간단한 기능\"이라는 말이 나올 때 몇 개 부품이 걸리는지 세어보는 감각을 기른다.",
+    "keyConcepts": [
+      "환경변수(env)",
+      "웹훅(webhook)",
+      "멱등성(idempotent)",
+      "저장소(S3·Storage)",
+      "에러 로그",
+      "큐(queue)",
+      "캐시(cache)",
+      "폴링(polling)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:18:31.101Z"
+  },
+  "ai-consultant__db-postgres__data-structure": {
+    "objectives": [
+      "관계형 데이터베이스가 표(table), 행(row), 열(column)로 구성됨을 설명할 수 있다",
+      "Primary Key(PK)와 Foreign Key(FK)의 역할을 구분할 수 있다",
+      "열마다 데이터 타입을 지정하는 이유를 말할 수 있다",
+      "정규화가 필요한 이유(중복·갱신 이상 방지)를 설명할 수 있다",
+      "고객의 요구를 주제별 표로 나누고 FK로 연결하는 구조를 그릴 수 있다"
+    ],
+    "summary": "관계형 데이터베이스는 주제별로 나눈 표(table)들의 모음이며, 각 표는 열(column)과 행(row)로 이루어진다. Primary Key(PK)로 각 행을 유일하게 식별하고 Foreign Key(FK)로 표와 표를 이어 관계를 만든다. 이 구조를 이해하면 고객의 한 줄 요구를 '누가, 언제, 무엇을, 어떻게 결제했는지' 담는 데이터 구조로 번역할 수 있다.",
+    "keyConcepts": [
+      "table(표)",
+      "row/column(행/열)",
+      "데이터 타입",
+      "Primary Key(PK)",
+      "Foreign Key(FK)",
+      "정규화",
+      "참조 무결성",
+      "인덱스"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:19:36.650Z"
+  },
+  "ai-consultant__db-postgres__sql-reading": {
+    "objectives": [
+      "SELECT·WHERE·JOIN·ORDER BY·LIMIT 절을 읽고 그 쿼리가 무엇을 묻고 있는지 설명할 수 있다.",
+      "COUNT·SUM·AVG 같은 집계 함수가 어떤 숫자를 뽑아내는지 파악할 수 있다.",
+      "인덱스의 역할과 인덱스가 없을 때 풀 스캔이 발생하는 이유를 설명할 수 있다.",
+      "개발자가 '조인이 많아요','인덱스를 타야 해요'라고 할 때 그 말의 의미를 이해하고 적절히 반응할 수 있다.",
+      "보고 싶은 지표를 '어느 표 / 무슨 조건 / 무슨 집계'로 말로 풀어 쿼리 청사진을 만들 수 있다."
+    ],
+    "summary": "SELECT·JOIN·WHERE·INDEX는 SQL의 핵심 읽기 동사로, 각각 가져오기·잇기·거르기·빨리 찾기를 뜻한다. PM이 직접 쿼리를 짤 필요는 없어도, 쿼리 로그와 개발자의 느림 증상을 읽고 원하는 데이터를 말로 정확히 표현할 수 있어야 협업이 빨라진다. 이 레슨은 '이 쿼리가 무엇을 묻고 있는가'를 한눈에 읽는 시선을 기른다.",
+    "keyConcepts": [
+      "SELECT — 가져올 열을 지정하는 조회 명령",
+      "WHERE — 조건으로 행을 거르는 절",
+      "JOIN — 두 표를 공통 키로 이어 붙이기",
+      "ORDER BY / LIMIT — 정렬과 개수 제한",
+      "COUNT / SUM / AVG — 건수·합계·평균을 구하는 집계 함수",
+      "INDEX — 빠른 검색을 위한 색인",
+      "풀 스캔 — 인덱스 없이 표 전체를 훑는 느린 검색",
+      "N+1 쿼리 — 루프 안에서 반복 쿼리를 쏘는 안티패턴"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:20:54.873Z"
+  },
+  "ai-consultant__db-postgres__erd-modeling": {
+    "objectives": [
+      "고객의 요구에서 명사를 뽑아 엔터티(표)로 식별할 수 있다",
+      "엔터티 간 카디널리티(1:1, 1:N, N:M)를 판별하고 ERD로 그릴 수 있다",
+      "N:M 관계를 중간 표(join table)로 분해할 수 있다",
+      "관계의 선택성(필수/선택)을 정의하고 NULL 처리까지 연결할 수 있다",
+      "ERD 한 장으로 공수·리스크·확장성 견적의 근거를 마련할 수 있다"
+    ],
+    "summary": "ERD는 고객의 요구를 데이터 구조(엔터티와 관계)로 번역하는 설계도로, PM이 상담 순간에 공수·리스크·확장성을 한 번에 읽어내는 핵심 도구다. 요구에서 명사를 뽑아 표로 만들고 동사를 관계 선으로 잇는 한 장이 있으면, 간단해 보이는 기능의 숨은 복잡도가 드러난다. 이 레슨에서는 카디널리티·선택성까지 정의하며 ERD를 읽고 그리는 법을 익힌다.",
+    "keyConcepts": [
+      "엔터티(Entity): 표가 될 데이터의 주인공",
+      "속성(Attribute): 한 번만 기록되는 성질, 표의 열",
+      "카디널리티: 1:1 / 1:N / N:M 관계의 수",
+      "중간 표(Join Table): N:M을 1:N 두 개로 쪼개는 연결 표",
+      "외래키(FK)·참조 무결성",
+      "선택성(Optionality): 필수(mandatory) vs 선택(optional)",
+      "정규화: 독립적으로 반복 생기는 것은 별도 표로",
+      "까마귀발 표기법(Crow's foot)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:22:19.759Z"
+  },
+  "ai-consultant__db-postgres__transaction-migration": {
+    "objectives": [
+      "트랜잭션이 무엇이고 왜 필요한지(원자성) 설명할 수 있다.",
+      "ACID의 네 가지 성질(원자성·일관성·격리성·지속성)을 말할 수 있다.",
+      "동시성 문제(초과 예약)를 잠금과 제약으로 막는 방법을 설명할 수 있다.",
+      "스키마·마이그레이션·백업의 의미와 각각의 중요성을 구분할 수 있다.",
+      "실무 작업이 트랜잭션이 필요한지 판별하고 기획서에 명시할 수 있다."
+    ],
+    "summary": "트랜잭션은 여러 DB 변경을 '전부 성공하거나 전부 없던 일'로 묶어, '결제는 됐는데 예약은 안 됐다' 같은 불완전 상태를 막는 규칙이며 그 뒤에는 ACID라는 네 가지 보장이 있다. 이와 함께 스키마를 안전하게 바꾸는 마이그레이션, 데이터를 잃지 않기 위한 백업과 복구까지 PM이 알아야 할 DB 운영 단어를 다룬다. 돈·재고·권한이 걸린 작업은 원자적으로 설계하고 백업을 확인하는 습관이 사고를 막는다.",
+    "keyConcepts": [
+      "트랜잭션",
+      "원자성(atomicity)",
+      "ACID",
+      "커밋 / 롤백",
+      "동시성(잠금·제약)",
+      "스키마",
+      "마이그레이션",
+      "백업 / 복구"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:23:26.930Z"
+  },
+  "ai-consultant__db-postgres__managed-db-baas": {
+    "objectives": [
+      "직접 운영·관리형 DB·BaaS 세 방식의 차이를 '운영 주체'와 '어디까지 빌리는가' 기준으로 구분할 수 있다",
+      "초기 서비스 요구사항을 보고 BaaS와 직접 백엔드 중 어느 쪽이 적합한지 판단할 수 있다",
+      "RLS(Row Level Security)가 클라이언트 단 숨김과 어떻게 다른지 설명할 수 있다",
+      "관리형이나 BaaS를 쓰더라도 우리가 직접 설계해야 할 DB 구조(스키마·관계·트랜잭션)를 식별할 수 있다",
+      "DB 선택 상담에서 권한(RLS)·백업 보관기간·확장 이관 계획을 산출물에 포함할 수 있다"
+    ],
+    "summary": "실제 초기 서비스는 DB를 직접 굴리기보다 관리형 DB(RDS)나 BaaS(Supabase·Firebase)에 맡긴다. 셋 모두 결국 관계형 DB가 밑에 있어서 스키마·관계·트랜잭션 설계는 여전히 우리 몫이며, 달라지는 건 '누가 운영 노동을 지는가'와 '어디까지 빌리는가'뿐이다. 기본 흐름은 초기엔 관리형/BaaS로 빠르게 시작하고, 보안은 RLS와 백엔드 인가로, 구조는 직접 설계하는 것이다.",
+    "keyConcepts": [
+      "직접 운영(self-managed)",
+      "관리형 DB / RDS",
+      "BaaS(Backend as a Service)",
+      "Supabase / Firebase",
+      "RLS(Row Level Security)",
+      "운영 노동 vs 구조 설계",
+      "백엔드 이관(migration of backend)",
+      "pgvector(벡터 검색)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-02T14:24:41.806Z"
   }
 }
