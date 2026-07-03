@@ -2,7 +2,7 @@
 
 **CRUD 한 자원 = 보통 엔드포인트 5개** (네 동사가 다섯 문으로 펴진다):
 
-<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CRUD 네 동사가 다섯개 엔드포인트로 대응되는 관계">
+<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CRUD 네 동사가 다섯개 엔드포인트로 대응되는 관계">
   <rect x="10"  y="40" width="120" height="46" rx="8" fill="#10b981"/><text x="70"  y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Create (POST)</text>
   <rect x="150" y="40" width="120" height="46" rx="8" fill="#0ea5e9"/><text x="210" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Read (GET)</text>
   <rect x="290" y="40" width="120" height="46" rx="8" fill="#f59e0b"/><text x="350" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Update (PATCH)</text>

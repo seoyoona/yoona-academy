@@ -2,7 +2,7 @@
 
 **상담의 5단계 워크플로** — 요구를 한 장으로 번역한다:
 
-<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="요구를 명사동사 ERD API 리스크로 번역하는 5단계 상담 워크플로">
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="요구를 명사동사 ERD API 리스크로 번역하는 5단계 상담 워크플로">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="5"   y="50" width="95" height="50" rx="8" fill="#0ea5e9"/><text x="52"  y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1 요구</text><text x="52"  y="89" text-anchor="middle" font-size="9" fill="#e0f2fe">고객 말</text>
   <rect x="115" y="50" width="95" height="50" rx="8" fill="#6366f1"/><text x="162" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2 명사·동사</text><text x="162" y="89" text-anchor="middle" font-size="9" fill="#e0e7ff">뽑아내기</text>

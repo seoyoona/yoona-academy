@@ -2,7 +2,7 @@
 
 **표(table)와 행(row)·열(column), 그리고 PK·FK로 이어지는 관계:**
 
-<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users 표와 reservations 표가 외래키로 이어진 관계">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users 표와 reservations 표가 외래키로 이어진 관계">
   <rect x="10" y="20" width="180" height="120" rx="6" fill="#fff" stroke="#94a3b8"/>
   <text x="100" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">users</text>
   <line x1="10" y1="48" x2="190" y2="48" stroke="#94a3b8"/>

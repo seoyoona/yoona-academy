@@ -2,7 +2,7 @@ PM이 SQL을 직접 짤 필요는 없다. 하지만 개발자가 "이 쿼리가 
 
 **WHERE로 거르고, JOIN으로 이어 붙이는 흐름:**
 
-<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="두 표를 조인하고 조건으로 거르는 흐름">
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="두 표를 조인하고 조건으로 거르는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10"  y="45" width="100" height="55" rx="6" fill="#0ea5e9"/><text x="60"  y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">reservations</text><text x="60"  y="86" text-anchor="middle" font-size="10" fill="#e0f2fe">전체 행</text>
   <rect x="135" y="45" width="100" height="55" rx="6" fill="#8b5cf6"/><text x="185" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">JOIN users</text><text x="185" y="86" text-anchor="middle" font-size="10" fill="#ede9fe">이어 붙임</text>

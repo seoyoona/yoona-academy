@@ -2,7 +2,7 @@
 
 **monolith vs microservice — 처음엔 하나로:**
 
-<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="모놀리스 한 덩어리와 마이크로서비스 여러 조각의 비교">
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="모놀리스 한 덩어리와 마이크로서비스 여러 조각의 비교">
   <rect x="20" y="30" width="200" height="110" rx="10" fill="#10b981" opacity="0.16" stroke="#10b981"/>
   <text x="120" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">monolith (초기 추천)</text>
   <rect x="40" y="62" width="70" height="26" rx="5" fill="#0ea5e9"/><text x="75" y="79" text-anchor="middle" font-size="9" fill="#fff">화면</text>

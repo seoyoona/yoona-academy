@@ -2,7 +2,7 @@ AWS를 처음 들으면 수백 개 서비스 이름에 압도된다. 그러나 P
 
 **3종 자원이 한 서비스를 이룬다** — 앱·데이터·파일:
 
-<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC2 앱 서버가 RDS 데이터베이스와 S3 파일 저장소와 연결된 구성">
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC2 앱 서버가 RDS 데이터베이스와 S3 파일 저장소와 연결된 구성">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10"  y="55" width="110" height="50" rx="8" fill="#6366f1"/><text x="65" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">사용자</text>
   <rect x="175" y="55" width="110" height="50" rx="8" fill="#f59e0b"/><text x="230" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">EC2 (앱)</text>

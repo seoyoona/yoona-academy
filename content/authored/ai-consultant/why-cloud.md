@@ -2,7 +2,7 @@
 
 **빌리는 깊이의 3단계** — 어디까지 우리가 하고 어디까지 빌릴까:
 
-<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IaaS PaaS SaaS 세 단계의 빌리는 깊이 비교">
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IaaS PaaS SaaS 세 단계의 빌리는 깊이 비교">
   <rect x="10"  y="30" width="170" height="105" rx="8" fill="#ef4444" opacity="0.13" stroke="#ef4444"/>
   <text x="95"  y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">IaaS (EC2)</text>
   <text x="95"  y="74" text-anchor="middle" font-size="10" fill="#0f172a">빌림: 컴퓨터·네트워크</text>

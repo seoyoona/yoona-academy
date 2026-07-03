@@ -2,7 +2,7 @@
 
 **폴더만 봐도 뼈대가 보인다** — 구조↔개념 매핑:
 
-<svg viewBox="0 0 560 200" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="폴더 구조가 화면 API DB 설정 배포 개념으로 매핑되는 관계">
+<svg viewBox="0 0 560 200" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="폴더 구조가 화면 API DB 설정 배포 개념으로 매핑되는 관계">
   <text x="120" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">폴더/파일</text>
   <text x="430" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">→ 개념(Phase)</text>
   <text x="20" y="50" font-size="10" fill="#0f172a" font-family="monospace">frontend/</text>

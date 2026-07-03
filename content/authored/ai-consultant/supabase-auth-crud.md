@@ -2,7 +2,7 @@
 
 **Supabase 한 세트 — 세 부품이 자동 API로 프론트에까지:**
 
-<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Supabase의 Auth Postgres Storage가 자동 API를 통해 프론트로 이어지는 구성">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Supabase의 Auth Postgres Storage가 자동 API를 통해 프론트로 이어지는 구성">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10"  y="18" width="110" height="38" rx="7" fill="#0ea5e9"/><text x="65"  y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Auth (로그인)</text>
   <rect x="10"  y="68" width="110" height="38" rx="7" fill="#8b5cf6"/><text x="65"  y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Postgres (DB)</text>

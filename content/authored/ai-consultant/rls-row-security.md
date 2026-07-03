@@ -2,7 +2,7 @@
 
 **RLS — DB가 사용자별로 행을 거른다 (클라이언트 우회도 막음):**
 
-<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="쿼리가 DB의 RLS 정책을 거쳐 본인 행만 반환하는 흐름">
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="쿼리가 DB의 RLS 정책을 거쳐 본인 행만 반환하는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10" y="55" width="120" height="50" rx="8" fill="#6366f1"/><text x="70" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">요청</text><text x="70" y="94" text-anchor="middle" font-size="9" fill="#e0e7ff">select * (전체)</text>
   <rect x="170" y="45" width="140" height="70" rx="8" fill="#f59e0b"/><text x="240" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">DB + RLS 정책</text><text x="240" y="88" text-anchor="middle" font-size="9" fill="#fef3c7">"이 사용자의 행만"</text><text x="240" y="102" text-anchor="middle" font-size="9" fill="#fef3c7">DB가 필터</text>

@@ -2,7 +2,7 @@
 
 **한눈에 보는 5층** — 사용자의 요청이 지나는 길:
 
-<svg viewBox="0 0 560 230" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="서비스 5층 구조: 프론트엔드-API-백엔드-데이터베이스, 그리고 클라우드/외부">
+<svg viewBox="0 0 560 230" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="서비스 5층 구조: 프론트엔드-API-백엔드-데이터베이스, 그리고 클라우드/외부">
   <text x="280" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">사용자 요청이 지나는 5개 층</text>
   <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10"  y="70" width="110" height="64" rx="8" fill="#0ea5e9"/><text x="65"  y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">프론트엔드</text><text x="65"  y="118" text-anchor="middle" font-size="11" fill="#e0f2fe">사용자 화면</text>

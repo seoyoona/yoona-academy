@@ -2,7 +2,7 @@
 
 **트랜잭션 — 둘 다 되거나, 둘 다 없던 일:**
 
-<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="트랜잭션이 커밋되거나 롤백되는 흐름">
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="트랜잭션이 커밋되거나 롤백되는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10" y="60" width="90" height="50" rx="8" fill="#6366f1"/><text x="55" y="89" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BEGIN</text>
   <rect x="125" y="60" width="110" height="50" rx="8" fill="#8b5cf6"/><text x="180" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">예약 생성</text><text x="180" y="98" text-anchor="middle" font-size="10" fill="#ede9fe">+ 결제 기록</text>

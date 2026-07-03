@@ -2,7 +2,7 @@
 
 **백엔드 부품 한눈에** — "엑셀 올려 대량 발송"이 지나는 길:
 
-<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="엑셀 업로드가 큐 워커 웹훅 로그를 거치는 백엔드 파이프라인">
+<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="엑셀 업로드가 큐 워커 웹훅 로그를 거치는 백엔드 파이프라인">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="5"   y="40" width="100" height="50" rx="8" fill="#0ea5e9"/><text x="55"  y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">엑셀 업로드</text>
   <rect x="120" y="40" width="80"  height="50" rx="8" fill="#6366f1"/><text x="160" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">큐</text>

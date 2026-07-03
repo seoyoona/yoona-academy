@@ -2,7 +2,7 @@
 
 **직접 백엔드 vs BaaS — 부품을 직접 만들까, 빌릴까:**
 
-<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접 백엔드(부품 직접 제작)와 BaaS(부품 빌림) 비교">
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접 백엔드(부품 직접 제작)와 BaaS(부품 빌림) 비교">
   <rect x="10" y="20" width="255" height="135" rx="10" fill="#ef4444" opacity="0.10" stroke="#ef4444"/>
   <text x="137" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">직접 백엔드 — 부품 직접 제작</text>
   <text x="25" y="66" font-size="11" fill="#0f172a">• 인증 만들기</text>

@@ -2,7 +2,7 @@ EC2·S3·RDS를 알았다. 그런데 "누가 이 자원에 접근할 수 있는�
 
 **보안의 두 축 — 네트워크(VPC)로 가두고, 권한(IAM)으로 줄인다:**
 
-<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VPC 사설망 안에 EC2와 RDS를 두고 IAM이 접근을 통제하는 구성">
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VPC 사설망 안에 EC2와 RDS를 두고 IAM이 접근을 통제하는 구성">
   <rect x="120" y="20" width="320" height="120" rx="12" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="6 4"/>
   <text x="280" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="#0369a1">VPC (사설망)</text>
   <rect x="150" y="55" width="110" height="46" rx="8" fill="#f59e0b"/><text x="205" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">EC2 (앱)</text>

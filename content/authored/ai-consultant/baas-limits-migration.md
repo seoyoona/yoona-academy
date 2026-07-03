@@ -2,7 +2,7 @@ BaaS로 MVP를 빠르게 띄웠다. 그런데 사용자가 늘고, 기능이 복
 
 **이관은 "전부 갈아엎기"가 아니다 — DB는 살리고, 로직만 옮긴다:**
 
-<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BaaS에서 DB 구조는 유지하고 복잡한 로직만 자체 백엔드로 옮기는 점진적 이관">
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BaaS에서 DB 구조는 유지하고 복잡한 로직만 자체 백엔드로 옮기는 점진적 이관">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10" y="55" width="140" height="50" rx="8" fill="#10b981"/><text x="80" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BaaS (한 덩어리)</text><text x="80" y="94" text-anchor="middle" font-size="9" fill="#d1fae5">초기 빠른 시작</text>
   <line x1="150" y1="80" x2="188" y2="80" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>

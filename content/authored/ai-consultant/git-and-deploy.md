@@ -2,7 +2,7 @@
 
 **코드가 실서버에 닿기까지의 흐름** (고객이 보는 건 마지막 단계부터):
 
-<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="코드가 커밋-푸시-PR-머지-실서버배포로 이어지는 흐름">
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="코드가 커밋-푸시-PR-머지-실서버배포로 이어지는 흐름">
   <defs><marker id="ag" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="5"   y="35" width="98" height="52" rx="8" fill="#64748b"/><text x="54"  y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1 작성·커밋</text><text x="54"  y="76" text-anchor="middle" font-size="10" fill="#e2e8f0">내 PC</text>
   <rect x="119" y="35" width="98" height="52" rx="8" fill="#0ea5e9"/><text x="168" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2 푸시</text><text x="168" y="76" text-anchor="middle" font-size="10" fill="#e0f2fe">GitHub</text>

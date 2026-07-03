@@ -2,7 +2,7 @@
 
 **API — 요청과 응답의 약속** (화면↔서버가 주고받는 흐름):
 
-<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="프론트엔드와 API 서버가 요청과 응답을 주고받는 흐름">
+<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="프론트엔드와 API 서버가 요청과 응답을 주고받는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10" y="35" width="130" height="50" rx="8" fill="#0ea5e9"/><text x="75" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">프론트엔드</text>
   <rect x="215" y="35" width="130" height="50" rx="8" fill="#6366f1"/><text x="280" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">API (서버)</text>

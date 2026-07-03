@@ -2,7 +2,7 @@
 
 **환경변수 — 코드 밖에 둔 설정값이 배포로 흘러가는 흐름:**
 
-<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="환경변수 설정이 배포 환경으로 흘러가 앱에 주입되는 흐름">
+<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="환경변수 설정이 배포 환경으로 흘러가 앱에 주입되는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="10"  y="40" width="120" height="50" rx="8" fill="#0ea5e9"/><text x="70"  y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">.env</text><text x="70"  y="78" text-anchor="middle" font-size="9" fill="#e0f2fe">코드에 안 씀</text>
   <rect x="160" y="40" width="130" height="50" rx="8" fill="#8b5cf6"/><text x="225" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">배포 환경 설정</text><text x="225" y="78" text-anchor="middle" font-size="9" fill="#ede9fe">prod/staging 분리</text>

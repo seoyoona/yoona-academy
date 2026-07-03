@@ -2,7 +2,7 @@
 
 **도메인 → 서버, 그리고 암호화(🔒)까지:**
 
-<svg viewBox="0 0 560 140" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="도메인이 DNS를 거쳐 IP로, SSL로 암호화되어 서버에 닿는 흐름">
+<svg viewBox="0 0 560 140" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="도메인이 DNS를 거쳐 IP로, SSL로 암호화되어 서버에 닿는 흐름">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <rect x="5"   y="45" width="115" height="50" rx="8" fill="#0ea5e9"/><text x="62"  y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">도메인</text><text x="62"  y="84" text-anchor="middle" font-size="9" fill="#e0f2fe">my.com</text>
   <rect x="145" y="45" width="100" height="50" rx="8" fill="#8b5cf6"/><text x="195" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">DNS 조회</text><text x="195" y="84" text-anchor="middle" font-size="9" fill="#ede9fe">이름→IP</text>

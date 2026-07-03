@@ -2,7 +2,7 @@
 
 **세 층이 합쳐 한 화면이 되는 흐름:**
 
-<svg viewBox="0 0 560 220" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML CSS JS가 합쳐 브라우저에 렌더링되는 흐름">
+<svg viewBox="0 0 560 220" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML CSS JS가 합쳐 브라우저에 렌더링되는 흐름">
   <rect x="10" y="28" width="150" height="50" rx="8" fill="#0ea5e9"/><text x="85" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">HTML — 뼈·내용</text>
   <rect x="10" y="90" width="150" height="50" rx="8" fill="#8b5cf6"/><text x="85" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">CSS — 생김새</text>
   <rect x="10" y="152" width="150" height="50" rx="8" fill="#f59e0b"/><text x="85" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">JS — 움직임</text>

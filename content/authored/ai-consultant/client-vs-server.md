@@ -2,7 +2,7 @@
 
 **코드가 어디서 도는가** — 두 세계의 차이:
 
-<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="클라이언트사이드와 서버사이드 코드의 특징 비교">
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="클라이언트사이드와 서버사이드 코드의 특징 비교">
   <rect x="10" y="20" width="260" height="115" rx="10" fill="#0ea5e9" opacity="0.12" stroke="#0ea5e9"/>
   <text x="140" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#0369a1">클라이언트사이드</text>
   <text x="140" y="66" text-anchor="middle" font-size="11" fill="#0f172a">• 사용자 기기에서 실행</text>

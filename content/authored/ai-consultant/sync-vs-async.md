@@ -2,7 +2,7 @@
 
 **동기 vs 비동기 — 사용자를 기다리게 할 것인가:**
 
-<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="동기 처리는 사용자가 기다리고 비동기 처리는 즉시 응답하는 비교">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="동기 처리는 사용자가 기다리고 비동기 처리는 즉시 응답하는 비교">
   <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
   <text x="280" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">동기 — 사용자가 30초 대기</text>
   <rect x="20"  y="32" width="60" height="34" rx="6" fill="#0ea5e9"/><text x="50" y="54" text-anchor="middle" font-size="9" fill="#fff">요청</text>

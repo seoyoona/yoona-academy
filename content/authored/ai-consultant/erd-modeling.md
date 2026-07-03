@@ -2,7 +2,7 @@
 
 **ERD 한 장 — 명사→표, 관계→선:**
 
-<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users reservations payments 세 엔터티가 관계선으로 이어진 ERD">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:10px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users reservations payments 세 엔터티가 관계선으로 이어진 ERD">
   <rect x="20"  y="60" width="120" height="60" rx="8" fill="#0ea5e9"/><text x="80"  y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">users</text>
   <rect x="220" y="60" width="120" height="60" rx="8" fill="#8b5cf6"/><text x="280" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">reservations</text>
   <rect x="420" y="60" width="120" height="60" rx="8" fill="#10b981"/><text x="480" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">payments</text>
