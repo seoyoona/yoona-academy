@@ -1,5 +1,19 @@
 코드를 다 짰다고 서비스가 끝이 아니다. 그 코드를 실제 환경에 올리고, 그 환경에서 **비밀값(DB 비밀번호·API 키·시크릿)**을 안전하게 넣어주고, 갱신될 때마다 자동으로 다시 올리는 일까지가 "배포"다. "로컬에선 되는데 배포하면 안 된다"는 말의 원인은 거의 항상 여기(환경 변수)에 있다. 이 레슨은 환경변수와 배포 방식을 정리하고, PM이 들어야 할 세팅값 표를 채운다. Phase 5의 마지막이자 "코드 → 실서비스"의 마지막 관문이다.
 
+**환경변수 — 코드 밖에 둔 설정값이 배포로 흘러가는 흐름:**
+
+<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="환경변수 설정이 배포 환경으로 흘러가 앱에 주입되는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="40" width="120" height="50" rx="8" fill="#0ea5e9"/><text x="70"  y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">.env</text><text x="70"  y="78" text-anchor="middle" font-size="9" fill="#e0f2fe">코드에 안 씀</text>
+  <rect x="160" y="40" width="130" height="50" rx="8" fill="#8b5cf6"/><text x="225" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">배포 환경 설정</text><text x="225" y="78" text-anchor="middle" font-size="9" fill="#ede9fe">prod/staging 분리</text>
+  <rect x="320" y="40" width="110" height="50" rx="8" fill="#f59e0b"/><text x="375" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CI/CD</text><text x="375" y="78" text-anchor="middle" font-size="9" fill="#fef3c7">자동 빌드·배포</text>
+  <rect x="460" y="40" width="95"  height="50" rx="8" fill="#10b981"/><text x="507" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">실행 중인 앱</text><text x="507" y="78" text-anchor="middle" font-size="9" fill="#d1fae5">값 주입</text>
+  <line x1="130" y1="65" x2="158" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="290" y1="65" x2="318" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="430" y1="65" x2="458" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="280" y="112" text-anchor="middle" font-size="10" fill="#64748b">"로컬에선 되는데 실서버에선" = 십중팔구 이 흐름 어딘가 누락</text>
+</svg>
+
 ## 환경변수(env) — 서비스의 '설정 다이얼'
 
 **환경변수**는 코드 밖에 두는 설정값이다. Phase 2(백엔드 단어장)·Phase 1(Git)에서 봐서 익숙할 것이다. 핵심은 비밀값과 환경별 설정을 **코드에 직접 박지 않고** `.env`나 클라우드 환경설정에 둔다는 것.
@@ -68,6 +82,14 @@ PM 식 결론: "초기엔 PaaS로 환경변수만 등록하면 끝. 복잡해지
 4. 결제 웹훹 URL이 실서버 도메인으로 안 등록돼서, 결제사가 우리 서버에 알림을 못 주나?
 
 → 거의 항상 1번(환경변수 누락/오배정)이었다. 환경변수 목록(세팅값 표)을 실서버 대시보드와 대조해 빠진 걸 채우면 해결. 이것이 "환경변수를 산출물로 관리해야 하는 이유"의 현실이다.
+
+## 실 사례(익명화) — 환경변수 목록을 산출물로 둔 이유
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 프로젝트에선 환경변수(DB 주소·결제·푸시·AI 키)를 코드와 완전 분리하고, **prod/staging을 다르게** 뒀다. 실서버 장애의 상당수가 "환경변수 누락·오배정"이었기 때문이다 — 개발엔 있던 값이 실서버 세팅에 빠져 "로컬에선 되는데 실서버에선 안 된다"가 반복됐다. 그래서 **환경변수 목록(세팅값 표)을 산출물로 관리**했고, 배포는 **자동화(CI/CD)**해 수동 실수를 없앴다.
+
+교훈: "배포"는 코드 올리기로 끝이 아니라 — 환경변수 관리(prod/staging 분리 + 목록화)와 자동 배포가 함께 와야 한다. 상담에서 "환경변수 목록이 있나요? prod/staging이 나뉘어 있나요?"를 묻는 것이, 이 사례가 보여준 실무 교훈이다.
 
 ## 흔한 실패 모드와 처방
 

@@ -1,5 +1,25 @@
 "서버 한 대 세팅해 주세요"라는 옛날 요청과 "클라우드에 올려 주세요"라는 지금 요청은 다른 세계다. 예전엔 컴퓨터를 사고, 랙에 꽂고, 전원·냉각·네트워크까지 직접 챙겼다. 지금은 그 컴퓨터를 남이 관리하는 걸 빌려 쓴다. 이 차이를 이해하면 "왜 AWS가 필요해요?"라는 질문에 답이 되고, 견적의 인프라 비용이 보이기 시작한다. 이 레슨은 클라우드가 본질적으로 무엇인지, 우리가 무엇을 "빌리는"지를 다룬다. Phase 5의 첫 글 — AWS의 큰 그림이다.
 
+**빌리는 깊이의 3단계** — 어디까지 우리가 하고 어디까지 빌릴까:
+
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IaaS PaaS SaaS 세 단계의 빌리는 깊이 비교">
+  <rect x="10"  y="30" width="170" height="105" rx="8" fill="#ef4444" opacity="0.13" stroke="#ef4444"/>
+  <text x="95"  y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">IaaS (EC2)</text>
+  <text x="95"  y="74" text-anchor="middle" font-size="10" fill="#0f172a">빌림: 컴퓨터·네트워크</text>
+  <text x="95"  y="92" text-anchor="middle" font-size="10" fill="#0f172a">우리: OS·앱·데이터</text>
+  <text x="95"  y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#991b1b">자유도↑ 부담↑</text>
+  <rect x="195" y="30" width="170" height="105" rx="8" fill="#f59e0b" opacity="0.13" stroke="#f59e0b"/>
+  <text x="280" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">PaaS (Vercel)</text>
+  <text x="280" y="74" text-anchor="middle" font-size="10" fill="#0f172a">빌림: OS·런타임까지</text>
+  <text x="280" y="92" text-anchor="middle" font-size="10" fill="#0f172a">우리: 앱·데이터</text>
+  <text x="280" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">초기 추천</text>
+  <rect x="380" y="30" width="170" height="105" rx="8" fill="#10b981" opacity="0.13" stroke="#10b981"/>
+  <text x="465" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">SaaS (Supabase)</text>
+  <text x="465" y="74" text-anchor="middle" font-size="10" fill="#0f172a">빌림: 앱 전체</text>
+  <text x="465" y="92" text-anchor="middle" font-size="10" fill="#0f172a">우리: (그냥 씀)</text>
+  <text x="465" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">가장 빠름</text>
+</svg>
+
 ## 클라우드는 '컴퓨터 자원을 빌려 쓰는 일'
 
 클라우드(AWS, GCP, Azure 등)는 한마디로 **서버 컴퓨터·저장소·데이터베이스·네트워크를 직접 사서 굴리지 않고, 남이 관리하는 것을 빌려 쓰는 서비스**다.
@@ -49,6 +69,14 @@
 3. **복잡한 백엔드·규정**: **AWS EC2 + RDS + S3**(IaaS + 관리형). 자유도·규정 준수가 필요한 곳. 운영은 가장 무겁지만 통제가 최대.
 
 "배포"라는 한마디가 이렇게 깊이로 갈린다. 고객의 단계(초기/성숙), 트래픽, 규제에 따라 다른 답이 나온다. 이것이 "클라우드"를 아는 PM의 상담력이다.
+
+## 실 사례(익명화) — 단계별로 빌린 깊이를 바꾼 선택
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+한 프로젝트는 **초기엔 PaaS(Vercel)로 빠르게 띄우고**, 트래픽·규제가 붖으면 **AWS(IaaS)로 이관**하는 단계적 접근을 했다. 핵심은 "처음부터 다 직접 굴리면 운영에 기능이 묻인다"는 판단 — 지금 단계에 맞는 깊이로만 빌렸다.
+
+교훈: 클라우드 선택은 "뭘 쓰느냐"가 아니라 **"우리 단계에 어느 깊이까지 빌릴까"**다. 초기엔 깊이 빌리고(PaaS/SaaS), 통제가 필요해지면 얕게(IaaS). 그리고 "클라우드 = 싸다"가 아니라 **"통제하면 싸고, 방치하면 비싸다"** — 비용 가시화(예산 알림·안 쓰는 자원 끄기)가 운용의 출발점이다.
 
 ## 흔한 실패 모드와 처방
 

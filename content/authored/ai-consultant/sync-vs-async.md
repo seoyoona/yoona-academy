@@ -1,5 +1,28 @@
 고객이 "엑셀 올리면 사용자 1천 명한테 알림 보내 주세요"라고 할 때, "엑셀 올리기 → 파싱 → 발송"이 한 번에 끝날 거라 생각하면 안 된다. 한 번에(동기) 처리하면 사용자는 발송 끝날 때까지 30초를 기다리며 하얀 화면을 본다. 정답은 "요청은 즉시 받고, 무거운 일은 뒤로 미뤄서(비동기) 처리"다. 이 레슨은 동기 vs 비동기, 그리고 큐·배치·웹훹이 어떤 역할을 하는지 다룬다. **고객 요구 → 처리 구조 번역**의 핵심 레슨이다.
 
+**동기 vs 비동기 — 사용자를 기다리게 할 것인가:**
+
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="동기 처리는 사용자가 기다리고 비동기 처리는 즉시 응답하는 비교">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <text x="280" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">동기 — 사용자가 30초 대기</text>
+  <rect x="20"  y="32" width="60" height="34" rx="6" fill="#0ea5e9"/><text x="50" y="54" text-anchor="middle" font-size="9" fill="#fff">요청</text>
+  <rect x="95"  y="32" width="180" height="34" rx="6" fill="#ef4444"/><text x="185" y="54" text-anchor="middle" font-size="9" fill="#fff">즉시 처리 (오래 걸림…)</text>
+  <rect x="290" y="32" width="60" height="34" rx="6" fill="#10b981"/><text x="320" y="54" text-anchor="middle" font-size="9" fill="#fff">응답</text>
+  <line x1="80" y1="49" x2="93" y2="49" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="275" y1="49" x2="288" y2="49" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="280" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">비동기 — 즉시 응답, 뒤에서 처리</text>
+  <rect x="20"  y="110" width="60" height="34" rx="6" fill="#0ea5e9"/><text x="50" y="132" text-anchor="middle" font-size="9" fill="#fff">요청</text>
+  <rect x="95"  y="110" width="80" height="34" rx="6" fill="#10b981"/><text x="135" y="132" text-anchor="middle" font-size="9" fill="#fff">"접수됨"</text>
+  <rect x="190" y="110" width="70" height="34" rx="6" fill="#8b5cf6"/><text x="225" y="132" text-anchor="middle" font-size="9" fill="#fff">큐</text>
+  <rect x="275" y="110" width="80" height="34" rx="6" fill="#f59e0b"/><text x="315" y="132" text-anchor="middle" font-size="9" fill="#fff">워커(뒤에서)</text>
+  <rect x="370" y="110" width="80" height="34" rx="6" fill="#6366f1"/><text x="410" y="132" text-anchor="middle" font-size="9" fill="#fff">나중에 완료</text>
+  <line x1="80" y1="127" x2="93" y2="127" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="175" y1="127" x2="188" y2="127" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="260" y1="127" x2="273" y2="127" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="355" y1="127" x2="368" y2="127" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="280" y="170" text-anchor="middle" font-size="10" fill="#64748b">오래 걸리는 작업(발송·변환·리포트)은 비동기로</text>
+</svg>
+
 ## 동기(synchronous) — '요청→결과'를 바로 기다린다
 
 **동기** 처리는 "요청하면, 끝날 때까지 기다렸다가 결과를 받는" 방식이다. 브라우저가 서버에 요청 → 서버가 다 끝낼 때까지 → 응답. 일상적 대부분(로그인, 게시글 조회, 저장)이 동기다.
@@ -61,6 +84,14 @@
 - 실패 시 "재시도" 버튼
 
 "즉시 안 됨"을 사용자에게 어떻게 보여줄지까지 기획하는 것이 비동기 기능의 전부다. 동기(즉시 결과)와 비동기(나중에, 상태 표시)는 UX 설계부터 다르다.
+
+## 실 사례(익명화) — 대량 발송을 "즉시 응답 + 큐"로 바꾼 사례
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 서비스에서 "엑셀을 올리면 수천 건을 처리·발송"하는 기능이 있었다. 처음엔 **동기**로 짜서 — 사용자가 올리면 끝날 때까지 화면이 멈춰 있었다(수십 초~실패). 이걸 **비동기**로 바꿨다: 올리면 즉시 "처리 중" 응답, 실제 작업은 **큐→워커**로 뒤에서, 완료·실패는 상태로 표시. 사용자는 안 기다리고, 실패 건은 재시도까지 가능해졌다.
+
+교훈: "오래 걸리는 작업(발송·변환·리포트·대량 처리)"을 만나면 **"즉시 응답 + 큐(비동기) 처리 + 상태 표시"** 구조가 정답이다. 단, 비동기는 디버깅이 어려워지니 **상태 추적(진행/완료/실패·로그)**이 함께 와야 한다 — 없으면 "가끔 안 된다"는 지옥이 생긴다.
 
 ## 흔한 실패 모드와 처방
 

@@ -1,5 +1,24 @@
 고객이 "빠르게 MVP 만들어 달라"고 할 때, 백엔드를 직접 짜는 선택은 종종 최선이 아니다. 회원가입, 로그인, DB, 파일 업로드, API까지 매 서비스마다 반복해서 만들어야 하기 때문이다. 이럴 때 "로그인·DB·저장소까지 미리 만들어둔 서비스"를 빌려 쓰면 며칠 만에 띄울 수 있다. 이것이 BaaS(Backend as a Service)다. 이 레슨은 BaaS가 왜 빠른지, 그리고 Firebase·Supabase·직접 백엔드 중 언제 뭘 골라야 하는지를 다룬다. 견적·아키텍처 상담에서 가장 자주 나오는 첫 결정이다.
 
+**직접 백엔드 vs BaaS — 부품을 직접 만들까, 빌릴까:**
+
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접 백엔드(부품 직접 제작)와 BaaS(부품 빌림) 비교">
+  <rect x="10" y="20" width="255" height="135" rx="10" fill="#ef4444" opacity="0.10" stroke="#ef4444"/>
+  <text x="137" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">직접 백엔드 — 부품 직접 제작</text>
+  <text x="25" y="66" font-size="11" fill="#0f172a">• 인증 만들기</text>
+  <text x="25" y="86" font-size="11" fill="#0f172a">• DB 세팅·운영</text>
+  <text x="25" y="106" font-size="11" fill="#0f172a">• API 엔드포인트 코딩</text>
+  <text x="25" y="126" font-size="11" fill="#0f172a">• 파일 처리</text>
+  <text x="137" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#991b1b">느리지만 자유도↑</text>
+  <rect x="295" y="20" width="255" height="135" rx="10" fill="#10b981" opacity="0.10" stroke="#10b981"/>
+  <text x="422" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">BaaS — 부품 빌림</text>
+  <text x="310" y="66" font-size="11" fill="#0f172a">• Auth (이미 있음)</text>
+  <text x="310" y="86" font-size="11" fill="#0f172a">• Postgres (관리형)</text>
+  <text x="310" y="106" font-size="11" fill="#0f172a">• 자동 API</text>
+  <text x="310" y="126" font-size="11" fill="#0f172a">• Storage</text>
+  <text x="422" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">빠름, 초기 추천</text>
+</svg>
+
 ## BaaS는 '뒷단의 자동판매기'
 
 BaaS는 앱에 자주 필요한 뒷단 기능 — 인증(Auth), 데이터베이스, 파일 저장소, 간단한 API, 가끔 함수 실행 — 을 **미리 만들어둔 서비스**다. Supabase, Firebase가 대표적이다.
@@ -54,6 +73,14 @@ BaaS는 이 부품들을 "이미 만들어 뒀어, 설정만 해"로 준다. Sup
 4. **확장 시 이관** — 트래픽·복잡도가 커지면 결제·배치를 자체 백엔드로 옮기되, DB는 Postgres 그대로(구조 이전 불필요).
 
 이 상담 한 장에 Phase 1~5 개념이 다 녹아 있다. "MVP"라는 한마디가 BaaS+RLS+웹훹+이관 계획으로 번역되는 것이 PM 상담력이다.
+
+## 실 사례(익명화) — "빠르게 검증"이 목표라 BaaS로 간 선택
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+한 초기 클라이언트는 **"빠르게 시장에 검증"**이 최우선이라, 백엔드를 직접 짜지 않고 BaaS로 갔다 — 로그인·CRUD·파일 업로드를 며칠 만에 띄웠다. 핵심은 "BaaS가 정답이라서"가 아니라 **"지금 단계(검증)에 맞는 선택"**이었다는 점. 트래픽·복잡도가 커지면 일부를 자체 백엔드로 옮길 계획까지 세워둔 상태였다.
+
+교훈: 기술 선택은 "뭘 쓰느냐"보다 **"지금 우리 단계에 맞느냐"**다. 초기엔 빠른 BaaS, 복잡해지면 직접 백엔드 — 그리고 이탈 비용을 낮추도록(표준 Postgres로) 쓰는 것이 시니어의 판단이다.
 
 ## 흔한 실패 모드와 처방
 

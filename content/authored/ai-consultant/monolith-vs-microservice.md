@@ -1,5 +1,23 @@
 "우리 서비스, 마이크로서비스로 만들어야 할까요?" — 이 질문을 상담에서 받는다면, 열에 아홉은 정답이 "아직 아니다"다. '마이크로서비스'가 세련되어 보여 처음부터 거기로 가려는 것은 초보의 흔한 실수다. 이 레슨은 monolith(단일 앱)와 microservice(여러 작은 서비스)의 차이, 그리고 왜 **처음엔 하나(monolith)로 시작해야 하는지**를 다룬다. 아키텍처 상담에서 가장 자주, 그리고 가장 잘못 결정되는 지점이다.
 
+**monolith vs microservice — 처음엔 하나로:**
+
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="모놀리스 한 덩어리와 마이크로서비스 여러 조각의 비교">
+  <rect x="20" y="30" width="200" height="110" rx="10" fill="#10b981" opacity="0.16" stroke="#10b981"/>
+  <text x="120" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">monolith (초기 추천)</text>
+  <rect x="40" y="62" width="70" height="26" rx="5" fill="#0ea5e9"/><text x="75" y="79" text-anchor="middle" font-size="9" fill="#fff">화면</text>
+  <rect x="120" y="62" width="70" height="26" rx="5" fill="#6366f1"/><text x="155" y="79" text-anchor="middle" font-size="9" fill="#fff">API</text>
+  <rect x="40" y="96" width="70" height="26" rx="5" fill="#8b5cf6"/><text x="75" y="113" text-anchor="middle" font-size="9" fill="#fff">DB접근</text>
+  <rect x="120" y="96" width="70" height="26" rx="5" fill="#f59e0b"/><text x="155" y="113" text-anchor="middle" font-size="9" fill="#fff">규칙</text>
+  <text x="120" y="150" text-anchor="middle" font-size="9" fill="#065f46">한 코드·한 배포·단순</text>
+  <text x="350" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">microservice (나중에)</text>
+  <rect x="290" y="62" width="70" height="26" rx="5" fill="#0ea5e9"/><text x="325" y="79" text-anchor="middle" font-size="9" fill="#fff">주문</text>
+  <rect x="375" y="62" width="70" height="26" rx="5" fill="#6366f1"/><text x="410" y="79" text-anchor="middle" font-size="9" fill="#fff">결제</text>
+  <rect x="460" y="62" width="70" height="26" rx="5" fill="#8b5cf6"/><text x="495" y="79" text-anchor="middle" font-size="9" fill="#fff">사용자</text>
+  <text x="410" y="105" text-anchor="middle" font-size="9" fill="#64748b">각자 DB·배포·네트워크 통신</text>
+  <text x="410" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">복잡도 폭발 — 초기엔 독</text>
+</svg>
+
 ## monolith — 모든 걸 '하나의 앱'에
 
 **monolith(모놀리스)**는 사용자 화면, API 규칙, DB 접근 등 **모든 코드를 하나의 애플리케이션으로 묶어** 돌리는 구조다. "하나의 서버 프로그램이 다 한다." 대부분의 초기 서비스는 모놀리스로 시작한다.
@@ -55,6 +73,14 @@
 4. **DB도 점진 분리** — 처음엔 한 DB의 여러 스키마, 결제 독립 시 결제 스키마만 별도 DB로.
 
 "마이크로서비스로요"라는 고객 요구를 "지금은 모놀리스+모듈화, 필요해지면 그때 분리"로 되돌리는 것이 상담 가치다. 복잡도를 미리 끌어오지 않는 판단.
+
+## 실 사례(익명화) — 노코드 한 덩어리를 "잘 모듈화된 모놀리스"로 다시 짠 사례
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 클라이언트의 서비스는 원래 **노코드 한 덩어리**였다 — 빠르긴 했지만 요구가 복잡해지자 통제가 안 됐다. 다시 짤 때 팀은 마이크로서비스가 아니라 **"잘 모듈화된 모놀리스"**를 택했다 — 코드는 하나지만, 주문·결제·사용자가 폴더(모듈)로 깔끔히 나뉘어, 나중에 필요해지면 그 부분만 떼어 service로 독립시킬 수 있는 상태로. "처음부터 산산조각"이 아니라 "나중에 잘게 떼어낼 수 있는 경계"를 둔 것이다.
+
+교훈: 규모가 작을 땐 모놀리스(모듈화)가 거의 항상 맞다 — 마이크로서비스의 복잡도(네트워크·분산 트랜잭션·배포)가 제품보다 먼저 커진다. "스케일·팀이 커져서 결제만 따로 늘려야 한다" 같은 신호가 올 때 그때 분리한다. 상담에서 "마이크로서비스요?"엔 "지금은 모놀리스(모듈화)로, 필요해지면 분리"로 답하는 것이 정석이다.
 
 ## 흔한 실패 모드와 처방
 

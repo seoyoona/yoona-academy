@@ -1,5 +1,21 @@
 백엔드 개발자와 회의하다 보면 "환경변수 세팅해 주시고, 웹훅은 이 URL로, 파일은 S3에 올릴 거라서, 에러는 로그로 쌓을게요"처럼 단어가 쏟아진다. 이 단어들이 모두 **구체적인 부품**이지 개발자의 입버릇이 아니다. 각각 빠지면 서비스가 멈추거나, 디버깅이 불가능해지거나, 사고가 난다. 이 레슨은 PM이 반드시 가져야 할 백엔드 단어장 — 환경변수·웹훅·파일업로드·에러로그, 그리고 그 뒤에 있는 큐·캐시까지 — 를 한 번에 정리한다.
 
+**백엔드 부품 한눈에** — "엑셀 올려 대량 발송"이 지나는 길:
+
+<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="엑셀 업로드가 큐 워커 웹훅 로그를 거치는 백엔드 파이프라인">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="5"   y="40" width="100" height="50" rx="8" fill="#0ea5e9"/><text x="55"  y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">엑셀 업로드</text>
+  <rect x="120" y="40" width="80"  height="50" rx="8" fill="#6366f1"/><text x="160" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">큐</text>
+  <rect x="215" y="40" width="90"  height="50" rx="8" fill="#8b5cf6"/><text x="260" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">워커(처리)</text>
+  <rect x="320" y="40" width="95"  height="50" rx="8" fill="#f59e0b"/><text x="367" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">웹훅(결과)</text>
+  <rect x="430" y="40" width="125" height="50" rx="8" fill="#10b981"/><text x="492" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">로그·상태</text>
+  <line x1="105" y1="65" x2="118" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="200" y1="65" x2="213" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="305" y1="65" x2="318" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="415" y1="65" x2="428" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="280" y="115" text-anchor="middle" font-size="10" fill="#64748b">이 모든 단계에 환경변수(API키·DB주소)가 얽힌다</text>
+</svg>
+
 ## 환경변수(env) — 서비스의 '설정 다이얼'
 
 **환경변수**는 코드 밖에 두는 설정값이다. DB 주소·비밀번호·API 키·JWT 시크릿 같은 값들을 코드에 직접 쓰지 않고 `.env` 파일이나 클라우드 설정에 넣어둔다.
@@ -76,6 +92,14 @@ PM 상담 팁: **"장애 났을 때 로그가 있나요?"**를 기본 질문으�
 6. 환경변수(`KAKAO_API_KEY`, `S3_BUCKET` 등)는 `.env`/클라우드 설정에서만.
 
 이 단어들이 다 쓰인다. 각각 빠지면 — 큐 없이 즉시 처리면 브라우저가 타임아웃나고, 웹훅 신뢰 처리 없으면 중복 발송, 로그 없으면 실패 원인 불명. "간단한 알림 기능"이 사실 6개 부품의 묶음이다.
+
+## 실 사례(익명화) — "로컬에선 되는데 실서버에선"의 진짜 원인
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 프로젝트에선 환경변수(DB 주소·결제·푸시·AI 키 등)를 코드와 완전 분리해 뒀다. 그런데 실서버 장애가 한 번 났을 때, 원인은 코드가 아니라 **"실서버 환경변수 누락"**이었다 — 개발엔 있던 값이 실서버 세팅에 빠져 있어, 서버가 DB·외부 서비스에 연결을 못 했다.
+
+교훈: "로컬에선 되는데 실서버에선 안 된다"의 십중팔구가 이 패턴이다. 그래서 환경변수 목록(세팅값 표)을 **산출물로 관리**하는 것이 필수였다 — 어떤 값이, 어느 환경에, 들어있어야 하는지를 한 장으로 두는 것. 상담에서 "환경변수 목록이 있나요?"를 묻는 것이 이 사례의 실무 교훈이다.
 
 ## 흔한 실패 모드와 처방
 

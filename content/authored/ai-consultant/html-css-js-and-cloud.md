@@ -1,5 +1,18 @@
 개발자가 "이 버튼은 HTML로 만들고, CSS로 꾸미고, JS로 움직이게 합니다"라고 말할 때, PM이 세 글자를 같은 "화면 만들기"로 들으면 회의가 엇갈린다. 세 가지는 각자 다른 일을 하고, 고치는 사람도, 공수도, 깨지는 방식도 다르다. 이 레슨은 HTML·CSS·JS의 역할을 구분한 뒤, 그 화면이 최종적으로 클라우드라는 자리에 어떻게 올라가는지까지 한 번에 본다. 목표는 "디자인이 깨졌다"와 "기능이 안 된다"를 서로 다른 버그로 구분할 수 있게 되는 것이다.
 
+**세 층이 합쳐 한 화면이 되는 흐름:**
+
+<svg viewBox="0 0 560 220" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML CSS JS가 합쳐 브라우저에 렌더링되는 흐름">
+  <rect x="10" y="28" width="150" height="50" rx="8" fill="#0ea5e9"/><text x="85" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">HTML — 뼈·내용</text>
+  <rect x="10" y="90" width="150" height="50" rx="8" fill="#8b5cf6"/><text x="85" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">CSS — 생김새</text>
+  <rect x="10" y="152" width="150" height="50" rx="8" fill="#f59e0b"/><text x="85" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">JS — 움직임</text>
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <line x1="160" y1="53" x2="378" y2="105" stroke="#64748b" stroke-width="1.8" marker-end="url(#ah)"/>
+  <line x1="160" y1="115" x2="378" y2="115" stroke="#64748b" stroke-width="1.8" marker-end="url(#ah)"/>
+  <line x1="160" y1="177" x2="378" y2="125" stroke="#64748b" stroke-width="1.8" marker-end="url(#ah)"/>
+  <rect x="385" y="70" width="165" height="100" rx="10" fill="#10b981"/><text x="467" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">브라우저 렌더링</text><text x="467" y="130" text-anchor="middle" font-size="11" fill="#d1fae5">완성된 화면</text><text x="467" y="148" text-anchor="middle" font-size="11" fill="#d1fae5">(사용자가 본 것)</text>
+</svg>
+
 ## HTML — 뼈와 내용
 
 HTML은 화면의 **뼈와 내용**을 담는다. "여기 제목이 있고, 여기 입력창이 있고, 여기 버튼이 있다"는 구조와 글자를 정의한다. 제목, 문단, 목록, 링크, 입력창, 버튼 — 이런 *무엇이 있는지*를 HTML이 결정한다.
@@ -50,6 +63,14 @@ JS는 화면의 **움직임과 논리**를 담당한다. 버튼을 누르면 입
 - **JS**: '보내기'를 누르면 빈 칸을 검사하고, 서버에 `문의 생성` API로 값을 보낸다. 성공하면 "전송되었습니다"를 띄운다. → **여기서 처음으로 "기능"이 생긴다.**
 
 교훈: 같은 "문의 폼"이어도, 깨짐은 CSS를, 기능 부재는 JS를 본다. 한 버그 리포트에서 "디자인이 이상해요"와 "안 눌러져요"가 같이 오면, 둘은 다른 사람이 다를 수도 있는 별개 작업이다.
+
+## 실 사례(익명화) — 서비스 재구축에서 "생김새가 미세하게 어긋나는" 버그
+
+> 실제 프로젝트 사례를 익명화해 옮겼다. 식별정보는 제거하고 패턴만 남겼다.
+
+한 클라이언트의 서비스를 **직접 코드로 다시 짜는(재구축)** 프로젝트가 있었다. 기존 서비스(노코드로 만들어진)와 새 코드로 만든 화면이 **"똑같이 보이는가"**가 품질 기준이었는데, 문제는 "거의 같은데 어딘가 다르다"는 미세한 차이였다. 팀이 쓴 방법은 **UI parity gap 문서** — 화면을 한 칸한 칸 비교해, 어긋나는 점을 항목별로 기록하고, 발견 시 **스크린샷을 증거로 함께 남기는** 것이었다.
+
+교훈은 이 레슨의 핵심과 직결된다: "예쁜데 원래랑 미세하게 다르다"는 버그의 정체는 거의 다 **CSS layer**(생김새)에 있었다. HTML(내용)은 같아도 여백·색·폰트가 어긋나면 달라 보인다. 반대로 "눌러도 안 된다"는 JS(움직임) 문제. 이 둘을 한 버그로 몰아넣지 않고, "이건 생김새(CSS), 이건 움직임(JS)"으로 나눠 기록했기 때문에 — 누가 뭘 고쳐야 하는지, 얼마나 걸리는지가 보였다. 디자인 시안을 받으면 "이 작업은 생김새(CSS), 이건 움직임(JS)"으로 먼저 나누는 습관이 이 사례의 핵심 실무였다.
 
 ## 흔한 실패 모드와 처방
 

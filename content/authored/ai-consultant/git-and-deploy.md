@@ -1,5 +1,22 @@
 개발자가 "이거 커밋하고 푸시하겠습니다"라고 할 때, 그 문장 안에는 "코드를 저장하고, 팀과 공유하고, 실제 서비스에 반영하는" 세 단계가 다 들어 있다. PM이 이 흐름을 모르면, "수정했는데 왜 사이트에 안 반영됐죠?"라는 질문을 자주 하게 된다. 답은 대개 "저장은 했지만 공유나 배포까지는 안 했기 때문"이다. 이 레슨은 Git과 GitHub가 각각 무엇이고, 거기서 코드가 어떻게 실제 서비스까지 흘러가는지를 다룬다.
 
+**코드가 실서버에 닿기까지의 흐름** (고객이 보는 건 마지막 단계부터):
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="코드가 커밋-푸시-PR-머지-실서버배포로 이어지는 흐름">
+  <defs><marker id="ag" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="5"   y="35" width="98" height="52" rx="8" fill="#64748b"/><text x="54"  y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1 작성·커밋</text><text x="54"  y="76" text-anchor="middle" font-size="10" fill="#e2e8f0">내 PC</text>
+  <rect x="119" y="35" width="98" height="52" rx="8" fill="#0ea5e9"/><text x="168" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2 푸시</text><text x="168" y="76" text-anchor="middle" font-size="10" fill="#e0f2fe">GitHub</text>
+  <rect x="233" y="35" width="98" height="52" rx="8" fill="#8b5cf6"/><text x="282" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3 PR·리뷰</text><text x="282" y="76" text-anchor="middle" font-size="10" fill="#ede9fe">프리뷰 배포</text>
+  <rect x="347" y="35" width="98" height="52" rx="8" fill="#6366f1"/><text x="396" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4 머지</text><text x="396" y="76" text-anchor="middle" font-size="10" fill="#e0e7ff">main</text>
+  <rect x="461" y="35" width="94" height="52" rx="8" fill="#10b981"/><text x="508" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">5 실서버 배포</text><text x="508" y="76" text-anchor="middle" font-size="10" fill="#d1fae5">고객 O</text>
+  <line x1="103" y1="61" x2="117" y2="61" stroke="#64748b" stroke-width="1.8" marker-end="url(#ag)"/>
+  <line x1="217" y1="61" x2="231" y2="61" stroke="#64748b" stroke-width="1.8" marker-end="url(#ag)"/>
+  <line x1="331" y1="61" x2="345" y2="61" stroke="#64748b" stroke-width="1.8" marker-end="url(#ag)"/>
+  <line x1="445" y1="61" x2="459" y2="61" stroke="#64748b" stroke-width="1.8" marker-end="url(#ag)"/>
+  <text x="282" y="115" text-anchor="middle" font-size="10" fill="#64748b">단계 1~4: 팀만 볼 수 있다</text>
+  <text x="508" y="115" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">▶ 고객이 보는 건 여기부터</text>
+</svg>
+
 ## Git — 코드의 '저장'과 '이력'
 
 Git은 **코드의 변경 이력을 저장하는 도구**다. 문서를 "최종", "최최종", "진짜최종"으로 복사해 두는 대신, 언제 무엇을 바꿨는지를 한 줄 한 줄 기록한다.
@@ -55,6 +72,14 @@ Git이 개인 컴퓨터 안에서 이력을 관리한다면, **GitHub**는 그 �
 5. 1~2분 뒤 실제 사이트에 새 로고가 뜬다. → **이때서야 고객이 볼 수 있다.**
 
 고객이 "바꿨나요?"라고 물을 때, 정답은 위 5단계 중 지금 몇 번인지로 대답한다. "PR 올렸습니다(3) → 5분 뒤 실서버 반영됩니다"라고 말하면 고객도 기다릴 수 있다.
+
+## 실 사례(익명화) — 인프라·배포 설정을 코드와 분리한 레포
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 프로젝트에선 **인프라 셋업·CI/CD·마이그레이션 환경을 전용 레포로 따로** 뒀다. 즉 서비스 코드 레포와 "배포·인프라 설정" 레포를 분리한 것. 이유는 — 배포 파이프라인(GitHub Actions 등)과 환경 설정이 코드 기능과 섞이면, "기능 고친 김에 배포 설정도 건드렸다"가 엉키고, 환경이 바뀔 때 코드까지 흔들리기 때문이다.
+
+실무 효과: 환경(스테이징/실서버)이나 배포 방식을 바꿀 때 **서비스 코드를 안 건드리고 배포 설정만** 고칠 수 있었다. "배포 설정"도 하나의 독립 산출물로 다룬 셈이다. 이게 이 레슨의 핵심과 통한다 — "수정했습니다"가 어디까지인지(커밋? 푸시? 배포?)를, 그리고 "배포 설정은 코드와 별개"임을 명확히 두는 것. 상담에서 "배포/인프라 설정은 어디서 관리하나요?"를 물으면, 이 분리가 돼 있는지(코드 레포 vs 인프라 레포)가 공수·안정성의 단서가 된다.
 
 ## 흔한 실패 모드와 처방
 

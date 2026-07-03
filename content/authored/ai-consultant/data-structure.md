@@ -1,5 +1,24 @@
 고객이 "예약 기능이요"라고 할 때, 데이터베이스를 아는 PM은 머릿속에 곧장 표 몇 장이 떠오른다 — users, reservations, payments. 그리고 그 표가 어떻게 이어지는지가 보인다. 이 순간 상담의 질이 달라진다. "예약 기능이요"라는 한 문장이 "누가, 언제, 무엇을, 어떻게 결제했는지"를 담는 구조로 번역되기 때문이다. 이 레슨은 데이터가 어떤 구조로 저장되는지 — table·row·column, 그리고 primary key·foreign key — 를 다룬다. 이것이 PM 상담력의 뼈대다.
 
+**표(table)와 행(row)·열(column), 그리고 PK·FK로 이어지는 관계:**
+
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users 표와 reservations 표가 외래키로 이어진 관계">
+  <rect x="10" y="20" width="180" height="120" rx="6" fill="#fff" stroke="#94a3b8"/>
+  <text x="100" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">users</text>
+  <line x1="10" y1="48" x2="190" y2="48" stroke="#94a3b8"/>
+  <text x="20" y="66" font-size="11" font-weight="700" fill="#0369a1">🔑 id (PK)</text>
+  <text x="20" y="84" font-size="11" fill="#0f172a">name</text>
+  <text x="20" y="102" font-size="11" fill="#0f172a">email</text>
+  <rect x="370" y="20" width="180" height="120" rx="6" fill="#fff" stroke="#94a3b8"/>
+  <text x="460" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">reservations</text>
+  <line x1="370" y1="48" x2="550" y2="48" stroke="#94a3b8"/>
+  <text x="380" y="66" font-size="11" font-weight="700" fill="#0369a1">🔑 id (PK)</text>
+  <text x="380" y="84" font-size="11" font-weight="700" fill="#7c3aed">🔗 user_id (FK)</text>
+  <text x="380" y="102" font-size="11" fill="#0f172a">date</text>
+  <line x1="380" y1="78" x2="190" y2="64" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="280" y="155" text-anchor="middle" font-size="10" fill="#64748b">reservations.user_id 가 users.id 를 가리킨다 (FK)</text>
+</svg>
+
 ## 데이터베이스는 '표'들의 모음
 
 관계형 데이터베이스(PostgreSQL, MySQL 등)는 **표(table)들의 모음**이다. 하나의 데이터베이스 안에 여러 표가 있고, 각 표는 한 종류의 사실을 담는다.
@@ -79,6 +98,14 @@ reservations(id=50, user_id=1, date='2026-07-15')   ← user_id가 users.id를 �
 **인덱스**는 특정 열로 빠르게 찾기 위한 **색인**이다. 책 뒤의 찾아보기(색인)와 같다 — 페이지를 처음부터 넘길 필요 없이 "예약 = 2026-07-15"를 바로 찾는다. 자주 검색/조회하는 열(예: reservations.date)에 인덱스를 두면 조회가 빨라진다.
 
 단, 인덱스도 비용이다: 쓰기(INSERT/UPDATE)가 약간 느려지고 용량을 쓴다. 그래서 "모든 열에 인덱스"가 아니라 **자주 검색하는 열에만** 건다. "이걸로 자주 검색하나요?"가 인덱스 설계의 질문이다. (Phase 3 SQL 레슨에서 더 다룬다.)
+
+## 실 사례(익명화) — 레거시 데이터의 "비정형 값"을 새 표로 옮긴 일
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 오래된 시스템의 데이터를 새 구조로 옮기는 작업이 있었다. 원본 표는 **타입이 불규칙**했다 — 예컨대 전화번호가 하이픈 없는 숫자로만 있거나, 같은 열인데 어떤 값은 텍스트·어떤 값은 숫자로 섞여 있었다. 이걸 새 표로 옮길 때 "이 열은 무슨 타입인가"를 하나하나 정해야 했다 — 타입을 안 정하면 나중에 정렬·검색이 깨지고, "숫자여야 하는데 문자라서 계산이 안 된다"가 생긴다.
+
+교훈: **열(column)의 타입을 설계도에 명시하는 일**이 왜 필수인지 이 사례가 보여준다. "데이터만 옮기면 되지"가 아니라, 옮기며 **타입·형식을 바로잡는** 작업이 따라온다. 상담에서 "기존 데이터를 가져올 거냐"를 물으면, 그 이관(정제 포함) 공수를 반드시 세어야 한다.
 
 ## 흔한 실패 모드와 처방
 

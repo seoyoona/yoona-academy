@@ -1,5 +1,17 @@
 "화면에서 버튼 누르면 서버가 데이터를 주는 거 아닌가요? 왜 API가 따로 필요하죠?" 이 질문은 상담에서 자주 나온다. 답부터 말하면, 화면과 서버는 **서로 다른 기계**에서 도는 프로그램이라, 둘이 대화하려면 "어떤 말을 어떤 형식으로 주고받을지"에 대한 **약속**이 필요하다. 그 약속이 API다. 이 레슨은 API가 왜 필요한지, REST와 JSON이 무엇인지, 엔드포인트가 왜 "문"인지를 다룬다. 목표는 개발자가 "API 명세 주세요"라고 할 때 그 말의 뜻을 정확히 아는 것이다.
 
+**API — 요청과 응답의 약속** (화면↔서버가 주고받는 흐름):
+
+<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="프론트엔드와 API 서버가 요청과 응답을 주고받는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10" y="35" width="130" height="50" rx="8" fill="#0ea5e9"/><text x="75" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">프론트엔드</text>
+  <rect x="215" y="35" width="130" height="50" rx="8" fill="#6366f1"/><text x="280" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">API (서버)</text>
+  <rect x="420" y="35" width="130" height="50" rx="8" fill="#0ea5e9"/><text x="485" y="64" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">프론트엔드</text>
+  <line x1="140" y1="50" x2="213" y2="50" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/><text x="176" y="42" text-anchor="middle" font-size="10" fill="#64748b">요청(JSON)</text>
+  <line x1="215" y1="75" x2="142" y2="75" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="345" y1="60" x2="418" y2="60" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/><text x="381" y="52" text-anchor="middle" font-size="10" fill="#64748b">응답(JSON)</text>
+</svg>
+
 ## API는 '계약'이다
 
 API(Application Programming Interface)는 **프로그램끼리 대화하기 위해 정한 계약**이다. 사람끼리도 "예약은 이렇게 말해 줘야 알아듣습니다"라는 약속이 없으면 소통이 안 되듯, 프로그램도 마찬가지다.
@@ -61,6 +73,14 @@ PM이 API 명세를 읽을 수 있으면(쓸 필요는 없다), 개발자에게 
 3. **한 문으로 정리**: 문의 기능 = 엔드포인트 3개.
 
 이 정도면 공수과 리스크가 보인다. "문의 하나 만들어주세요"가 사실은 3개의 API 문과 그에 맞는 화면·권한(사장님만 조회)이라는 구체적 작업으로 쪼개진다.
+
+## 실 사례(익명화) — 명세서의 동사가 곧 API 목록이 된 케이스
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 클라이언트 서비스에서 기능을 정의할 때, 팀은 **IA(정보구조)와 기능명세를 먼저 쓰고**, 그걸 "엔드포인트 몇 개"로 번역하는 작업부터 했다. 방법은 단순했다 — 명세 안의 **동사**를 전부 뽑아 내는 것. "사용자가 예약하고, 관리자가 조회하고, 결제를 확인한다"면 동사가 곧 `예약 생성 / 예약 조회 / 결제 확인`이고, 이게 API 목록이 됐다.
+
+교훈: 고객의 "기능 하나"가 동사로 안 쪼개지면 API가 안 보인다. 반대로 동사를 세면 엔드포인트 수가 보이고, 그게 공수의 첫 근거가 된다. 상담에서 요구를 듣자마자 "이 안에 동사가 몇 개야?"로 세어 보는 습관 — 이 사례가 그 실무 가치를 보여준다.
 
 ## 흔한 실패 모드와 처방
 

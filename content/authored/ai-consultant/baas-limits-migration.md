@@ -1,5 +1,20 @@
 BaaS로 MVP를 빠르게 띄웠다. 그런데 사용자가 늘고, 기능이 복잡해지고, 결제·배치·외부 연동이 붙기 시작한다. 어느 순간 "Supabase 자동 API만으로는 안 되는데…"라는 벽에 부닥친다. 이 레슨은 BaaS의 한계가 어디서 오는지, 언제 자체 백엔드로 이관해야 하는지, 그리고 이관이 반드시 "전부 갈아엎기"가 아님을 다룬다. "BaaS로 시작했다"가 "BaaS에 갇혔다"가 되지 않게 하는 설계 감각이 핵심이다.
 
+**이관은 "전부 갈아엎기"가 아니다 — DB는 살리고, 로직만 옮긴다:**
+
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BaaS에서 DB 구조는 유지하고 복잡한 로직만 자체 백엔드로 옮기는 점진적 이관">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10" y="55" width="140" height="50" rx="8" fill="#10b981"/><text x="80" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BaaS (한 덩어리)</text><text x="80" y="94" text-anchor="middle" font-size="9" fill="#d1fae5">초기 빠른 시작</text>
+  <line x1="150" y1="80" x2="188" y2="80" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="169" y="72" text-anchor="middle" font-size="9" fill="#64748b">이관</text>
+  <rect x="200" y="25" width="160" height="46" rx="8" fill="#8b5cf6"/><text x="280" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">DB (그대로 유지)</text><text x="280" y="63" text-anchor="middle" font-size="9" fill="#ede9fe">Postgres 구조 살림</text>
+  <rect x="200" y="95" width="160" height="46" rx="8" fill="#6366f1"/><text x="280" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">복잡 로직 → 자체 백엔드</text><text x="280" y="133" text-anchor="middle" font-size="9" fill="#e0e7ff">결제·배치·큐 등</text>
+  <line x1="155" y1="75" x2="198" y2="50" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="155" y1="88" x2="198" y2="115" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="430" y="50" font-size="10" fill="#10b981">→ 재설계 비용 ↓</text>
+  <text x="430" y="120" font-size="10" fill="#6366f1">→ 통제·성능 ↑</text>
+</svg>
+
 ## BaaS의 네 가지 한계
 
 빠른 MVP의 대가로, BaaS에는 명확한 한계가 있다:
@@ -42,6 +57,14 @@ BaaS로 MVP를 빠르게 띄웠다. 그런데 사용자가 늘고, 기능이 복
 4. **RLS → 백엔드 인가**: 자체 백엔드로 옮긴 부분은 권한을 백엔드 코드에서(Phase 2 인가)로. RLS는 보조로 남겨둘지 결정.
 
 결과: 전부 갈아엎지 않고, 병목/비용/복잡도가 집중된 부분만 이관. DB 구조(ERD)는 그대로 살아 있어 재설계 비용이 거의 없다. **좋은 초기 설계(Postgres 기반)가 이탈 비용을 낮춘다**는 교훈이 이 시나리오에 다 들어 있다.
+
+## 실 사례(익명화) — 노코드로 쓰던 서비스를 직접 코드로 이관한 프로젝트
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 클라이언트가 **노코드로 빠르게 만들어 쓰던 서비스**를, 요구가 복잡해지자 **직접 코드로 다시 짜는 프로젝트**로 가져왔다. 핵심은 — **DB 구조(Postgres)는 그대로 살리고**, 복잡한 로직(결제·배치·외부 연동)만 **자체 백엔드로 옮긴** 것이었다. 처음부터 표준 관계형(Postgres) 구조로 썼기 때문에, 이탈할 때 DB를 다시 설계할 필요가 없었고 이관 비용이 작았다.
+
+교훈: "BaaS로 빠르게 시작했다"가 "BaaS에 갇혔다"가 되지 않으려면, **이탈 비용을 낮추는 구조**(표준 Postgres)로 쓰는 것이 핵심이다. "빠르게 쓰되, 나중에 빠져나오기 쉽게" — 이 균형이 시니어의 BaaS 운용법이다.
 
 ## 흔한 실패 모드와 처방
 

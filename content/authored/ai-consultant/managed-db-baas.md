@@ -1,5 +1,25 @@
 지금까지 DB를 '직접 운영한다'고 가정하고 배웠다 — 표를 만들고, 마이그레이션을 돌리고, 백업을 챙기고. 그런데 실제 초기 서비스 대부분은 DB를 **직접 굴리지 않는다**. 관리형 DB(RDS)나 BaaS(Supabase·Firebase)에 맡긴다. PM이 "그럼 직접 안 다루면 이걸 왜 배웠나요?"라고 묻는 건 좋은 질문이다 — 답은, **관리형에 맡겨도 구조(표·관계·트랜잭션)는 우리가 설계하기 때문**이다. 이 레슨은 DB를 직접 운영할 때와 관리형·BaaS에 맡길 때의 차이를 다룬다. 견적·아키텍처 상담에서 빈번하게 나오는 결정이다.
 
+**DB를 두는 세 단계** (누가 운영 노동을 지는가):
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="직접운영 관리형 BaaS 세 단계 비교">
+  <rect x="10"  y="30" width="170" height="100" rx="8" fill="#ef4444" opacity="0.14" stroke="#ef4444"/>
+  <text x="95"  y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">직접 운영 (EC2에)</text>
+  <text x="95"  y="74" text-anchor="middle" font-size="10" fill="#0f172a">운영: 우리가 다</text>
+  <text x="95"  y="92" text-anchor="middle" font-size="10" fill="#0f172a">자유도 최대</text>
+  <text x="95"  y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#991b1b">부담 최대</text>
+  <rect x="195" y="30" width="170" height="100" rx="8" fill="#f59e0b" opacity="0.14" stroke="#f59e0b"/>
+  <text x="280" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">관리형 DB (RDS)</text>
+  <text x="280" y="74" text-anchor="middle" font-size="10" fill="#0f172a">운영: 클라우드가</text>
+  <text x="280" y="92" text-anchor="middle" font-size="10" fill="#0f172a">구조: 우리가</text>
+  <text x="280" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">보통 선택</text>
+  <rect x="380" y="30" width="170" height="100" rx="8" fill="#10b981" opacity="0.14" stroke="#10b981"/>
+  <text x="465" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">BaaS (Supabase)</text>
+  <text x="465" y="74" text-anchor="middle" font-size="10" fill="#0f172a">운영+Auth+API: 빌림</text>
+  <text x="465" y="92" text-anchor="middle" font-size="10" fill="#0f172a">가장 빠름</text>
+  <text x="465" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">초기 추천</text>
+</svg>
+
 ## 직접 운영 vs 관리형 vs BaaS — 세 단계
 
 DB를 두는 방식은 크게 세 단계로 본다:
@@ -73,6 +93,14 @@ Supabase 같은 Postgres 기반 BaaS에선 **RLS(Row Level Security)**가 자주
 5. **확장**: 트래픽/복잡도가 커지면 결제·배치 부분을 자체 백엔드로 이관, DB는 Postgres 그대로 유지(구조 이전 불필요).
 
 이 상담 한 장에 Phase 1~3의 거의 모든 개념(층, API, CRUD, 인가, 트랜잭션, 백업, RLS)이 녹아 있다. PM 상담력이 결국 이런 "요구 → 구조 → 운영 선택"의 번역이다.
+
+## 실 사례(익명화) — DB 직접 굴리지 않고 관리형을 쓴 선택
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+한 프로젝트에선 DB를 서버에 직접 까는 대신 **관리형 Postgres**(Neon 같은 서비스)를 썼다. 이유는 단순했다 — 백업·복제·업데이트·장애 복구를 팀이 직접 하면 그 시간에 기능을 못 만든다. 관리형은 이 **운영 노동을 빌려** 주고, 팀은 구조(ERD)·쿼리·데이터에만 집중했다. 초기 단계에 이 선택이 맞았다.
+
+교훈: "DB를 직접 굴릴까"는 흔한 질문이지만, 초기엔 보통 **"운영은 빌리고, 구조는 우리가"**가 정답이다. 단, 구조(ERD·정규화·인덱스)는 빌리지 못한다 — 그래서 앞선 Phase 3 레슨들이 필요한 것이다. "DB는 관리형으로"를 상담에 깔되, "구조 설계는 우리 몫"을 잊지 말 것.
 
 ## 흔한 실패 모드와 처방
 

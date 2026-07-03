@@ -1,5 +1,29 @@
 지금까지 Phase 1~6의 개념을 배웠다. 이제 그 개념으로 **실제 코드 저장소를 읽는 법**을 배운다. 개발자가 되라는 게 아니다 — 폴더 구조만 봐도 "이 서비스가 화면·서버·DB·인프라를 어떻게 나눴는지"가 보이게 되는, PM의 읽기 능력이다. 이 레슨은 실전 템플릿(FastAPI full-stack template)을 예로, "코드를 안 짜도 구조를 읽는 법"을 다룬다. 상담에서 개발자가 "폴더 구조 한번 볼게요"라고 할 때 그 뒤에서 일어나는 일을 이해하는 것이 목표다.
 
+**폴더만 봐도 뼈대가 보인다** — 구조↔개념 매핑:
+
+<svg viewBox="0 0 560 200" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="폴더 구조가 화면 API DB 설정 배포 개념으로 매핑되는 관계">
+  <text x="120" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">폴더/파일</text>
+  <text x="430" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">→ 개념(Phase)</text>
+  <text x="20" y="50" font-size="10" fill="#0f172a" font-family="monospace">frontend/</text>
+  <text x="360" y="50" font-size="10" fill="#0ea5e9">화면 (Phase 1)</text>
+  <text x="20" y="74" font-size="10" fill="#0f172a" font-family="monospace">backend/app/api/</text>
+  <text x="360" y="74" font-size="10" fill="#6366f1">API 엔드포인트 (Phase 2)</text>
+  <text x="20" y="98" font-size="10" fill="#0f172a" font-family="monospace">backend/app/models.py</text>
+  <text x="360" y="98" font-size="10" fill="#8b5cf6">DB 표·ERD (Phase 3)</text>
+  <text x="20" y="122" font-size="10" fill="#0f172a" font-family="monospace">.env.example</text>
+  <text x="360" y="122" font-size="10" fill="#f59e0b">환경변수 목록 (Phase 5)</text>
+  <text x="20" y="146" font-size="10" fill="#0f172a" font-family="monospace">Dockerfile / .github/</text>
+  <text x="360" y="146" font-size="10" fill="#10b981">인프라·CI/CD (Phase 5)</text>
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker></defs>
+  <line x1="180" y1="46" x2="355" y2="46" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <line x1="180" y1="70" x2="355" y2="70" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <line x1="200" y1="94" x2="355" y2="94" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <line x1="120" y1="118" x2="355" y2="118" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <line x1="180" y1="142" x2="355" y2="142" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <text x="280" y="180" text-anchor="middle" font-size="10" fill="#64748b">줄이 아니라 구조(폴더)를 읽는 것이 PM의 방식</text>
+</svg>
+
 ## 왜 코드를 읽어야 하나 — 구조가 보이면
 
 개념만 알면 추상적이다. "프론트/백/DB"를 말로 아는 것과, **실제 폴더에서 `frontend/`와 `backend/`가 어떻게 나뉘는지** 보는 것은 다르다. 코드를 읽으면:
@@ -78,6 +102,14 @@ PM의 읽기:
 6. **`docker-compose.yml`** → 백엔드+DB+Redis → "캐시(Redis)까지 있구나"(Phase 6 캐시).
 
 30분 안에 "이 서비스는 ~구조로 ~기능을 ~인프라에서"라는 요약이 나온다. 코드 한 줄 안 짜고. 이것이 **개념(Phase 1~6)으로 코드를 읽는 능력** — PM 상담력의 실전 적용이다.
+
+## 실 사례(익명화) — 기존 서비스의 구조를 "폴더로" 파악한 리뷰
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 인수·리뷰 작업에서, 외부가 만든 서비스 코드를 받아 30분 안에 뼈대를 잡아야 했다. 팀은 줄 단위로 읽지 않고 **폴더부터** 봤다 — `frontend/`(화면), `api/`(엔드포인트 목록), `models.py`(DB 표 → "어떤 데이터를 다루나"), `.env.example`(필요 연동·비밀값), `Dockerfile`/CI 파일(인프라). 이것만으로 "이 서비스는 ~구조로 ~기능을 ~인프라에서"라는 요약이 나왔다. 한 가지 더 — **화면을 검증할 때 스크린샷을 증거로 남기며** 비교했기에, "어디가 어떻게 다른가"를 놓치지 않았다.
+
+교훈: 코드를 모르더라도 **폴더(구조)를 읽으면** 서비스의 뼈대가 보인다. 줄 단위가 아니라 `README → 폴더 트리 → models → api → .env.example → docker-compose` 순이 PM의 읽기 방식이다. 상담·리뷰에서 이 순서로 훑으면, 코드를 안 짜도 "이 서비스가 뭘 하는지"를 말할 수 있다.
 
 ## 흔한 실패 모드와 처방
 

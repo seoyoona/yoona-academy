@@ -1,5 +1,19 @@
 "앱 사용자한테 푸시 알림 보내게 해 주세요." — 이 요구를 받으면 많은 PM이 "앱이 알아서 보내겠죠?"라고 생각한다. 아니다. **푸시는 앱이 직접 보내지 못한다.** 앱은 화면이 꺼져 있고, 서버가 "이 사람한테 이 메시지 보내"라고 **푸시 서비스에 의뢰**하고, 그 서비스가 애플·구글의 시스템을 통해 기기로 전달하는 구조다. 이 레슨은 푸시 알림이 실제로 어떻게 돌아가는지, Firebase Cloud Messaging(FCM)이 왜 거의 필수인지를 다룬다. "푸시"라는 단어 뒤의 인프라를 아는 것이 상담의 질을 올린다.
 
+**푸시의 흐름 — 서버가 의뢰하고, 플랫폼이 전달한다:**
+
+<svg viewBox="0 0 560 130" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="서버가 FCM에 의뢰하고 FCM이 기기로 푸시를 전달하는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="40" width="100" height="50" rx="8" fill="#6366f1"/><text x="60"  y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">서버</text>
+  <rect x="160" y="40" width="100" height="50" rx="8" fill="#f59e0b"/><text x="210" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">FCM</text><text x="210" y="80" text-anchor="middle" font-size="9" fill="#fef3c7">의뢰받음</text>
+  <rect x="310" y="40" width="120" height="50" rx="8" fill="#8b5cf6"/><text x="370" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">APNs / Google</text><text x="370" y="80" text-anchor="middle" font-size="9" fill="#ede9fe">경로 라우팅</text>
+  <rect x="470" y="40" width="80"  height="50" rx="8" fill="#10b981"/><text x="510" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">기기 🔔</text>
+  <line x1="110" y1="65" x2="158" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="260" y1="65" x2="308" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="430" y1="65" x2="468" y2="65" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="280" y="115" text-anchor="middle" font-size="10" fill="#64748b">서버가 보내는 게 아니라 — FCM이 기기로 전달한다</text>
+</svg>
+
 ## 푸시는 '서버가 의뢰하고, 플랫폼이 전달한다'
 
 모바일 푸시의 실제 흐름을 단순화하면:
@@ -52,6 +66,14 @@ Apple(APNs)과 Google(FCM) 각각의 푸시 채널이 따로 있다. 두 채널�
 - **마케팅 푸시**(이벤트, 혜택): 사용자의 **별도 동의**가 필요(정통망법/전자상거래법 등). 거부 시 못 보냄.
 
 PM은 기획서에 "이 푸시는 마케팅인가 시스템인가"를 항상 표시하고, 마케팅이면 동의·거부 UI까지 기획해야 한다. "푸시 전송" 하나에 법적 리스크가 붙어 있다.
+
+## 실 사례(익명화) — 푸시에서 가장 빠뜨린 것 = 토큰 저장
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+푸시 기능을 넣을 때, 팀이 **가장 빠뜨린 것**이 "토큰 저장"이었다 — 발송하려면 "누구의 기기인지"를 알아야 하는데, 그 **주소(device token)**를 DB에 안 두면 보낼 수가 없다. 앱이 푸시 권한을 받아 토큰을 발급받아도, 그걸 서버에 안 올리면 "보낼 곳"이 없다. "누가 언제 보낼지(트리거)"와 함께 **이 토큰 저장**이 푸시의 숨은 필수였다.
+
+교훈: "푸시"는 한 덩어리가 아니라 — (1) 토큰 발급·저장 (2) 발송 트리거(언제, 누가) (3) 발송 + 결과 로그의 세 부품이다. 상담에서 "푸시 보내 주세요"를 받으면, 이 셋을 먼저 쪼개 묻는 것이 공수를 정확히 잡는 길이다.
 
 ## 흔한 실패 모드와 처방
 

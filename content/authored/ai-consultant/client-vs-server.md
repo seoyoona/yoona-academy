@@ -1,5 +1,22 @@
 "그 코드는 클라이언트에서 도나요, 서버에서 도나요?" — 이 질문 하나로 보안·성능·공수가 갈린다. 같은 "기능"이라도 코드가 어디서 실행되느냐에 따라 사용자가 조작할 수 있는지, 서버 비용이 드는지, 느린지 빠른지가 완전히 달라진다. 이 레슨은 클라이언트사이드와 서버사이드의 차이를 짚고, 각 코드가 깨질 때 증상이 어떻게 다른지 본다. 목표는 "이 로직은 어디서?"를 자연스럽게 묻는 습관을 다는 것이다.
 
+**코드가 어디서 도는가** — 두 세계의 차이:
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="클라이언트사이드와 서버사이드 코드의 특징 비교">
+  <rect x="10" y="20" width="260" height="115" rx="10" fill="#0ea5e9" opacity="0.12" stroke="#0ea5e9"/>
+  <text x="140" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#0369a1">클라이언트사이드</text>
+  <text x="140" y="66" text-anchor="middle" font-size="11" fill="#0f172a">• 사용자 기기에서 실행</text>
+  <text x="140" y="86" text-anchor="middle" font-size="11" fill="#0f172a">• 빠름(즉시)</text>
+  <text x="140" y="106" text-anchor="middle" font-size="11" fill="#0f172a">• 사용자가 조작 가능</text>
+  <text x="140" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">• 신뢰 낮음</text>
+  <rect x="290" y="20" width="260" height="115" rx="10" fill="#10b981" opacity="0.12" stroke="#10b981"/>
+  <text x="420" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#047857">서버사이드</text>
+  <text x="420" y="66" text-anchor="middle" font-size="11" fill="#0f172a">• 회사 서버에서 실행</text>
+  <text x="420" y="86" text-anchor="middle" font-size="11" fill="#0f172a">• 상대적으로 느림</text>
+  <text x="420" y="106" text-anchor="middle" font-size="11" fill="#0f172a">• 사용자 조작 불가</text>
+  <text x="420" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">• 신뢰 높음</text>
+</svg>
+
 ## 클라이언트사이드 — 사용자 기기에서 도는 코드
 
 **클라이언트사이드(client-side)** 코드는 사용자의 기기(브라우저, 앱)에서 실행된다. HTML·CSS·JS가 대표적. 프론트엔드 전부가 이쪽이다.
@@ -63,6 +80,14 @@
 PM이 "첫 화면이 느려요"나 "검색에 안 떠요"라는 요구를 받으면, 렌더링 방식(CSR/SSR)이 원인일 수 있다 — 이건 기획 단계에서 "이 페이지는 검색에 노출돼야 하는가?"로 미리 정해 두면 좋다.
 
 구체적으로, 마케팅/랜딩/블로그 같은 페이지는 **검색 노출(SEO)과 첫 화면 속도**가 매출과 직결된다. 이런 페이지를 CSR(빈 HTML + JS로 그림)로 만들면 구글봇이 내용을 제때 못 읽어 검색 순위가 떨어지고, 첫 화면이 흰 배경으로 멈춰 있다. 반면 관리자 대시처럼 "로그인 뒤에만 쓰는 화면"은 검색 노출이 무관하므로 CSR로 충분하다. 즉 렌더링 방식은 단순 기술 선택이 아니라 **"이 페이지의 목적 — 검색에 떠야 하는가, 로그인 뒤인가"**에서 거꾸로 정해지는 기획 결정이다. 상담에서 "이 페이지는 SEO 필요한가요?" 한 질문이 렌더링 공수·구조를 갈라놓는다.
+
+## 실 사례(익명화) — "관리자에만 가격 보이기"를 서버로 넘긴 결정
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 서비스에서 **"관리자 화면엔 금액을 보여주고, 사용자 화면엔 숨긴다"**는 요구가 있었다. 처음엔 화면(클라이언트)에서 숨기면 되는 것처럼 보였다. 하지만 그렇게 하면 누구나 API를 직접 호출해 금액을 빼낼 수 있다 — 클라이언트 코드는 사용자가 고칠 수 있기 때문이다. 그래서 **금액·권한 판단은 서버사이드**로 넘겼다.
+
+교훈: "이 판단을 사용자가 고쳐도 되는가?"라는 질문 하나로 클라이언트/서버가 갈린다 — "아니"면 서버. 이 사례의 "가격 노출"은 전형적인 서버 판단이다. 상담에서 요구를 받으면 "이걸 사용자가 임의로 바꾸면 안 되나?"를 먼저 묻는 습관이 보안의 출발점이다.
 
 ## 흔한 실패 모드와 처방
 

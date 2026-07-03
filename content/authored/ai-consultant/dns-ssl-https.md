@@ -1,5 +1,21 @@
 사용자가 주소창에 `my-service.com`을 치면 어떻게 우리 서버에 닿을까? 그리고 그 연결이 "도청당해도 안전한" 연결이려면 무엇이 필요할까? 이 두 질문의 답이 **DNS**와 **SSL/HTTPS**다. 도메인을 서버로 연결하고, 그 연결을 암호화하는 것 — 사용자가 신뢰하고 들어오게 만드는 마지막 한 걸음이다. 이 레슨은 DNS와 SSL/TLS(HTTPS)가 각각 무엇인지, 왜 "https가 아닌 주소"가 브라우저 경고를 띄우는지를 다룬다.
 
+**도메인 → 서버, 그리고 암호화(🔒)까지:**
+
+<svg viewBox="0 0 560 140" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="도메인이 DNS를 거쳐 IP로, SSL로 암호화되어 서버에 닿는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="5"   y="45" width="115" height="50" rx="8" fill="#0ea5e9"/><text x="62"  y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">도메인</text><text x="62"  y="84" text-anchor="middle" font-size="9" fill="#e0f2fe">my.com</text>
+  <rect x="145" y="45" width="100" height="50" rx="8" fill="#8b5cf6"/><text x="195" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">DNS 조회</text><text x="195" y="84" text-anchor="middle" font-size="9" fill="#ede9fe">이름→IP</text>
+  <rect x="270" y="45" width="100" height="50" rx="8" fill="#f59e0b"/><text x="320" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">IP (서버)</text>
+  <rect x="395" y="45" width="75"  height="50" rx="8" fill="#10b981"/><text x="432" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">SSL 🔒</text><text x="432" y="84" text-anchor="middle" font-size="9" fill="#d1fae5">암호화</text>
+  <rect x="495" y="45" width="60"  height="50" rx="8" fill="#6366f1"/><text x="525" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">HTTPS</text>
+  <line x1="120" y1="70" x2="143" y2="70" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="245" y1="70" x2="268" y2="70" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="370" y1="70" x2="393" y2="70" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="470" y1="70" x2="493" y2="70" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="280" y="120" text-anchor="middle" font-size="10" fill="#64748b">SSL 없으면 브라우저가 "안전하지 않음" 경고 → 사용자 이탈</text>
+</svg>
+
 ## DNS — '도메인 이름'을 '서버 주소'로 바꾸는 전화번호부
 
 컴퓨터는 숫자 주소(IP, 예: `13.124.x.x`)로 통신한다. 그런데 사람은 `my-service.com`같은 이름을 기억한다. **DNS(Domain Name System)**는 이 둘을 이어주는 **전화번호부**다 — "my-service.com"이라는 이름을 IP 주소로 바꿔준다.
@@ -57,6 +73,14 @@ PM 식 요약: "SSL 인증서 = 통신 암호화. HTTPS 자물쇠. 요즘은 무
 5. **확인**: `https://brand.com`으로 들어가 자물쇠 뜨는지.
 
 "도메인 연결"이 도메인 구매 → DNS 세팅 → SSL 자동적용 → 전파의 흐름이다. PaaS(Vercel)는 2~3을 자동화해 몇 분 만에 끝내고, 직접 EC2는 DNS+SSL을 손수 해야 한다.
+
+## 실 사례(익명화) — 커스텀 도메인 연결의 실제 흐름
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 서비스에 **커스텀 도메인**을 연결할 때의 흐름은 정해져 있었다: 도메인 확보 → **DNS 세팅**(도메인이 서버를 가리키게) → **SSL 인증서 자동 발급**(HTTPS 활성화) → 전파 대기(수 분~48시간) → `https://`로 자물쇠 뜨는지 확인. 직접 서버(EC2)를 쓸 땐 **인증서 자동갱신**까지 세팅했다 — 만료되면 브라우저가 "위험" 경고로 접속을 막기 때문.
+
+교훈: "도메인 연결해 주세요"는 한 일이 아니라 — **DNS 세팅 + SSL(자동) + 전파 + (직접 서버면) 자동갱신**의 흐름이다. PaaS(Vercel)는 대부분 자동이지만, 직접 서버에선 인증서 만료 관리까지 감당해야 한다. 상담에서 "HTTPS 켜져 있나?"를 기본 질문으로 달아라 — 안 켜져 있으면 이탈 + 보안 위험이다.
 
 ## 흔한 실패 모드와 처방
 

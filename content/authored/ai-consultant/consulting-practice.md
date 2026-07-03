@@ -1,5 +1,21 @@
 이 코스를 통틀어 가장 중요한 한 레슨이다. Phase 1~6의 개념은 전부 **이 한 행위를 위한 도구**다: 고객의 요구사항을 듣고, **아키텍처 + 견적 + 리스크 + 개발안**으로 번역하기. 이것이 PM/AI consultant의 본질이다. 코드를 짤 필요 없다 — 요구를 구조로 바꾸고, 그 구조의 공수와 위험을 가늠하는 것. 이 레슨은 그 종합 번역을 연습한다. 배운 모든 것을 한 상담 흐름으로 묶는 피날레다.
 
+**상담의 5단계 워크플로** — 요구를 한 장으로 번역한다:
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="요구를 명사동사 ERD API 리스크로 번역하는 5단계 상담 워크플로">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="5"   y="50" width="95" height="50" rx="8" fill="#0ea5e9"/><text x="52"  y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1 요구</text><text x="52"  y="89" text-anchor="middle" font-size="9" fill="#e0f2fe">고객 말</text>
+  <rect x="115" y="50" width="95" height="50" rx="8" fill="#6366f1"/><text x="162" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2 명사·동사</text><text x="162" y="89" text-anchor="middle" font-size="9" fill="#e0e7ff">뽑아내기</text>
+  <rect x="225" y="50" width="95" height="50" rx="8" fill="#8b5cf6"/><text x="272" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3 ERD</text><text x="272" y="89" text-anchor="middle" font-size="9" fill="#ede9fe">표·관계</text>
+  <rect x="335" y="50" width="95" height="50" rx="8" fill="#f59e0b"/><text x="382" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">4 API·화면</text><text x="382" y="89" text-anchor="middle" font-size="9" fill="#fef3c7">CRUD</text>
+  <rect x="445" y="50" width="110" height="50" rx="8" fill="#10b981"/><text x="500" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">5 리스크·공수</text><text x="500" y="89" text-anchor="middle" font-size="9" fill="#d1fae5">견적</text>
+  <line x1="100" y1="75" x2="113" y2="75" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="210" y1="75" x2="223" y2="75" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="320" y1="75" x2="333" y2="75" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="430" y1="75" x2="443" y2="75" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="280" y="128" text-anchor="middle" font-size="10" fill="#64748b">이 흐름을 한 장으로 만드는 것이 상담의 끝</text>
+</svg>
+
 ## 상담이란 '요구 → 구조 → 판단'의 번역
 
 PM 상담은 한 문장(요구)을 여러 층위의 판단으로 풀어내는 일이다:
@@ -50,6 +66,16 @@ PM 상담은 한 문장(요구)을 여러 층위의 판단으로 풀어내는 �
 - **사람(AI consultant)이 검수할 것**: 요구사항 해석의 정확성, 구조의 적절성(과잉/부족), 보안(RLS·환경변수), 동시성·트랜잭션, 비용·확장 전망. **AI 초안의 위험한 부분(인가 없는 API·데이터 무결성·비용 폭발)을 잡는 것**이 상담의 핵심 가치다.
 
 즉 "AI가 짠 초안에서 어디를 검수해야 하나"를 아는 것이 이 코스의 목적이었다. AI가 늘어날수록 이 **검수 능력**이 가치를 발한다.
+
+## 실 사례(익명화) — "IA → 기능명세 → 견적"의 실제 워크플로
+
+> 실제 프로젝트 사례를 익명화해 옮긴다. 이 코스 전체의 결정적 예시다.
+
+팀이 한 클라이언트 작업에서 쓰는 흐름은 거의 정해져 있었다: **IA(정보구조) → 상세 기능명세 → ERD·API → 견적·리스크**. 고객의 요구를 먼저 한 장(IA)으로 펴고, 거기서 명사·동사를 뽑아 표(ERD)·엔드포인트(API)로 번역한 뒤에야 공수가 잡혔다. ERD를 안 그리고 견적을 낸 적은 거의 항상 빗나갔다 — "간단한 기능"이 표 5개·관계 4개로 드러나는 순간 견적이 달라졌기 때문이다.
+
+한 가지 더 — 그 흐름 안에서 **"AI로 자동화를 넣자"는 아이디어가 검토 끝에 '효과 없음'으로 빠진 적**이 있었다. 기술이 무조건 들어가야 하는 건 아니라는 실제 결정. "AI consultant"라는 이름이 붙은 이 코스의 핵심이 여기에 있다 — AI로 초안을 빠르게 내되, **"여기엔 AI가 필요 없다"고 자를 수 있는 판단**이 진짜 상담력이다.
+
+교훈: 상담은 "요구 → 구조(ERD·API) → 판단(리스크·공수)"의 번역이고, 그 끝에 "AI가 도울 곳과 아닌 곳"을 가르는 일이다. 이 코스의 모든 레슨이 이 한 장을 만들기 위한 도구였다.
 
 ## 흔한 실패 모드와 처방
 

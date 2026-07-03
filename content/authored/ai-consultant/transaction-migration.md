@@ -1,5 +1,20 @@
 "결제는 됐는데 예약은 안 됐어요" — 이 버그가 나면 고객은 "돈은 뺐겼는데 예약은 없다"며 분노한다. 그리고 이 버그는 데이터베이스 설계에서 충분히 막을 수 있었던 것이다. 핵심 개념은 **트랜잭션**: "여러 변경이 한 묶음으로, 전부 성공하거나 아예 없던 일"이 되게 하는 규칙. 이 레슨은 트랜잭션과 함께, 스키마·마이그레이션·백업이라는 PM이 들어야 할 DB 운영 단어를 다룬다. "이 작업은 원자적(atomic)이어야 한다"가 무슨 뜻인지까지.
 
+**트랜잭션 — 둘 다 되거나, 둘 다 없던 일:**
+
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="트랜잭션이 커밋되거나 롤백되는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10" y="60" width="90" height="50" rx="8" fill="#6366f1"/><text x="55" y="89" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BEGIN</text>
+  <rect x="125" y="60" width="110" height="50" rx="8" fill="#8b5cf6"/><text x="180" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">예약 생성</text><text x="180" y="98" text-anchor="middle" font-size="10" fill="#ede9fe">+ 결제 기록</text>
+  <line x1="100" y1="85" x2="123" y2="85" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <rect x="270" y="25" width="120" height="44" rx="8" fill="#10b981"/><text x="330" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">COMMIT (둘 다)</text>
+  <rect x="270" y="105" width="120" height="44" rx="8" fill="#ef4444"/><text x="330" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">ROLLBACK (없던 일)</text>
+  <line x1="235" y1="75" x2="268" y2="50" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="235" y1="95" x2="268" y2="120" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="420" y="55" font-size="10" fill="#10b981">성공 시</text>
+  <text x="420" y="135" font-size="10" fill="#ef4444">하나라도 실패 시</text>
+</svg>
+
 ## 트랜잭션 — "전부 성공하거나, 전부 없던 일"
 
 **트랜잭션**은 여러 DB 변경을 **하나의 묶음**으로 다루는 단위다. 묶음 안의 모든 변경이 성공해야 "커밋(확정)"되고, 하나라도 실패하면 **전부 롤백(취소)**된다 — 마치 없던 일처럼.
@@ -76,6 +91,14 @@ COMMIT;   -- 실패하면 ROLLBACK 으로 예약까지 취소
 ```
 
 이렇게 묶으면 "예약+결제는 전부 성공하거나 전부 없던 일"이 된다. PM은 기획서에 "이 작업은 원자적(트랜잭션)이어야 함"을 명시할 수 있다 — 그 한 줄이 "결제 됐는데 예약 안 됨" 사고를 막는다.
+
+## 실 사례(익명화) — 레거시 화면에서 데이터를 긁어와 옮기던 이관
+
+> 실제 프로젝트 사례를 익명화해 옮겼다. 식별정보는 제거했다.
+
+한 오래된 시스템(옛 웹 화면)에서 데이터를 **긁어와 새 DB로 옮기는** 작업이 있었다. 까다로웠던 건 원본이 정형이 아니었다는 것 — 행 구분이 불규칙한 화면(HTML)을 파싱해 데이터를 뽑아야 했다. 이런 이관은 (1) 읽기 (2) 정제(타입·형식 맞추기) (3) 쓰기 단계로 나뉘고, 중간에 실패하면 **"일부만 옮겨진" 불완전 상태**가 남는다. 그래서 팀은 이 과정을 **재실행 가능하게(idempotent)**, 그리고 실패 시 중단되지 않고 원인을 남기게 설계했다.
+
+교훈 두 가지: 첫째, **마이그레이션은 "코드 고치는 것"보다 훨씬 신중한 작업**이다 — 이미 데이터가 있기 때문. "DB 구조를 살짝 바꿀게요"가 쉬운 말이 아니라는 걸 이 사례가 보여준다. 둘째, "예약+결제"처럼 **둘 중 하나만 되면 안 되는 작업엔 트랜잭션**이 필수라는 것. 상담에서 "데이터 이관"이나 "돈·재고가 걸린 단계"가 나오면, 이 두 단어(마이그레이션·트랜잭션)를 먼저 짚어라.
 
 ## 흔한 실패 모드와 처방
 

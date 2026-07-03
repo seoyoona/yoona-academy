@@ -1,5 +1,18 @@
 "예약 기능이요", "상점 기능이요", "관리자 화면이요" — 이 요구들이 들어올 때, 시니어 PM과 주니어 PM을 가르는 한 가지가 있다. 시니어는 그 말을 드자마자 **데이터 구조(ERD)**가 그려진다. "회원·상점·예약·결제·알림이 각각 표가 되고, 이렇게 이어진다"가 보이는 순간, 공수·리스크·확장성이 한꺼번에 잡힌다. 이 레슨은 ERD(Entity-Relationship Diagram)를 읽고 그리는 법을 다룬다. 이 과정 전체를 통틀어 **PM 상담력의 핵심**이 여기에 있다.
 
+**ERD 한 장 — 명사→표, 관계→선:**
+
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="users reservations payments 세 엔터티가 관계선으로 이어진 ERD">
+  <rect x="20"  y="60" width="120" height="60" rx="8" fill="#0ea5e9"/><text x="80"  y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">users</text>
+  <rect x="220" y="60" width="120" height="60" rx="8" fill="#8b5cf6"/><text x="280" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">reservations</text>
+  <rect x="420" y="60" width="120" height="60" rx="8" fill="#10b981"/><text x="480" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">payments</text>
+  <text x="170" y="82" text-anchor="middle" font-size="10" fill="#64748b">1 : N</text>
+  <line x1="140" y1="90" x2="220" y2="90" stroke="#475569" stroke-width="1.8"/>
+  <text x="370" y="82" text-anchor="middle" font-size="10" fill="#64748b">1 : 1</text>
+  <line x1="340" y1="90" x2="420" y2="90" stroke="#475569" stroke-width="1.8"/>
+  <text x="280" y="150" text-anchor="middle" font-size="10" fill="#64748b">요구에서 명사를 뽑아 표로, 동사("~에 속한다")를 선으로</text>
+</svg>
+
 ## ERD가 왜 상담력인가
 
 ERD는 **데이터를 엔터티(표)로 나누고, 그 관계(선)를 그린 설계도**다. 고객의 말이 ERD로 번역되면 세 가지가 즉시 보인다:
@@ -83,6 +96,14 @@ payments (id, reservation_id→reservations, amount, status)
 - 수신자는 users를 가리키고(FK), 배치는 admins를 가리킨다(FK).
 
 이 ERD를 그리는 순간 "엑셀 발송 기능"이 **5개 표, 복잡도 높음**으로 드러난다. "간단한 알림"이 절대 아니었음이 보이고, "실패 건 재발송"을 위한 구조(notification_recipients.status)까지 미리 설계할 수 있다. 이것이 ERD의 힘이다 — 요구의 숨은 복잡도를 한 장에 드러낸다.
+
+## 실 사례(익명화) — 견적 전에 가장 먼저 한 일이 ERD 그리기
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 클라이언트 작업에서 팀이 **가장 먼저 한 일**이 ERD를 그리는 것이었다 — 고객의 요구에서 명사를 뽑아 표로, 관계를 선으로. "회원·예약·결제·알림"이 각각 한 표가 되고, "예약은 한 회원에 속한다"가 선이 됐다. 이 한 장이 있어야 공수·리스크가 잡혔다. 반대로 ERD를 안 그리고 견적을 낸 적은 거의 항상 빗나갔다 — "간단한 기능"이라 생각한 게 표 5개·관계 4개로 드러나는 순간, 견적이 달라졌기 때문이다.
+
+교훈: ERD는 "지금 화면 하나"가 아니라 **"요구의 숨은 복잡도를 한 장에 드러내는"** 도구다. 상담에서 요구를 받으면 5분 안에 명사→표, 동사→선으로 그려보는 것이 시니어의 첫 습관 — 이 사례가 그 가치의 현장이다.
 
 ## 흔한 실패 모드와 처방
 

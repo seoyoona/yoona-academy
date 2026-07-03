@@ -1,5 +1,20 @@
 AWS를 처음 들으면 수백 개 서비스 이름에 압도된다. 그러나 PM이 **처음부터 알아야 할 핵심은 세 개뿐**이다: EC2, S3, RDS. 이 세 가지만 이해해도 "서비스가 클라우드에서 어떻게 돌아가는지"의 8할이 보인다. 이 레슨은 이 셋 — 빌리는 서버(EC2), 빌리는 파일 창고(S3), 빌리는 데이터베이스(RDS) — 를 다룬다. AWS의 거대 카탈로그에서 PM이 먼저 쥐어야 할 세 단어다.
 
+**3종 자원이 한 서비스를 이룬다** — 앱·데이터·파일:
+
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC2 앱 서버가 RDS 데이터베이스와 S3 파일 저장소와 연결된 구성">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="55" width="110" height="50" rx="8" fill="#6366f1"/><text x="65" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">사용자</text>
+  <rect x="175" y="55" width="110" height="50" rx="8" fill="#f59e0b"/><text x="230" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">EC2 (앱)</text>
+  <rect x="350" y="20" width="120" height="46" rx="8" fill="#8b5cf6"/><text x="410" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">RDS (DB)</text>
+  <rect x="350" y="95" width="120" height="46" rx="8" fill="#10b981"/><text x="410" y="117" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">S3 (파일)</text>
+  <line x1="120" y1="80" x2="173" y2="80" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="285" y1="70" x2="348" y2="45" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="285" y1="90" x2="348" y2="115" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="490" y="42" font-size="9" fill="#8b5cf6">데이터</text>
+  <text x="490" y="117" font-size="9" fill="#10b981">파일(URL만 DB에)</text>
+</svg>
+
 ## EC2 — '서버 컴퓨터'를 빌리기
 
 **EC2(Elastic Compute Cloud)**는 **가상 서버 컴퓨터를 빌리는 서비스**다. 한마디로 "클라우드 안의 컴퓨터 한 대"를 쓴다는 뜻.
@@ -53,6 +68,14 @@ PM 식 요약: "RDS = 운영을 맡기는 DB 서버. 우리는 구조(ERD)·데�
 3. **S3**: 실제 사진 파일 저장. EC2가 올리고 URL 받아 RDS에 적음.
 
 "사진 올려요"가 EC2+RDS+S3 3종 인프라로 번역된다. 이게 Phase 1 "서비스는 층으로 나뉜다"의 클라우드 실체화다 — 화면(프론트)·서버(EC2)·DB(RDS)·저장소(S3)가 각각 빌린 자원에 대응된다.
+
+## 실 사례(익명화) — 파일을 EC2 디스크가 아니라 S3에 둔 이유
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 서비스의 인프라는 이 3종으로 시작했다 — 앱은 **EC2**, 데이터는 **RDS(Postgres)**, 파일은 **S3**. 여기서 중요한 결정은 **파일을 EC2 디스크가 아니라 S3에 뒀다**는 것. 이유: EC2 서버가 바뀌거나 사라져도 파일은 살아야 하고, 서버가 늘어나도 파일이 흩어지면 안 되기 때문. 그래서 파일은 S3에 두고 **그 경로(URL)만 DB에 저장**했다.
+
+교훈: "파일은 서버 디스크가 아니라 전용 저장소(S3), 경로만 DB"가 클라우드의 기본 삼각(EC2·S3·RDS) 안에서의 정석이다. 상담에서 "파일 업로드"를 받으면, "저장은 S3, 경로는 DB"를 기본으로 깔아라 — 이 분리가 서버 장애에도 파일을 살린다.
 
 ## 흔한 실패 모드와 처방
 

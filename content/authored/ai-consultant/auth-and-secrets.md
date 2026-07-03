@@ -1,5 +1,19 @@
 "로그인 만들어주세요"라는 요구는 겉보기엔 하나지만, 실제로는 "누구인지 밝히는 일(인증)"과 "무엇을 할 수 있는지 정하는 일(인가)" 두 개로 나뉜다. 그리고 그 뒤에는 항상 "비밀값(secret)"이 따라다닌다 — 개발자가 "JWT 시크릿이랑 세션 키 주세요"라고 할 때, 그건 사치가 아니라 로그인이 돌아가기 위한 필수 부품이다. 이 레슨은 인증·인가의 차이, session과 token의 두 모델, 그리고 PM이 "왜 시크릿을 달라 하는가"에 대한 답을 다룬다.
 
+**로그인 → 토큰 → 매 요청마다 인가 검사** (JWT의 흐름):
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="로그인으로 토큰을 발급받고 이후 요청마다 인가를 검사하는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="8"   y="50" width="110" height="50" rx="8" fill="#0ea5e9"/><text x="63"  y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">사용자</text><text x="63"  y="89" text-anchor="middle" font-size="10" fill="#e0f2fe">아이디/비번</text>
+  <rect x="150" y="50" width="130" height="50" rx="8" fill="#6366f1"/><text x="215" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">서버 — 인증</text><text x="215" y="89" text-anchor="middle" font-size="10" fill="#e0e7ff">JWT 시크릿으로 서명</text>
+  <rect x="315" y="50" width="110" height="50" rx="8" fill="#8b5cf6"/><text x="370" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">토큰 발급</text><text x="370" y="89" text-anchor="middle" font-size="10" fill="#ede9fe">(사용자 보관)</text>
+  <rect x="460" y="50" width="92" height="50" rx="8" fill="#10b981"/><text x="506" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">인가 검사</text><text x="506" y="89" text-anchor="middle" font-size="10" fill="#d1fae5">역할·권한</text>
+  <line x1="118" y1="75" x2="148" y2="75" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="280" y1="75" x2="313" y2="75" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="425" y1="75" x2="458" y2="75" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="280" y="128" text-anchor="middle" font-size="10" fill="#64748b">이후 요청마다 토큰을 실어 보내면, 서버가 인가(권한)를 검사</text>
+</svg>
+
 ## 인증(Authentication) vs 인가(Authorization) — 자주 섞이는 두 단어
 
 - **인증(인증, AuthN)**: "너 누구야?" — 신원을 확인. 아이디/비밀번호로 "이 사람이 회원이 맞다"를 증명.
@@ -47,6 +61,14 @@ PM이 상담에서 "보안 얼마나 들어가요?"라는 질문을 받으면, �
 4. 일반 회원이 같은 요청을 보내면, 인증은 통과해도 **인가에서 막힘** → `403 Forbidden`.
 
 핵심: "삭제 권한" 판단은 **백엔드**에서 일어난다. 프론트에서 일반 회원에게 버튼을 안 보여 주는 건 편의일 뿐, 보안은 백엔드의 인가 검사가 한다. 프론트만 믿으면 누구나 API를 직접 쳐서 삭제할 수 있다.
+
+## 실 사례(익명화) — 관리자/일반 사용자의 "보이는 데이터"를 가른 권한
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 서비스에선 **같은 데이터를 관리자와 일반 사용자가 다르게** 봤다 — 관리자는 전체(금액·내역 포함), 일반 사용자는 제한된 화면만. 이 분리를 **프론트 숨김이 아니라 백엔드 인가**로 처리했다. 그리고 토큰 서명에 쓰는 **JWT 시크릿은 환경변수**로만 뒀다 (코드/Git에 박으면 누구나 서명을 만들어 권한을 위조할 수 있으므로).
+
+교훈: "왜 시크릿을 달라 하느냐"의 답이 이 사례에 있다 — 로그인 토큰의 서명에 **서버만 아는 비밀값**이 필요하기 때문이다. 그리고 "관리자만 본다"는 판단은 화면 숨김이 아니라 **백엔드 인가 검사**에 둬야 API를 직접 쳐도 안 뚫린다(Phase 4 RLS로 더 단단해진다).
 
 ## 흔한 실패 모드와 처방
 

@@ -1,5 +1,15 @@
 대부분의 서비스 기능은 네 가지 동사로 줄인다: **만들고(Create), 읽고(Read), 고치고(Update), 지운다(Delete)**. 이 네 글자를 따서 CRUD라 부른다. "게시판", "예약", "주문", "회원가입" — 겉보기엔 다 달라 보이지만 뜯어보면 전부 CRUD의 조합이다. PM이 이 사실을 알면, 고객의 요구를 듣자마자 "이건 C인가 R인가"로 분류하고, 어느 정도의 작업인지 바로 가늠할 수 있다. 이 레슨은 CRUD를 API와 데이터베이스에 연결해 본다.
 
+**CRUD 한 자원 = 보통 엔드포인트 5개** (네 동사가 다섯 문으로 펴진다):
+
+<svg viewBox="0 0 560 120" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CRUD 네 동사가 다섯개 엔드포인트로 대응되는 관계">
+  <rect x="10"  y="40" width="120" height="46" rx="8" fill="#10b981"/><text x="70"  y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Create (POST)</text>
+  <rect x="150" y="40" width="120" height="46" rx="8" fill="#0ea5e9"/><text x="210" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Read (GET)</text>
+  <rect x="290" y="40" width="120" height="46" rx="8" fill="#f59e0b"/><text x="350" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Update (PATCH)</text>
+  <rect x="430" y="40" width="120" height="46" rx="8" fill="#ef4444"/><text x="490" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Delete (DELETE)</text>
+  <text x="280" y="110" text-anchor="middle" font-size="11" fill="#64748b">→ 실제 엔드포인트: 목록조회 + 단건조회 + 생성 + 수정 + 삭제 = 5개</text>
+</svg>
+
 ## CRUD의 네 동사와 API의 대응
 
 CRUD는 곧장 API의 HTTP 메서드로 이어진다.
@@ -64,6 +74,14 @@ Update에도 두 가지가 있다:
 - **소프트 삭제(Soft Delete)**: `deleted_at` 같은 표시만 하고 행은 남겨둔다. "휴지통".
 
 둘 중 뭘 쓸지는 비즈니스 결정이다. "탈퇴한 회원의 주문 내역은 법적으로 보관해야 한다"면 소프트 삭제가 강제된다. "5분 뒤 복구 가능한 휴지통"을 원하면 소프트 삭제. PM은 "삭제는 진짜 지우는 건가요, 숨기는 건가요?"를 기본 질문으로 가져야 한다 — 이 대답이 DB 설계와 법적 리스크를 갈라놓는다.
+
+## 실 사례(익명화) — "상품 화면 하나"가 숨긴 CRUD 복잡도
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 클라이언트의 관리자 화면에서 **상품을 관리(CRUD)** 하는 기능이 있었다. 처음 요구는 "상품 화면 하나 추가해 주세요"라 단순해 보였다. 하지만 CRUD로 쪼개자 숨은 복잡도가 드러났다 — 상품 **생성·조회(목록+단건)·수정·삭제** 각각에, 관리자 **권한 검사**까지 붙었고, 상품 편집 컴포넌트는 기능이 붙을 때마다 점점 확장됐다.
+
+교훈: "화면 하나"를 CRUD로 안 세면 이 복잡도가 전부 숨는다 — 견적이 빗나가는 첫 지점이다. CRUD로 세는 순간 "생성/조회/수정/삭제 + 권한 1곳"으로 공수가 잡히고, 관리자 화면의 편집 컴포넌트가 커질수록 공수가 어떻게 가는지까지 보인다.
 
 ## 흔한 실패 모드와 처방
 

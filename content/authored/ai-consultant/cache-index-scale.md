@@ -1,5 +1,19 @@
 "서비스가 느려졌어요." — 이 말이 나오면 원인은 보통 둘 중 하나다: 데이터가 많아져 조회가 느려졌거나(→ 인덱스), 같은 데이터를 반복 조회해서 서버가 헥헥대거나(→ 캐시). 이 레슨은 "느려지기 시작할 때" 쓰는 세 가지 레버 — 인덱스, 캐시, 수평 확장 — 를 다룬다. 초기엔 필요 없지만, 트래픽/데이터가 쌓이면 반드시 부닥치는 단계다. PM이 어느 레버를 언제 당길지 아는 것이 성능 상담의 뼈대다.
 
+**느려졌을 때 — 싼 레버부터 당긴다 (인덱스 → 캐시 → 확장):**
+
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="인덱스 캐시 확장 순으로 비용이 커지는 세 레버">
+  <rect x="20"  y="100" width="120" height="50" rx="8" fill="#10b981"/><text x="80" y="123" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1 인덱스</text><text x="80" y="140" text-anchor="middle" font-size="9" fill="#d1fae5">싸다·효과 큼</text>
+  <rect x="160" y="70" width="120" height="50" rx="8" fill="#f59e0b"/><text x="220" y="93" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2 캐시</text><text x="220" y="110" text-anchor="middle" font-size="9" fill="#fef3c7">DB 부하 ↓</text>
+  <rect x="300" y="40" width="120" height="50" rx="8" fill="#ef4444"/><text x="360" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3 확장(scale)</text><text x="360" y="80" text-anchor="middle" font-size="9" fill="#fee2e2">비싸다·복잡</text>
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <line x1="140" y1="115" x2="158" y2="100" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="280" y1="85" x2="298" y2="70" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="450" y="60" font-size="10" font-weight="700" fill="#ef4444">비용 ↑</text>
+  <text x="450" y="135" font-size="10" font-weight="700" fill="#10b981">먼저 당길 것</text>
+  <text x="280" y="165" text-anchor="middle" font-size="10" fill="#64748b">"느리니까 서버 늘리자"는 가장 비싼 실수</text>
+</svg>
+
 ## 먼저 원인을 가린다 — 어디서 느린가
 
 "느리다"는 원인이 어디냐에 따라 처방이 다르다:
@@ -61,6 +75,14 @@
 4. **확장**: 아직 서버 CPU 30%라 확장 불필요. 인덱스+캐시로 충분.
 
 "느려졌어요"가 (1) 측정 (2) 인덱스 (3) 캐시 (4) 확장 순의 레버로 번역. **확장(비싼 것)을 먼저 꺼내지 않고, 인덱스(싼 것)로 끝낸 것**이 핵심. 이 흐름을 상담에 가져가면 "무조건 서버 업그레이드"를 피할 수 있다.
+
+## 실 사례(익명화) — "느린 대시보드"를 인덱스 하나로 고친 사례
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 관리자 대시보드의 "오늘 수치"가 수 초 걸렸다. 팀의 첫 반응은 "서버를 늘리자"가 아니라 **원인 측정**이었다 — 느린 쿼리를 찾으니, 날짜 열로 매번 전체를 훑고 있었다(full scan). **인덱스 하나** 추가하니 같은 쿼리가 수십 ms로 떨어졌다. 비싼 '확장'은 필요 없었다.
+
+교훈: "느려요"를 받으면 **먼저 측정하고, 싼 레버부터** 당긴다 — 인덱스(거의 항상 먼저) → 캐시(반복 조회) → 확장(마지막 수단). "서버 업그레이드"를 먼저 꺼내면 비용만 늘고 근본은 안 고쳐진다. 상담에서 "느리다"엔 "어디서 느린지 측정부터"가 정답이다.
 
 ## 흔한 실패 모드와 처방
 

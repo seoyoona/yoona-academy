@@ -1,5 +1,18 @@
 PM이 SQL을 직접 짤 필요는 없다. 하지만 개발자가 "이 쿼리가 느려요", "조인이 많아요", "인덱스를 타야 해요"라고 할 때 그 말이 무엇을 뜻하는지는 알아야 한다. 협업 툴에서 쿼리 로그를 보거나, 간단한 데이터 조회를 직접 해보거나, 개발자의 느림 증상을 이해하는 데 SQL 읽기는 쓸모가 크다. 이 레슨은 읽기 전용으로 SQL의 네 동사(SELECT/JOIN/WHERE/INDEX)를 다룬다. 목표는 "이 쿼리가 뭘 묻고 있는지"를 읽을 수 있는 것이다.
 
+**WHERE로 거르고, JOIN으로 이어 붙이는 흐름:**
+
+<svg viewBox="0 0 560 150" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="두 표를 조인하고 조건으로 거르는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="45" width="100" height="55" rx="6" fill="#0ea5e9"/><text x="60"  y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">reservations</text><text x="60"  y="86" text-anchor="middle" font-size="10" fill="#e0f2fe">전체 행</text>
+  <rect x="135" y="45" width="100" height="55" rx="6" fill="#8b5cf6"/><text x="185" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">JOIN users</text><text x="185" y="86" text-anchor="middle" font-size="10" fill="#ede9fe">이어 붙임</text>
+  <rect x="260" y="45" width="100" height="55" rx="6" fill="#f59e0b"/><text x="310" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">WHERE</text><text x="310" y="86" text-anchor="middle" font-size="10" fill="#fef3c7">조건 거름</text>
+  <rect x="385" y="45" width="160" height="55" rx="6" fill="#10b981"/><text x="465" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">결과 (원하는 행·열)</text><text x="465" y="86" text-anchor="middle" font-size="10" fill="#d1fae5">인덱스가 빠르게 함</text>
+  <line x1="110" y1="72" x2="133" y2="72" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="235" y1="72" x2="258" y2="72" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="360" y1="72" x2="383" y2="72" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+</svg>
+
 ## SELECT — 데이터를 가져오는 기본 동사
 
 `SELECT`는 "이 열들을 줘"라는 조회 명령이다.
@@ -82,6 +95,14 @@ WHERE date = CURRENT_DATE;
 ```
 
 읽기: "reservations에서 오늘 것만 골라(WHERE), 전체 수(COUNT(*))와 그중 확정 수를 세라." 이 쿼리를 보면, "이 대시보드는 예약 표에서 오늘 것만 세면 된다"는 게 한눈에 들어온다. 만약 여기에 사용자 이름까지 필요하면 JOIN users가 추가되고, reservations.date에 인덱스가 없으면 날짜 조회가 느려진다. 이렇게 쿼리를 읽으면 "왜 느린가 / 공수가 얼마인가"가 보인다.
+
+## 실 사례(익명화) — "오늘 수치" 대시보드가 느렸던 이유 = 인덱스
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+한 서비스의 관리자 대시보드에서 "오늘 예약 수" 같은 지표를 보여주려 했더니 **쿼리가 수 초** 걸렸다. 원인은 단순했다 — 날짜 열로 매번 `WHERE date = 오늘`을 거르는데, 그 열에 **인덱스가 없어** 전체 표를 처음부터 끝까지 훑고 있었다(full scan). 인덱스 하나를 추가하자 같은 쿼리가 **수십 ms**로 떨어졌다.
+
+교훈: "느리다"의 첫 원인은 자주 "자주 검색하는 열에 인덱스가 없다"다. 코드를 고치거나 서버를 늘리기 전에 **인덱스**를 먼저 본다 — 가장 싸고 효과 큰 레버(Phase 6 캐시·인덱스·확장 참고). 상담에서 "이 화면이 느리다"면 "조건(WHERE) 열에 인덱스가 있나?"가 첫 질문이다.
 
 ## 흔한 실패 모드와 처방
 

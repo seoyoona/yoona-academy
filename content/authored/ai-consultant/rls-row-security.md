@@ -1,5 +1,17 @@
 "관리자만 회원 전체를 보고, 일반 회원은 본인 것만 봐야 해요." — Supabase 같은 BaaS에서 이 요구를 어떻게 구현하느냐에 따라 서비스가 안전해지거나 뚫린다. 핵심은 **RLS(Row Level Security, 행 수준 보안)**: "이 사용자는 이 행(row)만 볼 수 있다"를 DB 자체에서 거는 규칙이다. 이 레슨은 RLS가 왜 BaaS에서 거의 필수인지, 프론트 숨김과 어떻게 다른지를 다룬다. Phase 2에서 본 "인가는 백엔드에서" 원칙이 BaaS에선 RLS로 나타난다.
 
+**RLS — DB가 사용자별로 행을 거른다 (클라이언트 우회도 막음):**
+
+<svg viewBox="0 0 560 160" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="쿼리가 DB의 RLS 정책을 거쳐 본인 행만 반환하는 흐름">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10" y="55" width="120" height="50" rx="8" fill="#6366f1"/><text x="70" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">요청</text><text x="70" y="94" text-anchor="middle" font-size="9" fill="#e0e7ff">select * (전체)</text>
+  <rect x="170" y="45" width="140" height="70" rx="8" fill="#f59e0b"/><text x="240" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">DB + RLS 정책</text><text x="240" y="88" text-anchor="middle" font-size="9" fill="#fef3c7">"이 사용자의 행만"</text><text x="240" y="102" text-anchor="middle" font-size="9" fill="#fef3c7">DB가 필터</text>
+  <rect x="350" y="55" width="200" height="50" rx="8" fill="#10b981"/><text x="450" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">결과: 본인 행만</text><text x="450" y="94" text-anchor="middle" font-size="9" fill="#d1fae5">다른 사람 행은 안 보임</text>
+  <line x1="130" y1="80" x2="168" y2="80" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="310" y1="80" x2="348" y2="80" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="240" y="140" text-anchor="middle" font-size="10" fill="#64748b">SDK로 직접 쳐도 DB가 막아 — 클라이언트 숨김과 다름</text>
+</svg>
+
 ## BaaS의 딜레마 — 자동 API가 열려 있다
 
 앞선 레슨에서 Supabase는 표를 만들면 **자동 API**가 열린다고 했다. 편리하지만 위험하다 — "자동"이란 "누구나 규칙만 맞추면 조회/수정할 수 있다"는 뜻이다. RLS 없이 `posts` 표를 열어두면, 누군가 SDK로 `select * from posts`를 쳐서 **모든 사용자의 글을 다 가져갈 수 있다.**
@@ -62,6 +74,14 @@ using (auth.uid() in (select id from users where role = 'admin'));
 4. 프론트는 그 위에서 자연스럽게 UI(관리자 화면엔 전체가 보이니까).
 
 이제 SDK로 직접 쳐도 DB가 막는다. **"권한은 RLS로"**가 BaaS의 철칙이다.
+
+## 실 사례(익명화) — 관리자/일반의 "데이터 가시성"을 DB에서 가른 결정
+
+> 실제 프로젝트 사례를 익명화해 옮겼다.
+
+한 서비스에선 관리자는 전체 데이터를, 일반 사용자는 자기 것만 봐야 했다. 자동 API가 열린 BaaS 환경이라, **RLS가 없으면 누구나 SDK로 전체 데이터를 가져갈 수 있었다.** 팀은 "이 행은 본인 것만(또는 관리자만)"을 **DB 수준의 RLS 정책**으로 걸었다 — 화면(클라이언트)에서 숨기는 게 아니라 DB 자체가 거르게. 그래야 API를 직접 쳐도 안 뚫린다.
+
+교훈: BaaS에선 "권한"이 곧 **RLS**다. "관리자만 본다"를 프론트 숨김으로 하면 우회당하고, RLS로 하면 DB가 막는다. 상담에서 "이 데이터는 누가 볼 수 있나?"를 물으면, 그 답이 "RLS 정책으로" 이어져야 한다.
 
 ## 흔한 실패 모드와 처방
 

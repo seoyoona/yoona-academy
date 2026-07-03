@@ -1,5 +1,19 @@
 EC2·S3·RDS를 알았다. 그런데 "누가 이 자원에 접근할 수 있는가"를 안 정하면, 클라우드 자원은 인터넷에 다 노출된 채로 돌아간다. DB가 인터넷에 열려 있으면 누구나 접속을 시도하고, 권한이 넓으면 한 키 유출로 전체 계정이 털린다. 이 레슨은 AWS의 두 보안 축 — **VPC**(사설망)와 **IAM**(권한) — 을 다룬다. "우리 자원을 안전하게 가두고, 누가 뭘 할 수 있는지 정하는" 레슨이다. 보안 상담에서 빠지면 안 되는 두 단어.
 
+**보안의 두 축 — 네트워크(VPC)로 가두고, 권한(IAM)으로 줄인다:**
+
+<svg viewBox="0 0 560 170" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VPC 사설망 안에 EC2와 RDS를 두고 IAM이 접근을 통제하는 구성">
+  <rect x="120" y="20" width="320" height="120" rx="12" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="280" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="#0369a1">VPC (사설망)</text>
+  <rect x="150" y="55" width="110" height="46" rx="8" fill="#f59e0b"/><text x="205" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">EC2 (앱)</text>
+  <rect x="300" y="55" width="110" height="46" rx="8" fill="#8b5cf6"/><text x="355" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">RDS (DB)</text><text x="355" y="92" text-anchor="middle" font-size="9" fill="#ede9fe">인터넷 차단</text>
+  <rect x="150" y="110" width="0" height="0"/>
+  <text x="280" y="128" text-anchor="middle" font-size="9" fill="#0369a1">인터넷 노출 최소화</text>
+  <rect x="460" y="55" width="90" height="46" rx="8" fill="#6366f1"/><text x="505" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">IAM 🔐</text><text x="505" y="90" text-anchor="middle" font-size="9" fill="#e0e7ff">최소 권한</text>
+  <line x1="450" y1="78" x2="458" y2="78" stroke="#64748b" stroke-width="1.6"/>
+  <text x="40" y="78" font-size="10" fill="#64748b">사용자 →(EC2 경유)→ DB</text>
+</svg>
+
 ## VPC — 우리만의 '사설망'
 
 **VPC(Virtual Private Cloud)**는 AWS 안에 만드는 **논리적으로 격리된 사설 네트워크 공간**이다. 한마디로 "인터넷에 직접 노출된 채로 두지 않고, 우리 자원을 우리만의 사설망 안에 가둔다."
@@ -54,6 +68,14 @@ VPC는 "어디서(네트워크) 접근 가능한가"를, IAM은 "누가(신분) 
 5. **비밀값은 환경변수**: DB 비밀번호·API 키는 코드에 안 박고 환경변수/Secret Manager(Phase 2·5 다음 레슨).
 
 "DB 털리면 안 돼"가 VPC 격리 + 보안그룹 + IAM 최소권한 + 환경변수로 번역된다. 이 다섯 단어가 클라우드 보안의 기본 어휘다.
+
+## 실 사례(익명화) — DB를 인터넷에 안 열고 사설망에 둔 결정
+
+> 실제 프로젝트 패턴을 익명화해 온다.
+
+한 서비스에선 **DB(RDS)를 인터넷에 아예 안 열고 사설망(VPC) 안에** 뒀다 — 앱 서버(EC2)를 통해서만 접속 허용. 인터넷에 DB가 열려 있으면 매초 수천 건의 무차별 접속 시도를 받기 때문이다. 권한은 **최소 원칙(IAM)**으로 — 각 사용자/서비스는 필요한 최소 권한만, 루트 키는 안 쓰고 2단계 인증.
+
+교훈: 보안의 목표는 "완벽히 막기"가 아니라 **"한 겹 뚫려도 다음 겹이 살린다"**는 층위 방어. DB를 사설망에(네트워크), 권한을 최소로(IAM), 비밀값은 환경변수로 — 이 셋이 겹쳐야 한 번의 뚫림이 전체로 번지지 않는다. 상담에서 "보안"을 물으면 이 세 단어(VPC·IAM·환경변수)가 기본 답이다.
 
 ## 흔한 실패 모드와 처방
 

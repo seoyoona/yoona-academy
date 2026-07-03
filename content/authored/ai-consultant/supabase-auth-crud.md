@@ -1,5 +1,22 @@
 "로그인 있고, 게시글 올리고, 사진 첨부하는 서비스 만들어 주세요." — 이 요구를 받았을 때 백엔드 서버 한 줄도 안 짜고 며칠 만에 띄울 수 있다면? Supabase가 바로 그것이다. 이 레슨은 Supabase 하나로 인증(Auth) + 데이터베이스(Postgres) + 파일 저장(Storage)을 어떻게 한 세트로 쓰는지, 그리고 자동 API까지 어떻게 붙는지를 다룬다. Phase 4의 실전 레슨 — BaaS로 CRUD 전체를 빠르게 만드는 법이다.
 
+**Supabase 한 세트 — 세 부품이 자동 API로 프론트에까지:**
+
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Supabase의 Auth Postgres Storage가 자동 API를 통해 프론트로 이어지는 구성">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="18" width="110" height="38" rx="7" fill="#0ea5e9"/><text x="65"  y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Auth (로그인)</text>
+  <rect x="10"  y="68" width="110" height="38" rx="7" fill="#8b5cf6"/><text x="65"  y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Postgres (DB)</text>
+  <rect x="10"  y="118" width="110" height="38" rx="7" fill="#f59e0b"/><text x="65"  y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Storage (파일)</text>
+  <rect x="165" y="60" width="120" height="56" rx="8" fill="#10b981"/><text x="225" y="84" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">자동 API</text><text x="225" y="102" text-anchor="middle" font-size="9" fill="#d1fae5">(표 만들면 생김)</text>
+  <rect x="325" y="60" width="110" height="56" rx="8" fill="#6366f1"/><text x="380" y="84" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">프론트엔드</text><text x="380" y="102" text-anchor="middle" font-size="9" fill="#e0e7ff">SDK로 호출</text>
+  <text x="475" y="80" font-size="10" font-weight="700" fill="#dc2626">⚠ RLS 없으면</text>
+  <text x="475" y="96" font-size="10" font-weight="700" fill="#dc2626">데이터 노출</text>
+  <line x1="120" y1="37" x2="163" y2="72" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="120" y1="87" x2="163" y2="88" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="120" y1="137" x2="163" y2="104" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="285" y1="88" x2="323" y2="88" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+</svg>
+
 ## Supabase는 'Postgres가 중심'
 
 Supabase를 한 줄로 요약하면 **"Postgres 데이터베이스를 중심으로 로그인·API·파일·실시간을 빠르게 붙일 수 있게 해주는 BaaS"**다. 핵심은 중심에 **PostgreSQL**(관계형 DB, Phase 3 참고)이 있다는 점이다.
@@ -55,6 +72,14 @@ Supabase로의 흐름:
 - **복잡한 로직은 Edge Function으로 우회**해야 한다. "엑셀 업로드 → 파싱 → 대량 발송" 같은 복잡 흐름은 자동 API만으론 안 되고, 작은 서버 코드(Edge Function)를 넣어야 한다.
 - **권한은 RLS로 꼭**. 자동 API가 열려 있으니, 누구나 어떤 데이터든 볼 수 있게 될 위험이 있다. RLS 없으면 보안 구멍(다음 레슨).
 - **사용량 과금**. 읽기·대역폭이 많아지면 비용이 튄다.
+
+## 실 사례(익명화) — "빠르다"와 "안전하다"를 둘 다 챙긴 두 단계
+
+> 실제 프로젝트 패턴을 익명화해 옮겼다.
+
+앞선 레슨의 초기 클라이언트에서, 실제로 **로그인·CRUD·파일 업로드를 백엔드 코드 한 줄 없이 세팅만으로** 며칠 만에 띄웠다. 그런데 "빠르다"에 취해 **RLS 없이** 자동 API를 열어둘 뻔했다 — 그러면 누구나 SDK로 전체 데이터를 가져갈 수 있다. 그래서 팀은 "빠르게 세팅"과 "RLS로 권한 채우기"를 **별개의 두 단계**로 분리해 둘 다 챙겼다.
+
+교훈: BaaS의 속도 이점을 누리되, **자동 API가 열린 만큼 권한(RLS)은 반드시 뒤따라야** 한다. "MVP 다 됐다"가 "실서비스도 안전하다"로 넘어가는 지점이 바로 이 권한 채우기다(다음 레슨).
 
 ## 흔한 실패 모드와 처방
 
