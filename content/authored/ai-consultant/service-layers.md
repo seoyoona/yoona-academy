@@ -1,5 +1,24 @@
 고객이 "예약 앱 하나 만들어주세요"라고 할 때, 그 문장을 그대로 개발자에게 넘기면 프로젝트는 거의 항상 삐걱거린다. "화면"이 어디까지인지, "데이터"는 어디에 쌓이는지, "알림"은 누가 보내는지가 정해져 있지 않기 때문이다. 이 하나의 문장을 **화면·서버·데이터베이스·API·클라우드**라는 층으로 쪼갤 수 있으면, 견적·일정·리스크가 잡히고 개발자와 같은 언어가 된다. 이 레슨은 그 쪼개기 — 서비스가 왜 여러 층으로 나뉘는지 — 를 다룬다. 코드를 짤 필요는 없다. 다만 어느 층에서 어느 문제가 생기는지를 말로 설명할 수 있어야 한다.
 
+**한눈에 보는 5층** — 사용자의 요청이 지나는 길:
+
+<svg viewBox="0 0 560 230" width="100%" style="max-width:560px;height:auto;display:block;margin:8px auto;font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="서비스 5층 구조: 프론트엔드-API-백엔드-데이터베이스, 그리고 클라우드/외부">
+  <text x="280" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">사용자 요청이 지나는 5개 층</text>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="10"  y="70" width="110" height="64" rx="8" fill="#0ea5e9"/><text x="65"  y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">프론트엔드</text><text x="65"  y="118" text-anchor="middle" font-size="11" fill="#e0f2fe">사용자 화면</text>
+  <rect x="150" y="70" width="80"  height="64" rx="8" fill="#6366f1"/><text x="190" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">API</text><text x="190" y="118" text-anchor="middle" font-size="11" fill="#e0e7ff">요청의 문</text>
+  <rect x="260" y="70" width="110" height="64" rx="8" fill="#8b5cf6"/><text x="315" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">백엔드</text><text x="315" y="118" text-anchor="middle" font-size="11" fill="#ede9fe">규칙 · 판단</text>
+  <rect x="410" y="70" width="140" height="64" rx="8" fill="#10b981"/><text x="480" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">데이터베이스</text><text x="480" y="118" text-anchor="middle" font-size="11" fill="#d1fae5">사실 저장</text>
+  <rect x="260" y="170" width="110" height="48" rx="8" fill="#f59e0b"/><text x="315" y="199" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">클라우드 · 외부</text>
+  <line x1="120" y1="102" x2="148" y2="102" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="230" y1="102" x2="258" y2="102" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="370" y1="102" x2="408" y2="102" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="315" y1="134" x2="315" y2="168" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="315" y="155" text-anchor="middle" font-size="10" fill="#64748b">빌려 씀</text>
+</svg>
+
+이 다섯 층이 각각 무슨 일을 하는지, 한 층씩 내려가 보자.
+
 ## 프론트엔드 — 사용자가 만지는 층
 
 프론트엔드는 사용자가 직접 보고 누르는 모든 것이다. 웹이면 브라우저에 뜨는 화면, 앱이면 폰에서 터치하는 화면. 버튼, 입력창, 목록, 알림 창이 모두 이 층에서 그려진다.
@@ -42,17 +61,24 @@ API가 왜 필요한가. 프론트엔드와 백엔드가 같은 프로그램 안
 | API | API 목록(명세) | "외부(파트너)에서도 이 데이터를 쓰나요?" |
 | 클라우드 | 인프라 구성, 배포 | "트래픽이 몰릴 때를 대비해야 하나요?" |
 
-## worked example: "예약 앱"을 다섯 층으로 쪼개기
+## 실 사례(익명화) — 한 예약 서비스 클라이언트를 5층으로 쪼갠 견적
 
-고객 요구: "사용자가 날짜를 골라 예약하고, 사장님은 관리자 화면에서 확인한다."
+> 아래는 실제 상담 사례를 **익명화**해 옮긴 것이다. 클라이언트·실무자·식별정보는 바꿨고, 구조를 결정한 **판단 흐름**만 남겼다.
 
-1. **프론트엔드**: 사용자 화면(날짜 선택 → 예약 버튼 → 완료 메시지)과 사장님 화면(오늘 예약 목록). 두 화면이 필요하다.
-2. **API**: `예약 생성`, `예약 목록 조회(사장님용)` 두 개의 문이 최소한 필요하다.
-3. **백엔드**: `예약 생성` 규칙 — "그 시간에 이미 예약이 있는가? 없으면 생성". 이 판단은 서버에서 해야 한다(프론트에서 하면 조작 가능).
-4. **데이터베이스**: users, reservations(시간·사용자·상태), availability_slots(예약 가능 시간) 최소 세 표.
-5. **클라우드**: 이 서버와 DB가 24시간 돌아갈 자리. 초기엔 작은 서버 한 대 + 관리형 DB.
+상황: 한 클라이언트가 "사용자가 날짜를 골라 예약하고, 관리자는 따로 화면에서 확인하는 서비스"를 원했다. 기존엔 간단히 만들어 쓰던 것을, 트래픽과 요구가 커지면서 **본격적으로 다시 짜는(재구축) 프로젝트**로 가져왔다. 첫 단계는 이 요구를 5층으로 쪼개 보는 것이었다.
 
-이렇게 쪼개면 "예약 앱"이라는 한 문장이 5개의 작업으로 나뉘고, 각 작업의 공수·리스크를 따로 잴 수 있다. "화면 2개, API 2개, 표 3개, 규칙 1개" 정도로 요약되는 순간 견적이 가능해진다.
+1. **프론트엔드**: 사용자 예약 화면 + 관리자 확인 화면. 핵심은 **화면이 둘**이라는 점 — 요구는 "예약 하나"처럼 들렸지만, 실제론 사용자·관리자 **두 역할**의 화면이 필요했다. 여기서 공수가 갈린다.
+2. **API**: `예약 생성`, `예약 목록 조회`. 관리자 조회는 **권한이 다른 문**이라 사용자용과 분리해 설계(Phase 2 인가·Phase 4 RLS).
+3. **백엔드**: "그 시간에 이미 예약이 있는가?"를 **서버에서** 판단. 이걸 프론트에 맡기면 누구나 중복 예약을 만들 수 있다 — 신뢰 판단은 반드시 백엔드.
+4. **데이터베이스**: users, reservations(시간·사용자·상태), availability_slots(예약 가능 시간). 최소 세 표.
+5. **클라우드**: 서버·DB가 24시간 돌 자리 + 기존 데이터를 옮겨 올 이관 경로까지 잡아야 했다(Phase 5).
+
+실제 상담에서 짚은 두 결정이 이 5층 안에서 모습을 드러냈다:
+
+- **"관리자 화면에선 내역·금액이 보여도, 사용자 화면에선 일부를 숨긴다"**는 요구. 이건 프론트에서 숨기는 게 아니라 **권한(RLS/백엔드 인가)**으로 가야 한다 — 그래야 API를 직접 쳐도 안 보인다(Phase 2·4).
+- **"AI로 자동화를 넣자"**는 아이디어가 있었으나, 검토 결과 **그 서비스에선 효과가 없어 빼기로** 했다. "AI가 무조건 들어가야 하는 건 아니다"는 실제 회의에서 나온 결론이었다(Phase 6).
+
+이렇게 쪼개니 "예약 서비스"라는 한 문장이 — **화면 2종, API 2~3개, 표 3개, 권한 분기 1곳, 데이터 이관 1건**으로 보였고, 비로소 견적과 일정이 잡혔다. 고객의 한 문장을 5층으로 번역하는 것이 상담의 첫째 일이다.
 
 ## 흔한 실패 모드와 처방
 
