@@ -1777,5 +1777,334 @@
     ],
     "model": "local-cli/claude -p",
     "generatedAt": "2026-07-02T14:24:41.806Z"
+  },
+  "ai-consultant__baas-mvp__baas-why-fast": {
+    "objectives": [
+      "BaaS가 무엇인지 설명하고, 직접 백엔드와 어떻게 다른지 비교할 수 있다",
+      "BaaS가 빠른 세 가지 이유(부품 제공, 관리형 운영, SDK 직접 연결)를 말할 수 있다",
+      "주어진 상황에서 BaaS와 직접 백엔드 중 어느 것을 선택할지 근거를 갖고 결정할 수 있다",
+      "BaaS 도입 시 흔한 실패 모드(과도한 직접 구축, RLS 누락, 비용 폭발, 벤더 종속)를 피할 수 있다",
+      "프로토타입과 프로덕션의 차이를 구분해 BaaS를 언제 실서비스로 넘겨야 하는지 판단할 수 있다"
+    ],
+    "summary": "BaaS는 인증·DB·저장소·API 같은 뒷단 부품을 미리 만들어 빌려주는 서비스로, 백엔드 코드를 거의 안 짜고도 며칠 만에 MVP를 띄울 수 있게 해 준다. 초기 속도는 빠르지만 유연성에 제약이 있고 사용량 과금으로 비용이 폭발할 수 있어, 상황에 따라 직접 백엔드와 BaaS를 골라야 한다. 견적 상담의 첫 질문은 보통 \"MVP면 BaaS, 복잡해지면 직접 백엔드\"로 시작한다.",
+    "keyConcepts": [
+      "BaaS(Backend as a Service)",
+      "Firebase / Supabase",
+      "SDK(클라이언트 라이브러리)",
+      "관리형(managed)",
+      "RLS(Row Level Security)",
+      "벤더 종속(vendor lock-in)",
+      "Edge Function / Cloud Function",
+      "MVP"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:07:17.876Z"
+  },
+  "ai-consultant__baas-mvp__supabase-auth-crud": {
+    "objectives": [
+      "Supabase가 표준 PostgreSQL을 중심으로 Auth·Database·Storage를 한 세트로 묶는 구조를 설명할 수 있다",
+      "표를 만들어 자동 CRUD API를 생성하고 프론트엔드 SDK로 호출하는 흐름을 구성할 수 있다",
+      "사진 첨부 게시판 예제처럼 로그인·CRUD·파일 업로드를 백엔드 코드 없이 설계할 수 있다",
+      "anon 키와 service_role 키의 차이, 그리고 RLS 정책의 역할을 구분해 보안 위험을 피할 수 있다",
+      "복잡 로직에 Edge Function이 필요한 상황과 BaaS 사용량 과금 한계를 판단할 수 있다"
+    ],
+    "summary": "Supabase는 표준 PostgreSQL을 중심으로 인증(Auth)·데이터베이스·파일 저장(Storage)을 한 세트로 제공하는 BaaS로, 하나의 사용자 체계로 세 부품이 자연스럽게 연결된다. 표를 만들면 그에 대한 CRUD API가 자동으로 열리고 SDK로 바로 다루기 때문에 백엔드 서버 코드 한 줄 없이도 며칠 만에 MVP를 띄울 수 있다. 단, 자동 API가 열려 있는 만큼 권한은 반드시 RLS로 막고 프론트는 anon 키만 쓰는 등 보안 기본기를 챙겨야 한다.",
+    "keyConcepts": [
+      "BaaS",
+      "PostgreSQL",
+      "Auth(인증)",
+      "Storage(버킷)",
+      "자동 API",
+      "RLS 정책",
+      "anon 키 / service_role 키",
+      "Edge Function"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:08:09.080Z"
+  },
+  "ai-consultant__baas-mvp__firebase-push": {
+    "objectives": [
+      "푸시 알림이 앱이 아니라 서버와 플랫폼을 거쳐 기기에 전달되는 흐름을 설명할 수 있다.",
+      "FCM이 iOS(APNs)와 Android 채널을 하나로 묶어 거의 필수가 되는 이유를 말할 수 있다.",
+      "푸시 기능에 필요한 구성 요소(권한·토큰 저장·발송·FCM 설정·분류·이동)를 점검할 수 있다.",
+      "마케팅 푸시와 시스템 알림의 법적 동의 요건을 구분할 수 있다.",
+      "발송 트리거와 토큰 만료 관리까지 포함해 푸시 공수를 추정할 수 있다."
+    ],
+    "summary": "푸시는 앱이 직접 보내지 못한다. 앱이 기기 토큰을 발급받아 서버에 저장하면, 서버가 FCM에 발송을 의뢰하고 FCM이 APNs/Google 경로로 기기에 전달한다. 그래서 '푸시 하나'는 권한·토큰 저장·발송 트리거·FCM 연동·동의 UI까지 여러 부품의 묶음이며, 마케팅과 시스템 알림은 동의 요건도 다르다.",
+    "keyConcepts": [
+      "FCM (Firebase Cloud Messaging)",
+      "APNs",
+      "device token / registration token",
+      "발송 트리거 (스케줄러·큐)",
+      "payload",
+      "silent push",
+      "마케팅 푸시 vs 시스템 알림",
+      "토큰 만료 / 도달률"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:09:31.419Z"
+  },
+  "ai-consultant__baas-mvp__rls-row-security": {
+    "objectives": [
+      "RLS(Row Level Security)의 개념을 설명하고 BaaS에서 왜 필수인지 말할 수 있다",
+      "프론트 숨김과 RLS의 보안 차이를 우회 가능 여부로 구분할 수 있다",
+      "Supabase의 RLS 정책 SQL을 읽고 어떤 행에 어떤 권한을 거는지 파악할 수 있다",
+      "RLS를 안 켜는 경우, service_role 키 노출 등 흔한 실패 모드를 식별하고 처방할 수 있다",
+      "모든 표에 RLS를 기본으로 켜는 BaaS 보안 원칙을 실무에 적용할 수 있다"
+    ],
+    "summary": "BaaS는 표를 만들면 자동 API가 열려 권한을 검사할 엔드포인트 코드가 없다. RLS(Row Level Security)는 이 권한 검사를 DB 자체에서 수행해, 클라이언트를 어떻게 우회하든 행 단위로 접근을 거른다. 그래서 프론트 숨김에 의존하지 말고 모든 표에 RLS를 켜는 것이 BaaS 보안의 기본이다.",
+    "keyConcepts": [
+      "RLS: DB 수준에서 행 접근을 통제하는 보안",
+      "policy: RLS 규칙 (조회·수정·삭제별)",
+      "자동 API: 표 생성 시 자동 노출되는 BaaS 위험",
+      "프론트 숨김 vs RLS: 우회 가능 vs 우회 불가",
+      "auth.uid(): 정책 안에서 쓰는 현재 사용자 id",
+      "anon 키: RLS 적용을 받는 클라이언트 키",
+      "service_role 키: RLS를 무시하는 마스터 키",
+      "public 표: RLS가 꺼진 = 누구나 접근"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:10:26.713Z"
+  },
+  "ai-consultant__baas-mvp__baas-limits-migration": {
+    "objectives": [
+      "BaaS의 네 가지 한계(복잡 로직·비용·성능·벤더 종속)를 식별할 수 있다",
+      "자체 백엔드로 이관해야 하는 시점의 다섯 가지 징후를 판별할 수 있다",
+      "점진적 이관(strangler 패턴) 전략으로 DB는 유지하고 일부 로직만 옮기는 방식을 설명할 수 있다",
+      "초기 데이터 모델 설계가 이탈 비용에 미치는 영향을 평가할 수 있다",
+      "BaaS 의존도와 이관 비용의 관계를 분석하고 '빠르게 쓰되 빠져나오기 쉽게 쓰는' 균형을 기를 수 있다"
+    ],
+    "summary": "BaaS는 MVP를 빠르게 띄울 수 있지만, 사용자가 늘고 기능이 복잡해지면 복잡 로직 처리·비용 폭발·성능 통제 제약·벤더 종속이라는 한계에 부닥친다. 이관은 전부 갈아엎는 것이 아니라 DB(Postgres)는 그대로 살린 채 병목과 비용이 집중된 부분만 자체 백엔드로 점진적으로 옮기는 방식으로 이뤄진다. 초기부터 표준 관계형 구조로 데이터를 잡아두면 이탈 비용이 작아진다는 것이 핵심 설계 통찰이다.",
+    "keyConcepts": [
+      "BaaS의 네 가지 한계",
+      "자체 백엔드 이관",
+      "점진적 이관(strangler 패턴)",
+      "벤더 종속(lock-in)",
+      "관리형 Postgres(RDS·Neon)",
+      "사용량 과금",
+      "Edge Function 우회",
+      "이탈 비용"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:11:28.446Z"
+  },
+  "ai-consultant__aws-cloud__why-cloud": {
+    "objectives": [
+      "온프레미스와 클라우드의 본질적 차이를 설명할 수 있다",
+      "IaaS·PaaS·SaaS의 빌리는 깊이를 구분하고 예를 들 수 있다",
+      "서비스 단계(초기/성장/성숙)에 맞춰 적절한 배포 방식을 추천할 수 있다",
+      "클라우드가 해결하는 세 가지(초기 비용·탄력성·운영 부담)를 설명할 수 있다",
+      "사용량 과금의 함정을 인식하고 비용 통제 방법을 제시할 수 있다"
+    ],
+    "summary": "클라우드는 서버·저장소·데이터베이스·네트워크를 직접 사서 굴리지 않고 남이 관리하는 것을 빌려 쓰는 서비스다. 초기 비용을 낮추고 트래픽에 맞춰 자원을 늘리거나 줄이는 탄력성, 그리고 백업·보안 등 운영 부담을 덜어주는 것이 클라우드가 대세가 된 이유다. 다만 '빌리는 깊이'에 따라 IaaS·PaaS·SaaS로 나뉘고, 쓴 만큼 과금되는 구조이므로 방치하면 비용이 폭등할 수 있어 통제가 곧 운영이다.",
+    "keyConcepts": [
+      "온프레미스(on-prem)",
+      "클라우드",
+      "IaaS/PaaS/SaaS",
+      "탄력성",
+      "사용량 과금",
+      "관리형 서비스",
+      "예산 알림",
+      "리전(region)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:12:06.676Z"
+  },
+  "ai-consultant__aws-cloud__ec2-s3-rds": {
+    "objectives": [
+      "EC2·S3·RDS 각각이 어떤 자원을 빌려주는지 한 문장으로 설명할 수 있다",
+      "EC2·S3·RDS가 서로 어떻게 연결되어 하나의 서비스를 이루는지 그림으로 그릴 수 있다",
+      "파일 업로드 시 파일과 그 경로(URL)가 각각 어디에 저장되어야 하는지 말할 수 있다",
+      "파일을 EC2 디스크나 DB에 두는 등 흔한 실패 모드를 식별하고 올바른 처방을 제시할 수 있다",
+      "DB를 EC2에 직접 설치하지 않고 관리형(RDS)을 쓰는 이유를 설명할 수 있다"
+    ],
+    "summary": "AWS에서 PM이 먼저 알아야 할 핵심은 세 가지다. EC2는 우리 앱이 돌아갈 가상 서버, S3는 영구 파일 창고, RDS는 운영을 AWS에 맡기는 관리형 데이터베이스다. 이 셋만 있어도 서비스가 클라우드에서 어떻게 돌아가는지 8할이 보인다.",
+    "keyConcepts": [
+      "EC2 (가상 서버 / 인스턴스)",
+      "S3 (파일 창고 / 버킷)",
+      "RDS (관리형 DB)",
+      "인스턴스(instance)",
+      "버킷(bucket)",
+      "관리형(managed) DB",
+      "파일은 S3, 경로(URL)만 DB",
+      "영구 저장"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:12:58.188Z"
+  },
+  "ai-consultant__aws-cloud__dns-ssl-https": {
+    "objectives": [
+      "DNS가 도메인 이름을 IP 주소로 변환하는 과정을 설명할 수 있다",
+      "SSL/TLS 인증서가 통신을 암호화하는 원리와 HTTPS의 의미를 이해한다",
+      "HTTPS가 필수인 이유를 보안·신뢰·필수 기능 세 가지 관점에서 말할 수 있다",
+      "커스텀 도메인 연결 절차(확보 → DNS → SSL → 전파)를 순서대로 수행할 수 있다",
+      "인증서 만료·DNS 오설정 등 흔한 실패 모드를 진단하고 올바른 처방을 내릴 수 있다"
+    ],
+    "summary": "DNS는 사람이 기억하는 도메인 이름을 컴퓨터가 쓰는 IP 주소로 바꿔주는 전화번호부 역할을 한다. SSL/TLS 인증서는 이 연결을 암호화해 도청과 위조를 막으며, HTTPS가 켜지면 브라우저에 자물쇠가 표시된다. 도메인을 샀다고 끝이 아니라 DNS로 서버를 연결하고 SSL까지 켜야 사용자가 안전하게 들어온다.",
+    "keyConcepts": [
+      "DNS(도메인 이름 시스템)",
+      "IP 주소",
+      "SSL/TLS 인증서",
+      "HTTPS / 자물쇠",
+      "Let's Encrypt",
+      "DNS 레코드(A, CNAME)",
+      "도메인 등록사(registrar)",
+      "DNS 전파(TTL)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:15:08.150Z"
+  },
+  "ai-consultant__aws-cloud__env-and-deploy": {
+    "objectives": [
+      "환경변수를 코드 밖으로 분리하는 세 가지 이유(보안·환경 분리·변경 용이)를 설명할 수 있다",
+      "서비스에 필요한 환경변수 세팅값 표를 작성하고 각 값의 목적과 노출 여부를 표시할 수 있다",
+      "PaaS 배포와 직접(EC2) 배포의 차이와 선택 기준을 판단할 수 있다",
+      "CI/CD 파이프라인이 자동 배포에서 수행하는 역할을 설명할 수 있다",
+      "'로컬에선 되는데 실서버에선 안 된다'는 장애를 환경변수 관점에서 진단할 수 있다"
+    ],
+    "summary": "배포는 코드를 실서버에 올리고 그 환경에 비밀값을 안전하게 주입해 갱신마다 자동으로 다시 올리는 일까지 포함한다. 비밀값과 환경별 설정은 코드가 아닌 환경변수로 빼고, 세팅값 표를 산출물로 관리하면 '실서버에서만 실패하는' 사고의 대부분을 막을 수 있다. 초기엔 PaaS로 환경변수만 등록해 자동 배포하고, 복잡해지면 CI/CD 기반의 직접 배포로 전환한다.",
+    "keyConcepts": [
+      "환경변수(.env)",
+      ".gitignore",
+      "세팅값 표",
+      "PaaS vs 직접 배포",
+      "CI/CD(GitHub Actions)",
+      "staging/production 분리",
+      "Secret Manager",
+      "키 회전(rotate)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:16:36.795Z"
+  },
+  "ai-consultant__system-design__monolith-vs-microservice": {
+    "objectives": [
+      "monolith와 microservice의 차이와 각각의 장단점을 설명할 수 있다",
+      "초기 서비스에서 모놀리스로 시작해야 하는 이유를 말할 수 있다",
+      "모듈화된 모놀리스(modular monolith)의 개념과 가치를 설명할 수 있다",
+      "마이크로서비스로 분리하기 적절한 시점과 기준을 판단할 수 있다",
+      "실제 상담 상황에서 복잡도를 미리 부르지 않는 아키텍처 결정을 제안할 수 있다"
+    ],
+    "summary": "처음부터 마이크로서비스로 가려는 건 초보의 흔한 실수다. 초기엔 트래픽도 적고 팀도 작아 복잡도가 낮은 모놀리스로 충분하며, 마이크로서비스는 스케일과 조직 규모 문제가 실제로 왔을 때 쓰는 도구다. 시니어의 설계 감각은 지금은 하나로 가되, 내부 모듈 경계를 깔끔히 유지해 나중에 잘게 떼어낼 수 있도록 준비하는 것이다.",
+    "keyConcepts": [
+      "monolith(모놀리스)",
+      "microservice(마이크로서비스)",
+      "modular monolith(모듈화된 모놀리스)",
+      "서비스 경계(boundary)",
+      "독립 스케일/배포",
+      "분산 트랜잭션",
+      "eventual consistency"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:18:01.156Z"
+  },
+  "ai-consultant__system-design__sync-vs-async": {
+    "objectives": [
+      "동기(synchronous)와 비동기(asynchronous) 처리의 차이와 각각의 특징을 설명할 수 있다",
+      "고객의 요구사항을 듣고 어떤 처리 구조(동기/비동기)가 맞는지 판별할 수 있다",
+      "큐, 배치/스케줄러, 웹훅의 역할을 구분해서 설명할 수 있다",
+      "비동기 작업에 상태 표시 UI와 재시도 정책을 함께 기획할 수 있다",
+      "비동기가 가져오는 디버깅의 어려움과 관측 가능성의 필요성을 설명할 수 있다"
+    ],
+    "summary": "사용자가 30초씩 하얀 화면을 기다리지 않도록, 무거운 작업은 '즉시 응답 + 큐 처리 + 상태 표시' 구조로 번역하는 것이 이 레슨의 핵심이다. 동기와 비동기를 구분하고, 큐·배치·웹훅이 각각 어떤 역할을 하는지를 고객 요구를 처리 구조로 옮기는 과정에서 익힌다. 나아가 비동기가 주는 빠른 응답의 대가인 '디버깅의 어려움'과 관측 가능성까지 짚는다.",
+    "keyConcepts": [
+      "동기(synchronous)",
+      "비동기(asynchronous)",
+      "큐(queue)",
+      "워커(worker)",
+      "배치/크론(batch/cron)",
+      "웹훅(webhook)",
+      "재시도(retry)/idempotent",
+      "관측 가능성(observability)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:19:10.619Z"
+  },
+  "ai-consultant__system-design__cache-index-scale": {
+    "objectives": [
+      "'서비스가 느려졌다'는 증상을 DB 조회 지연·반복 조회·서버 포화 중 어디서 오는지 측정(재고)하여 가릴 수 있다",
+      "인덱스가 전체 훑기(full scan)를 어떻게 피하는지 설명하고, 자주 검색하는 열에 추가할 수 있다",
+      "캐시가 반복 조회로 인한 DB 부하를 줄이는 원리와 무효화(낡은 데이터) 주의점을 말할 수 있다",
+      "수직 확장과 수평 확장의 차이, 그리고 수평 확장에 무상태(stateless) 설계가 왜 필요한지 설명할 수 있다",
+      "인덱스 → 캐시 → 확장 순으로 가장 싼 레버부터 당기는 이유를 근거와 함께 제시할 수 있다"
+    ],
+    "summary": "서비스가 느려지는 원인은 보통 DB 조회 지연, 같은 데이터의 반복 조회, 서버 포화 셋 중 하나다. 원인을 먼저 측정해서 가린 뒤, 가장 싸고 효과 큰 인덱스부터 시작해 캐시, 그리고 확장 순으로 레버를 당기는 것이 성능 엔지니어링의 기본이다. 비싼 서버 확장을 맨 먼저 꺼내는 실수를 피하려면 이 순서를 알아야 한다.",
+    "keyConcepts": [
+      "인덱스(index)",
+      "풀 스캔(full scan)",
+      "캐시(cache)와 무효화(invalidation)",
+      "낡은 데이터(stale)",
+      "수직 확장(scale up)",
+      "수평 확장(scale out)",
+      "무상태(stateless)와 로드밸런서",
+      "병목(bottleneck)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:19:59.191Z"
+  },
+  "ai-consultant__system-design__read-real-codebase": {
+    "objectives": [
+      "최상위 폴더 구조만 보고 서비스의 뼈대(화면·서버·DB·인프라·배포)를 파악할 수 있다",
+      "README, models.py, api/, .env.example, docker-compose.yml 등 핵심 파일의 역할을 설명할 수 있다",
+      "Phase 1~6의 개념이 실제 폴더와 파일에 어디서 1:1로 실체화되는지 매핑할 수 있다",
+      "언어나 프레임워크가 달라도 폴더 이름으로 구조 패턴을 추론할 수 있다",
+      "코드를 한 줄도 짜지 않고 30분 안에 서비스 구조를 한 문장으로 요약할 수 있다"
+    ],
+    "summary": "개념을 배운 뒤에는 실제 코드 저장소의 폴더 구조를 읽어, 그 개념이 코드 어디서 실체화됐는지 확인하는 것이 핵심이다. 최상위 폴더 트리와 몇 가지 핵심 파일(README, models.py, api/, .env.example, docker-compose.yml)만 훑어도 서비스의 화면·서버·DB·인프라·배포 구조가 보인다. 줄 단위가 아니라 구조 단위로 읽는 것이 PM의 코드 읽기 방식이다.",
+    "keyConcepts": [
+      "폴더 트리(최상위 구조)",
+      "frontend/backend 분리",
+      "models.py — DB 표 정의(스키마)",
+      "api/ — 라우터(엔드포인트)",
+      ".env.example — 환경변수 목록",
+      "docker-compose.yml — 인프라 구성",
+      "README — 가장 먼저 읽을 파일",
+      "구조 패턴(언어 무관)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:21:09.510Z"
+  },
+  "ai-consultant__system-design__consulting-practice": {
+    "objectives": [
+      "고객의 요구 문장에서 명사와 동사를 추출해 엔터티와 기능으로 분류할 수 있다.",
+      "추출한 엔터티로 ERD를 스케치하여 요구 속 숨은 복잡도를 파악할 수 있다.",
+      "동사를 CRUD로 번역해 API 엔드포인트와 사용자/관리자 화면을 도출할 수 있다.",
+      "결제·알림·파일 등 인프라 연동과 비동기 처리가 필요한 지점을 식별할 수 있다.",
+      "구조에서 공수와 리스크(보안·동시성·비용)를 도출해 한 장의 상담 산출물로 정리할 수 있다."
+    ],
+    "summary": "고객의 한 문장 요구를 '요구 → 구조 → 판단'의 흐름으로 풀어 아키텍처·견적·리스크·개발안으로 번역하는 종합 상담 실습입니다. 명사는 표(ERD), 동사는 API, 느리거나 위험한 부분은 비동기·리스크로 펼치는 5단계 워크플로를 통해 Phase 1~6의 모든 개념을 한 상담 흐름으로 묶습니다. AI가 초안을 내면 사람은 권한·무결성·비용 쪽 위험을 검수하는 능력이 이 레슨의 핵심입니다.",
+    "keyConcepts": [
+      "요구 → 구조 → 판단",
+      "명사=엔터티(표), 동사=기능(CRUD)",
+      "ERD",
+      "API/엔드포인트",
+      "인가(RLS), idempotency",
+      "비동기/큐/스케줄러",
+      "리스크(보안·동시성·비용)",
+      "AI 초안 → 사람 검수"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:22:28.421Z"
+  },
+  "ai-consultant__aws-cloud__vpc-iam-security": {
+    "objectives": [
+      "VPC의 목적을 설명하고 클라우드 자원을 사설망에 격리할 수 있다.",
+      "보안그룹을 활용해 각 자원에 허용할 트래픽을 자원별로 통제할 수 있다.",
+      "IAM 최소 권한 원칙을 적용해 사용자와 서비스의 권한 범위를 정할 수 있다.",
+      "VPC(어디서 접근하나)와 IAM(누가 무엇을 하나) 두 축을 구분해 보안 구성을 설명할 수 있다.",
+      "파괴 반경을 줄이는 층위 방어의 원리를 보안 설계에 적용할 수 있다."
+    ],
+    "summary": "AWS 보안은 '어디서 접근하느냐'를 다루는 VPC·보안그룹(네트워크 축)과 '누가 무엇을 하느냐'를 다루는 IAM(권한 축) 두 가지로 성립한다. DB는 사설망에 가두고 앱 서버에서만 접속하게 하며, 권한은 필요한 만큼만 주는 것이 기본 구성이다. 완벽한 차단이 아니라 한 겹이 뚫려도 전체가 무너지지 않게 파괴 반경을 줄이는 것이 현실적인 목표다.",
+    "keyConcepts": [
+      "VPC (사설망 격리)",
+      "서브넷 (공개/비공개 구획)",
+      "보안그룹 (자원별 방화벽 규칙)",
+      "IAM (권한 관리)",
+      "최소 권한 원칙",
+      "역할(role) / 정책(policy)",
+      "루트 계정 / 2FA",
+      "파괴 반경 (blast radius)"
+    ],
+    "model": "local-cli/claude -p",
+    "generatedAt": "2026-07-03T01:24:02.904Z"
   }
 }

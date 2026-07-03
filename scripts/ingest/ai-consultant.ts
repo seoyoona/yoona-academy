@@ -13,7 +13,8 @@ import type { Track, Module, Lesson } from "../../src/content/types";
  *  - mdn 레슨: mdn/content에서 클론한 CC-BY-SA 2.5 글을 frontmatter/매크로만
  *    제거해 영문 그대로 싣는다(한국어는 translate 단계에서 오버레이).
  *
- * v1 = Phase 1~3 (웹구조·백엔드·DB), 3 모듈 15 레슨.
+ * v1 = Phase 1~3 (웹구조·백엔드·DB), v2 = Phase 4~6 (BaaS·AWS·시스템설계).
+ * 6 모듈 30 레슨. Phase 1의 MDN 2레슨만 인제스트, 나머지는 PM 시선 직필.
  */
 
 const TRACK_SLUG = "ai-consultant";
@@ -183,6 +184,129 @@ const PLAN: ModuleSpec[] = [
         title: "DB를 직접 안 굴릴 때 — RDS·Supabase·BaaS",
         estMinutes: 25,
         sourceUrl: "https://supabase.com/docs",
+      },
+    ],
+  },
+  {
+    slug: "baas-mvp",
+    title: "Phase 4 · BaaS / 빠른 MVP",
+    lessons: [
+      {
+        kind: "authored",
+        slug: "baas-why-fast",
+        title: "BaaS가 왜 빠른가 — 직접 백엔드 vs Firebase/Supabase",
+        estMinutes: 25,
+        sourceUrl: "https://supabase.com/docs",
+      },
+      {
+        kind: "authored",
+        slug: "supabase-auth-crud",
+        title: "Supabase로 로그인+CRUD — Auth·Postgres·Storage 한 세트",
+        estMinutes: 30,
+        sourceUrl: "https://supabase.com/docs/guides/getting-started",
+      },
+      {
+        kind: "authored",
+        slug: "firebase-push",
+        title: "앱 푸시는 앱이 직접 안 보낸다 — Firebase/FCM 구조",
+        estMinutes: 25,
+        sourceUrl: "https://firebase.google.com/docs/cloud-messaging",
+      },
+      {
+        kind: "authored",
+        slug: "rls-row-security",
+        title: "RLS(Row Level Security) — DB 수준 권한 (BaaS에서 꼭)",
+        estMinutes: 30,
+        sourceUrl: "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      },
+      {
+        kind: "authored",
+        slug: "baas-limits-migration",
+        title: "BaaS의 한계 — 언제 자체 백엔드로 이관하나",
+        estMinutes: 25,
+        sourceUrl: "https://supabase.com/docs",
+      },
+    ],
+  },
+  {
+    slug: "aws-cloud",
+    title: "Phase 5 · AWS / Cloud",
+    lessons: [
+      {
+        kind: "authored",
+        slug: "why-cloud",
+        title: "클라우드가 왜 필요한가 — 서버·DB·저장소·네트워크를 빌리는 일",
+        estMinutes: 25,
+        sourceUrl: "https://aws.amazon.com/what-is-aws/",
+      },
+      {
+        kind: "authored",
+        slug: "ec2-s3-rds",
+        title: "EC2·S3·RDS — 서버·파일창고·DB를 빌리는 3가지",
+        estMinutes: 30,
+        sourceUrl: "https://docs.aws.amazon.com/",
+      },
+      {
+        kind: "authored",
+        slug: "vpc-iam-security",
+        title: "VPC·IAM·보안그룹 — 사설망과 권한",
+        estMinutes: 30,
+        sourceUrl: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
+      },
+      {
+        kind: "authored",
+        slug: "dns-ssl-https",
+        title: "DNS·SSL·HTTPS — 도메인과 인증서 (사용자가 안전하게 들어오게)",
+        estMinutes: 25,
+        sourceUrl: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome.html",
+      },
+      {
+        kind: "authored",
+        slug: "env-and-deploy",
+        title: "환경변수·배포 — .env 세팅값 표 + Vercel/Render/AWS 배포 방식",
+        estMinutes: 30,
+        sourceUrl: "https://docs.aws.amazon.com/",
+      },
+    ],
+  },
+  {
+    slug: "system-design",
+    title: "Phase 6 · 시스템 설계 / 상담력",
+    lessons: [
+      {
+        kind: "authored",
+        slug: "monolith-vs-microservice",
+        title: "monolith vs microservice — 처음엔 하나로",
+        estMinutes: 25,
+        sourceUrl: "https://github.com/donnemartin/system-design-primer",
+      },
+      {
+        kind: "authored",
+        slug: "sync-vs-async",
+        title: "동기 vs 비동기 — 큐·배치·웹훅 (고객 요구 → 구조 번역)",
+        estMinutes: 30,
+        sourceUrl: "https://github.com/donnemartin/system-design-primer",
+      },
+      {
+        kind: "authored",
+        slug: "cache-index-scale",
+        title: "캐시·인덱스·확장 — 느려지기 시작할 때",
+        estMinutes: 30,
+        sourceUrl: "https://github.com/donnemartin/system-design-primer",
+      },
+      {
+        kind: "authored",
+        slug: "read-real-codebase",
+        title: "실전 폴더 구조 읽기 — FastAPI 템플릿을 예로",
+        estMinutes: 30,
+        sourceUrl: "https://github.com/fastapi/full-stack-fastapi-template",
+      },
+      {
+        kind: "authored",
+        slug: "consulting-practice",
+        title: "상담 실습 — 고객 요구 → 아키텍처·견적·리스크·개발안",
+        estMinutes: 35,
+        sourceUrl: "https://github.com/practical-tutorials/project-based-learning",
       },
     ],
   },
