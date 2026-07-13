@@ -179,6 +179,73 @@ export function getLocalizedModules(slug: string) {
     }));
 }
 
+export type LessonSearchField = "title" | "body" | "all";
+
+export type LessonSearchHit = {
+  id: string;
+  title: string;
+  trackSlug: string;
+  trackTitle: string;
+  emoji: string;
+  moduleTitle: string;
+  /** Where the query matched — title matches rank above body-only matches. */
+  matchedIn: "title" | "body";
+  /** Body context around the first match (body/all searches only). */
+  snippet?: string;
+};
+
+/**
+ * Full-text lesson search over the localized (Korean when available) title and
+ * body. Runs on the server against the in-memory content cache, so large bodies
+ * never cross to the client — only the ranked hits + short snippets do.
+ */
+export function searchLessons(
+  query: string,
+  field: LessonSearchField = "all",
+): LessonSearchHit[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  const wantTitle = field === "title" || field === "all";
+  const wantBody = field === "body" || field === "all";
+  const hits: LessonSearchHit[] = [];
+
+  for (const track of getAllTracks()) {
+    for (const { lesson, module: courseModule } of flattenLessons(track)) {
+      const tr = getTranslations()[lesson.id];
+      const title = tr?.title ?? lesson.title;
+      const body = tr?.contentMarkdown ?? lesson.contentMarkdown;
+      const titleMatch = wantTitle && title.toLowerCase().includes(q);
+      const bodyMatch = wantBody && body.toLowerCase().includes(q);
+      if (!titleMatch && !bodyMatch) continue;
+      hits.push({
+        id: lesson.id,
+        title,
+        trackSlug: track.slug,
+        trackTitle: track.title,
+        emoji: track.emoji,
+        moduleTitle: courseModule.title,
+        matchedIn: titleMatch ? "title" : "body",
+        snippet: bodyMatch && !titleMatch ? snippetAround(body, q) : undefined,
+      });
+    }
+  }
+
+  // Title hits first, then body hits, each preserving reading order.
+  return hits.sort((a, b) =>
+    a.matchedIn === b.matchedIn ? 0 : a.matchedIn === "title" ? -1 : 1,
+  );
+}
+
+/** A single-line, markdown-stripped excerpt centered on the first match. */
+function snippetAround(body: string, q: string, radius = 60): string {
+  const flat = body.replace(/\s+/g, " ").trim();
+  const idx = flat.toLowerCase().indexOf(q);
+  if (idx === -1) return flat.slice(0, radius * 2);
+  const start = Math.max(0, idx - radius);
+  const end = Math.min(flat.length, idx + q.length + radius);
+  return `${start > 0 ? "…" : ""}${flat.slice(start, end)}${end < flat.length ? "…" : ""}`;
+}
+
 export function trackStats(track: Track) {
   const flat = flattenLessons(track);
   const minutes = flat.reduce((sum, { lesson }) => sum + lesson.estMinutes, 0);

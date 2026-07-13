@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
+import { fixBrokenBold } from "./fix-bold";
 
 /**
  * Markdown → HTML with GitHub-flavored markdown, raw HTML passthrough, heading
@@ -26,6 +27,6 @@ const processor = unified()
   .use(rehypeStringify, { allowDangerousHtml: true });
 
 export async function renderMarkdown(md: string): Promise<string> {
-  const file = await processor.process(md);
+  const file = await processor.process(fixBrokenBold(md));
   return String(file);
 }

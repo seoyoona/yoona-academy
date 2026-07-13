@@ -12,6 +12,7 @@
     "enrich": "tsx scripts/enrich.ts",
     "enrich:mit-ai": "tsx scripts/enrich-mit-ai.ts",
     "translate": "tsx scripts/translate.ts",
+    "normalize:bold": "tsx scripts/normalize-bold.ts",
     "content": "pnpm ingest && pnpm enrich",
     "refresh": "pnpm sources && pnpm ingest && pnpm enrich",
     "test:mit-ai-notes": "tsx --test scripts/lib/mit-ai-notes.test.ts",
