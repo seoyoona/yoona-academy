@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import { embedYouTubeLinks, promoteYouTubeEmbeds } from "./video-embeds";
+import { fixBrokenBold } from "./fix-bold";
 
 /**
  * Markdown → HTML with GitHub-flavored markdown, raw HTML passthrough, heading
@@ -40,6 +41,6 @@ export async function renderMarkdown(
     options.promoteYouTubeEmbeds === false
       ? embedded
       : promoteYouTubeEmbeds(embedded, md);
-  const file = await processor.process(promoted);
+  const file = await processor.process(fixBrokenBold(promoted));
   return String(file);
 }
